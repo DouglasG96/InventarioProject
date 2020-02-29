@@ -54,6 +54,7 @@
             this.Label3 = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
+            this.btnReportes = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.menuMantenimientos.SuspendLayout();
             this.SuspendLayout();
@@ -75,14 +76,15 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnReportes);
             this.panel1.Controls.Add(this.btnBodegas);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.btnTraslados);
             this.panel1.Controls.Add(this.btnProductos);
             this.panel1.ForeColor = System.Drawing.Color.Black;
-            this.panel1.Location = new System.Drawing.Point(0, 196);
+            this.panel1.Location = new System.Drawing.Point(0, 168);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(161, 310);
+            this.panel1.Size = new System.Drawing.Size(161, 381);
             this.panel1.TabIndex = 2;
             // 
             // btnBodegas
@@ -293,6 +295,19 @@
             this.lblHora.TabIndex = 7;
             this.lblHora.Text = "hora";
             // 
+            // btnReportes
+            // 
+            this.btnReportes.BackColor = System.Drawing.Color.White;
+            this.btnReportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportes.ForeColor = System.Drawing.Color.Black;
+            this.btnReportes.Location = new System.Drawing.Point(14, 313);
+            this.btnReportes.Name = "btnReportes";
+            this.btnReportes.Size = new System.Drawing.Size(133, 39);
+            this.btnReportes.TabIndex = 4;
+            this.btnReportes.Text = "&Reportes";
+            this.btnReportes.UseVisualStyleBackColor = false;
+            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -349,6 +364,7 @@
         private System.Windows.Forms.Button btnBodegas;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolStripMenuItem comprasToolStripMenuItem1;
+        private System.Windows.Forms.Button btnReportes;
     }
 }
 

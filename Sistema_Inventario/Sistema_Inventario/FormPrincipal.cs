@@ -51,5 +51,11 @@ namespace Sistema_Inventario
         {
             frmProducto = null;
         }
+
+        private void btnReportes_Click(object sender, EventArgs e)
+        {
+            FormReportes frmreportes = new FormReportes();
+            frmreportes.ShowDialog();
+        }
     }
 }

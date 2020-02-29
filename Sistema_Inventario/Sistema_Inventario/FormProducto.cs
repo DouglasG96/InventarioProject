@@ -76,7 +76,6 @@ namespace Sistema_Inventario
 
         private void btnEliminarProducto_Click(object sender, EventArgs e)
         {
-            //elimino producto
             DialogResult resul = MessageBox.Show("Seguro que quiere eliminar el Registro?", "Eliminar Registro", MessageBoxButtons.YesNo);
             if (resul == DialogResult.Yes)
             {
