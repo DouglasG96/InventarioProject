@@ -1,0 +1,35 @@
+C:\Users\Cristian\Desktop\Sistema Inventario ETPS3\Sistema_Inventario\Sistema_Inventario\bin\Debug\Sistema_Inventario.exe.config
+C:\Users\Cristian\Desktop\Sistema Inventario ETPS3\Sistema_Inventario\Sistema_Inventario\bin\Debug\Sistema_Inventario.exe
+C:\Users\Cristian\Desktop\Sistema Inventario ETPS3\Sistema_Inventario\Sistema_Inventario\bin\Debug\Sistema_Inventario.pdb
+C:\Users\Cristian\Desktop\Sistema Inventario ETPS3\Sistema_Inventario\Sistema_Inventario\bin\Debug\DevComponents.DotNetBar2.dll
+C:\Users\Cristian\Desktop\Sistema Inventario ETPS3\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormLogin.resources
+C:\Users\Cristian\Desktop\Sistema Inventario ETPS3\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormPrincipal.resources
+C:\Users\Cristian\Desktop\Sistema Inventario ETPS3\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.Properties.Resources.resources
+C:\Users\Cristian\Desktop\Sistema Inventario ETPS3\Sistema_Inventario\Sistema_Inventario\obj\Debug\Presentacion.csproj.GenerateResource.cache
+C:\Users\Cristian\Desktop\Sistema Inventario ETPS3\Sistema_Inventario\Sistema_Inventario\obj\Debug\Presentacion.csproj.CopyComplete
+C:\Users\Cristian\Desktop\Sistema Inventario ETPS3\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.exe
+C:\Users\Cristian\Desktop\Sistema Inventario ETPS3\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.pdb
+C:\Users\Cristian\Desktop\Sistema Inventario ETPS3\Sistema_Inventario\Sistema_Inventario\obj\Debug\Presentacion.csprojAssemblyReference.cache
+C:\Users\Cristian\Desktop\Sistema_Inventario\Sistema_Inventario\bin\Debug\Sistema_Inventario.exe.config
+C:\Users\Cristian\Desktop\Sistema_Inventario\Sistema_Inventario\bin\Debug\Sistema_Inventario.exe
+C:\Users\Cristian\Desktop\Sistema_Inventario\Sistema_Inventario\bin\Debug\Sistema_Inventario.pdb
+C:\Users\Cristian\Desktop\Sistema_Inventario\Sistema_Inventario\bin\Debug\DevComponents.DotNetBar2.dll
+C:\Users\Cristian\Desktop\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormLogin.resources
+C:\Users\Cristian\Desktop\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormPrincipal.resources
+C:\Users\Cristian\Desktop\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.Properties.Resources.resources
+C:\Users\Cristian\Desktop\Sistema_Inventario\Sistema_Inventario\obj\Debug\Presentacion.csproj.GenerateResource.cache
+C:\Users\Cristian\Desktop\Sistema_Inventario\Sistema_Inventario\obj\Debug\Presentacion.csproj.CopyComplete
+C:\Users\Cristian\Desktop\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.exe
+C:\Users\Cristian\Desktop\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.pdb
+C:\Users\Cristian\Desktop\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormProducto.resources
+C:\Users\Cristian\Desktop\Sistema_Inventario\Sistema_Inventario\bin\Debug\Datos.dll
+C:\Users\Cristian\Desktop\Sistema_Inventario\Sistema_Inventario\bin\Debug\EntityFramework.dll
+C:\Users\Cristian\Desktop\Sistema_Inventario\Sistema_Inventario\bin\Debug\Datos.pdb
+C:\Users\Cristian\Desktop\Sistema_Inventario\Sistema_Inventario\bin\Debug\Datos.dll.config
+C:\Users\Cristian\Desktop\Sistema_Inventario\Sistema_Inventario\bin\Debug\EntityFramework.xml
+C:\Users\Cristian\Desktop\Sistema_Inventario\Sistema_Inventario\obj\Debug\Presentacion.csprojAssemblyReference.cache
+C:\Users\Cristian\Desktop\Sistema_Inventario\Sistema_Inventario\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Cristian\Desktop\Sistema_Inventario\Sistema_Inventario\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Cristian\Desktop\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormCrearProducto.resources
+C:\Users\Cristian\Desktop\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormDetalleProducto.resources
+C:\Users\Cristian\Desktop\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormEditarProducto.resources

@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="inventarioModelStoreContainer" CdmEntityContainer="inventarioEntities">
+    <EntitySetMapping Name="bitacora">
+      <EntityTypeMapping TypeName="inventarioModel.bitacora">
+        <MappingFragment StoreEntitySet="bitacora">
+          <ScalarProperty Name="id_movimiento" ColumnName="id_movimiento" />
+          <ScalarProperty Name="accion" ColumnName="accion" />
+          <ScalarProperty Name="hora" ColumnName="hora" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="id_bitacora" ColumnName="id_bitacora" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bodegas">
+      <EntityTypeMapping TypeName="inventarioModel.bodegas">
+        <MappingFragment StoreEntitySet="bodegas">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="id_tipo_bodega" ColumnName="id_tipo_bodega" />
+          <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+          <ScalarProperty Name="nombre_bodega" ColumnName="nombre_bodega" />
+          <ScalarProperty Name="id_bodega" ColumnName="id_bodega" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="clasificacion">
+      <EntityTypeMapping TypeName="inventarioModel.clasificacion">
+        <MappingFragment StoreEntitySet="clasificacion">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="nombre_clasificacion" ColumnName="nombre_clasificacion" />
+          <ScalarProperty Name="id_clasificacion" ColumnName="id_clasificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="detalles_movimientos">
+      <EntityTypeMapping TypeName="inventarioModel.detalles_movimientos">
+        <MappingFragment StoreEntitySet="detalles_movimientos">
+          <ScalarProperty Name="id_bodega" ColumnName="id_bodega" />
+          <ScalarProperty Name="id_movimiento" ColumnName="id_movimiento" />
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="existencia_total" ColumnName="existencia_total" />
+          <ScalarProperty Name="existencia_anterior" ColumnName="existencia_anterior" />
+          <ScalarProperty Name="costo_unitario_promedio" ColumnName="costo_unitario_promedio" />
+          <ScalarProperty Name="costo_unitario" ColumnName="costo_unitario" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="lote" ColumnName="lote" />
+          <ScalarProperty Name="fecha_vencimiento" ColumnName="fecha_vencimiento" />
+          <ScalarProperty Name="id_detalle_movimiento" ColumnName="id_detalle_movimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="medidas_peso">
+      <EntityTypeMapping TypeName="inventarioModel.medidas_peso">
+        <MappingFragment StoreEntitySet="medidas_peso">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="abreviatura" ColumnName="abreviatura" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_medida_peso" ColumnName="id_medida_peso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="movimientos">
+      <EntityTypeMapping TypeName="inventarioModel.movimientos">
+        <MappingFragment StoreEntitySet="movimientos">
+          <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="costo_total_sin_iva" ColumnName="costo_total_sin_iva" />
+          <ScalarProperty Name="costo_total_con_iva" ColumnName="costo_total_con_iva" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="hora" ColumnName="hora" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="id_tipo_movimiento" ColumnName="id_tipo_movimiento" />
+          <ScalarProperty Name="id_movimiento" ColumnName="id_movimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productos">
+      <EntityTypeMapping TypeName="inventarioModel.productos">
+        <MappingFragment StoreEntitySet="productos">
+          <ScalarProperty Name="hora_creacion" ColumnName="hora_creacion" />
+          <ScalarProperty Name="fecha_creacioon" ColumnName="fecha_creacioon" />
+          <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+          <ScalarProperty Name="id_sub_clasificacion" ColumnName="id_sub_clasificacion" />
+          <ScalarProperty Name="id_clasificacion" ColumnName="id_clasificacion" />
+          <ScalarProperty Name="id_vigencia_promedio" ColumnName="id_vigencia_promedio" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="proveedor_producto">
+      <EntityTypeMapping TypeName="inventarioModel.proveedor_producto">
+        <MappingFragment StoreEntitySet="proveedor_producto">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+          <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+          <ScalarProperty Name="id_proveedor_producto" ColumnName="id_proveedor_producto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="proveedores">
+      <EntityTypeMapping TypeName="inventarioModel.proveedores">
+        <MappingFragment StoreEntitySet="proveedores">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="id_tipo_proveedor" ColumnName="id_tipo_proveedor" />
+          <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="nrc" ColumnName="nrc" />
+          <ScalarProperty Name="nit" ColumnName="nit" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roles">
+      <EntityTypeMapping TypeName="inventarioModel.roles">
+        <MappingFragment StoreEntitySet="roles">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="rol" ColumnName="rol" />
+          <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sub_clasificaciones">
+      <EntityTypeMapping TypeName="inventarioModel.sub_clasificaciones">
+        <MappingFragment StoreEntitySet="sub_clasificaciones">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="sub_clasificacion" ColumnName="sub_clasificacion" />
+          <ScalarProperty Name="id_clasificacion" ColumnName="id_clasificacion" />
+          <ScalarProperty Name="id_sub_clasificacion" ColumnName="id_sub_clasificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sucursales">
+      <EntityTypeMapping TypeName="inventarioModel.sucursales">
+        <MappingFragment StoreEntitySet="sucursales">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="sucursal" ColumnName="sucursal" />
+          <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_bodega">
+      <EntityTypeMapping TypeName="inventarioModel.tipo_bodega">
+        <MappingFragment StoreEntitySet="tipo_bodega">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="id_tipo_bodega" ColumnName="id_tipo_bodega" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_bodega_bodegas">
+      <EntityTypeMapping TypeName="inventarioModel.tipo_bodega_bodegas">
+        <MappingFragment StoreEntitySet="tipo_bodega_bodegas">
+          <ScalarProperty Name="id_bodega" ColumnName="id_bodega" />
+          <ScalarProperty Name="id_tipo_bodega" ColumnName="id_tipo_bodega" />
+          <ScalarProperty Name="id_tipo_bodega_bodegas" ColumnName="id_tipo_bodega_bodegas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_movimiento">
+      <EntityTypeMapping TypeName="inventarioModel.tipo_movimiento">
+        <MappingFragment StoreEntitySet="tipo_movimiento">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="tipo_movimiento1" ColumnName="tipo_movimiento" />
+          <ScalarProperty Name="id_tipo_movimiento" ColumnName="id_tipo_movimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_proveedor">
+      <EntityTypeMapping TypeName="inventarioModel.tipo_proveedor">
+        <MappingFragment StoreEntitySet="tipo_proveedor">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="tipo_proveedor1" ColumnName="tipo_proveedor" />
+          <ScalarProperty Name="id_tipo_proveedor" ColumnName="id_tipo_proveedor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuarios">
+      <EntityTypeMapping TypeName="inventarioModel.usuarios">
+        <MappingFragment StoreEntitySet="usuarios">
+          <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+          <ScalarProperty Name="hora_ultimo_ingreso" ColumnName="hora_ultimo_ingreso" />
+          <ScalarProperty Name="fecha_ultimo_ingreso" ColumnName="fecha_ultimo_ingreso" />
+          <ScalarProperty Name="estado_sesion" ColumnName="estado_sesion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="dui" ColumnName="dui" />
+          <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
+          <ScalarProperty Name="clave" ColumnName="clave" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vigencia_promedio">
+      <EntityTypeMapping TypeName="inventarioModel.vigencia_promedio">
+        <MappingFragment StoreEntitySet="vigencia_promedio">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="dias" ColumnName="dias" />
+          <ScalarProperty Name="id_vigencia_promedio" ColumnName="id_vigencia_promedio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_producto">
+      <EntityTypeMapping TypeName="inventarioModel.vw_producto">
+        <MappingFragment StoreEntitySet="vw_producto">
+          <ScalarProperty Name="proveedor" ColumnName="proveedor" />
+          <ScalarProperty Name="categoria" ColumnName="categoria" />
+          <ScalarProperty Name="dias" ColumnName="dias" />
+          <ScalarProperty Name="hora_creacion" ColumnName="hora_creacion" />
+          <ScalarProperty Name="fecha_creacioon" ColumnName="fecha_creacioon" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
