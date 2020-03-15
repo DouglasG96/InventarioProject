@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace Datos
         //metodo para cargar listado de sub-categoria
         public static List<sub_clasificaciones> CargarSubCategorias()
         {
-            using (inventarioEntities bd = new inventarioEntities())
+            using (inventarioEntities1 bd = new inventarioEntities1())
             {
 
                 return bd.sub_clasificaciones.ToList();
@@ -21,7 +22,7 @@ namespace Datos
         //metodo para cargar listado de sub-categoria item opcional
         public static List<sub_clasificaciones> CargarSubCategoriasOpcional()
         {
-            using (inventarioEntities bd = new inventarioEntities())
+            using (inventarioEntities1 bd = new inventarioEntities1())
             {
                 List<sub_clasificaciones> list = CargarSubCategorias();
 

@@ -50,7 +50,7 @@
             // 
             // vw_productoBindingSource
             // 
-            this.vw_productoBindingSource.DataSource = typeof(Datos.vw_producto);
+            this.vw_productoBindingSource.DataSource = typeof(Entidades.vw_producto);
             // 
             // FormReportes
             // 

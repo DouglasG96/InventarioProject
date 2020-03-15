@@ -30,6 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dtgProductos = new System.Windows.Forms.DataGridView();
+            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnBuscarProducto = new System.Windows.Forms.Button();
+            this.txtBuscarProducto = new System.Windows.Forms.TextBox();
+            this.lblProducto = new System.Windows.Forms.Label();
+            this.btnAgregarProducto = new System.Windows.Forms.Button();
+            this.btnEditarProducto = new System.Windows.Forms.Button();
+            this.btnEliminarProducto = new System.Windows.Forms.Button();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,14 +47,6 @@
             this.Id_Proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha_Creacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hora_Creacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnBuscarProducto = new System.Windows.Forms.Button();
-            this.txtBuscarProducto = new System.Windows.Forms.TextBox();
-            this.lblProducto = new System.Windows.Forms.Label();
-            this.btnAgregarProducto = new System.Windows.Forms.Button();
-            this.btnEditarProducto = new System.Windows.Forms.Button();
-            this.btnEliminarProducto = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgProductos)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -75,78 +75,10 @@
             this.dtgProductos.TabIndex = 0;
             this.dtgProductos.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgProductos_CellContentDoubleClick);
             // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "id_producto";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Width = 50;
-            // 
-            // Nombre
-            // 
-            this.Nombre.DataPropertyName = "nombre";
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // Codigo
-            // 
-            this.Codigo.DataPropertyName = "codigo";
-            this.Codigo.HeaderText = "Codigo";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
-            this.Codigo.Width = 60;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.DataPropertyName = "descripcion";
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.ReadOnly = true;
-            // 
-            // Id_Clasificacion
-            // 
-            this.Id_Clasificacion.DataPropertyName = "categoria";
-            this.Id_Clasificacion.HeaderText = "Categoria";
-            this.Id_Clasificacion.Name = "Id_Clasificacion";
-            this.Id_Clasificacion.ReadOnly = true;
-            // 
-            // Id_Vigencia
-            // 
-            this.Id_Vigencia.DataPropertyName = "dias";
-            this.Id_Vigencia.HeaderText = "Vigencia en Dias";
-            this.Id_Vigencia.Name = "Id_Vigencia";
-            this.Id_Vigencia.ReadOnly = true;
-            this.Id_Vigencia.Width = 75;
-            // 
-            // Id_Proveedor
-            // 
-            this.Id_Proveedor.DataPropertyName = "proveedor";
-            this.Id_Proveedor.HeaderText = "Proveedor";
-            this.Id_Proveedor.Name = "Id_Proveedor";
-            this.Id_Proveedor.ReadOnly = true;
-            this.Id_Proveedor.Width = 130;
-            // 
-            // Fecha_Creacion
-            // 
-            this.Fecha_Creacion.DataPropertyName = "fecha_creacioon";
-            this.Fecha_Creacion.HeaderText = "Fecha Creacion";
-            this.Fecha_Creacion.Name = "Fecha_Creacion";
-            this.Fecha_Creacion.ReadOnly = true;
-            this.Fecha_Creacion.Width = 75;
-            // 
-            // Hora_Creacion
-            // 
-            this.Hora_Creacion.DataPropertyName = "hora_creacion";
-            this.Hora_Creacion.HeaderText = "Hora Creacion";
-            this.Hora_Creacion.Name = "Hora_Creacion";
-            this.Hora_Creacion.ReadOnly = true;
-            this.Hora_Creacion.Width = 75;
-            // 
             // styleManager1
             // 
-            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2010Black;
+            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
+            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(163)))), ((int)(((byte)(26))))));
             // 
             // groupBox1
             // 
@@ -232,6 +164,75 @@
             this.btnEliminarProducto.Text = "Eliminar Producto";
             this.btnEliminarProducto.UseVisualStyleBackColor = false;
             this.btnEliminarProducto.Click += new System.EventHandler(this.btnEliminarProducto_Click);
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "id_producto";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Width = 50;
+            // 
+            // Nombre
+            // 
+            this.Nombre.DataPropertyName = "nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Codigo
+            // 
+            this.Codigo.DataPropertyName = "codigo";
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            this.Codigo.Width = 60;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.DataPropertyName = "descripcion";
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            // 
+            // Id_Clasificacion
+            // 
+            this.Id_Clasificacion.DataPropertyName = "categoria";
+            this.Id_Clasificacion.HeaderText = "Categoria";
+            this.Id_Clasificacion.Name = "Id_Clasificacion";
+            this.Id_Clasificacion.ReadOnly = true;
+            // 
+            // Id_Vigencia
+            // 
+            this.Id_Vigencia.DataPropertyName = "dias";
+            this.Id_Vigencia.HeaderText = "Vigencia en Dias";
+            this.Id_Vigencia.Name = "Id_Vigencia";
+            this.Id_Vigencia.ReadOnly = true;
+            this.Id_Vigencia.Width = 75;
+            // 
+            // Id_Proveedor
+            // 
+            this.Id_Proveedor.DataPropertyName = "proveedor";
+            this.Id_Proveedor.HeaderText = "Proveedor";
+            this.Id_Proveedor.Name = "Id_Proveedor";
+            this.Id_Proveedor.ReadOnly = true;
+            this.Id_Proveedor.Width = 130;
+            // 
+            // Fecha_Creacion
+            // 
+            this.Fecha_Creacion.DataPropertyName = "fecha_creacion";
+            this.Fecha_Creacion.HeaderText = "Fecha Creacion";
+            this.Fecha_Creacion.Name = "Fecha_Creacion";
+            this.Fecha_Creacion.ReadOnly = true;
+            this.Fecha_Creacion.Width = 75;
+            // 
+            // Hora_Creacion
+            // 
+            this.Hora_Creacion.DataPropertyName = "hora_creacion";
+            this.Hora_Creacion.HeaderText = "Hora Creacion";
+            this.Hora_Creacion.Name = "Hora_Creacion";
+            this.Hora_Creacion.ReadOnly = true;
+            this.Hora_Creacion.Width = 75;
             // 
             // FormProducto
             // 

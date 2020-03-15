@@ -20,7 +20,7 @@
     <Property Name="id_tipo_bodega" Type="int" />
     <Property Name="estado" Type="int" />
   </EntityType>
-  <EntityType Name="clasificacion">
+  <EntityType Name="clasificaciones">
     <Key>
       <PropertyRef Name="id_clasificacion" />
     </Key>
@@ -78,11 +78,11 @@
     <Property Name="codigo" Type="nvarchar" MaxLength="250" />
     <Property Name="descripcion" Type="nvarchar" MaxLength="250" />
     <Property Name="id_vigencia_promedio" Type="int" />
-    <Property Name="id_clasificacion" Type="int" />
     <Property Name="id_sub_clasificacion" Type="int" />
     <Property Name="id_proveedor" Type="int" />
-    <Property Name="fecha_creacioon" Type="date" />
+    <Property Name="fecha_creacion" Type="date" />
     <Property Name="hora_creacion" Type="time" Precision="7" />
+    <Property Name="estado" Type="int" />
   </EntityType>
   <EntityType Name="proveedor_producto">
     <Key>
@@ -147,6 +147,9 @@
     <Property Name="id_tipo_bodega_bodegas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="id_tipo_bodega" Type="int" />
     <Property Name="id_bodega" Type="int" />
+    <Property Name="temperatura_promedio" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="capacidad_maxima" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="capacidad_actual" Type="decimal" Precision="10" Scale="2" />
   </EntityType>
   <EntityType Name="tipo_movimiento">
     <Key>
@@ -196,13 +199,14 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
     </Key>
     <Property Name="id_producto" Type="int" Nullable="false" />
     <Property Name="nombre" Type="nvarchar" MaxLength="250" Nullable="false" />
-    <Property Name="codigo" Type="nvarchar" MaxLength="250" />
-    <Property Name="descripcion" Type="nvarchar" MaxLength="250" />
-    <Property Name="fecha_creacioon" Type="date" />
-    <Property Name="hora_creacion" Type="time" Precision="7" />
     <Property Name="dias" Type="int" />
-    <Property Name="categoria" Type="nvarchar" MaxLength="250" />
+    <Property Name="codigo" Type="nvarchar" MaxLength="250" />
+    <Property Name="hora_creacion" Type="time" Precision="7" />
+    <Property Name="fecha_creacion" Type="date" />
     <Property Name="proveedor" Type="nvarchar" MaxLength="250" />
+    <Property Name="categoria" Type="nvarchar" MaxLength="250" />
+    <Property Name="subcategoia" Type="nvarchar" MaxLength="250" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="250" />
   </EntityType>
   <Association Name="FK_bitacora_movimientos">
     <End Role="movimientos" Type="Self.movimientos" Multiplicity="0..1" />
@@ -300,15 +304,15 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fk_productos_clasificaciones">
-    <End Role="clasificacion" Type="Self.clasificacion" Multiplicity="0..1" />
+  <Association Name="FK_productos_sub_clasificaciones">
+    <End Role="sub_clasificaciones" Type="Self.sub_clasificaciones" Multiplicity="0..1" />
     <End Role="productos" Type="Self.productos" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="clasificacion">
-        <PropertyRef Name="id_clasificacion" />
+      <Principal Role="sub_clasificaciones">
+        <PropertyRef Name="id_sub_clasificacion" />
       </Principal>
       <Dependent Role="productos">
-        <PropertyRef Name="id_clasificacion" />
+        <PropertyRef Name="id_sub_clasificacion" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -360,11 +364,11 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fk_sub_clasificacion_clasificaciones">
-    <End Role="clasificacion" Type="Self.clasificacion" Multiplicity="0..1" />
+  <Association Name="FK_sub_clasificaciones_clasificaciones">
+    <End Role="clasificaciones" Type="Self.clasificaciones" Multiplicity="0..1" />
     <End Role="sub_clasificaciones" Type="Self.sub_clasificaciones" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="clasificacion">
+      <Principal Role="clasificaciones">
         <PropertyRef Name="id_clasificacion" />
       </Principal>
       <Dependent Role="sub_clasificaciones">
@@ -411,7 +415,7 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
   <EntityContainer Name="inventarioModelStoreContainer">
     <EntitySet Name="bitacora" EntityType="Self.bitacora" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="bodegas" EntityType="Self.bodegas" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="clasificacion" EntityType="Self.clasificacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="clasificaciones" EntityType="Self.clasificaciones" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="detalles_movimientos" EntityType="Self.detalles_movimientos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="medidas_peso" EntityType="Self.medidas_peso" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="movimientos" EntityType="Self.movimientos" Schema="dbo" store:Type="Tables" />
@@ -431,13 +435,14 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
       <DefiningQuery>SELECT 
     [vw_producto].[id_producto] AS [id_producto], 
     [vw_producto].[nombre] AS [nombre], 
-    [vw_producto].[codigo] AS [codigo], 
-    [vw_producto].[descripcion] AS [descripcion], 
-    [vw_producto].[fecha_creacioon] AS [fecha_creacioon], 
-    [vw_producto].[hora_creacion] AS [hora_creacion], 
     [vw_producto].[dias] AS [dias], 
+    [vw_producto].[codigo] AS [codigo], 
+    [vw_producto].[hora_creacion] AS [hora_creacion], 
+    [vw_producto].[fecha_creacion] AS [fecha_creacion], 
+    [vw_producto].[proveedor] AS [proveedor], 
     [vw_producto].[categoria] AS [categoria], 
-    [vw_producto].[proveedor] AS [proveedor]
+    [vw_producto].[subcategoia] AS [subcategoia], 
+    [vw_producto].[descripcion] AS [descripcion]
     FROM [dbo].[vw_producto] AS [vw_producto]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK_bitacora_movimientos" Association="Self.FK_bitacora_movimientos">
@@ -472,8 +477,8 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
       <End Role="usuarios" EntitySet="usuarios" />
       <End Role="movimientos" EntitySet="movimientos" />
     </AssociationSet>
-    <AssociationSet Name="fk_productos_clasificaciones" Association="Self.fk_productos_clasificaciones">
-      <End Role="clasificacion" EntitySet="clasificacion" />
+    <AssociationSet Name="FK_productos_sub_clasificaciones" Association="Self.FK_productos_sub_clasificaciones">
+      <End Role="sub_clasificaciones" EntitySet="sub_clasificaciones" />
       <End Role="productos" EntitySet="productos" />
     </AssociationSet>
     <AssociationSet Name="fk_prouctos_viegncia_promedio" Association="Self.fk_prouctos_viegncia_promedio">
@@ -492,8 +497,8 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
       <End Role="tipo_proveedor" EntitySet="tipo_proveedor" />
       <End Role="proveedores" EntitySet="proveedores" />
     </AssociationSet>
-    <AssociationSet Name="fk_sub_clasificacion_clasificaciones" Association="Self.fk_sub_clasificacion_clasificaciones">
-      <End Role="clasificacion" EntitySet="clasificacion" />
+    <AssociationSet Name="FK_sub_clasificaciones_clasificaciones" Association="Self.FK_sub_clasificaciones_clasificaciones">
+      <End Role="clasificaciones" EntitySet="clasificaciones" />
       <End Role="sub_clasificaciones" EntitySet="sub_clasificaciones" />
     </AssociationSet>
     <AssociationSet Name="FK_tipo_bodega_bodegas_bodegas" Association="Self.FK_tipo_bodega_bodegas_bodegas">

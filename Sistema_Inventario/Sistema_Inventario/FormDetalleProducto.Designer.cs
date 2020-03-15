@@ -170,9 +170,9 @@
             this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(17, 170);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 15);
+            this.label5.Size = new System.Drawing.Size(90, 15);
             this.label5.TabIndex = 8;
-            this.label5.Text = "Categoria:";
+            this.label5.Text = "Sub Categoria:";
             // 
             // label4
             // 

@@ -1,4 +1,6 @@
-﻿using Datos;
+﻿
+using Entidades;
+using Logica;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,19 +23,19 @@ namespace Sistema_Inventario
         private void FormCrearProducto_Load(object sender, EventArgs e)
         {
             //cargo combox
-            cbxProveedor.DataSource = ProveedorDAL.CargarProveedoresOpcional();
+            cbxProveedor.DataSource = ProveedorBL.CargarProveedoresOpcional();
             cbxProveedor.DisplayMember = "nombre";
             cbxProveedor.ValueMember = "id_proveedor";
 
-            cbxCategoria.DataSource = CategoriaDAL.CargarCategoriasOpcional();
+            cbxCategoria.DataSource = CategoriaBL.CargarCategoriasOpcional();
             cbxCategoria.DisplayMember = "nombre_clasificacion";
             cbxCategoria.ValueMember = "id_clasificacion";
 
-            cbxSubCategoria.DataSource = SubCategoriaDAL.CargarSubCategoriasOpcional();
+            cbxSubCategoria.DataSource = SubCategoriaBL.CargarSubCategoriasOpcional();
             cbxSubCategoria.DisplayMember = "sub_clasificacion";
             cbxSubCategoria.ValueMember = "id_sub_clasificacion";
 
-            cbxVigencia.DataSource = VigenciaDAL.CargarVigencias();
+            cbxVigencia.DataSource = VigenciaBL.CargarVigencias();
             cbxVigencia.DisplayMember = "dias";
             cbxVigencia.ValueMember = "id_vigencia_promedio";
         }
@@ -45,7 +47,16 @@ namespace Sistema_Inventario
 
         private void btnAgregarProducto_Click(object sender, EventArgs e)
         {
-            ProductosDAL.CrearProducto(txtNombreProducto.Text, txtCodigoProducto.Text, txtDescripcionProducto.Text, Convert.ToInt32(cbxVigencia.SelectedValue), Convert.ToInt32(cbxCategoria.SelectedValue), Convert.ToInt32(cbxProveedor.SelectedValue));
+            productos producto = new productos();
+            producto.nombre = txtNombreProducto.Text;
+            producto.codigo = txtCodigoProducto.Text;
+            producto.descripcion = txtDescripcionProducto.Text;
+            producto.id_vigencia_promedio = Convert.ToInt32(cbxVigencia.SelectedValue);
+            producto.id_sub_clasificacion = Convert.ToInt32(cbxSubCategoria.SelectedValue);
+            producto.id_proveedor = Convert.ToInt32(cbxProveedor.SelectedValue);
+            producto.fecha_creacion = DateTime.Now.Date;
+            producto.hora_creacion = DateTime.Now.TimeOfDay;
+            ProductoBL.CrearProducto(producto);
             MessageBox.Show("Producto Agregado Correctamente", "Registro Agregado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }

@@ -1,0 +1,13 @@
+C:\Users\Cristian\Desktop\Sistema_Inventario\Logica\bin\Debug\Logica.dll
+C:\Users\Cristian\Desktop\Sistema_Inventario\Logica\bin\Debug\Logica.pdb
+C:\Users\Cristian\Desktop\Sistema_Inventario\Logica\obj\Debug\Logica.dll
+C:\Users\Cristian\Desktop\Sistema_Inventario\Logica\obj\Debug\Logica.pdb
+C:\Users\Cristian\Desktop\Sistema_Inventario\Logica\bin\Debug\Datos.dll
+C:\Users\Cristian\Desktop\Sistema_Inventario\Logica\bin\Debug\Entidades.dll
+C:\Users\Cristian\Desktop\Sistema_Inventario\Logica\bin\Debug\EntityFramework.dll
+C:\Users\Cristian\Desktop\Sistema_Inventario\Logica\bin\Debug\Datos.pdb
+C:\Users\Cristian\Desktop\Sistema_Inventario\Logica\bin\Debug\Datos.dll.config
+C:\Users\Cristian\Desktop\Sistema_Inventario\Logica\bin\Debug\Entidades.pdb
+C:\Users\Cristian\Desktop\Sistema_Inventario\Logica\bin\Debug\EntityFramework.xml
+C:\Users\Cristian\Desktop\Sistema_Inventario\Logica\obj\Debug\Logica.csprojAssemblyReference.cache
+C:\Users\Cristian\Desktop\Sistema_Inventario\Logica\obj\Debug\Logica.csproj.CopyComplete

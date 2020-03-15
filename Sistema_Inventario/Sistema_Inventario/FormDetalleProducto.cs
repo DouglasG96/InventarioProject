@@ -1,4 +1,6 @@
-﻿using Datos;
+﻿
+using Entidades;
+using Logica;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,14 +31,14 @@ namespace Sistema_Inventario
 
         private void FormDetalleProducto_Load(object sender, EventArgs e)
         {
-            vw_producto producto = ProductosDAL.DetalleProducto(idProducto);
+            vw_producto producto = ProductoBL.DetalleProducto(idProducto);
             txtNombreProducto.Text = producto.nombre;
             txtDescripcionProducto.Text = producto.descripcion;
             txtCodigoProducto.Text = producto.codigo;
             txtProveedor.Text = producto.proveedor;
             txtVigencia.Text = producto.dias.ToString();
-            txtCategoria.Text = producto.categoria;
-            txtFechaCreacion.Text = string.Format("{0:dd/MM/yyyy}", producto.fecha_creacioon);
+            txtCategoria.Text = producto.subcategoia;
+            txtFechaCreacion.Text = string.Format("{0:dd/MM/yyyy}", producto.fecha_creacion);
             txtHoraCreacion.Text = producto.hora_creacion.ToString();
         }
     }

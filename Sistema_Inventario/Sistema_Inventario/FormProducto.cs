@@ -1,4 +1,6 @@
-﻿using Datos;
+﻿
+using Entidades;
+using Logica;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +24,7 @@ namespace Sistema_Inventario
         private void CargarProductos()
         {
             dtgProductos.AutoGenerateColumns = false;
-            dtgProductos.DataSource = ProductosDAL.CargarProductos();
+            dtgProductos.DataSource = ProductoBL.CargarProductos();
         }
 
         private void FormProducto_FormClosed(object sender, FormClosedEventArgs e)
@@ -81,7 +83,7 @@ namespace Sistema_Inventario
             {
                 DataGridViewRow row = dtgProductos.CurrentRow;
                 int id = Convert.ToInt32(row.Cells["Id"].Value);
-                ProductosDAL.EliminarProducto(id);
+                ProductoBL.EliminarProducto(id);
                 MessageBox.Show("Se Elimino el Producto Con Numero ID: " + id, "Eliminar Registro");
                 CargarProductos();
             }

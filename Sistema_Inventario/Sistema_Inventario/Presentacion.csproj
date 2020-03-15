@@ -150,6 +150,7 @@
     <EmbeddedResource Include="rptProductos.rdlc" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Datos.vw_producto.datasource" />
+    <None Include="Properties\DataSources\Entidades.vw_producto1.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -170,9 +171,13 @@
     <None Include="Resources\inicio.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Datos\Datos.csproj">
-      <Project>{b082a6c5-3013-40e0-a2fd-9bc932675a58}</Project>
-      <Name>Datos</Name>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{78be4df9-2427-4c90-9157-e00492ff5860}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logica\Logica.csproj">
+      <Project>{a8404f78-fa86-4811-836e-b53350e636de}</Project>
+      <Name>Logica</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

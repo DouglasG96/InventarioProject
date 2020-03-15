@@ -65,84 +65,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="bitacora.cs">
-      <DependentUpon>ModelInventario.tt</DependentUpon>
-    </Compile>
-    <Compile Include="bodegas.cs">
-      <DependentUpon>ModelInventario.tt</DependentUpon>
-    </Compile>
     <Compile Include="CategoriaDAL.cs" />
-    <Compile Include="clasificacion.cs">
-      <DependentUpon>ModelInventario.tt</DependentUpon>
-    </Compile>
-    <Compile Include="detalles_movimientos.cs">
-      <DependentUpon>ModelInventario.tt</DependentUpon>
-    </Compile>
-    <Compile Include="medidas_peso.cs">
-      <DependentUpon>ModelInventario.tt</DependentUpon>
-    </Compile>
     <Compile Include="ModelInventario.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelInventario.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelInventario.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelInventario.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelInventario.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelInventario.edmx</DependentUpon>
     </Compile>
-    <Compile Include="movimientos.cs">
-      <DependentUpon>ModelInventario.tt</DependentUpon>
-    </Compile>
-    <Compile Include="productos.cs">
-      <DependentUpon>ModelInventario.tt</DependentUpon>
-    </Compile>
     <Compile Include="ProductosDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedorDAL.cs" />
-    <Compile Include="proveedores.cs">
-      <DependentUpon>ModelInventario.tt</DependentUpon>
-    </Compile>
-    <Compile Include="proveedor_producto.cs">
-      <DependentUpon>ModelInventario.tt</DependentUpon>
-    </Compile>
-    <Compile Include="roles.cs">
-      <DependentUpon>ModelInventario.tt</DependentUpon>
-    </Compile>
     <Compile Include="SubCategoriaDAL.cs" />
-    <Compile Include="sub_clasificaciones.cs">
-      <DependentUpon>ModelInventario.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sucursales.cs">
-      <DependentUpon>ModelInventario.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tipo_bodega.cs">
-      <DependentUpon>ModelInventario.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tipo_bodega_bodegas.cs">
-      <DependentUpon>ModelInventario.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tipo_movimiento.cs">
-      <DependentUpon>ModelInventario.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tipo_proveedor.cs">
-      <DependentUpon>ModelInventario.tt</DependentUpon>
-    </Compile>
-    <Compile Include="usuarios.cs">
-      <DependentUpon>ModelInventario.tt</DependentUpon>
-    </Compile>
     <Compile Include="VigenciaDAL.cs" />
-    <Compile Include="vigencia_promedio.cs">
-      <DependentUpon>ModelInventario.tt</DependentUpon>
-    </Compile>
-    <Compile Include="vw_producto.cs">
-      <DependentUpon>ModelInventario.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -156,19 +94,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="ModelInventario.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelInventario.edmx</DependentUpon>
       <LastGenOutput>ModelInventario.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="ModelInventario.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelInventario.edmx</DependentUpon>
-      <LastGenOutput>ModelInventario.cs</LastGenOutput>
+      <CustomToolNamespace>Entidades</CustomToolNamespace>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{78be4df9-2427-4c90-9157-e00492ff5860}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -4,43 +4,43 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7d24f00f2e7b4e46b25e8ec154da8b22" Name="Diagram1">
-        <EntityTypeShape EntityType="inventarioModel.bitacora" Width="1.5" PointX="9.625" PointY="10" />
-        <EntityTypeShape EntityType="inventarioModel.bodegas" Width="1.5" PointX="10.375" PointY="0.5" />
-        <EntityTypeShape EntityType="inventarioModel.clasificacion" Width="1.5" PointX="8.125" PointY="17.375" />
-        <EntityTypeShape EntityType="inventarioModel.detalles_movimientos" Width="1.5" PointX="12.625" PointY="4.5" />
-        <EntityTypeShape EntityType="inventarioModel.medidas_peso" Width="1.5" PointX="11.875" PointY="10" />
-        <EntityTypeShape EntityType="inventarioModel.movimientos" Width="1.5" PointX="7.375" PointY="4.5" />
-        <EntityTypeShape EntityType="inventarioModel.productos" Width="1.5" PointX="10.375" PointY="15.25" />
-        <EntityTypeShape EntityType="inventarioModel.proveedor_producto" Width="1.5" PointX="10.375" PointY="5.375" />
-        <EntityTypeShape EntityType="inventarioModel.proveedores" Width="1.5" PointX="5.125" PointY="4.75" />
-        <EntityTypeShape EntityType="inventarioModel.roles" Width="1.5" PointX="2.875" PointY="1.25" />
-        <EntityTypeShape EntityType="inventarioModel.sub_clasificaciones" Width="1.5" PointX="10.375" PointY="23.375" />
-        <EntityTypeShape EntityType="inventarioModel.sucursales" Width="1.5" PointX="8.125" PointY="1.375" />
-        <EntityTypeShape EntityType="inventarioModel.tipo_bodega" Width="1.5" PointX="10.375" PointY="20.375" />
-        <EntityTypeShape EntityType="inventarioModel.tipo_bodega_bodegas" Width="1.5" PointX="12.625" PointY="0.75" />
-        <EntityTypeShape EntityType="inventarioModel.tipo_movimiento" Width="1.5" PointX="5.125" PointY="9.625" />
-        <EntityTypeShape EntityType="inventarioModel.tipo_proveedor" Width="1.5" PointX="2.875" PointY="5.5" />
-        <EntityTypeShape EntityType="inventarioModel.usuarios" Width="1.5" PointX="5.125" PointY="0.5" />
-        <EntityTypeShape EntityType="inventarioModel.vigencia_promedio" Width="1.5" PointX="8.125" PointY="14.875" />
-        <EntityTypeShape EntityType="inventarioModel.vw_producto" Width="1.5" PointX="14.75" PointY="8.75" />
-        <AssociationConnector Association="inventarioModel.FK_bitacora_movimientos" />
-        <AssociationConnector Association="inventarioModel.fk_bodegas_sucursales" />
-        <AssociationConnector Association="inventarioModel.FK_detalles_movimientos_bodegas" />
-        <AssociationConnector Association="inventarioModel.FK_tipo_bodega_bodegas_bodegas" />
-        <AssociationConnector Association="inventarioModel.fk_productos_clasificaciones" />
-        <AssociationConnector Association="inventarioModel.fk_sub_clasificacion_clasificaciones" />
-        <AssociationConnector Association="inventarioModel.FK_detalles_movimientos_movimientos" />
-        <AssociationConnector Association="inventarioModel.FK_detalles_movimientos_productos" />
-        <AssociationConnector Association="inventarioModel.FK_movimientos_proveedores" />
-        <AssociationConnector Association="inventarioModel.fk_movimientos_tipo_movimiento" />
-        <AssociationConnector Association="inventarioModel.FK_movimientos_usuarios" />
-        <AssociationConnector Association="inventarioModel.fk_prouctos_viegncia_promedio" />
-        <AssociationConnector Association="inventarioModel.FK_proveedor_producto_productos" />
-        <AssociationConnector Association="inventarioModel.FK_proveedor_producto_proveedores" />
-        <AssociationConnector Association="inventarioModel.fk_proveedores" />
-        <AssociationConnector Association="inventarioModel.FK_usuarios_roles" />
-        <AssociationConnector Association="inventarioModel.FK_tipo_bodega_bodegas_tipo_bodega" />
+      <Diagram DiagramId="da12c5adb9d64e0eb76781d1d0daa2b4" Name="Diagram1">
+        <EntityTypeShape EntityType="inventarioModel.bitacora" Width="1.5" PointX="7.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventarioModel.bodegas" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventarioModel.clasificaciones" Width="1.5" PointX="3.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventarioModel.detalles_movimientos" Width="1.5" PointX="10.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventarioModel.medidas_peso" Width="1.5" PointX="10.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventarioModel.movimientos" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventarioModel.productos" Width="1.5" PointX="8.25" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventarioModel.proveedor_producto" Width="1.5" PointX="8.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventarioModel.proveedores" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventarioModel.roles" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventarioModel.sub_clasificaciones" Width="1.5" PointX="6" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventarioModel.sucursales" Width="1.5" PointX="6" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventarioModel.tipo_bodega" Width="1.5" PointX="8.25" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventarioModel.tipo_bodega_bodegas" Width="1.5" PointX="10.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventarioModel.tipo_movimiento" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventarioModel.tipo_proveedor" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventarioModel.usuarios" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventarioModel.vigencia_promedio" Width="1.5" PointX="6" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventarioModel.vw_producto" Width="1.5" PointX="12.75" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="inventarioModel.FK_bitacora_movimientos" ManuallyRouted="false" />
+        <AssociationConnector Association="inventarioModel.fk_bodegas_sucursales" ManuallyRouted="false" />
+        <AssociationConnector Association="inventarioModel.FK_detalles_movimientos_bodegas" ManuallyRouted="false" />
+        <AssociationConnector Association="inventarioModel.FK_tipo_bodega_bodegas_bodegas" ManuallyRouted="false" />
+        <AssociationConnector Association="inventarioModel.FK_sub_clasificaciones_clasificaciones" ManuallyRouted="false" />
+        <AssociationConnector Association="inventarioModel.FK_detalles_movimientos_movimientos" ManuallyRouted="false" />
+        <AssociationConnector Association="inventarioModel.FK_detalles_movimientos_productos" ManuallyRouted="false" />
+        <AssociationConnector Association="inventarioModel.FK_movimientos_proveedores" ManuallyRouted="false" />
+        <AssociationConnector Association="inventarioModel.fk_movimientos_tipo_movimiento" ManuallyRouted="false" />
+        <AssociationConnector Association="inventarioModel.FK_movimientos_usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="inventarioModel.FK_productos_sub_clasificaciones" ManuallyRouted="false" />
+        <AssociationConnector Association="inventarioModel.fk_prouctos_viegncia_promedio" ManuallyRouted="false" />
+        <AssociationConnector Association="inventarioModel.FK_proveedor_producto_productos" ManuallyRouted="false" />
+        <AssociationConnector Association="inventarioModel.FK_proveedor_producto_proveedores" ManuallyRouted="false" />
+        <AssociationConnector Association="inventarioModel.fk_proveedores" ManuallyRouted="false" />
+        <AssociationConnector Association="inventarioModel.FK_usuarios_roles" ManuallyRouted="false" />
+        <AssociationConnector Association="inventarioModel.FK_tipo_bodega_bodegas_tipo_bodega" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

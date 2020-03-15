@@ -1,0 +1,5 @@
+C:\Users\Cristian\Desktop\Sistema_Inventario\Entidades\bin\Debug\Entidades.dll
+C:\Users\Cristian\Desktop\Sistema_Inventario\Entidades\bin\Debug\Entidades.pdb
+C:\Users\Cristian\Desktop\Sistema_Inventario\Entidades\obj\Debug\Entidades.dll
+C:\Users\Cristian\Desktop\Sistema_Inventario\Entidades\obj\Debug\Entidades.pdb
+C:\Users\Cristian\Desktop\Sistema_Inventario\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache

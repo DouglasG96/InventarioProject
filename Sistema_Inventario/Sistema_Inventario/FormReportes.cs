@@ -1,4 +1,5 @@
-﻿using Datos;
+﻿
+using Logica;
 using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace Sistema_Inventario
         private void FormReportes_Load(object sender, EventArgs e)
         {
 
-            ReportDataSource datasource = new ReportDataSource("Productos", ProductosDAL.CargarProductos());
+            ReportDataSource datasource = new ReportDataSource("Productos", ProductoBL.CargarProductos());
             this.reportViewer1.LocalReport.DataSources.Clear();
             this.reportViewer1.LocalReport.DataSources.Add(datasource);
             this.reportViewer1.RefreshReport();

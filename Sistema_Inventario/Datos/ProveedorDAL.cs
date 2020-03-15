@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace Datos
         //metodo para cargar listado de proveedores
         public static List<proveedores> CargarProveedores()
         {
-            using (inventarioEntities bd = new inventarioEntities())
+            using (inventarioEntities1 bd = new inventarioEntities1())
             {
 
                 return bd.proveedores.ToList();
@@ -21,7 +22,7 @@ namespace Datos
         //metodo para cargar listado de proveedores item opcional
         public static List<proveedores> CargarProveedoresOpcional()
         {
-            using (inventarioEntities bd = new inventarioEntities())
+            using (inventarioEntities1 bd = new inventarioEntities1())
             {
                 List<proveedores> list = CargarProveedores();
 
