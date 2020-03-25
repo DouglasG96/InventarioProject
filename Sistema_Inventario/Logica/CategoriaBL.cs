@@ -10,13 +10,13 @@ namespace Logica
 {
     public class CategoriaBL
     {
-        public static List<clasificaciones> CargarCategorias()
+        public static List<clasificacion> CargarCategorias()
         {
             return CategoriaDAL.CargarCategorias();
         }
 
         //metodo para cargar listado de categorias item opcional
-        public static List<clasificaciones> CargarCategoriasOpcional()
+        public static List<clasificacion> CargarCategoriasOpcional()
         {
             return CategoriaDAL.CargarCategoriasOpcional();
         }

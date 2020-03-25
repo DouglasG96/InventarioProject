@@ -20,7 +20,7 @@
     <Property Name="id_tipo_bodega" Type="int" />
     <Property Name="estado" Type="int" />
   </EntityType>
-  <EntityType Name="clasificaciones">
+  <EntityType Name="clasificacion">
     <Key>
       <PropertyRef Name="id_clasificacion" />
     </Key>
@@ -78,6 +78,7 @@
     <Property Name="codigo" Type="nvarchar" MaxLength="250" />
     <Property Name="descripcion" Type="nvarchar" MaxLength="250" />
     <Property Name="id_vigencia_promedio" Type="int" />
+    <Property Name="id_clasificacion" Type="int" />
     <Property Name="id_sub_clasificacion" Type="int" />
     <Property Name="id_proveedor" Type="int" />
     <Property Name="fecha_creacion" Type="date" />
@@ -131,6 +132,16 @@
     <Property Name="id_sucursal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="sucursal" Type="nvarchar" MaxLength="100" />
     <Property Name="estado" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="tipo_bodega">
     <Key>
@@ -364,11 +375,11 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_sub_clasificaciones_clasificaciones">
-    <End Role="clasificaciones" Type="Self.clasificaciones" Multiplicity="0..1" />
+  <Association Name="fk_sub_clasificacion_clasificaciones">
+    <End Role="clasificacion" Type="Self.clasificacion" Multiplicity="0..1" />
     <End Role="sub_clasificaciones" Type="Self.sub_clasificaciones" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="clasificaciones">
+      <Principal Role="clasificacion">
         <PropertyRef Name="id_clasificacion" />
       </Principal>
       <Dependent Role="sub_clasificaciones">
@@ -415,7 +426,7 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
   <EntityContainer Name="inventarioModelStoreContainer">
     <EntitySet Name="bitacora" EntityType="Self.bitacora" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="bodegas" EntityType="Self.bodegas" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="clasificaciones" EntityType="Self.clasificaciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="clasificacion" EntityType="Self.clasificacion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="detalles_movimientos" EntityType="Self.detalles_movimientos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="medidas_peso" EntityType="Self.medidas_peso" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="movimientos" EntityType="Self.movimientos" Schema="dbo" store:Type="Tables" />
@@ -425,6 +436,7 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
     <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sub_clasificaciones" EntityType="Self.sub_clasificaciones" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sucursales" EntityType="Self.sucursales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tipo_bodega" EntityType="Self.tipo_bodega" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tipo_bodega_bodegas" EntityType="Self.tipo_bodega_bodegas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tipo_movimiento" EntityType="Self.tipo_movimiento" Schema="dbo" store:Type="Tables" />
@@ -497,8 +509,8 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
       <End Role="tipo_proveedor" EntitySet="tipo_proveedor" />
       <End Role="proveedores" EntitySet="proveedores" />
     </AssociationSet>
-    <AssociationSet Name="FK_sub_clasificaciones_clasificaciones" Association="Self.FK_sub_clasificaciones_clasificaciones">
-      <End Role="clasificaciones" EntitySet="clasificaciones" />
+    <AssociationSet Name="fk_sub_clasificacion_clasificaciones" Association="Self.fk_sub_clasificacion_clasificaciones">
+      <End Role="clasificacion" EntitySet="clasificacion" />
       <End Role="sub_clasificaciones" EntitySet="sub_clasificaciones" />
     </AssociationSet>
     <AssociationSet Name="FK_tipo_bodega_bodegas_bodegas" Association="Self.FK_tipo_bodega_bodegas_bodegas">

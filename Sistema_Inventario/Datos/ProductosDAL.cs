@@ -12,7 +12,7 @@ namespace Datos
         //metodo para cargar listado de productos
         public static List<vw_producto> CargarProductos()
         {
-            using (inventarioEntities1 bd = new inventarioEntities1())
+            using (inventarioEntities bd = new inventarioEntities())
             {
                 return bd.vw_producto.ToList();
             }
@@ -21,7 +21,7 @@ namespace Datos
         //Metodo para buscar  producto por nombre
         public static vw_producto DetalleProducto(int id)
         {
-            using (inventarioEntities1 bd = new inventarioEntities1())
+            using (inventarioEntities bd = new inventarioEntities())
             {
                 var producto = bd.vw_producto.First(x => x.id_producto == id);
 
@@ -32,7 +32,7 @@ namespace Datos
         public static productos ObtenerIdProducto(int id)
         {
             productos prod = new productos();
-            using (inventarioEntities1 bd = new inventarioEntities1())
+            using (inventarioEntities bd = new inventarioEntities())
             {
                 var producto = bd.productos.First(x => x.id_producto == id);
 
@@ -51,7 +51,7 @@ namespace Datos
         //Metodo para buscar  producto por nombre
         public static List<productos> BuscarProducto(string nombre)
         {
-            using (inventarioEntities1 bd = new inventarioEntities1())
+            using (inventarioEntities bd = new inventarioEntities())
             {
                 var producto = (from p in bd.productos
                               where p.nombre == nombre
@@ -63,7 +63,7 @@ namespace Datos
 
         public static productos CrearProducto(productos producto)
         {
-            using (inventarioEntities1 bd = new inventarioEntities1())
+            using (inventarioEntities bd = new inventarioEntities())
             {
                 productos prod = new productos();
                 prod.nombre = producto.nombre;
@@ -85,7 +85,7 @@ namespace Datos
 
         public static productos EditarProducto(productos producto)
         {
-            using (inventarioEntities1 bd = new inventarioEntities1())
+            using (inventarioEntities bd = new inventarioEntities())
             {
                 //var prod = (from p in bd.productos
                 //              where p.id_producto == id
@@ -108,7 +108,7 @@ namespace Datos
 
         public static int EliminarProducto(int id)
         {
-            using (inventarioEntities1 bd = new inventarioEntities1())
+            using (inventarioEntities bd = new inventarioEntities())
             {
                 //var prod = (from p in bd.productos
                 //              where p.id_producto == id

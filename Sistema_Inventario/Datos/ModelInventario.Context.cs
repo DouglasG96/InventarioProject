@@ -7,16 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Entidades
+namespace Datos
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using Entidades;
     
-    public partial class inventarioEntities1 : DbContext
+    public partial class inventarioEntities : DbContext
     {
-        public inventarioEntities1()
-            : base("name=inventarioEntities1")
+        public inventarioEntities()
+            : base("name=inventarioEntities")
         {
         }
     
@@ -27,7 +28,7 @@ namespace Entidades
     
         public virtual DbSet<bitacora> bitacora { get; set; }
         public virtual DbSet<bodegas> bodegas { get; set; }
-        public virtual DbSet<clasificaciones> clasificaciones { get; set; }
+        public virtual DbSet<clasificacion> clasificacion { get; set; }
         public virtual DbSet<detalles_movimientos> detalles_movimientos { get; set; }
         public virtual DbSet<medidas_peso> medidas_peso { get; set; }
         public virtual DbSet<movimientos> movimientos { get; set; }
@@ -37,6 +38,7 @@ namespace Entidades
         public virtual DbSet<roles> roles { get; set; }
         public virtual DbSet<sub_clasificaciones> sub_clasificaciones { get; set; }
         public virtual DbSet<sucursales> sucursales { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tipo_bodega> tipo_bodega { get; set; }
         public virtual DbSet<tipo_bodega_bodegas> tipo_bodega_bodegas { get; set; }
         public virtual DbSet<tipo_movimiento> tipo_movimiento { get; set; }

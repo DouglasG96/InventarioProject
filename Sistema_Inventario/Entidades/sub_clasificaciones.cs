@@ -25,7 +25,7 @@ namespace Entidades
         public string sub_clasificacion { get; set; }
         public Nullable<int> estado { get; set; }
     
-        public virtual clasificaciones clasificaciones { get; set; }
+        public virtual clasificacion clasificacion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<productos> productos { get; set; }
     }

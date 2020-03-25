@@ -47,7 +47,7 @@
     <Compile Include="bodegas.cs">
       <DependentUpon>ModelInventario.tt</DependentUpon>
     </Compile>
-    <Compile Include="clasificaciones.cs">
+    <Compile Include="clasificacion.cs">
       <DependentUpon>ModelInventario.tt</DependentUpon>
     </Compile>
     <Compile Include="detalles_movimientos.cs">
@@ -83,6 +83,9 @@
     <Compile Include="sucursales.cs">
       <DependentUpon>ModelInventario.tt</DependentUpon>
     </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
     <Compile Include="tipo_bodega.cs">
       <DependentUpon>ModelInventario.tt</DependentUpon>
     </Compile>
@@ -106,13 +109,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="ModelInventario.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ModelInventario.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

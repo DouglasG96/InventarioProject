@@ -12,10 +12,10 @@ namespace Entidades
     using System;
     using System.Collections.Generic;
     
-    public partial class clasificaciones
+    public partial class clasificacion
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public clasificaciones()
+        public clasificacion()
         {
             this.sub_clasificaciones = new HashSet<sub_clasificaciones>();
         }

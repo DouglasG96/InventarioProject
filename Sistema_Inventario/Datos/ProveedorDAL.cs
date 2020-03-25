@@ -12,7 +12,7 @@ namespace Datos
         //metodo para cargar listado de proveedores
         public static List<proveedores> CargarProveedores()
         {
-            using (inventarioEntities1 bd = new inventarioEntities1())
+            using (inventarioEntities bd = new inventarioEntities())
             {
 
                 return bd.proveedores.ToList();
@@ -22,7 +22,7 @@ namespace Datos
         //metodo para cargar listado de proveedores item opcional
         public static List<proveedores> CargarProveedoresOpcional()
         {
-            using (inventarioEntities1 bd = new inventarioEntities1())
+            using (inventarioEntities bd = new inventarioEntities())
             {
                 List<proveedores> list = CargarProveedores();
 

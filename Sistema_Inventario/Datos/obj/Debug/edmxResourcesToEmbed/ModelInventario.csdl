@@ -24,14 +24,14 @@
     <NavigationProperty Name="detalles_movimientos" Relationship="Self.FK_detalles_movimientos_bodegas" FromRole="bodegas" ToRole="detalles_movimientos" />
     <NavigationProperty Name="tipo_bodega_bodegas" Relationship="Self.FK_tipo_bodega_bodegas_bodegas" FromRole="bodegas" ToRole="tipo_bodega_bodegas" />
   </EntityType>
-  <EntityType Name="clasificaciones">
+  <EntityType Name="clasificacion">
     <Key>
       <PropertyRef Name="id_clasificacion" />
     </Key>
     <Property Name="id_clasificacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="nombre_clasificacion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="estado" Type="Int32" />
-    <NavigationProperty Name="sub_clasificaciones" Relationship="Self.FK_sub_clasificaciones_clasificaciones" FromRole="clasificaciones" ToRole="sub_clasificaciones" />
+    <NavigationProperty Name="sub_clasificaciones" Relationship="Self.fk_sub_clasificacion_clasificaciones" FromRole="clasificacion" ToRole="sub_clasificaciones" />
   </EntityType>
   <EntityType Name="detalles_movimientos">
     <Key>
@@ -91,6 +91,7 @@
     <Property Name="codigo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="id_vigencia_promedio" Type="Int32" />
+    <Property Name="id_clasificacion" Type="Int32" />
     <Property Name="id_sub_clasificacion" Type="Int32" />
     <Property Name="id_proveedor" Type="Int32" />
     <Property Name="fecha_creacion" Type="DateTime" Precision="0" />
@@ -146,7 +147,7 @@
     <Property Name="id_clasificacion" Type="Int32" />
     <Property Name="sub_clasificacion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="estado" Type="Int32" />
-    <NavigationProperty Name="clasificaciones" Relationship="Self.FK_sub_clasificaciones_clasificaciones" FromRole="sub_clasificaciones" ToRole="clasificaciones" />
+    <NavigationProperty Name="clasificacion" Relationship="Self.fk_sub_clasificacion_clasificaciones" FromRole="sub_clasificaciones" ToRole="clasificacion" />
     <NavigationProperty Name="productos" Relationship="Self.FK_productos_sub_clasificaciones" FromRole="sub_clasificaciones" ToRole="productos" />
   </EntityType>
   <EntityType Name="sucursales">
@@ -157,6 +158,16 @@
     <Property Name="sucursal" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="estado" Type="Int32" />
     <NavigationProperty Name="bodegas" Relationship="Self.fk_bodegas_sucursales" FromRole="sucursales" ToRole="bodegas" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="tipo_bodega">
     <Key>
@@ -288,11 +299,11 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_sub_clasificaciones_clasificaciones">
-    <End Role="clasificaciones" Type="Self.clasificaciones" Multiplicity="0..1" />
+  <Association Name="fk_sub_clasificacion_clasificaciones">
+    <End Role="clasificacion" Type="Self.clasificacion" Multiplicity="0..1" />
     <End Role="sub_clasificaciones" Type="Self.sub_clasificaciones" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="clasificaciones">
+      <Principal Role="clasificacion">
         <PropertyRef Name="id_clasificacion" />
       </Principal>
       <Dependent Role="sub_clasificaciones">
@@ -444,10 +455,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="inventarioEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="inventarioEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="bitacora" EntityType="Self.bitacora" />
     <EntitySet Name="bodegas" EntityType="Self.bodegas" />
-    <EntitySet Name="clasificaciones" EntityType="Self.clasificaciones" />
+    <EntitySet Name="clasificacion" EntityType="Self.clasificacion" />
     <EntitySet Name="detalles_movimientos" EntityType="Self.detalles_movimientos" />
     <EntitySet Name="medidas_peso" EntityType="Self.medidas_peso" />
     <EntitySet Name="movimientos" EntityType="Self.movimientos" />
@@ -457,6 +468,7 @@
     <EntitySet Name="roles" EntityType="Self.roles" />
     <EntitySet Name="sub_clasificaciones" EntityType="Self.sub_clasificaciones" />
     <EntitySet Name="sucursales" EntityType="Self.sucursales" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="tipo_bodega" EntityType="Self.tipo_bodega" />
     <EntitySet Name="tipo_bodega_bodegas" EntityType="Self.tipo_bodega_bodegas" />
     <EntitySet Name="tipo_movimiento" EntityType="Self.tipo_movimiento" />
@@ -480,8 +492,8 @@
       <End Role="bodegas" EntitySet="bodegas" />
       <End Role="tipo_bodega_bodegas" EntitySet="tipo_bodega_bodegas" />
     </AssociationSet>
-    <AssociationSet Name="FK_sub_clasificaciones_clasificaciones" Association="Self.FK_sub_clasificaciones_clasificaciones">
-      <End Role="clasificaciones" EntitySet="clasificaciones" />
+    <AssociationSet Name="fk_sub_clasificacion_clasificaciones" Association="Self.fk_sub_clasificacion_clasificaciones">
+      <End Role="clasificacion" EntitySet="clasificacion" />
       <End Role="sub_clasificaciones" EntitySet="sub_clasificaciones" />
     </AssociationSet>
     <AssociationSet Name="FK_detalles_movimientos_movimientos" Association="Self.FK_detalles_movimientos_movimientos">

@@ -12,7 +12,7 @@ namespace Datos
         //metodo para cargar listado de sub-categoria
         public static List<sub_clasificaciones> CargarSubCategorias()
         {
-            using (inventarioEntities1 bd = new inventarioEntities1())
+            using (inventarioEntities bd = new inventarioEntities())
             {
 
                 return bd.sub_clasificaciones.ToList();
@@ -22,7 +22,7 @@ namespace Datos
         //metodo para cargar listado de sub-categoria item opcional
         public static List<sub_clasificaciones> CargarSubCategoriasOpcional()
         {
-            using (inventarioEntities1 bd = new inventarioEntities1())
+            using (inventarioEntities bd = new inventarioEntities())
             {
                 List<sub_clasificaciones> list = CargarSubCategorias();
 

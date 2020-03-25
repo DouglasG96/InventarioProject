@@ -12,7 +12,7 @@ namespace Datos
         //metodo para cargar listado de dias
         public static List<vigencia_promedio> CargarVigencias()
         {
-            using (inventarioEntities1 bd = new inventarioEntities1())
+            using (inventarioEntities bd = new inventarioEntities())
             {
 
                 return bd.vigencia_promedio.ToList();

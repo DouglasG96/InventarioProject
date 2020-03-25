@@ -26,6 +26,7 @@ namespace Entidades
         public string codigo { get; set; }
         public string descripcion { get; set; }
         public Nullable<int> id_vigencia_promedio { get; set; }
+        public Nullable<int> id_clasificacion { get; set; }
         public Nullable<int> id_sub_clasificacion { get; set; }
         public Nullable<int> id_proveedor { get; set; }
         public Nullable<System.DateTime> fecha_creacion { get; set; }
