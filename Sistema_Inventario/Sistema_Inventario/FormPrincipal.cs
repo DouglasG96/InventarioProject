@@ -57,5 +57,25 @@ namespace Sistema_Inventario
             FormReportes frmreportes = new FormReportes();
             frmreportes.ShowDialog();
         }
+
+        private void nuevaBodegaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            FormTipoBodega tipobodega = new FormTipoBodega();
+            tipobodega.FormClosed += new FormClosedEventHandler(frmProducto_FormClosed);
+            tipobodega.MdiParent = this;
+            tipobodega.Show();
+            
+
+        
+        }
+
+        private void registroSucursalesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormSucursal frmsu = new FormSucursal();
+            frmsu.FormClosed += new FormClosedEventHandler(frmProducto_FormClosed);
+            frmsu.MdiParent = this;
+            frmsu.Show();
+        }
     }
 }
