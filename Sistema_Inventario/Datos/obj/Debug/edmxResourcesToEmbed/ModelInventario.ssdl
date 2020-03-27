@@ -202,6 +202,23 @@
     <Property Name="estado" Type="int" />
   </EntityType>
   <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'inventario.dbo.vw_login' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vw_login">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+    </Key>
+    <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="usuario" Type="nchar" MaxLength="10" />
+    <Property Name="clave" Type="nchar" MaxLength="50" />
+    <Property Name="nombre_completo" Type="nchar" MaxLength="200" />
+    <Property Name="dui" Type="nchar" MaxLength="10" />
+    <Property Name="estado" Type="int" />
+    <Property Name="estado_sesion" Type="int" />
+    <Property Name="fecha_ultimo_ingreso" Type="date" />
+    <Property Name="hora_ultimo_ingreso" Type="time" Precision="7" />
+    <Property Name="id_rol" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
   <EntityType Name="vw_producto">
     <Key>
@@ -443,6 +460,20 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
     <EntitySet Name="tipo_proveedor" EntityType="Self.tipo_proveedor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="vigencia_promedio" EntityType="Self.vigencia_promedio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vw_login" EntityType="Self.vw_login" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_login].[id_usuario] AS [id_usuario], 
+    [vw_login].[usuario] AS [usuario], 
+    [vw_login].[clave] AS [clave], 
+    [vw_login].[nombre_completo] AS [nombre_completo], 
+    [vw_login].[dui] AS [dui], 
+    [vw_login].[estado] AS [estado], 
+    [vw_login].[estado_sesion] AS [estado_sesion], 
+    [vw_login].[fecha_ultimo_ingreso] AS [fecha_ultimo_ingreso], 
+    [vw_login].[hora_ultimo_ingreso] AS [hora_ultimo_ingreso], 
+    [vw_login].[id_rol] AS [id_rol]
+    FROM [dbo].[vw_login] AS [vw_login]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="vw_producto" EntityType="Self.vw_producto" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [vw_producto].[id_producto] AS [id_producto], 

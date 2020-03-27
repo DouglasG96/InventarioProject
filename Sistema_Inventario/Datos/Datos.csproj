@@ -55,6 +55,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -66,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoriaDAL.cs" />
+    <Compile Include="LoginDAL.cs" />
     <Compile Include="ModelInventario.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

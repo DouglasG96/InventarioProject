@@ -104,6 +104,9 @@
     <Compile Include="vigencia_promedio.cs">
       <DependentUpon>ModelInventario.tt</DependentUpon>
     </Compile>
+    <Compile Include="vw_login.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
     <Compile Include="vw_producto.cs">
       <DependentUpon>ModelInventario.tt</DependentUpon>
     </Compile>

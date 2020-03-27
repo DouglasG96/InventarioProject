@@ -7,16 +7,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Logica;
+using System.Diagnostics;
 
 namespace Sistema_Inventario
 {
     public partial class FormPrincipal : DevComponents.DotNetBar.Metro.MetroForm
     {
         FormProducto frmProducto;
-        public FormPrincipal()
+        LoginBL loginBL;
+        int idUsuario;
+        String nombreUsuario = "";
+        
+        public FormPrincipal(int idUsuario)
         {
             InitializeComponent();
             timer1.Enabled = true;
+            this.idUsuario = idUsuario;
+
+            loginBL = new LoginBL();
+            consultarDatosUsuario(idUsuario);
         }
 
         //muestro fecha y hora
@@ -56,6 +66,30 @@ namespace Sistema_Inventario
         {
             FormReportes frmreportes = new FormReportes();
             frmreportes.ShowDialog();
+        }
+
+        private void consultarDatosUsuario(int idUsuario)
+        {
+            nombreUsuario = loginBL.consultarDatosUsuario(this.idUsuario);
+            mostrarDatosUsuario(nombreUsuario);
+        }
+
+        private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(loginBL.cerrarSesion(this.idUsuario))
+            {
+                Application.Exit();
+            }
+        }
+
+        private void mostrarDatosUsuario(String nombreUsuario)
+        {
+            lblNombreUsuario.Text = nombreUsuario;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

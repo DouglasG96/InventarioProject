@@ -5,6 +5,7 @@ C:\Users\Cristian\Desktop\Sistema_Inventario\Entidades\obj\Debug\Entidades.pdb
 C:\Users\Cristian\Desktop\Sistema_Inventario\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Entidades\bin\Debug\Entidades.dll
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Entidades\bin\Debug\Entidades.pdb
+C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Entidades\obj\Debug\Entidades.dll
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Entidades\obj\Debug\Entidades.pdb

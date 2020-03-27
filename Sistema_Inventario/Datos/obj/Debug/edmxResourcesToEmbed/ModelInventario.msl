@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="inventarioModelStoreContainer" CdmEntityContainer="inventarioEntities">
+  <EntityContainerMapping StorageEntityContainer="inventarioModelStoreContainer" CdmEntityContainer="inventarioEntities1">
     <EntitySetMapping Name="bitacora">
       <EntityTypeMapping TypeName="inventarioModel.bitacora">
         <MappingFragment StoreEntitySet="bitacora">
@@ -218,6 +218,22 @@
           <ScalarProperty Name="id_vigencia_promedio" ColumnName="id_vigencia_promedio" />
           <ScalarProperty Name="dias" ColumnName="dias" />
           <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_login">
+      <EntityTypeMapping TypeName="inventarioModel.vw_login">
+        <MappingFragment StoreEntitySet="vw_login">
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="clave" ColumnName="clave" />
+          <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
+          <ScalarProperty Name="dui" ColumnName="dui" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="estado_sesion" ColumnName="estado_sesion" />
+          <ScalarProperty Name="fecha_ultimo_ingreso" ColumnName="fecha_ultimo_ingreso" />
+          <ScalarProperty Name="hora_ultimo_ingreso" ColumnName="hora_ultimo_ingreso" />
+          <ScalarProperty Name="id_rol" ColumnName="id_rol" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

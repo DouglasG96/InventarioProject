@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnReportes = new System.Windows.Forms.Button();
             this.btnBodegas = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnTraslados = new System.Windows.Forms.Button();
@@ -49,12 +50,14 @@
             this.reportesBodegasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesProveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.herramientasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cerrarSesionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.Label3 = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
-            this.btnReportes = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblNombreUsuario = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.menuMantenimientos.SuspendLayout();
             this.SuspendLayout();
@@ -71,6 +74,7 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "SISTEMA DE INVENTARIO  ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel1
             // 
@@ -86,6 +90,19 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(161, 381);
             this.panel1.TabIndex = 2;
+            // 
+            // btnReportes
+            // 
+            this.btnReportes.BackColor = System.Drawing.Color.White;
+            this.btnReportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportes.ForeColor = System.Drawing.Color.Black;
+            this.btnReportes.Location = new System.Drawing.Point(14, 313);
+            this.btnReportes.Name = "btnReportes";
+            this.btnReportes.Size = new System.Drawing.Size(133, 39);
+            this.btnReportes.TabIndex = 4;
+            this.btnReportes.Text = "&Reportes";
+            this.btnReportes.UseVisualStyleBackColor = false;
+            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
             // 
             // btnBodegas
             // 
@@ -146,7 +163,8 @@
             this.mantenimientosToolStripMenuItem,
             this.procesosToolStripMenuItem,
             this.reportesToolStripMenuItem,
-            this.herramientasToolStripMenuItem});
+            this.herramientasToolStripMenuItem,
+            this.cerrarSesionToolStripMenuItem});
             this.menuMantenimientos.Location = new System.Drawing.Point(0, 0);
             this.menuMantenimientos.Name = "menuMantenimientos";
             this.menuMantenimientos.Size = new System.Drawing.Size(1184, 27);
@@ -243,6 +261,13 @@
             this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(103, 23);
             this.herramientasToolStripMenuItem.Text = "Herramientas";
             // 
+            // cerrarSesionToolStripMenuItem
+            // 
+            this.cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
+            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(102, 23);
+            this.cerrarSesionToolStripMenuItem.Text = "Cerrar Sesion";
+            this.cerrarSesionToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesionToolStripMenuItem_Click);
+            // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
@@ -295,24 +320,36 @@
             this.lblHora.TabIndex = 7;
             this.lblHora.Text = "hora";
             // 
-            // btnReportes
+            // label4
             // 
-            this.btnReportes.BackColor = System.Drawing.Color.White;
-            this.btnReportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReportes.ForeColor = System.Drawing.Color.Black;
-            this.btnReportes.Location = new System.Drawing.Point(14, 313);
-            this.btnReportes.Name = "btnReportes";
-            this.btnReportes.Size = new System.Drawing.Size(133, 39);
-            this.btnReportes.TabIndex = 4;
-            this.btnReportes.Text = "&Reportes";
-            this.btnReportes.UseVisualStyleBackColor = false;
-            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.White;
+            this.label4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(495, 27);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(75, 15);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Bienvenido: ";
+            // 
+            // lblNombreUsuario
+            // 
+            this.lblNombreUsuario.AutoSize = true;
+            this.lblNombreUsuario.BackColor = System.Drawing.Color.White;
+            this.lblNombreUsuario.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreUsuario.ForeColor = System.Drawing.Color.Black;
+            this.lblNombreUsuario.Location = new System.Drawing.Point(576, 27);
+            this.lblNombreUsuario.Name = "lblNombreUsuario";
+            this.lblNombreUsuario.Size = new System.Drawing.Size(0, 15);
+            this.lblNombreUsuario.TabIndex = 12;
             // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 561);
+            this.Controls.Add(this.lblNombreUsuario);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.lblHora);
             this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.Label3);
@@ -365,6 +402,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolStripMenuItem comprasToolStripMenuItem1;
         private System.Windows.Forms.Button btnReportes;
+        private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblNombreUsuario;
     }
 }
 

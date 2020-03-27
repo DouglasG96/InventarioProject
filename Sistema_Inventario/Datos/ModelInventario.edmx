@@ -207,6 +207,23 @@
           <Property Name="estado" Type="int" />
         </EntityType>
         <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'inventario.dbo.vw_login' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_login">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usuario" Type="nchar" MaxLength="10" />
+          <Property Name="clave" Type="nchar" MaxLength="50" />
+          <Property Name="nombre_completo" Type="nchar" MaxLength="200" />
+          <Property Name="dui" Type="nchar" MaxLength="10" />
+          <Property Name="estado" Type="int" />
+          <Property Name="estado_sesion" Type="int" />
+          <Property Name="fecha_ultimo_ingreso" Type="date" />
+          <Property Name="hora_ultimo_ingreso" Type="time" Precision="7" />
+          <Property Name="id_rol" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="vw_producto">
           <Key>
@@ -448,6 +465,20 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
           <EntitySet Name="tipo_proveedor" EntityType="Self.tipo_proveedor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="vigencia_promedio" EntityType="Self.vigencia_promedio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_login" EntityType="Self.vw_login" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_login].[id_usuario] AS [id_usuario], 
+    [vw_login].[usuario] AS [usuario], 
+    [vw_login].[clave] AS [clave], 
+    [vw_login].[nombre_completo] AS [nombre_completo], 
+    [vw_login].[dui] AS [dui], 
+    [vw_login].[estado] AS [estado], 
+    [vw_login].[estado_sesion] AS [estado_sesion], 
+    [vw_login].[fecha_ultimo_ingreso] AS [fecha_ultimo_ingreso], 
+    [vw_login].[hora_ultimo_ingreso] AS [hora_ultimo_ingreso], 
+    [vw_login].[id_rol] AS [id_rol]
+    FROM [dbo].[vw_login] AS [vw_login]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vw_producto" EntityType="Self.vw_producto" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vw_producto].[id_producto] AS [id_producto], 
@@ -771,6 +802,21 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
           <Property Name="estado" Type="Int32" />
           <NavigationProperty Name="productos" Relationship="Self.fk_prouctos_viegncia_promedio" FromRole="vigencia_promedio" ToRole="productos" />
         </EntityType>
+        <EntityType Name="vw_login">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usuario" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="clave" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="nombre_completo" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+          <Property Name="dui" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="estado" Type="Int32" />
+          <Property Name="estado_sesion" Type="Int32" />
+          <Property Name="fecha_ultimo_ingreso" Type="DateTime" Precision="0" />
+          <Property Name="hora_ultimo_ingreso" Type="Time" Precision="7" />
+          <Property Name="id_rol" Type="Int32" />
+        </EntityType>
         <EntityType Name="vw_producto">
           <Key>
             <PropertyRef Name="id_producto" />
@@ -991,7 +1037,7 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="inventarioEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="inventarioEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="bitacora" EntityType="Self.bitacora" />
           <EntitySet Name="bodegas" EntityType="Self.bodegas" />
           <EntitySet Name="clasificacion" EntityType="Self.clasificacion" />
@@ -1011,6 +1057,7 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
           <EntitySet Name="tipo_proveedor" EntityType="Self.tipo_proveedor" />
           <EntitySet Name="usuarios" EntityType="Self.usuarios" />
           <EntitySet Name="vigencia_promedio" EntityType="Self.vigencia_promedio" />
+          <EntitySet Name="vw_login" EntityType="Self.vw_login" />
           <EntitySet Name="vw_producto" EntityType="Self.vw_producto" />
           <AssociationSet Name="FK_bitacora_movimientos" Association="Self.FK_bitacora_movimientos">
             <End Role="movimientos" EntitySet="movimientos" />
@@ -1086,7 +1133,7 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="inventarioModelStoreContainer" CdmEntityContainer="inventarioEntities">
+        <EntityContainerMapping StorageEntityContainer="inventarioModelStoreContainer" CdmEntityContainer="inventarioEntities1">
           <EntitySetMapping Name="bitacora">
             <EntityTypeMapping TypeName="inventarioModel.bitacora">
               <MappingFragment StoreEntitySet="bitacora">
@@ -1304,6 +1351,22 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
                 <ScalarProperty Name="id_vigencia_promedio" ColumnName="id_vigencia_promedio" />
                 <ScalarProperty Name="dias" ColumnName="dias" />
                 <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_login">
+            <EntityTypeMapping TypeName="inventarioModel.vw_login">
+              <MappingFragment StoreEntitySet="vw_login">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
+                <ScalarProperty Name="dui" ColumnName="dui" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="estado_sesion" ColumnName="estado_sesion" />
+                <ScalarProperty Name="fecha_ultimo_ingreso" ColumnName="fecha_ultimo_ingreso" />
+                <ScalarProperty Name="hora_ultimo_ingreso" ColumnName="hora_ultimo_ingreso" />
+                <ScalarProperty Name="id_rol" ColumnName="id_rol" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
