@@ -15,6 +15,7 @@ namespace Sistema_Inventario
     public partial class FormPrincipal : DevComponents.DotNetBar.Metro.MetroForm
     {
         FormProducto frmProducto;
+        FormMovimientos formMovimientos;
         LoginBL loginBL;
         int idUsuario;
         String nombreUsuario = "";
@@ -39,7 +40,10 @@ namespace Sistema_Inventario
         //cierro aplicacion principal al presionar x
         private void FormPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            if (loginBL.cerrarSesion(this.idUsuario))
+            {
+                Application.Exit();
+            }
         }
 
         private void btnProductos_Click(object sender, EventArgs e)
@@ -90,6 +94,21 @@ namespace Sistema_Inventario
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnMovimientos_Click(object sender, EventArgs e)
+        {
+            if (formMovimientos == null)
+            {
+                formMovimientos = new FormMovimientos();
+                formMovimientos.FormClosed += new FormClosedEventHandler(frmProducto_FormClosed);
+                formMovimientos.MdiParent = this;
+                formMovimientos.Show();
+            }
+            else
+            {
+                formMovimientos.Activate();
+            }
         }
     }
 }

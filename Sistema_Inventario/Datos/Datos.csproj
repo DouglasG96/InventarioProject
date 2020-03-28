@@ -78,6 +78,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelInventario.edmx</DependentUpon>
     </Compile>
+    <Compile Include="MovimientosDAL.cs" />
     <Compile Include="ProductosDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedorDAL.cs" />
