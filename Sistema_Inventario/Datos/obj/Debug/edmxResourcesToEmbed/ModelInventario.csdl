@@ -159,16 +159,6 @@
     <Property Name="estado" Type="Int32" />
     <NavigationProperty Name="bodegas" Relationship="Self.fk_bodegas_sucursales" FromRole="sucursales" ToRole="bodegas" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <EntityType Name="tipo_bodega">
     <Key>
       <PropertyRef Name="id_tipo_bodega" />
@@ -214,10 +204,10 @@
       <PropertyRef Name="id_usuario" />
     </Key>
     <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="usuario" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="clave" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-    <Property Name="nombre_completo" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
-    <Property Name="dui" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="clave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nombre_completo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="dui" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="estado" Type="Int32" />
     <Property Name="estado_sesion" Type="Int32" />
     <Property Name="fecha_ultimo_ingreso" Type="DateTime" Precision="0" />
@@ -240,31 +230,15 @@
       <PropertyRef Name="id_usuario" />
     </Key>
     <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="usuario" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="clave" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-    <Property Name="nombre_completo" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
-    <Property Name="dui" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="clave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nombre_completo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="dui" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="estado" Type="Int32" />
     <Property Name="estado_sesion" Type="Int32" />
     <Property Name="fecha_ultimo_ingreso" Type="DateTime" Precision="0" />
     <Property Name="hora_ultimo_ingreso" Type="Time" Precision="7" />
     <Property Name="id_rol" Type="Int32" />
-  </EntityType>
-  <EntityType Name="vw_producto">
-    <Key>
-      <PropertyRef Name="id_producto" />
-      <PropertyRef Name="nombre" />
-    </Key>
-    <Property Name="id_producto" Type="Int32" Nullable="false" />
-    <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="dias" Type="Int32" />
-    <Property Name="codigo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="hora_creacion" Type="Time" Precision="7" />
-    <Property Name="fecha_creacion" Type="DateTime" Precision="0" />
-    <Property Name="proveedor" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="categoria" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="subcategoia" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_bitacora_movimientos">
     <End Role="movimientos" Type="Self.movimientos" Multiplicity="0..1" />
@@ -470,7 +444,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="inventarioEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="inventarioEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="bitacora" EntityType="Self.bitacora" />
     <EntitySet Name="bodegas" EntityType="Self.bodegas" />
     <EntitySet Name="clasificacion" EntityType="Self.clasificacion" />
@@ -483,7 +457,6 @@
     <EntitySet Name="roles" EntityType="Self.roles" />
     <EntitySet Name="sub_clasificaciones" EntityType="Self.sub_clasificaciones" />
     <EntitySet Name="sucursales" EntityType="Self.sucursales" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="tipo_bodega" EntityType="Self.tipo_bodega" />
     <EntitySet Name="tipo_bodega_bodegas" EntityType="Self.tipo_bodega_bodegas" />
     <EntitySet Name="tipo_movimiento" EntityType="Self.tipo_movimiento" />
@@ -491,7 +464,6 @@
     <EntitySet Name="usuarios" EntityType="Self.usuarios" />
     <EntitySet Name="vigencia_promedio" EntityType="Self.vigencia_promedio" />
     <EntitySet Name="vw_login" EntityType="Self.vw_login" />
-    <EntitySet Name="vw_producto" EntityType="Self.vw_producto" />
     <AssociationSet Name="FK_bitacora_movimientos" Association="Self.FK_bitacora_movimientos">
       <End Role="movimientos" EntitySet="movimientos" />
       <End Role="bitacora" EntitySet="bitacora" />
@@ -560,5 +532,23 @@
       <End Role="tipo_bodega" EntitySet="tipo_bodega" />
       <End Role="tipo_bodega_bodegas" EntitySet="tipo_bodega_bodegas" />
     </AssociationSet>
+    <EntitySet Name="vw_producto" EntityType="inventarioModel.vw_producto" />
   </EntityContainer>
+  <EntityType Name="vw_producto">
+    <Key>
+      <PropertyRef Name="id_producto" />
+      <PropertyRef Name="nombre" />
+    </Key>
+    <Property Name="id_producto" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="dias" Type="Int32" />
+    <Property Name="codigo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="hora_creacion" Type="Time" Precision="7" />
+    <Property Name="fecha_creacion" Type="DateTime" Precision="0" />
+    <Property Name="proveedor" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="categoria" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="subcategoia" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="estado" Type="Int32" />
+  </EntityType>
 </Schema>

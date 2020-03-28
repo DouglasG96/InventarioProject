@@ -83,9 +83,6 @@
     <Compile Include="sucursales.cs">
       <DependentUpon>ModelInventario.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>ModelInventario.tt</DependentUpon>
-    </Compile>
     <Compile Include="tipo_bodega.cs">
       <DependentUpon>ModelInventario.tt</DependentUpon>
     </Compile>

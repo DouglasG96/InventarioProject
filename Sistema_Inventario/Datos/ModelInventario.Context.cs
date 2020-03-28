@@ -7,12 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Datos
+namespace Entidades
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using Entidades;
+    
     public partial class inventarioEntities : DbContext
     {
         public inventarioEntities()
@@ -37,7 +37,6 @@ namespace Datos
         public virtual DbSet<roles> roles { get; set; }
         public virtual DbSet<sub_clasificaciones> sub_clasificaciones { get; set; }
         public virtual DbSet<sucursales> sucursales { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tipo_bodega> tipo_bodega { get; set; }
         public virtual DbSet<tipo_bodega_bodegas> tipo_bodega_bodegas { get; set; }
         public virtual DbSet<tipo_movimiento> tipo_movimiento { get; set; }

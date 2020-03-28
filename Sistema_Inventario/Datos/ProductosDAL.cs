@@ -53,9 +53,10 @@ namespace Datos
         {
             using (inventarioEntities bd = new inventarioEntities())
             {
-                var producto = (from p in bd.productos
-                              where p.nombre == nombre
-                              select p).ToList();
+                //var producto = (from p in bd.productos
+                //              where p.nombre == nombre
+                //              select p).ToList();
+                var producto = bd.productos.Where(x => x.nombre.StartsWith(nombre)).ToList();
 
                 return producto;
             }
@@ -115,8 +116,8 @@ namespace Datos
                 //              select p).FirstOrDefault();
 
                 var prod = bd.productos.First(x => x.id_producto == id);//obtenemos registro por medio de id
-
-                bd.productos.Remove(prod);
+                prod.estado = 0;
+                bd.Entry(prod).State = System.Data.Entity.EntityState.Modified;
                 bd.SaveChanges();
             }
             return id;

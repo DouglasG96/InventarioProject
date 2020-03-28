@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6cc07894218946589334562fdd55962b" Name="Diagram1">
+      <Diagram DiagramId="e66727aeeb59447aafaaf13d4875b7e0" Name="Diagram1">
         <EntityTypeShape EntityType="inventarioModel.bitacora" Width="1.5" PointX="7.5" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="inventarioModel.bodegas" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="inventarioModel.clasificacion" Width="1.5" PointX="3.75" PointY="15.25" IsExpanded="true" />
@@ -17,15 +17,13 @@
         <EntityTypeShape EntityType="inventarioModel.roles" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
         <EntityTypeShape EntityType="inventarioModel.sub_clasificaciones" Width="1.5" PointX="6" PointY="15" IsExpanded="true" />
         <EntityTypeShape EntityType="inventarioModel.sucursales" Width="1.5" PointX="6" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="inventarioModel.sysdiagrams" Width="1.5" PointX="12.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="inventarioModel.tipo_bodega" Width="1.5" PointX="8.25" PointY="12.625" IsExpanded="true" />
         <EntityTypeShape EntityType="inventarioModel.tipo_bodega_bodegas" Width="1.5" PointX="10.5" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="inventarioModel.tipo_movimiento" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
         <EntityTypeShape EntityType="inventarioModel.tipo_proveedor" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="inventarioModel.usuarios" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
         <EntityTypeShape EntityType="inventarioModel.vigencia_promedio" Width="1.5" PointX="6" PointY="18" IsExpanded="true" />
-        <EntityTypeShape EntityType="inventarioModel.vw_login" Width="1.5" PointX="12.75" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="inventarioModel.vw_producto" Width="1.5" PointX="12.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventarioModel.vw_login" Width="1.5" PointX="12.75" PointY="1.375" IsExpanded="true" />
         <AssociationConnector Association="inventarioModel.FK_bitacora_movimientos" ManuallyRouted="false" />
         <AssociationConnector Association="inventarioModel.fk_bodegas_sucursales" ManuallyRouted="false" />
         <AssociationConnector Association="inventarioModel.FK_detalles_movimientos_bodegas" ManuallyRouted="false" />
@@ -43,6 +41,7 @@
         <AssociationConnector Association="inventarioModel.fk_proveedores" ManuallyRouted="false" />
         <AssociationConnector Association="inventarioModel.FK_usuarios_roles" ManuallyRouted="false" />
         <AssociationConnector Association="inventarioModel.FK_tipo_bodega_bodegas_tipo_bodega" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="inventarioModel.vw_producto" Width="1.5" PointX="13" PointY="5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

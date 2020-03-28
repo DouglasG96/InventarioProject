@@ -88,5 +88,15 @@ namespace Sistema_Inventario
                 CargarProductos();
             }
         }
+
+        private void btnBuscarProducto_Click(object sender, EventArgs e)
+        {
+            if (txtBuscarProducto.Text != "")
+            {
+                dtgProductos.DataSource = ProductoBL.BuscarProducto(txtBuscarProducto.Text);
+            }
+            else
+                CargarProductos();
+        }
     }
 }

@@ -30,14 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dtgProductos = new System.Windows.Forms.DataGridView();
-            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnBuscarProducto = new System.Windows.Forms.Button();
-            this.txtBuscarProducto = new System.Windows.Forms.TextBox();
-            this.lblProducto = new System.Windows.Forms.Label();
-            this.btnAgregarProducto = new System.Windows.Forms.Button();
-            this.btnEditarProducto = new System.Windows.Forms.Button();
-            this.btnEliminarProducto = new System.Windows.Forms.Button();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +39,14 @@
             this.Id_Proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha_Creacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hora_Creacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnBuscarProducto = new System.Windows.Forms.Button();
+            this.txtBuscarProducto = new System.Windows.Forms.TextBox();
+            this.lblProducto = new System.Windows.Forms.Label();
+            this.btnAgregarProducto = new System.Windows.Forms.Button();
+            this.btnEditarProducto = new System.Windows.Forms.Button();
+            this.btnEliminarProducto = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgProductos)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -74,96 +74,6 @@
             this.dtgProductos.Size = new System.Drawing.Size(780, 251);
             this.dtgProductos.TabIndex = 0;
             this.dtgProductos.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgProductos_CellContentDoubleClick);
-            // 
-            // styleManager1
-            // 
-            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
-            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(163)))), ((int)(((byte)(26))))));
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.Color.White;
-            this.groupBox1.Controls.Add(this.btnBuscarProducto);
-            this.groupBox1.Controls.Add(this.txtBuscarProducto);
-            this.groupBox1.Controls.Add(this.lblProducto);
-            this.groupBox1.ForeColor = System.Drawing.Color.Black;
-            this.groupBox1.Location = new System.Drawing.Point(200, 27);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(382, 90);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Buscar Producto";
-            // 
-            // btnBuscarProducto
-            // 
-            this.btnBuscarProducto.BackColor = System.Drawing.Color.White;
-            this.btnBuscarProducto.ForeColor = System.Drawing.Color.Black;
-            this.btnBuscarProducto.Location = new System.Drawing.Point(212, 29);
-            this.btnBuscarProducto.Name = "btnBuscarProducto";
-            this.btnBuscarProducto.Size = new System.Drawing.Size(75, 33);
-            this.btnBuscarProducto.TabIndex = 2;
-            this.btnBuscarProducto.Text = "Buscar";
-            this.btnBuscarProducto.UseVisualStyleBackColor = false;
-            // 
-            // txtBuscarProducto
-            // 
-            this.txtBuscarProducto.BackColor = System.Drawing.Color.White;
-            this.txtBuscarProducto.ForeColor = System.Drawing.Color.Black;
-            this.txtBuscarProducto.Location = new System.Drawing.Point(93, 32);
-            this.txtBuscarProducto.Name = "txtBuscarProducto";
-            this.txtBuscarProducto.Size = new System.Drawing.Size(100, 20);
-            this.txtBuscarProducto.TabIndex = 1;
-            // 
-            // lblProducto
-            // 
-            this.lblProducto.AutoSize = true;
-            this.lblProducto.BackColor = System.Drawing.Color.White;
-            this.lblProducto.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProducto.ForeColor = System.Drawing.Color.Black;
-            this.lblProducto.Location = new System.Drawing.Point(25, 37);
-            this.lblProducto.Name = "lblProducto";
-            this.lblProducto.Size = new System.Drawing.Size(62, 15);
-            this.lblProducto.TabIndex = 0;
-            this.lblProducto.Text = "Producto:";
-            // 
-            // btnAgregarProducto
-            // 
-            this.btnAgregarProducto.BackColor = System.Drawing.Color.White;
-            this.btnAgregarProducto.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarProducto.ForeColor = System.Drawing.Color.Black;
-            this.btnAgregarProducto.Location = new System.Drawing.Point(3, 421);
-            this.btnAgregarProducto.Name = "btnAgregarProducto";
-            this.btnAgregarProducto.Size = new System.Drawing.Size(108, 39);
-            this.btnAgregarProducto.TabIndex = 2;
-            this.btnAgregarProducto.Text = "Agregar Producto";
-            this.btnAgregarProducto.UseVisualStyleBackColor = false;
-            this.btnAgregarProducto.Click += new System.EventHandler(this.btnAgregarProducto_Click);
-            // 
-            // btnEditarProducto
-            // 
-            this.btnEditarProducto.BackColor = System.Drawing.Color.White;
-            this.btnEditarProducto.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditarProducto.ForeColor = System.Drawing.Color.Black;
-            this.btnEditarProducto.Location = new System.Drawing.Point(323, 421);
-            this.btnEditarProducto.Name = "btnEditarProducto";
-            this.btnEditarProducto.Size = new System.Drawing.Size(101, 39);
-            this.btnEditarProducto.TabIndex = 3;
-            this.btnEditarProducto.Text = "Editar Producto";
-            this.btnEditarProducto.UseVisualStyleBackColor = false;
-            this.btnEditarProducto.Click += new System.EventHandler(this.btnEditarProducto_Click);
-            // 
-            // btnEliminarProducto
-            // 
-            this.btnEliminarProducto.BackColor = System.Drawing.Color.White;
-            this.btnEliminarProducto.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminarProducto.ForeColor = System.Drawing.Color.Black;
-            this.btnEliminarProducto.Location = new System.Drawing.Point(665, 421);
-            this.btnEliminarProducto.Name = "btnEliminarProducto";
-            this.btnEliminarProducto.Size = new System.Drawing.Size(107, 39);
-            this.btnEliminarProducto.TabIndex = 4;
-            this.btnEliminarProducto.Text = "Eliminar Producto";
-            this.btnEliminarProducto.UseVisualStyleBackColor = false;
-            this.btnEliminarProducto.Click += new System.EventHandler(this.btnEliminarProducto_Click);
             // 
             // Id
             // 
@@ -233,6 +143,97 @@
             this.Hora_Creacion.Name = "Hora_Creacion";
             this.Hora_Creacion.ReadOnly = true;
             this.Hora_Creacion.Width = 75;
+            // 
+            // styleManager1
+            // 
+            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
+            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(163)))), ((int)(((byte)(26))))));
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.btnBuscarProducto);
+            this.groupBox1.Controls.Add(this.txtBuscarProducto);
+            this.groupBox1.Controls.Add(this.lblProducto);
+            this.groupBox1.ForeColor = System.Drawing.Color.Black;
+            this.groupBox1.Location = new System.Drawing.Point(200, 27);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(382, 90);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Buscar Producto";
+            // 
+            // btnBuscarProducto
+            // 
+            this.btnBuscarProducto.BackColor = System.Drawing.Color.White;
+            this.btnBuscarProducto.ForeColor = System.Drawing.Color.Black;
+            this.btnBuscarProducto.Location = new System.Drawing.Point(212, 29);
+            this.btnBuscarProducto.Name = "btnBuscarProducto";
+            this.btnBuscarProducto.Size = new System.Drawing.Size(75, 33);
+            this.btnBuscarProducto.TabIndex = 2;
+            this.btnBuscarProducto.Text = "Buscar";
+            this.btnBuscarProducto.UseVisualStyleBackColor = false;
+            this.btnBuscarProducto.Click += new System.EventHandler(this.btnBuscarProducto_Click);
+            // 
+            // txtBuscarProducto
+            // 
+            this.txtBuscarProducto.BackColor = System.Drawing.Color.White;
+            this.txtBuscarProducto.ForeColor = System.Drawing.Color.Black;
+            this.txtBuscarProducto.Location = new System.Drawing.Point(93, 32);
+            this.txtBuscarProducto.Name = "txtBuscarProducto";
+            this.txtBuscarProducto.Size = new System.Drawing.Size(100, 20);
+            this.txtBuscarProducto.TabIndex = 1;
+            // 
+            // lblProducto
+            // 
+            this.lblProducto.AutoSize = true;
+            this.lblProducto.BackColor = System.Drawing.Color.White;
+            this.lblProducto.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProducto.ForeColor = System.Drawing.Color.Black;
+            this.lblProducto.Location = new System.Drawing.Point(25, 37);
+            this.lblProducto.Name = "lblProducto";
+            this.lblProducto.Size = new System.Drawing.Size(62, 15);
+            this.lblProducto.TabIndex = 0;
+            this.lblProducto.Text = "Producto:";
+            // 
+            // btnAgregarProducto
+            // 
+            this.btnAgregarProducto.BackColor = System.Drawing.Color.White;
+            this.btnAgregarProducto.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarProducto.ForeColor = System.Drawing.Color.Black;
+            this.btnAgregarProducto.Location = new System.Drawing.Point(3, 421);
+            this.btnAgregarProducto.Name = "btnAgregarProducto";
+            this.btnAgregarProducto.Size = new System.Drawing.Size(108, 39);
+            this.btnAgregarProducto.TabIndex = 2;
+            this.btnAgregarProducto.Text = "Agregar Producto";
+            this.btnAgregarProducto.UseVisualStyleBackColor = false;
+            this.btnAgregarProducto.Click += new System.EventHandler(this.btnAgregarProducto_Click);
+            // 
+            // btnEditarProducto
+            // 
+            this.btnEditarProducto.BackColor = System.Drawing.Color.White;
+            this.btnEditarProducto.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarProducto.ForeColor = System.Drawing.Color.Black;
+            this.btnEditarProducto.Location = new System.Drawing.Point(323, 421);
+            this.btnEditarProducto.Name = "btnEditarProducto";
+            this.btnEditarProducto.Size = new System.Drawing.Size(101, 39);
+            this.btnEditarProducto.TabIndex = 3;
+            this.btnEditarProducto.Text = "Editar Producto";
+            this.btnEditarProducto.UseVisualStyleBackColor = false;
+            this.btnEditarProducto.Click += new System.EventHandler(this.btnEditarProducto_Click);
+            // 
+            // btnEliminarProducto
+            // 
+            this.btnEliminarProducto.BackColor = System.Drawing.Color.White;
+            this.btnEliminarProducto.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarProducto.ForeColor = System.Drawing.Color.Black;
+            this.btnEliminarProducto.Location = new System.Drawing.Point(665, 421);
+            this.btnEliminarProducto.Name = "btnEliminarProducto";
+            this.btnEliminarProducto.Size = new System.Drawing.Size(107, 39);
+            this.btnEliminarProducto.TabIndex = 4;
+            this.btnEliminarProducto.Text = "Eliminar Producto";
+            this.btnEliminarProducto.UseVisualStyleBackColor = false;
+            this.btnEliminarProducto.Click += new System.EventHandler(this.btnEliminarProducto_Click);
             // 
             // FormProducto
             // 

@@ -47,8 +47,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedorBL.cs" />
     <Compile Include="SubCategoriaBL.cs" />
-    <Compile Include="SucursalBL.cs" />
-    <Compile Include="TipoBodegasBL.cs" />
     <Compile Include="VigenciaBL.cs" />
   </ItemGroup>
   <ItemGroup>
