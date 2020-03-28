@@ -83,6 +83,11 @@
     </Compile>
     <Compile Include="FormCrearCategoria.Designer.cs">
       <DependentUpon>FormCrearCategoria.cs</DependentUpon>
+    <Compile Include="FormCrearMovimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCrearMovimiento.Designer.cs">
+      <DependentUpon>FormCrearMovimiento.cs</DependentUpon>
     </Compile>
     <Compile Include="FormCrearProducto.cs">
       <SubType>Form</SubType>
@@ -119,6 +124,12 @@
     </Compile>
     <Compile Include="FormPrincipal.Designer.cs">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMovimientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMovimientos.Designer.cs">
+      <DependentUpon>FormMovimientos.cs</DependentUpon>
     </Compile>
     <Compile Include="FormProducto.cs">
       <SubType>Form</SubType>
@@ -157,6 +168,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormCrearCategoria.resx">
       <DependentUpon>FormCrearCategoria.cs</DependentUpon>
+    <EmbeddedResource Include="FormCrearMovimiento.resx">
+      <DependentUpon>FormCrearMovimiento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCrearProducto.resx">
       <DependentUpon>FormCrearProducto.cs</DependentUpon>
@@ -175,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMovimientos.resx">
+      <DependentUpon>FormMovimientos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormProducto.resx">
       <DependentUpon>FormProducto.cs</DependentUpon>

@@ -239,6 +239,21 @@
     <Property Name="fecha_ultimo_ingreso" Type="DateTime" Precision="0" />
     <Property Name="hora_ultimo_ingreso" Type="Time" Precision="7" />
     <Property Name="id_rol" Type="Int32" />
+  <EntityType Name="vw_producto">
+    <Key>
+      <PropertyRef Name="id_producto" />
+      <PropertyRef Name="nombre" />
+    </Key>
+    <Property Name="id_producto" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="dias" Type="Int32" />
+    <Property Name="codigo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="hora_creacion" Type="Time" Precision="7" />
+    <Property Name="fecha_creacion" Type="DateTime" Precision="0" />
+    <Property Name="proveedor" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="categoria" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="subcategoia" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_bitacora_movimientos">
     <End Role="movimientos" Type="Self.movimientos" Multiplicity="0..1" />
@@ -464,6 +479,7 @@
     <EntitySet Name="usuarios" EntityType="Self.usuarios" />
     <EntitySet Name="vigencia_promedio" EntityType="Self.vigencia_promedio" />
     <EntitySet Name="vw_login" EntityType="Self.vw_login" />
+    <EntitySet Name="vw_producto" EntityType="Self.vw_producto" />
     <AssociationSet Name="FK_bitacora_movimientos" Association="Self.FK_bitacora_movimientos">
       <End Role="movimientos" EntitySet="movimientos" />
       <End Role="bitacora" EntitySet="bitacora" />
@@ -550,5 +566,38 @@
     <Property Name="subcategoia" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="estado" Type="Int32" />
+    <EntitySet Name="vw_login" EntityType="inventarioModel.vw_login" />
+    <EntitySet Name="vw_movimientos" EntityType="inventarioModel.vw_movimientos" />
+  </EntityContainer>
+  <EntityType Name="vw_login">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+    </Key>
+    <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="clave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nombre_completo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="dui" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Int32" />
+    <Property Name="estado_sesion" Type="Int32" />
+    <Property Name="fecha_ultimo_ingreso" Type="DateTime" Precision="0" />
+    <Property Name="hora_ultimo_ingreso" Type="Time" Precision="7" />
+    <Property Name="id_rol" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vw_movimientos">
+    <Key>
+      <PropertyRef Name="estado" />
+      <PropertyRef Name="id_movimiento" />
+    </Key>
+    <Property Name="estado" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="id_movimiento" Type="Int32" Nullable="false" />
+    <Property Name="tipo_movimiento" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="fecha" Type="DateTime" Precision="0" />
+    <Property Name="hora" Type="Time" Precision="7" />
+    <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="costo_total_con_iva" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="costo_total_sin_iva" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

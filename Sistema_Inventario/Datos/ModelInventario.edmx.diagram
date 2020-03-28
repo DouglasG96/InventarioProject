@@ -24,6 +24,7 @@
         <EntityTypeShape EntityType="inventarioModel.usuarios" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
         <EntityTypeShape EntityType="inventarioModel.vigencia_promedio" Width="1.5" PointX="6" PointY="18" IsExpanded="true" />
         <EntityTypeShape EntityType="inventarioModel.vw_login" Width="1.5" PointX="12.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventarioModel.vw_producto" Width="1.5" PointX="12.75" PointY="9.375" IsExpanded="true" />
         <AssociationConnector Association="inventarioModel.FK_bitacora_movimientos" ManuallyRouted="false" />
         <AssociationConnector Association="inventarioModel.fk_bodegas_sucursales" ManuallyRouted="false" />
         <AssociationConnector Association="inventarioModel.FK_detalles_movimientos_bodegas" ManuallyRouted="false" />
@@ -42,6 +43,8 @@
         <AssociationConnector Association="inventarioModel.FK_usuarios_roles" ManuallyRouted="false" />
         <AssociationConnector Association="inventarioModel.FK_tipo_bodega_bodegas_tipo_bodega" ManuallyRouted="false" />
         <EntityTypeShape EntityType="inventarioModel.vw_producto" Width="1.5" PointX="13" PointY="5" />
+        <EntityTypeShape EntityType="inventarioModel.vw_login" Width="1.5" PointX="13.375" PointY="0.75" />
+        <EntityTypeShape EntityType="inventarioModel.vw_movimientos" Width="1.5" PointX="0.75" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -79,6 +79,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelInventario.edmx</DependentUpon>
     </Compile>
+    <Compile Include="MovimientosDAL.cs" />
     <Compile Include="ProductosDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedorDAL.cs" />
@@ -87,6 +88,8 @@
     <Compile Include="SucursalDAL.cs" />
     <Compile Include="TipoBodegaDAL.cs" />
     <Compile Include="UsuarioDAL.cs" />
+    <Compile Include="BodegasDAL.cs" />
+    <Compile Include="TipoMovimientoDAL.cs" />
     <Compile Include="VigenciaDAL.cs" />
   </ItemGroup>
   <ItemGroup>

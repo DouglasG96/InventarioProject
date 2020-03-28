@@ -34,7 +34,7 @@
             this.btnReportes = new System.Windows.Forms.Button();
             this.btnBodegas = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.btnTraslados = new System.Windows.Forms.Button();
+            this.btnMovimientos = new System.Windows.Forms.Button();
             this.btnProductos = new System.Windows.Forms.Button();
             this.menuMantenimientos = new System.Windows.Forms.MenuStrip();
             this.mantenimientosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,7 +85,7 @@
             this.panel1.Controls.Add(this.btnReportes);
             this.panel1.Controls.Add(this.btnBodegas);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.btnTraslados);
+            this.panel1.Controls.Add(this.btnMovimientos);
             this.panel1.Controls.Add(this.btnProductos);
             this.panel1.ForeColor = System.Drawing.Color.Black;
             this.panel1.Location = new System.Drawing.Point(0, 168);
@@ -134,17 +134,18 @@
             this.button1.Text = "&Compras";
             this.button1.UseVisualStyleBackColor = false;
             // 
-            // btnTraslados
+            // btnMovimientos
             // 
-            this.btnTraslados.BackColor = System.Drawing.Color.White;
-            this.btnTraslados.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTraslados.ForeColor = System.Drawing.Color.Black;
-            this.btnTraslados.Location = new System.Drawing.Point(14, 98);
-            this.btnTraslados.Name = "btnTraslados";
-            this.btnTraslados.Size = new System.Drawing.Size(133, 39);
-            this.btnTraslados.TabIndex = 1;
-            this.btnTraslados.Text = "&Traslados";
-            this.btnTraslados.UseVisualStyleBackColor = false;
+            this.btnMovimientos.BackColor = System.Drawing.Color.White;
+            this.btnMovimientos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMovimientos.ForeColor = System.Drawing.Color.Black;
+            this.btnMovimientos.Location = new System.Drawing.Point(14, 98);
+            this.btnMovimientos.Name = "btnMovimientos";
+            this.btnMovimientos.Size = new System.Drawing.Size(133, 39);
+            this.btnMovimientos.TabIndex = 1;
+            this.btnMovimientos.Text = "&Movimientos";
+            this.btnMovimientos.UseVisualStyleBackColor = false;
+            this.btnMovimientos.Click += new System.EventHandler(this.btnMovimientos_Click);
             // 
             // btnProductos
             // 
@@ -449,7 +450,7 @@
         private System.Windows.Forms.ToolStripMenuItem trasladoDeProductosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportesBodegasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportesProveedoresToolStripMenuItem;
-        private System.Windows.Forms.Button btnTraslados;
+        private System.Windows.Forms.Button btnMovimientos;
         private System.Windows.Forms.ToolStripMenuItem bodegasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem proveedoresToolStripMenuItem;
         private System.Windows.Forms.Button btnBodegas;

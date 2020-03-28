@@ -565,3 +565,5 @@ C:\Users\GUIDO-PC\Pictures\InventarioProject\Sistema_Inventario\Sistema_Inventar
 C:\Users\GUIDO-PC\Pictures\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Presentacion.csproj.CopyComplete
 C:\Users\GUIDO-PC\Pictures\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormBodega.resources
 C:\Users\GUIDO-PC\Pictures\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormUsuarios.resources
+C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormMovimientos.resources
+C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormCrearMovimiento.resources

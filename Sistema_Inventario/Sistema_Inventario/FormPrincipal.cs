@@ -16,6 +16,7 @@ namespace Sistema_Inventario
     {
         FormProducto frmProducto;
         FormCategoria frmCategoria;
+        FormMovimientos formMovimientos;
         LoginBL loginBL;
         int idUsuario;
         String nombreUsuario = "";
@@ -40,7 +41,10 @@ namespace Sistema_Inventario
         //cierro aplicacion principal al presionar x
         private void FormPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            if (loginBL.cerrarSesion(this.idUsuario))
+            {
+                Application.Exit();
+            }
         }
 
         private void btnProductos_Click(object sender, EventArgs e)
@@ -141,7 +145,21 @@ namespace Sistema_Inventario
             frmusu.FormClosed += new FormClosedEventHandler(frmProducto_FormClosed);
             frmusu.MdiParent = this;
             frmusu.Show();
-
+        }
+        
+        private void btnMovimientos_Click(object sender, EventArgs e)
+        {
+            if (formMovimientos == null)
+            {
+                formMovimientos = new FormMovimientos();
+                formMovimientos.FormClosed += new FormClosedEventHandler(frmProducto_FormClosed);
+                formMovimientos.MdiParent = this;
+                formMovimientos.Show();
+            }
+            else
+            {
+                formMovimientos.Activate();
+            }
         }
     }
 }
