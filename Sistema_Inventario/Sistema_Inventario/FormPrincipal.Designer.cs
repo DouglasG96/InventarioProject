@@ -59,6 +59,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lblNombreUsuario = new System.Windows.Forms.Label();
             this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registrarUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.menuMantenimientos.SuspendLayout();
             this.SuspendLayout();
@@ -100,6 +101,10 @@
             this.btnReportes.Location = new System.Drawing.Point(14, 313);
             this.btnReportes.Name = "btnReportes";
             this.btnReportes.Size = new System.Drawing.Size(133, 39);
+            this.btnReportes.Location = new System.Drawing.Point(19, 385);
+            this.btnReportes.Margin = new System.Windows.Forms.Padding(4);
+            this.btnReportes.Name = "btnReportes";
+            this.btnReportes.Size = new System.Drawing.Size(177, 48);
             this.btnReportes.TabIndex = 4;
             this.btnReportes.Text = "&Reportes";
             this.btnReportes.UseVisualStyleBackColor = false;
@@ -208,7 +213,10 @@
             this.comprasToolStripMenuItem,
             this.trasladosToolStripMenuItem,
             this.trasladoDeProductosToolStripMenuItem,
-            this.comprasToolStripMenuItem1});
+            this.comprasToolStripMenuItem1,
+            this.registroTipoBodegaToolStripMenuItem,
+            this.registroSucursalesToolStripMenuItem,
+            this.registrarUsuariosToolStripMenuItem});
             this.procesosToolStripMenuItem.Name = "procesosToolStripMenuItem";
             this.procesosToolStripMenuItem.Size = new System.Drawing.Size(75, 23);
             this.procesosToolStripMenuItem.Text = "Procesos";
@@ -236,6 +244,36 @@
             this.comprasToolStripMenuItem1.Name = "comprasToolStripMenuItem1";
             this.comprasToolStripMenuItem1.Size = new System.Drawing.Size(219, 24);
             this.comprasToolStripMenuItem1.Text = "Compras";
+            // 
+            // registroTipoBodegaToolStripMenuItem
+            // 
+            this.registroTipoBodegaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nuevaBodegaToolStripMenuItem,
+            this.nuevaBodegaToolStripMenuItem1});
+            this.registroTipoBodegaToolStripMenuItem.Name = "registroTipoBodegaToolStripMenuItem";
+            this.registroTipoBodegaToolStripMenuItem.Size = new System.Drawing.Size(262, 28);
+            this.registroTipoBodegaToolStripMenuItem.Text = "Registro Bodegas";
+            // 
+            // nuevaBodegaToolStripMenuItem
+            // 
+            this.nuevaBodegaToolStripMenuItem.Name = "nuevaBodegaToolStripMenuItem";
+            this.nuevaBodegaToolStripMenuItem.Size = new System.Drawing.Size(206, 28);
+            this.nuevaBodegaToolStripMenuItem.Text = "Tipo de Bodega";
+            this.nuevaBodegaToolStripMenuItem.Click += new System.EventHandler(this.nuevaBodegaToolStripMenuItem_Click);
+            // 
+            // nuevaBodegaToolStripMenuItem1
+            // 
+            this.nuevaBodegaToolStripMenuItem1.Name = "nuevaBodegaToolStripMenuItem1";
+            this.nuevaBodegaToolStripMenuItem1.Size = new System.Drawing.Size(206, 28);
+            this.nuevaBodegaToolStripMenuItem1.Text = "Nueva Bodega";
+            this.nuevaBodegaToolStripMenuItem1.Click += new System.EventHandler(this.nuevaBodegaToolStripMenuItem1_Click);
+            // 
+            // registroSucursalesToolStripMenuItem
+            // 
+            this.registroSucursalesToolStripMenuItem.Name = "registroSucursalesToolStripMenuItem";
+            this.registroSucursalesToolStripMenuItem.Size = new System.Drawing.Size(262, 28);
+            this.registroSucursalesToolStripMenuItem.Text = "Registro Sucursales";
+            this.registroSucursalesToolStripMenuItem.Click += new System.EventHandler(this.registroSucursalesToolStripMenuItem_Click);
             // 
             // reportesToolStripMenuItem
             // 
@@ -267,7 +305,7 @@
             // cerrarSesionToolStripMenuItem
             // 
             this.cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
-            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(102, 23);
+            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(123, 27);
             this.cerrarSesionToolStripMenuItem.Text = "Cerrar Sesion";
             this.cerrarSesionToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesionToolStripMenuItem_Click);
             // 
@@ -331,7 +369,7 @@
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(495, 27);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(75, 15);
+            this.label4.Size = new System.Drawing.Size(98, 18);
             this.label4.TabIndex = 9;
             this.label4.Text = "Bienvenido: ";
             // 
@@ -343,7 +381,7 @@
             this.lblNombreUsuario.ForeColor = System.Drawing.Color.Black;
             this.lblNombreUsuario.Location = new System.Drawing.Point(576, 27);
             this.lblNombreUsuario.Name = "lblNombreUsuario";
-            this.lblNombreUsuario.Size = new System.Drawing.Size(0, 15);
+            this.lblNombreUsuario.Size = new System.Drawing.Size(0, 18);
             this.lblNombreUsuario.TabIndex = 12;
             // 
             // categoriasToolStripMenuItem
@@ -352,12 +390,18 @@
             this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.categoriasToolStripMenuItem.Text = "Categorias";
             this.categoriasToolStripMenuItem.Click += new System.EventHandler(this.categoriasToolStripMenuItem_Click);
+            // registrarUsuariosToolStripMenuItem
+            // 
+            this.registrarUsuariosToolStripMenuItem.Name = "registrarUsuariosToolStripMenuItem";
+            this.registrarUsuariosToolStripMenuItem.Size = new System.Drawing.Size(262, 28);
+            this.registrarUsuariosToolStripMenuItem.Text = "Registrar Usuarios";
+            this.registrarUsuariosToolStripMenuItem.Click += new System.EventHandler(this.registrarUsuariosToolStripMenuItem_Click);
             // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 561);
+            this.ClientSize = new System.Drawing.Size(1370, 690);
             this.Controls.Add(this.lblNombreUsuario);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblHora);
@@ -416,6 +460,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblNombreUsuario;
         private System.Windows.Forms.ToolStripMenuItem categoriasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem registroTipoBodegaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nuevaBodegaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem registroSucursalesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nuevaBodegaToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem registrarUsuariosToolStripMenuItem;
     }
 }
 

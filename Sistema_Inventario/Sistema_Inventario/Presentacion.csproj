@@ -132,6 +132,24 @@
     <Compile Include="FormReportes.Designer.cs">
       <DependentUpon>FormReportes.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSucursal.Designer.cs">
+      <DependentUpon>FormSucursal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTipoBodega.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTipoBodega.Designer.cs">
+      <DependentUpon>FormTipoBodega.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUsuarios.Designer.cs">
+      <DependentUpon>FormUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormCategoria.resx">
@@ -163,6 +181,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormReportes.resx">
       <DependentUpon>FormReportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSucursal.resx">
+      <DependentUpon>FormSucursal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTipoBodega.resx">
+      <DependentUpon>FormTipoBodega.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUsuarios.resx">
+      <DependentUpon>FormUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
