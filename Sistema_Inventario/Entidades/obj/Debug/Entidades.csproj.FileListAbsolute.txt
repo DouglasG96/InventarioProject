@@ -14,3 +14,9 @@ C:\Users\GUIDO-PC\Documents\InventarioProject\Sistema_Inventario\Entidades\bin\D
 C:\Users\GUIDO-PC\Documents\InventarioProject\Sistema_Inventario\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
 C:\Users\GUIDO-PC\Documents\InventarioProject\Sistema_Inventario\Entidades\obj\Debug\Entidades.dll
 C:\Users\GUIDO-PC\Documents\InventarioProject\Sistema_Inventario\Entidades\obj\Debug\Entidades.pdb
+C:\Users\GUIDO-PC\Pictures\InventarioProject\Sistema_Inventario\Entidades\bin\Debug\Entidades.dll
+C:\Users\GUIDO-PC\Pictures\InventarioProject\Sistema_Inventario\Entidades\bin\Debug\Entidades.pdb
+C:\Users\GUIDO-PC\Pictures\InventarioProject\Sistema_Inventario\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
+C:\Users\GUIDO-PC\Pictures\InventarioProject\Sistema_Inventario\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\GUIDO-PC\Pictures\InventarioProject\Sistema_Inventario\Entidades\obj\Debug\Entidades.dll
+C:\Users\GUIDO-PC\Pictures\InventarioProject\Sistema_Inventario\Entidades\obj\Debug\Entidades.pdb

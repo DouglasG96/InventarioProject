@@ -9,6 +9,15 @@ namespace Datos
 {
     public class TipoBodegaDAL
     {
+        public static List<tipo_bodega> CargarTipoBodega()
+        {
+            using (inventarioEntities bd = new inventarioEntities())
+            {
+                var todatipobodega = bd.tipo_bodega;
+
+                return todatipobodega.ToList();
+            }
+        }
 
         public static  tipo_bodega CrearTipoBodega(tipo_bodega tipobodega)
         {

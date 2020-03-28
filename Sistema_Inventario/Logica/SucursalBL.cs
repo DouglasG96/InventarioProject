@@ -10,6 +10,10 @@ namespace Logica
 {
     public class SucursalBL
     {
+        public static List<sucursales> CargarSucursales()
+        {
+            return SucursalDAL.CargarSucursales();
+        }
         public static sucursales CrearSucursal(sucursales nuevasucursal)
         {
             return SucursalDAL.CrearSucursal(nuevasucursal);

@@ -9,9 +9,19 @@ namespace Datos
 {
     public class SucursalDAL
     {
+        public static List<sucursales> CargarSucursales()
+        {
+            using (inventarioEntities bd = new inventarioEntities())
+            {
+                var todasucursales = bd.sucursales;
+
+                return todasucursales.ToList();
+            }
+        }
 
         public static sucursales CrearSucursal(sucursales sucursal)
         {
+
             using (inventarioEntities bd = new inventarioEntities())
             {
                 sucursales nuevasucursal = new sucursales();

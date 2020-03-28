@@ -10,6 +10,10 @@ namespace Logica
 {
    public class TipoBodegasBL
     {
+        public static List<tipo_bodega> CargarTipoBodega()
+        {
+            return TipoBodegaDAL.CargarTipoBodega();
+        }
 
         public static tipo_bodega CrearTipoBodega(tipo_bodega tipobode)
         {
