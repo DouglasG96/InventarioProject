@@ -39,14 +39,14 @@ namespace Sistema_Inventario
             CargarMovimientos();
         }
 
-        private void btnAgregarProducto_Click(object sender, EventArgs e)
+        private void btnAgregarMovimiento_Click(object sender, EventArgs e)
         {
-            FormCrearProducto frmcrearproducto = new FormCrearProducto();
-            frmcrearproducto.FormClosed += new FormClosedEventHandler(frmcrearproducto_FormClosed);//para actualizar datos al cerrar formulario
-            frmcrearproducto.ShowDialog();
+            FormCrearMovimiento formCrearMovimiento= new FormCrearMovimiento();
+            formCrearMovimiento.FormClosed += new FormClosedEventHandler(frmcrearmovimiento_FormClosed);//para actualizar datos al cerrar formulario
+            formCrearMovimiento.ShowDialog();
         }
 
-        private void frmcrearproducto_FormClosed(object sender, FormClosedEventArgs e)
+        private void frmcrearmovimiento_FormClosed(object sender, FormClosedEventArgs e)
         {
             //actualizo productos al cerrar formulario
             CargarMovimientos();

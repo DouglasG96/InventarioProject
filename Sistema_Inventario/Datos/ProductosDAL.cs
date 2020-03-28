@@ -18,6 +18,27 @@ namespace Datos
             }
         }
 
+        public static List<productos> cargarProductosToList()
+        {
+            using (inventarioEntities bd = new inventarioEntities())
+            {
+                return bd.productos.ToList();
+            }
+        }
+
+        //metodo para cargar listado de productos
+        public static List<productos> cargarProdutosAll()
+        {
+            using (inventarioEntities bd = new inventarioEntities())
+            {
+                List<productos> list = cargarProductosToList();
+
+                list.Insert(0, new productos() { id_producto = 0, nombre = "Seleccione" });
+
+                return list;
+            }
+        }
+
         //Metodo para buscar  producto por nombre
         public static vw_producto DetalleProducto(int id)
         {

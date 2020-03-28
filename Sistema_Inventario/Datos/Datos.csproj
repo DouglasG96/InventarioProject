@@ -83,6 +83,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedorDAL.cs" />
     <Compile Include="SubCategoriaDAL.cs" />
+    <Compile Include="BodegasDAL.cs" />
+    <Compile Include="TipoMovimientoDAL.cs" />
     <Compile Include="VigenciaDAL.cs" />
   </ItemGroup>
   <ItemGroup>

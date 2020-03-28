@@ -30,6 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dtgMovimientos = new System.Windows.Forms.DataGridView();
+            this.id_movimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipo_movimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hora = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costo_total_con_iva = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costo_total_sin_iva = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rdbTodos = new System.Windows.Forms.RadioButton();
@@ -43,16 +53,6 @@
             this.btnAgregarMovmiento = new System.Windows.Forms.Button();
             this.btnEditarMovimiento = new System.Windows.Forms.Button();
             this.btnEliminarProducto = new System.Windows.Forms.Button();
-            this.id_movimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipo_movimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hora = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costo_total_con_iva = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costo_total_sin_iva = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgMovimientos)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -81,6 +81,82 @@
             this.dtgMovimientos.Size = new System.Drawing.Size(870, 251);
             this.dtgMovimientos.TabIndex = 0;
             this.dtgMovimientos.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgProductos_CellContentDoubleClick);
+            // 
+            // id_movimiento
+            // 
+            this.id_movimiento.DataPropertyName = "id_movimiento";
+            this.id_movimiento.HeaderText = "Numero de Movimiento";
+            this.id_movimiento.Name = "id_movimiento";
+            this.id_movimiento.ReadOnly = true;
+            this.id_movimiento.Width = 50;
+            // 
+            // tipo_movimiento
+            // 
+            this.tipo_movimiento.DataPropertyName = "tipo_movimiento";
+            this.tipo_movimiento.HeaderText = "Tipo Movimiento";
+            this.tipo_movimiento.Name = "tipo_movimiento";
+            this.tipo_movimiento.ReadOnly = true;
+            // 
+            // fecha
+            // 
+            this.fecha.DataPropertyName = "fecha";
+            this.fecha.HeaderText = "Fecha";
+            this.fecha.Name = "fecha";
+            this.fecha.ReadOnly = true;
+            this.fecha.Width = 60;
+            // 
+            // hora
+            // 
+            this.hora.DataPropertyName = "hora";
+            this.hora.HeaderText = "Hora";
+            this.hora.Name = "hora";
+            this.hora.ReadOnly = true;
+            // 
+            // descripcion
+            // 
+            this.descripcion.DataPropertyName = "descripcion";
+            this.descripcion.HeaderText = "Descripcion";
+            this.descripcion.Name = "descripcion";
+            this.descripcion.ReadOnly = true;
+            // 
+            // costo_total_con_iva
+            // 
+            this.costo_total_con_iva.DataPropertyName = "costo_total_con_iva";
+            this.costo_total_con_iva.HeaderText = "Costo Total con IVA";
+            this.costo_total_con_iva.Name = "costo_total_con_iva";
+            this.costo_total_con_iva.ReadOnly = true;
+            this.costo_total_con_iva.Width = 75;
+            // 
+            // costo_total_sin_iva
+            // 
+            this.costo_total_sin_iva.DataPropertyName = "costo_total_sin_iva";
+            this.costo_total_sin_iva.HeaderText = "Costo Total sin IVA";
+            this.costo_total_sin_iva.Name = "costo_total_sin_iva";
+            this.costo_total_sin_iva.ReadOnly = true;
+            this.costo_total_sin_iva.Width = 130;
+            // 
+            // usuario
+            // 
+            this.usuario.DataPropertyName = "usuario";
+            this.usuario.HeaderText = "Usuario";
+            this.usuario.Name = "usuario";
+            this.usuario.ReadOnly = true;
+            this.usuario.Width = 75;
+            // 
+            // id_proveedor
+            // 
+            this.id_proveedor.DataPropertyName = "nombre";
+            this.id_proveedor.HeaderText = "Proveedor";
+            this.id_proveedor.Name = "id_proveedor";
+            this.id_proveedor.ReadOnly = true;
+            this.id_proveedor.Width = 75;
+            // 
+            // estado
+            // 
+            this.estado.DataPropertyName = "estado";
+            this.estado.HeaderText = "Estado";
+            this.estado.Name = "estado";
+            this.estado.ReadOnly = true;
             // 
             // styleManager1
             // 
@@ -204,7 +280,7 @@
             this.btnAgregarMovmiento.TabIndex = 2;
             this.btnAgregarMovmiento.Text = "Agregar Movimiento";
             this.btnAgregarMovmiento.UseVisualStyleBackColor = false;
-            this.btnAgregarMovmiento.Click += new System.EventHandler(this.btnAgregarProducto_Click);
+            this.btnAgregarMovmiento.Click += new System.EventHandler(this.btnAgregarMovimiento_Click);
             // 
             // btnEditarMovimiento
             // 
@@ -231,82 +307,6 @@
             this.btnEliminarProducto.Text = "Eliminar Movimiento";
             this.btnEliminarProducto.UseVisualStyleBackColor = false;
             this.btnEliminarProducto.Click += new System.EventHandler(this.btnEliminarProducto_Click);
-            // 
-            // id_movimiento
-            // 
-            this.id_movimiento.DataPropertyName = "id_movimiento";
-            this.id_movimiento.HeaderText = "Numero de Movimiento";
-            this.id_movimiento.Name = "id_movimiento";
-            this.id_movimiento.ReadOnly = true;
-            this.id_movimiento.Width = 50;
-            // 
-            // tipo_movimiento
-            // 
-            this.tipo_movimiento.DataPropertyName = "tipo_movimiento";
-            this.tipo_movimiento.HeaderText = "Tipo Movimiento";
-            this.tipo_movimiento.Name = "tipo_movimiento";
-            this.tipo_movimiento.ReadOnly = true;
-            // 
-            // fecha
-            // 
-            this.fecha.DataPropertyName = "fecha";
-            this.fecha.HeaderText = "Fecha";
-            this.fecha.Name = "fecha";
-            this.fecha.ReadOnly = true;
-            this.fecha.Width = 60;
-            // 
-            // hora
-            // 
-            this.hora.DataPropertyName = "hora";
-            this.hora.HeaderText = "Hora";
-            this.hora.Name = "hora";
-            this.hora.ReadOnly = true;
-            // 
-            // descripcion
-            // 
-            this.descripcion.DataPropertyName = "descripcion";
-            this.descripcion.HeaderText = "Descripcion";
-            this.descripcion.Name = "descripcion";
-            this.descripcion.ReadOnly = true;
-            // 
-            // costo_total_con_iva
-            // 
-            this.costo_total_con_iva.DataPropertyName = "costo_total_con_iva";
-            this.costo_total_con_iva.HeaderText = "Costo Total con IVA";
-            this.costo_total_con_iva.Name = "costo_total_con_iva";
-            this.costo_total_con_iva.ReadOnly = true;
-            this.costo_total_con_iva.Width = 75;
-            // 
-            // costo_total_sin_iva
-            // 
-            this.costo_total_sin_iva.DataPropertyName = "costo_total_sin_iva";
-            this.costo_total_sin_iva.HeaderText = "Costo Total sin IVA";
-            this.costo_total_sin_iva.Name = "costo_total_sin_iva";
-            this.costo_total_sin_iva.ReadOnly = true;
-            this.costo_total_sin_iva.Width = 130;
-            // 
-            // usuario
-            // 
-            this.usuario.DataPropertyName = "usuario";
-            this.usuario.HeaderText = "Usuario";
-            this.usuario.Name = "usuario";
-            this.usuario.ReadOnly = true;
-            this.usuario.Width = 75;
-            // 
-            // id_proveedor
-            // 
-            this.id_proveedor.DataPropertyName = "nombre";
-            this.id_proveedor.HeaderText = "Proveedor";
-            this.id_proveedor.Name = "id_proveedor";
-            this.id_proveedor.ReadOnly = true;
-            this.id_proveedor.Width = 75;
-            // 
-            // estado
-            // 
-            this.estado.DataPropertyName = "estado";
-            this.estado.HeaderText = "Estado";
-            this.estado.Name = "estado";
-            this.estado.ReadOnly = true;
             // 
             // FormMovimientos
             // 

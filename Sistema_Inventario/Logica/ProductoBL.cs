@@ -16,6 +16,13 @@ namespace Logica
             return ProductosDAL.CargarProductos();
         }
 
+
+        //metodo para cargar listado de proveedores item opcional
+        public static List<productos> cargarProductosAll()
+        {
+            return ProductosDAL.cargarProdutosAll();
+        }
+
         //Metodo para buscar  producto por nombre
         public static vw_producto DetalleProducto(int id)
         {

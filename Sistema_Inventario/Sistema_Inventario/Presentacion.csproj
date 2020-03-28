@@ -72,6 +72,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormCrearMovimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCrearMovimiento.Designer.cs">
+      <DependentUpon>FormCrearMovimiento.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCrearProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormCrearMovimiento.resx">
+      <DependentUpon>FormCrearMovimiento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormCrearProducto.resx">
       <DependentUpon>FormCrearProducto.cs</DependentUpon>
     </EmbeddedResource>

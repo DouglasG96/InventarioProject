@@ -48,6 +48,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedorBL.cs" />
     <Compile Include="SubCategoriaBL.cs" />
+    <Compile Include="BodegasBL.cs" />
+    <Compile Include="TipoMovimientoBL.cs" />
     <Compile Include="VigenciaBL.cs" />
   </ItemGroup>
   <ItemGroup>
