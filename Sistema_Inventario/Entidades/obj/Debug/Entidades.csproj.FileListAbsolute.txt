@@ -9,9 +9,23 @@ C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Entidades\obj\De
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Entidades\obj\Debug\Entidades.dll
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Entidades\obj\Debug\Entidades.pdb
+<<<<<<< HEAD
 C:\Users\thrus\Documents\InventarioProject\Sistema_Inventario\Entidades\bin\Debug\Entidades.dll
 C:\Users\thrus\Documents\InventarioProject\Sistema_Inventario\Entidades\bin\Debug\Entidades.pdb
 C:\Users\thrus\Documents\InventarioProject\Sistema_Inventario\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
 C:\Users\thrus\Documents\InventarioProject\Sistema_Inventario\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
 C:\Users\thrus\Documents\InventarioProject\Sistema_Inventario\Entidades\obj\Debug\Entidades.dll
 C:\Users\thrus\Documents\InventarioProject\Sistema_Inventario\Entidades\obj\Debug\Entidades.pdb
+=======
+C:\Users\GUIDO-PC\Documents\InventarioProject\Sistema_Inventario\Entidades\bin\Debug\Entidades.dll
+C:\Users\GUIDO-PC\Documents\InventarioProject\Sistema_Inventario\Entidades\bin\Debug\Entidades.pdb
+C:\Users\GUIDO-PC\Documents\InventarioProject\Sistema_Inventario\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\GUIDO-PC\Documents\InventarioProject\Sistema_Inventario\Entidades\obj\Debug\Entidades.dll
+C:\Users\GUIDO-PC\Documents\InventarioProject\Sistema_Inventario\Entidades\obj\Debug\Entidades.pdb
+C:\Users\GUIDO-PC\Pictures\InventarioProject\Sistema_Inventario\Entidades\bin\Debug\Entidades.dll
+C:\Users\GUIDO-PC\Pictures\InventarioProject\Sistema_Inventario\Entidades\bin\Debug\Entidades.pdb
+C:\Users\GUIDO-PC\Pictures\InventarioProject\Sistema_Inventario\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
+C:\Users\GUIDO-PC\Pictures\InventarioProject\Sistema_Inventario\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\GUIDO-PC\Pictures\InventarioProject\Sistema_Inventario\Entidades\obj\Debug\Entidades.dll
+C:\Users\GUIDO-PC\Pictures\InventarioProject\Sistema_Inventario\Entidades\obj\Debug\Entidades.pdb
+>>>>>>> e326bc493929adbb969497d0794a55e3e0ff4523
