@@ -58,6 +58,7 @@
             this.lblHora = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblNombreUsuario = new System.Windows.Forms.Label();
+            this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.menuMantenimientos.SuspendLayout();
             this.SuspendLayout();
@@ -175,6 +176,7 @@
             // 
             this.mantenimientosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.productosToolStripMenuItem,
+            this.categoriasToolStripMenuItem,
             this.bodegasToolStripMenuItem,
             this.proveedoresToolStripMenuItem});
             this.mantenimientosToolStripMenuItem.Name = "mantenimientosToolStripMenuItem";
@@ -184,19 +186,20 @@
             // productosToolStripMenuItem
             // 
             this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
-            this.productosToolStripMenuItem.Size = new System.Drawing.Size(154, 24);
+            this.productosToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.productosToolStripMenuItem.Text = "Productos";
+            this.productosToolStripMenuItem.Click += new System.EventHandler(this.productosToolStripMenuItem_Click);
             // 
             // bodegasToolStripMenuItem
             // 
             this.bodegasToolStripMenuItem.Name = "bodegasToolStripMenuItem";
-            this.bodegasToolStripMenuItem.Size = new System.Drawing.Size(154, 24);
+            this.bodegasToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.bodegasToolStripMenuItem.Text = "Bodegas";
             // 
             // proveedoresToolStripMenuItem
             // 
             this.proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
-            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(154, 24);
+            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.proveedoresToolStripMenuItem.Text = "Proveedores";
             // 
             // procesosToolStripMenuItem
@@ -343,6 +346,13 @@
             this.lblNombreUsuario.Size = new System.Drawing.Size(0, 15);
             this.lblNombreUsuario.TabIndex = 12;
             // 
+            // categoriasToolStripMenuItem
+            // 
+            this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
+            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.categoriasToolStripMenuItem.Text = "Categorias";
+            this.categoriasToolStripMenuItem.Click += new System.EventHandler(this.categoriasToolStripMenuItem_Click);
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -405,6 +415,7 @@
         private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblNombreUsuario;
+        private System.Windows.Forms.ToolStripMenuItem categoriasToolStripMenuItem;
     }
 }
 

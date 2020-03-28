@@ -72,6 +72,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCategoria.Designer.cs">
+      <DependentUpon>FormCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCrearCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCrearCategoria.Designer.cs">
+      <DependentUpon>FormCrearCategoria.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCrearProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +95,12 @@
     </Compile>
     <Compile Include="FormDetalleProducto.Designer.cs">
       <DependentUpon>FormDetalleProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEditarCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditarCategoria.Designer.cs">
+      <DependentUpon>FormEditarCategoria.cs</DependentUpon>
     </Compile>
     <Compile Include="FormEditarProducto.cs">
       <SubType>Form</SubType>
@@ -116,11 +134,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormCategoria.resx">
+      <DependentUpon>FormCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCrearCategoria.resx">
+      <DependentUpon>FormCrearCategoria.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormCrearProducto.resx">
       <DependentUpon>FormCrearProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDetalleProducto.resx">
       <DependentUpon>FormDetalleProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditarCategoria.resx">
+      <DependentUpon>FormEditarCategoria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormEditarProducto.resx">
       <DependentUpon>FormEditarProducto.cs</DependentUpon>

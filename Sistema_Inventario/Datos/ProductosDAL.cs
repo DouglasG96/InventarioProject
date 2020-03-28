@@ -18,7 +18,7 @@ namespace Datos
             }
         }
 
-        //Metodo para buscar  producto por nombre
+        //Metodo para buscar  producto por id
         public static vw_producto DetalleProducto(int id)
         {
             using (inventarioEntities bd = new inventarioEntities())
@@ -77,6 +77,7 @@ namespace Datos
                 prod.fecha_creacion = producto.fecha_creacion;
                 //prod.hora_creacion = DateTime.Now.TimeOfDay;
                 prod.hora_creacion = producto.hora_creacion;
+                prod.estado = 1;
                 bd.productos.Add(prod);
                 bd.SaveChanges();
             }

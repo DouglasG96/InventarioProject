@@ -15,6 +15,7 @@ namespace Sistema_Inventario
     public partial class FormPrincipal : DevComponents.DotNetBar.Metro.MetroForm
     {
         FormProducto frmProducto;
+        FormCategoria frmCategoria;
         LoginBL loginBL;
         int idUsuario;
         String nombreUsuario = "";
@@ -44,7 +45,7 @@ namespace Sistema_Inventario
 
         private void btnProductos_Click(object sender, EventArgs e)
         {
-
+            //valido si no esta abierto el form para solo abrir 1
             if (frmProducto == null)
             {
                 frmProducto = new FormProducto();
@@ -52,6 +53,7 @@ namespace Sistema_Inventario
                 frmProducto.MdiParent = this;
                 frmProducto.Show();
             }
+            //si esta activo solo lo muestro
             else
                 frmProducto.Activate();
         }
@@ -90,6 +92,38 @@ namespace Sistema_Inventario
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void productosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmProducto == null)
+            {
+                frmProducto = new FormProducto();
+                frmProducto.FormClosed += new FormClosedEventHandler(frmProducto_FormClosed);
+                frmProducto.MdiParent = this;
+                frmProducto.Show();
+            }
+            else
+                frmProducto.Activate();
+        }
+
+        private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //valido si no esta abierto el form para solo abrir 1
+            if (frmCategoria == null)
+            {
+                frmCategoria = new FormCategoria();
+                frmCategoria.FormClosed += new FormClosedEventHandler(frmCategoria_FormClosed);
+                frmCategoria.MdiParent = this;
+                frmCategoria.Show();
+            }
+            else
+                frmCategoria.Activate();
+        }
+
+        private void frmCategoria_FormClosed(object sender, EventArgs e)
+        {
+            frmCategoria = null;
         }
     }
 }
