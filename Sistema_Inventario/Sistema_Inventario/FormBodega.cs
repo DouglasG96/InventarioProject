@@ -32,5 +32,33 @@ namespace Sistema_Inventario
             cbxbodega.ValueMember = "id_tipo_bodega";
             cbxbodega.DataSource = TipoBodegasBL.CargarTipoBodega();
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            bodegas bdg = new bodegas();
+            bdg.nombre_bodega = txtBodega.Text;
+            bdg.id_sucursal = Int32.Parse(cbxsucursal.SelectedValue.ToString());
+            bdg.id_tipo_bodega = Int32.Parse(cbxbodega.SelectedValue.ToString());
+            if (rdbactivo.Checked)
+            {
+                bdg.estado = 1;
+            }
+            else
+            {
+                bdg.estado = 1;
+            }
+
+           BodegasBL.CrearBodega(bdg);
+
+            //tipo_bodega_bodegas tipobb = new tipo_bodega_bodegas();
+            //tipobb.id_tipo_bodega = Int32.Parse(cbxbodega.SelectedValue.ToString());
+            //tipobb.id_bodega = Add(newEntity);
+
+
+
+
+            MessageBox.Show("Bodega registrada Correctamente" , "Registro Agregado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
+        }
     }
 }

@@ -109,5 +109,23 @@ namespace Sistema_Inventario
             frmsu.MdiParent = this;
             frmsu.Show();
         }
+
+        private void nuevaBodegaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormBodega frmbo = new FormBodega();
+            frmbo.FormClosed += new FormClosedEventHandler(frmProducto_FormClosed);
+            frmbo.MdiParent = this;
+            frmbo.Show();
+
+        }
+
+        private void registrarUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormUsuarios frmusu = new FormUsuarios();
+            frmusu.FormClosed += new FormClosedEventHandler(frmProducto_FormClosed);
+            frmusu.MdiParent = this;
+            frmusu.Show();
+
+        }
     }
 }

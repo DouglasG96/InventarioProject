@@ -477,3 +477,4 @@ C:\Users\GUIDO-PC\Pictures\InventarioProject\Sistema_Inventario\Sistema_Inventar
 C:\Users\GUIDO-PC\Pictures\InventarioProject\Sistema_Inventario\Sistema_Inventario\bin\Debug\es\Microsoft.VisualStudio.Data.Core.resources.dll
 C:\Users\GUIDO-PC\Pictures\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Presentacion.csproj.CopyComplete
 C:\Users\GUIDO-PC\Pictures\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormBodega.resources
+C:\Users\GUIDO-PC\Pictures\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormUsuarios.resources
