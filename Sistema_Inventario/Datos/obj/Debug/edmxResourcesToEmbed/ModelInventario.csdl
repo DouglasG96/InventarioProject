@@ -159,16 +159,6 @@
     <Property Name="estado" Type="Int32" />
     <NavigationProperty Name="bodegas" Relationship="Self.fk_bodegas_sucursales" FromRole="sucursales" ToRole="bodegas" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <EntityType Name="tipo_bodega">
     <Key>
       <PropertyRef Name="id_tipo_bodega" />
@@ -214,10 +204,10 @@
       <PropertyRef Name="id_usuario" />
     </Key>
     <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="usuario" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="clave" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-    <Property Name="nombre_completo" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
-    <Property Name="dui" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="clave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nombre_completo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="dui" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="estado" Type="Int32" />
     <Property Name="estado_sesion" Type="Int32" />
     <Property Name="fecha_ultimo_ingreso" Type="DateTime" Precision="0" />
@@ -240,10 +230,10 @@
       <PropertyRef Name="id_usuario" />
     </Key>
     <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="usuario" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="clave" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-    <Property Name="nombre_completo" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
-    <Property Name="dui" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="clave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nombre_completo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="dui" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="estado" Type="Int32" />
     <Property Name="estado_sesion" Type="Int32" />
     <Property Name="fecha_ultimo_ingreso" Type="DateTime" Precision="0" />
@@ -483,7 +473,6 @@
     <EntitySet Name="roles" EntityType="Self.roles" />
     <EntitySet Name="sub_clasificaciones" EntityType="Self.sub_clasificaciones" />
     <EntitySet Name="sucursales" EntityType="Self.sucursales" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="tipo_bodega" EntityType="Self.tipo_bodega" />
     <EntitySet Name="tipo_bodega_bodegas" EntityType="Self.tipo_bodega_bodegas" />
     <EntitySet Name="tipo_movimiento" EntityType="Self.tipo_movimiento" />
@@ -560,5 +549,40 @@
       <End Role="tipo_bodega" EntitySet="tipo_bodega" />
       <End Role="tipo_bodega_bodegas" EntitySet="tipo_bodega_bodegas" />
     </AssociationSet>
+    <EntitySet Name="vw_clasificaciones" EntityType="inventarioModel.vw_clasificaciones" />
+    <EntitySet Name="vw_usuarios" EntityType="inventarioModel.vw_usuarios" />
   </EntityContainer>
+  <EntityType Name="vw_clasificaciones">
+    <Key>
+      <PropertyRef Name="id_sub_clasificacion" />
+      <PropertyRef Name="Expr1" />
+    </Key>
+    <Property Name="id_sub_clasificacion" Type="Int32" Nullable="false" />
+    <Property Name="id_clasificacion" Type="Int32" />
+    <Property Name="sub_clasificacion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="estado" Type="Int32" />
+    <Property Name="Expr1" Type="Int32" Nullable="false" />
+    <Property Name="nombre_clasificacion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Expr2" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vw_usuarios">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+      <PropertyRef Name="Expr1" />
+      <PropertyRef Name="Expr2" />
+    </Key>
+    <Property Name="id_usuario" Type="Int32" Nullable="false" />
+    <Property Name="usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="clave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nombre_completo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Int32" />
+    <Property Name="dui" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="estado_sesion" Type="Int32" />
+    <Property Name="fecha_ultimo_ingreso" Type="DateTime" Precision="0" />
+    <Property Name="hora_ultimo_ingreso" Type="Time" Precision="7" />
+    <Property Name="id_rol" Type="Int32" />
+    <Property Name="Expr1" Type="Int32" Nullable="false" />
+    <Property Name="rol" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Expr2" Type="Int32" Nullable="false" />
+  </EntityType>
 </Schema>

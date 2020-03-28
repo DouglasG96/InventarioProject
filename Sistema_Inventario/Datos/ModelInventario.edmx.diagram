@@ -17,7 +17,6 @@
         <EntityTypeShape EntityType="inventarioModel.roles" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
         <EntityTypeShape EntityType="inventarioModel.sub_clasificaciones" Width="1.5" PointX="6" PointY="15" IsExpanded="true" />
         <EntityTypeShape EntityType="inventarioModel.sucursales" Width="1.5" PointX="6" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="inventarioModel.sysdiagrams" Width="1.5" PointX="12.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="inventarioModel.tipo_bodega" Width="1.5" PointX="8.25" PointY="12.625" IsExpanded="true" />
         <EntityTypeShape EntityType="inventarioModel.tipo_bodega_bodegas" Width="1.5" PointX="10.5" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="inventarioModel.tipo_movimiento" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
@@ -43,6 +42,8 @@
         <AssociationConnector Association="inventarioModel.fk_proveedores" ManuallyRouted="false" />
         <AssociationConnector Association="inventarioModel.FK_usuarios_roles" ManuallyRouted="false" />
         <AssociationConnector Association="inventarioModel.FK_tipo_bodega_bodegas_tipo_bodega" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="inventarioModel.vw_clasificaciones" Width="1.5" PointX="5.75" PointY="11.75" />
+        <EntityTypeShape EntityType="inventarioModel.vw_usuarios" Width="1.5" PointX="0.75" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

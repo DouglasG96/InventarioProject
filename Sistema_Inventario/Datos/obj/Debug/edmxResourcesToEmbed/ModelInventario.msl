@@ -146,17 +146,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="inventarioModel.sysdiagrams">
-        <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="definition" ColumnName="definition" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tipo_bodega">
       <EntityTypeMapping TypeName="inventarioModel.tipo_bodega">
         <MappingFragment StoreEntitySet="tipo_bodega">
@@ -250,6 +239,38 @@
           <ScalarProperty Name="categoria" ColumnName="categoria" />
           <ScalarProperty Name="subcategoia" ColumnName="subcategoia" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_clasificaciones">
+      <EntityTypeMapping TypeName="inventarioModel.vw_clasificaciones">
+        <MappingFragment StoreEntitySet="vw_clasificaciones">
+          <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+          <ScalarProperty Name="nombre_clasificacion" ColumnName="nombre_clasificacion" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="sub_clasificacion" ColumnName="sub_clasificacion" />
+          <ScalarProperty Name="id_clasificacion" ColumnName="id_clasificacion" />
+          <ScalarProperty Name="id_sub_clasificacion" ColumnName="id_sub_clasificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_usuarios">
+      <EntityTypeMapping TypeName="inventarioModel.vw_usuarios">
+        <MappingFragment StoreEntitySet="vw_usuarios">
+          <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+          <ScalarProperty Name="rol" ColumnName="rol" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+          <ScalarProperty Name="hora_ultimo_ingreso" ColumnName="hora_ultimo_ingreso" />
+          <ScalarProperty Name="fecha_ultimo_ingreso" ColumnName="fecha_ultimo_ingreso" />
+          <ScalarProperty Name="estado_sesion" ColumnName="estado_sesion" />
+          <ScalarProperty Name="dui" ColumnName="dui" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
+          <ScalarProperty Name="clave" ColumnName="clave" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

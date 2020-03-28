@@ -13,6 +13,7 @@ namespace Datos
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using Entidades;
+    
     public partial class inventarioEntities : DbContext
     {
         public inventarioEntities()
@@ -37,7 +38,6 @@ namespace Datos
         public virtual DbSet<roles> roles { get; set; }
         public virtual DbSet<sub_clasificaciones> sub_clasificaciones { get; set; }
         public virtual DbSet<sucursales> sucursales { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tipo_bodega> tipo_bodega { get; set; }
         public virtual DbSet<tipo_bodega_bodegas> tipo_bodega_bodegas { get; set; }
         public virtual DbSet<tipo_movimiento> tipo_movimiento { get; set; }
@@ -46,5 +46,7 @@ namespace Datos
         public virtual DbSet<vigencia_promedio> vigencia_promedio { get; set; }
         public virtual DbSet<vw_login> vw_login { get; set; }
         public virtual DbSet<vw_producto> vw_producto { get; set; }
+        public virtual DbSet<vw_clasificaciones> vw_clasificaciones { get; set; }
+        public virtual DbSet<vw_usuarios> vw_usuarios { get; set; }
     }
 }

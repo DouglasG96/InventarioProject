@@ -25,3 +25,17 @@ C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Logica\obj\Debug
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Logica\obj\Debug\Logica.csproj.CopyComplete
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Logica\obj\Debug\Logica.dll
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Logica\obj\Debug\Logica.pdb
+C:\Users\thrus\Documents\InventarioProject\Sistema_Inventario\Logica\bin\Debug\Logica.dll
+C:\Users\thrus\Documents\InventarioProject\Sistema_Inventario\Logica\bin\Debug\Logica.pdb
+C:\Users\thrus\Documents\InventarioProject\Sistema_Inventario\Logica\bin\Debug\Datos.dll
+C:\Users\thrus\Documents\InventarioProject\Sistema_Inventario\Logica\bin\Debug\Entidades.dll
+C:\Users\thrus\Documents\InventarioProject\Sistema_Inventario\Logica\bin\Debug\EntityFramework.dll
+C:\Users\thrus\Documents\InventarioProject\Sistema_Inventario\Logica\bin\Debug\Datos.pdb
+C:\Users\thrus\Documents\InventarioProject\Sistema_Inventario\Logica\bin\Debug\Datos.dll.config
+C:\Users\thrus\Documents\InventarioProject\Sistema_Inventario\Logica\bin\Debug\Entidades.pdb
+C:\Users\thrus\Documents\InventarioProject\Sistema_Inventario\Logica\bin\Debug\EntityFramework.xml
+C:\Users\thrus\Documents\InventarioProject\Sistema_Inventario\Logica\obj\Debug\Logica.csprojAssemblyReference.cache
+C:\Users\thrus\Documents\InventarioProject\Sistema_Inventario\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
+C:\Users\thrus\Documents\InventarioProject\Sistema_Inventario\Logica\obj\Debug\Logica.csproj.CopyComplete
+C:\Users\thrus\Documents\InventarioProject\Sistema_Inventario\Logica\obj\Debug\Logica.dll
+C:\Users\thrus\Documents\InventarioProject\Sistema_Inventario\Logica\obj\Debug\Logica.pdb
