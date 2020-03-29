@@ -41,7 +41,8 @@
         <AssociationConnector Association="inventarioModel.fk_proveedores" ManuallyRouted="false" />
         <AssociationConnector Association="inventarioModel.FK_usuarios_roles" ManuallyRouted="false" />
         <AssociationConnector Association="inventarioModel.FK_tipo_bodega_bodegas_tipo_bodega" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="inventarioModel.vw_producto" Width="1.5" PointX="13" PointY="5" />
+        <EntityTypeShape EntityType="inventarioModel.vw_movimientos" Width="1.5" PointX="0.75" PointY="13.75" />
+        <EntityTypeShape EntityType="inventarioModel.vw_producto" Width="1.5" PointX="13.75" PointY="5.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

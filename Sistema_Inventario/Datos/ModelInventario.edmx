@@ -214,6 +214,24 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_login' no tiene definida n
           <Property Name="id_rol" Type="int" />
         </EntityType>
         <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'inventario.dbo.vw_movimientos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_movimientos">
+          <Key>
+            <PropertyRef Name="estado" />
+            <PropertyRef Name="id_movimiento" />
+          </Key>
+          <Property Name="estado" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="id_movimiento" Type="int" Nullable="false" />
+          <Property Name="tipo_movimiento" Type="nvarchar" MaxLength="250" />
+          <Property Name="fecha" Type="date" />
+          <Property Name="hora" Type="time" Precision="7" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="costo_total_con_iva" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="costo_total_sin_iva" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="usuario" Type="varchar" MaxLength="10" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="vw_producto">
           <Key>
@@ -230,7 +248,6 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
           <Property Name="categoria" Type="nvarchar" MaxLength="250" />
           <Property Name="subcategoia" Type="nvarchar" MaxLength="250" />
           <Property Name="descripcion" Type="nvarchar" MaxLength="250" />
-          <Property Name="estado" Type="int" />
         </EntityType>
         <Association Name="FK_bitacora_movimientos">
           <End Role="movimientos" Type="Self.movimientos" Multiplicity="0..1" />
@@ -469,6 +486,20 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
     [vw_login].[id_rol] AS [id_rol]
     FROM [dbo].[vw_login] AS [vw_login]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="vw_movimientos" EntityType="Self.vw_movimientos" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_movimientos].[estado] AS [estado], 
+    [vw_movimientos].[id_movimiento] AS [id_movimiento], 
+    [vw_movimientos].[tipo_movimiento] AS [tipo_movimiento], 
+    [vw_movimientos].[fecha] AS [fecha], 
+    [vw_movimientos].[hora] AS [hora], 
+    [vw_movimientos].[descripcion] AS [descripcion], 
+    [vw_movimientos].[costo_total_con_iva] AS [costo_total_con_iva], 
+    [vw_movimientos].[costo_total_sin_iva] AS [costo_total_sin_iva], 
+    [vw_movimientos].[usuario] AS [usuario], 
+    [vw_movimientos].[nombre] AS [nombre]
+    FROM [dbo].[vw_movimientos] AS [vw_movimientos]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vw_producto" EntityType="Self.vw_producto" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vw_producto].[id_producto] AS [id_producto], 
@@ -480,8 +511,7 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
     [vw_producto].[proveedor] AS [proveedor], 
     [vw_producto].[categoria] AS [categoria], 
     [vw_producto].[subcategoia] AS [subcategoia], 
-    [vw_producto].[descripcion] AS [descripcion], 
-    [vw_producto].[estado] AS [estado]
+    [vw_producto].[descripcion] AS [descripcion]
     FROM [dbo].[vw_producto] AS [vw_producto]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_bitacora_movimientos" Association="Self.FK_bitacora_movimientos">
@@ -1089,8 +1119,25 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
             <End Role="tipo_bodega" EntitySet="tipo_bodega" />
             <End Role="tipo_bodega_bodegas" EntitySet="tipo_bodega_bodegas" />
           </AssociationSet>
+          <EntitySet Name="vw_movimientos" EntityType="inventarioModel.vw_movimientos" />
           <EntitySet Name="vw_producto" EntityType="inventarioModel.vw_producto" />
         </EntityContainer>
+        <EntityType Name="vw_movimientos">
+          <Key>
+            <PropertyRef Name="estado" />
+            <PropertyRef Name="id_movimiento" />
+          </Key>
+          <Property Name="estado" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="id_movimiento" Type="Int32" Nullable="false" />
+          <Property Name="tipo_movimiento" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="fecha" Type="DateTime" Precision="0" />
+          <Property Name="hora" Type="Time" Precision="7" />
+          <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="costo_total_con_iva" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="costo_total_sin_iva" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="vw_producto">
           <Key>
             <PropertyRef Name="id_producto" />
@@ -1106,7 +1153,6 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
           <Property Name="categoria" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="subcategoia" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="estado" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1339,10 +1385,25 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="vw_movimientos">
+            <EntityTypeMapping TypeName="inventarioModel.vw_movimientos">
+              <MappingFragment StoreEntitySet="vw_movimientos">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="costo_total_sin_iva" ColumnName="costo_total_sin_iva" />
+                <ScalarProperty Name="costo_total_con_iva" ColumnName="costo_total_con_iva" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="tipo_movimiento" ColumnName="tipo_movimiento" />
+                <ScalarProperty Name="id_movimiento" ColumnName="id_movimiento" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="vw_producto">
             <EntityTypeMapping TypeName="inventarioModel.vw_producto">
               <MappingFragment StoreEntitySet="vw_producto">
-                <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="subcategoia" ColumnName="subcategoia" />
                 <ScalarProperty Name="categoria" ColumnName="categoria" />

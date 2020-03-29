@@ -24,6 +24,5 @@ namespace Entidades
         public string categoria { get; set; }
         public string subcategoia { get; set; }
         public string descripcion { get; set; }
-        public Nullable<int> estado { get; set; }
     }
 }

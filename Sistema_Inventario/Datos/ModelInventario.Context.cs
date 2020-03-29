@@ -44,6 +44,7 @@ namespace Entidades
         public virtual DbSet<usuarios> usuarios { get; set; }
         public virtual DbSet<vigencia_promedio> vigencia_promedio { get; set; }
         public virtual DbSet<vw_login> vw_login { get; set; }
+        public virtual DbSet<vw_movimientos> vw_movimientos { get; set; }
         public virtual DbSet<vw_producto> vw_producto { get; set; }
     }
 }

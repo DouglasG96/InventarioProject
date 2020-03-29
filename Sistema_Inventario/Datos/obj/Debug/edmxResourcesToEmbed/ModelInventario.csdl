@@ -532,8 +532,25 @@
       <End Role="tipo_bodega" EntitySet="tipo_bodega" />
       <End Role="tipo_bodega_bodegas" EntitySet="tipo_bodega_bodegas" />
     </AssociationSet>
+    <EntitySet Name="vw_movimientos" EntityType="inventarioModel.vw_movimientos" />
     <EntitySet Name="vw_producto" EntityType="inventarioModel.vw_producto" />
   </EntityContainer>
+  <EntityType Name="vw_movimientos">
+    <Key>
+      <PropertyRef Name="estado" />
+      <PropertyRef Name="id_movimiento" />
+    </Key>
+    <Property Name="estado" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="id_movimiento" Type="Int32" Nullable="false" />
+    <Property Name="tipo_movimiento" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="fecha" Type="DateTime" Precision="0" />
+    <Property Name="hora" Type="Time" Precision="7" />
+    <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="costo_total_con_iva" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="costo_total_sin_iva" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
   <EntityType Name="vw_producto">
     <Key>
       <PropertyRef Name="id_producto" />
@@ -549,6 +566,5 @@
     <Property Name="categoria" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="subcategoia" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="estado" Type="Int32" />
   </EntityType>
 </Schema>

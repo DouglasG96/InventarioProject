@@ -16,6 +16,8 @@ namespace Sistema_Inventario
     {
         FormProducto frmProducto;
         FormCategoria frmCategoria;
+        FormUsuarios formUsuario;
+
         LoginBL loginBL;
         int idUsuario;
         String nombreUsuario = "";
@@ -124,6 +126,31 @@ namespace Sistema_Inventario
         private void frmCategoria_FormClosed(object sender, EventArgs e)
         {
             frmCategoria = null;
+        }
+
+        private void btnBodegas_Click(object sender, EventArgs e)
+        {
+            //Form
+        }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (formUsuario == null)
+            {
+                formUsuario = new FormUsuarios();
+                formUsuario.FormClosed += new FormClosedEventHandler(frmUsuarios_FormClosed);
+                formUsuario.MdiParent = this;
+                formUsuario.Show();
+            }
+            else
+            {
+                formUsuario.Activate();
+            }
+        }
+
+        private void frmUsuarios_FormClosed(object sender, EventArgs e)
+        {
+            formUsuario = null;
         }
     }
 }

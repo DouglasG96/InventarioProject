@@ -343,3 +343,7 @@ C:\Users\Cristian\Desktop\Proyecto ETPS3\InventarioProject\Sistema_Inventario\Si
 C:\Users\Cristian\Desktop\Proyecto ETPS3\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormCategoria.resources
 C:\Users\Cristian\Desktop\Proyecto ETPS3\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormCrearCategoria.resources
 C:\Users\Cristian\Desktop\Proyecto ETPS3\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormEditarCategoria.resources
+C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormCategoria.resources
+C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormCrearCategoria.resources
+C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormEditarCategoria.resources
+C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormUsuarios.resources
