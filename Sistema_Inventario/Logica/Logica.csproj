@@ -49,9 +49,6 @@
     <Compile Include="ProveedorBL.cs" />
     <Compile Include="RolBL.cs" />
     <Compile Include="SubCategoriaBL.cs" />
-    <Compile Include="SucursalBL.cs" />
-    <Compile Include="TipoBodegasBL.cs" />
-    <Compile Include="UsuarioBL.cs" />
     <Compile Include="VigenciaBL.cs" />
   </ItemGroup>
   <ItemGroup>

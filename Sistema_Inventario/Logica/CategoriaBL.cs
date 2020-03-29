@@ -20,5 +20,33 @@ namespace Logica
         {
             return CategoriaDAL.CargarCategoriasOpcional();
         }
+
+        //Metodo para buscar  producto por id
+        public static clasificacion DetalleCategoria(int id)
+        {
+            return CategoriaDAL.DetalleCategoria(id);
+        }
+
+
+        //Metodo para buscar  categoria por nombre
+        public static List<clasificacion> BuscarCategoria(string nombre)
+        {
+            return CategoriaDAL.BuscarCategoria(nombre);
+        }
+
+        public static clasificacion CrearCategoria(clasificacion categoria)
+        {
+            return CategoriaDAL.CrearCategoria(categoria);
+        }
+
+        public static clasificacion EditarCategoria(clasificacion categoria)
+        {
+            return CategoriaDAL.EditarCategoria(categoria);
+        }
+
+        public static int EliminarCategoria(int id)
+        {
+            return CategoriaDAL.EliminarCategoria(id);
+        }
     }
 }

@@ -114,6 +114,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelInventario.edmx</DependentUpon>
       <LastGenOutput>ModelInventario.Context.cs</LastGenOutput>
+      <CustomToolNamespace>Entidades</CustomToolNamespace>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

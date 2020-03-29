@@ -72,11 +72,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormBodega.cs">
+    <Compile Include="FormCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormBodega.Designer.cs">
-      <DependentUpon>FormBodega.cs</DependentUpon>
+    <Compile Include="FormCategoria.Designer.cs">
+      <DependentUpon>FormCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCrearCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCrearCategoria.Designer.cs">
+      <DependentUpon>FormCrearCategoria.cs</DependentUpon>
     </Compile>
     <Compile Include="FormCrearProducto.cs">
       <SubType>Form</SubType>
@@ -89,6 +95,12 @@
     </Compile>
     <Compile Include="FormDetalleProducto.Designer.cs">
       <DependentUpon>FormDetalleProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEditarCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditarCategoria.Designer.cs">
+      <DependentUpon>FormEditarCategoria.cs</DependentUpon>
     </Compile>
     <Compile Include="FormEditarProducto.cs">
       <SubType>Form</SubType>
@@ -120,34 +132,22 @@
     <Compile Include="FormReportes.Designer.cs">
       <DependentUpon>FormReportes.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormSucursal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormSucursal.Designer.cs">
-      <DependentUpon>FormSucursal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormTipoBodega.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormTipoBodega.Designer.cs">
-      <DependentUpon>FormTipoBodega.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormUsuarios.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormUsuarios.Designer.cs">
-      <DependentUpon>FormUsuarios.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormBodega.resx">
-      <DependentUpon>FormBodega.cs</DependentUpon>
+    <EmbeddedResource Include="FormCategoria.resx">
+      <DependentUpon>FormCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCrearCategoria.resx">
+      <DependentUpon>FormCrearCategoria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCrearProducto.resx">
       <DependentUpon>FormCrearProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDetalleProducto.resx">
       <DependentUpon>FormDetalleProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditarCategoria.resx">
+      <DependentUpon>FormEditarCategoria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormEditarProducto.resx">
       <DependentUpon>FormEditarProducto.cs</DependentUpon>
@@ -163,15 +163,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormReportes.resx">
       <DependentUpon>FormReportes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormSucursal.resx">
-      <DependentUpon>FormSucursal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormTipoBodega.resx">
-      <DependentUpon>FormTipoBodega.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormUsuarios.resx">
-      <DependentUpon>FormUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -198,9 +189,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="images\" />
@@ -217,9 +206,6 @@
       <Project>{a8404f78-fa86-4811-836e-b53350e636de}</Project>
       <Name>Logica</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
