@@ -17,6 +17,9 @@ namespace Sistema_Inventario
         FormProducto frmProducto;
         FormCategoria frmCategoria;
         FormUsuarios formUsuario;
+        FormTipoBodega formTipoBodega;
+        FormBodega formBodega;
+        FormMovimientos formMovimientos;
 
         LoginBL loginBL;
         int idUsuario;
@@ -42,7 +45,10 @@ namespace Sistema_Inventario
         //cierro aplicacion principal al presionar x
         private void FormPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            if (loginBL.cerrarSesion(this.idUsuario))
+            {
+                Application.Exit();
+            }
         }
 
         private void btnProductos_Click(object sender, EventArgs e)
@@ -130,7 +136,20 @@ namespace Sistema_Inventario
 
         private void btnBodegas_Click(object sender, EventArgs e)
         {
-            //Form
+            if (formBodega == null)
+            {
+                formBodega = new FormBodega();
+                frmCategoria.MdiParent = this;
+                formBodega.ShowDialog();
+            }
+            else
+            {
+                formBodega.Activate();
+            }
+        }
+        private void formBodega_FormClosed(object sender, EventArgs e)
+        {
+            formBodega = null;
         }
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -151,6 +170,61 @@ namespace Sistema_Inventario
         private void frmUsuarios_FormClosed(object sender, EventArgs e)
         {
             formUsuario = null;
+        }
+
+        private void tiposDeBodegasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (formTipoBodega == null)
+            {
+                formTipoBodega = new FormTipoBodega();
+                formTipoBodega.FormClosed += new FormClosedEventHandler(formTipoBodega_FormClosed);
+                formTipoBodega.MdiParent = this;
+                formTipoBodega.Show();
+            }
+            else
+            {
+                formTipoBodega.Activate();
+            }
+        }
+
+        private void formTipoBodega_FormClosed(object sender, EventArgs e)
+        {
+            formTipoBodega = null;
+        }
+
+        private void historialMovimientosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (formMovimientos == null)
+            {
+                formMovimientos = new FormMovimientos();
+                formMovimientos.FormClosed += new FormClosedEventHandler(formMovimientos_FormClosed);
+                formMovimientos.MdiParent = this;
+                formMovimientos.Show();
+            }
+            else
+            {
+                formMovimientos.Activate();
+            }
+        }
+
+        private void btnMovimientos_Click(object sender, EventArgs e)
+        {
+            if (formMovimientos == null)
+            {
+                formMovimientos = new FormMovimientos();
+                formMovimientos.FormClosed += new FormClosedEventHandler(formMovimientos_FormClosed);
+                formMovimientos.MdiParent = this;
+                formMovimientos.Show();
+            }
+            else
+            {
+                formMovimientos.Activate();
+            }
+        }
+
+        private void formMovimientos_FormClosed(object sender, EventArgs e)
+        {
+            formMovimientos = null;
         }
     }
 }

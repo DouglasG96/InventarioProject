@@ -13,30 +13,30 @@ using System.Windows.Forms;
 
 namespace Sistema_Inventario
 {
-   public partial class FormProducto : DevComponents.DotNetBar.Metro.MetroForm
+   public partial class FormMovimientos : DevComponents.DotNetBar.Metro.MetroForm
     {
-        public FormProducto()
+        public FormMovimientos()
         {
             InitializeComponent();
         }
 
-        private void CargarProductos()
+        private void cargarMovimientos()
         {
-            dtgProductos.AutoGenerateColumns = false;
-            dtgProductos.DataSource = ProductoBL.CargarProductos();
+            dtgMovimientos.AutoGenerateColumns = false;
+            dtgMovimientos.DataSource = MovimientosBL.cargarMovimientos();
         }
 
-        private void FormProducto_FormClosed(object sender, FormClosedEventArgs e)
+        private void FormMovimientos_FormClosed(object sender, FormClosedEventArgs e)
         {
 
         }
 
-        private void FormProducto_Load(object sender, EventArgs e)
+        private void FormMovimientos_Load(object sender, EventArgs e)
         {
-            CargarProductos();
+            cargarMovimientos();
         }
 
-        private void btnAgregarProducto_Click(object sender, EventArgs e)
+        private void btnAgregarMovimiento_Click(object sender, EventArgs e)
         {
             FormCrearProducto frmcrearproducto = new FormCrearProducto();
             frmcrearproducto.FormClosed += new FormClosedEventHandler(frmcrearproducto_FormClosed);//para actualizar datos al cerrar formulario
@@ -46,14 +46,14 @@ namespace Sistema_Inventario
         private void frmcrearproducto_FormClosed(object sender, FormClosedEventArgs e)
         {
             //actualizo productos al cerrar formulario
-            CargarProductos();
+            cargarMovimientos();
         }
 
         //detecto doble click para detalle
         private void dtgProductos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             //obtengo id seleccionado
-            DataGridViewRow row = dtgProductos.CurrentRow;
+            DataGridViewRow row = dtgMovimientos.CurrentRow;
             int id = Convert.ToInt32(row.Cells["Id"].Value);
 
             FormDetalleProducto frmdetalleproducto = new FormDetalleProducto(id);
@@ -62,7 +62,7 @@ namespace Sistema_Inventario
 
         private void btnEditarProducto_Click(object sender, EventArgs e)
         {
-            DataGridViewRow row = dtgProductos.CurrentRow;
+            DataGridViewRow row = dtgMovimientos.CurrentRow;
             int id = Convert.ToInt32(row.Cells["Id"].Value);
 
             FormEditarProducto frmeditarproducto = new FormEditarProducto(id);
@@ -72,7 +72,7 @@ namespace Sistema_Inventario
 
         private void frmeditarproducto_FormClosed(object sender, FormClosedEventArgs e)
         {
-            CargarProductos();
+            cargarMovimientos();
         }
 
         private void btnEliminarProducto_Click(object sender, EventArgs e)
@@ -80,11 +80,11 @@ namespace Sistema_Inventario
             DialogResult resul = MessageBox.Show("Seguro que quiere eliminar el Registro?", "Eliminar Registro", MessageBoxButtons.YesNo);
             if (resul == DialogResult.Yes)
             {
-                DataGridViewRow row = dtgProductos.CurrentRow;
+                DataGridViewRow row = dtgMovimientos.CurrentRow;
                 int id = Convert.ToInt32(row.Cells["Id"].Value);
                 ProductoBL.EliminarProducto(id);
                 MessageBox.Show("Se Elimino el Producto Con Numero ID: " + id, "Eliminar Registro");
-                CargarProductos();
+                cargarMovimientos();
             }
         }
 
@@ -92,10 +92,10 @@ namespace Sistema_Inventario
         {
             if (txtBuscarProducto.Text != "")
             {
-                dtgProductos.DataSource = ProductoBL.BuscarProducto(txtBuscarProducto.Text);
+                dtgMovimientos.DataSource = ProductoBL.BuscarProducto(txtBuscarProducto.Text);
             }
             else
-                CargarProductos();
+                cargarMovimientos();
         }
     }
 }

@@ -12,7 +12,7 @@ using Logica;
 
 namespace Sistema_Inventario
 {
-    public partial class FormUsuarios : Form
+    public partial class FormUsuarios : DevComponents.DotNetBar.Metro.MetroForm
     {
         public FormUsuarios()
         {

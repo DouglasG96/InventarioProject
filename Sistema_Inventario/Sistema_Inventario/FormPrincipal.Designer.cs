@@ -33,20 +33,23 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnReportes = new System.Windows.Forms.Button();
             this.btnBodegas = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnTraslados = new System.Windows.Forms.Button();
+            this.btnSucursales = new System.Windows.Forms.Button();
+            this.btnMovimientos = new System.Windows.Forms.Button();
             this.btnProductos = new System.Windows.Forms.Button();
             this.menuMantenimientos = new System.Windows.Forms.MenuStrip();
             this.mantenimientosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bodegasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tiposDeBodegasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sucursalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.procesosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.trasladosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.entradaProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trasladoDeProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comprasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.historialMovimientosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesBodegasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesProveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,7 +62,6 @@
             this.lblHora = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblNombreUsuario = new System.Windows.Forms.Label();
-            this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.menuMantenimientos.SuspendLayout();
             this.SuspendLayout();
@@ -84,8 +86,8 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.btnReportes);
             this.panel1.Controls.Add(this.btnBodegas);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.btnTraslados);
+            this.panel1.Controls.Add(this.btnSucursales);
+            this.panel1.Controls.Add(this.btnMovimientos);
             this.panel1.Controls.Add(this.btnProductos);
             this.panel1.ForeColor = System.Drawing.Color.Black;
             this.panel1.Location = new System.Drawing.Point(0, 168);
@@ -119,29 +121,30 @@
             this.btnBodegas.UseVisualStyleBackColor = false;
             this.btnBodegas.Click += new System.EventHandler(this.btnBodegas_Click);
             // 
-            // button1
+            // btnSucursales
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(14, 168);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(133, 39);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "&Compras";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnSucursales.BackColor = System.Drawing.Color.White;
+            this.btnSucursales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSucursales.ForeColor = System.Drawing.Color.Black;
+            this.btnSucursales.Location = new System.Drawing.Point(14, 168);
+            this.btnSucursales.Name = "btnSucursales";
+            this.btnSucursales.Size = new System.Drawing.Size(133, 39);
+            this.btnSucursales.TabIndex = 2;
+            this.btnSucursales.Text = "&Sucursales";
+            this.btnSucursales.UseVisualStyleBackColor = false;
             // 
-            // btnTraslados
+            // btnMovimientos
             // 
-            this.btnTraslados.BackColor = System.Drawing.Color.White;
-            this.btnTraslados.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTraslados.ForeColor = System.Drawing.Color.Black;
-            this.btnTraslados.Location = new System.Drawing.Point(14, 98);
-            this.btnTraslados.Name = "btnTraslados";
-            this.btnTraslados.Size = new System.Drawing.Size(133, 39);
-            this.btnTraslados.TabIndex = 1;
-            this.btnTraslados.Text = "&Traslados";
-            this.btnTraslados.UseVisualStyleBackColor = false;
+            this.btnMovimientos.BackColor = System.Drawing.Color.White;
+            this.btnMovimientos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMovimientos.ForeColor = System.Drawing.Color.Black;
+            this.btnMovimientos.Location = new System.Drawing.Point(14, 98);
+            this.btnMovimientos.Name = "btnMovimientos";
+            this.btnMovimientos.Size = new System.Drawing.Size(133, 39);
+            this.btnMovimientos.TabIndex = 1;
+            this.btnMovimientos.Text = "&Movimientos";
+            this.btnMovimientos.UseVisualStyleBackColor = false;
+            this.btnMovimientos.Click += new System.EventHandler(this.btnMovimientos_Click);
             // 
             // btnProductos
             // 
@@ -181,7 +184,8 @@
             this.categoriasToolStripMenuItem,
             this.bodegasToolStripMenuItem,
             this.proveedoresToolStripMenuItem,
-            this.usuariosToolStripMenuItem});
+            this.usuariosToolStripMenuItem,
+            this.sucursalesToolStripMenuItem});
             this.mantenimientosToolStripMenuItem.Name = "mantenimientosToolStripMenuItem";
             this.mantenimientosToolStripMenuItem.Size = new System.Drawing.Size(121, 23);
             this.mantenimientosToolStripMenuItem.Text = "Mantenimientos";
@@ -202,9 +206,18 @@
             // 
             // bodegasToolStripMenuItem
             // 
+            this.bodegasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tiposDeBodegasToolStripMenuItem});
             this.bodegasToolStripMenuItem.Name = "bodegasToolStripMenuItem";
             this.bodegasToolStripMenuItem.Size = new System.Drawing.Size(154, 24);
             this.bodegasToolStripMenuItem.Text = "Bodegas";
+            // 
+            // tiposDeBodegasToolStripMenuItem
+            // 
+            this.tiposDeBodegasToolStripMenuItem.Name = "tiposDeBodegasToolStripMenuItem";
+            this.tiposDeBodegasToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
+            this.tiposDeBodegasToolStripMenuItem.Text = "Tipos de Bodegas";
+            this.tiposDeBodegasToolStripMenuItem.Click += new System.EventHandler(this.tiposDeBodegasToolStripMenuItem_Click);
             // 
             // proveedoresToolStripMenuItem
             // 
@@ -212,40 +225,54 @@
             this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(154, 24);
             this.proveedoresToolStripMenuItem.Text = "Proveedores";
             // 
+            // usuariosToolStripMenuItem
+            // 
+            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(154, 24);
+            this.usuariosToolStripMenuItem.Text = "Usuarios";
+            this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
+            // 
+            // sucursalesToolStripMenuItem
+            // 
+            this.sucursalesToolStripMenuItem.Name = "sucursalesToolStripMenuItem";
+            this.sucursalesToolStripMenuItem.Size = new System.Drawing.Size(154, 24);
+            this.sucursalesToolStripMenuItem.Text = "Sucursales";
+            // 
             // procesosToolStripMenuItem
             // 
             this.procesosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.comprasToolStripMenuItem,
-            this.trasladosToolStripMenuItem,
+            this.entradaProductosToolStripMenuItem,
+            this.modificacionToolStripMenuItem,
             this.trasladoDeProductosToolStripMenuItem,
-            this.comprasToolStripMenuItem1});
+            this.historialMovimientosToolStripMenuItem});
             this.procesosToolStripMenuItem.Name = "procesosToolStripMenuItem";
-            this.procesosToolStripMenuItem.Size = new System.Drawing.Size(75, 23);
-            this.procesosToolStripMenuItem.Text = "Procesos";
+            this.procesosToolStripMenuItem.Size = new System.Drawing.Size(101, 23);
+            this.procesosToolStripMenuItem.Text = "Movimientos";
             // 
-            // comprasToolStripMenuItem
+            // entradaProductosToolStripMenuItem
             // 
-            this.comprasToolStripMenuItem.Name = "comprasToolStripMenuItem";
-            this.comprasToolStripMenuItem.Size = new System.Drawing.Size(219, 24);
-            this.comprasToolStripMenuItem.Text = "Registro de Producto";
+            this.entradaProductosToolStripMenuItem.Name = "entradaProductosToolStripMenuItem";
+            this.entradaProductosToolStripMenuItem.Size = new System.Drawing.Size(240, 24);
+            this.entradaProductosToolStripMenuItem.Text = "Entrada de productos";
             // 
-            // trasladosToolStripMenuItem
+            // modificacionToolStripMenuItem
             // 
-            this.trasladosToolStripMenuItem.Name = "trasladosToolStripMenuItem";
-            this.trasladosToolStripMenuItem.Size = new System.Drawing.Size(219, 24);
-            this.trasladosToolStripMenuItem.Text = "Descarga de Productos";
+            this.modificacionToolStripMenuItem.Name = "modificacionToolStripMenuItem";
+            this.modificacionToolStripMenuItem.Size = new System.Drawing.Size(240, 24);
+            this.modificacionToolStripMenuItem.Text = "Modificacion de productos";
             // 
             // trasladoDeProductosToolStripMenuItem
             // 
             this.trasladoDeProductosToolStripMenuItem.Name = "trasladoDeProductosToolStripMenuItem";
-            this.trasladoDeProductosToolStripMenuItem.Size = new System.Drawing.Size(219, 24);
-            this.trasladoDeProductosToolStripMenuItem.Text = "Traslado de Productos";
+            this.trasladoDeProductosToolStripMenuItem.Size = new System.Drawing.Size(240, 24);
+            this.trasladoDeProductosToolStripMenuItem.Text = "Traslado de productos";
             // 
-            // comprasToolStripMenuItem1
+            // historialMovimientosToolStripMenuItem
             // 
-            this.comprasToolStripMenuItem1.Name = "comprasToolStripMenuItem1";
-            this.comprasToolStripMenuItem1.Size = new System.Drawing.Size(219, 24);
-            this.comprasToolStripMenuItem1.Text = "Compras";
+            this.historialMovimientosToolStripMenuItem.Name = "historialMovimientosToolStripMenuItem";
+            this.historialMovimientosToolStripMenuItem.Size = new System.Drawing.Size(240, 24);
+            this.historialMovimientosToolStripMenuItem.Text = "Historial de movimientos";
+            this.historialMovimientosToolStripMenuItem.Click += new System.EventHandler(this.historialMovimientosToolStripMenuItem_Click);
             // 
             // reportesToolStripMenuItem
             // 
@@ -356,13 +383,6 @@
             this.lblNombreUsuario.Size = new System.Drawing.Size(0, 15);
             this.lblNombreUsuario.TabIndex = 12;
             // 
-            // usuariosToolStripMenuItem
-            // 
-            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.usuariosToolStripMenuItem.Text = "Usuarios";
-            this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
-            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -408,25 +428,27 @@
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.ToolStripMenuItem productosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem procesosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem comprasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem trasladosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem entradaProductosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modificacionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem herramientasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem trasladoDeProductosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportesBodegasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportesProveedoresToolStripMenuItem;
-        private System.Windows.Forms.Button btnTraslados;
+        private System.Windows.Forms.Button btnMovimientos;
         private System.Windows.Forms.ToolStripMenuItem bodegasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem proveedoresToolStripMenuItem;
         private System.Windows.Forms.Button btnBodegas;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ToolStripMenuItem comprasToolStripMenuItem1;
+        private System.Windows.Forms.Button btnSucursales;
+        private System.Windows.Forms.ToolStripMenuItem historialMovimientosToolStripMenuItem;
         private System.Windows.Forms.Button btnReportes;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblNombreUsuario;
         private System.Windows.Forms.ToolStripMenuItem categoriasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tiposDeBodegasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sucursalesToolStripMenuItem;
     }
 }
 
