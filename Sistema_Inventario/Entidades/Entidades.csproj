@@ -110,6 +110,9 @@
     <Compile Include="vw_producto.cs">
       <DependentUpon>ModelInventario.tt</DependentUpon>
     </Compile>
+    <Compile Include="vw_proveedor.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

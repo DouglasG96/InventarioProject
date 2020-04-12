@@ -20,6 +20,7 @@ namespace Sistema_Inventario
         FormTipoBodega formTipoBodega;
         FormBodega formBodega;
         FormMovimientos formMovimientos;
+        FormProveedor frmproveedor;
 
         LoginBL loginBL;
         int idUsuario;
@@ -223,6 +224,25 @@ namespace Sistema_Inventario
         }
 
         private void formMovimientos_FormClosed(object sender, EventArgs e)
+        {
+            formMovimientos = null;
+        }
+
+        private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //valido si no esta abierto el form para solo abrir 1
+            if (frmproveedor == null)
+            {
+                frmproveedor = new FormProveedor();
+                frmproveedor.FormClosed += new FormClosedEventHandler(frmproveedor_FormClosed);
+                frmproveedor.MdiParent = this;
+                frmproveedor.Show();
+            }
+            //si esta activo solo lo muestro
+            else
+                frmProducto.Activate();
+        }
+        private void frmproveedor_FormClosed(object sender, EventArgs e)
         {
             formMovimientos = null;
         }

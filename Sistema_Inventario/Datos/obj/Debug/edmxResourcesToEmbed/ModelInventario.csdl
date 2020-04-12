@@ -534,6 +534,7 @@
     </AssociationSet>
     <EntitySet Name="vw_movimientos" EntityType="inventarioModel.vw_movimientos" />
     <EntitySet Name="vw_producto" EntityType="inventarioModel.vw_producto" />
+    <EntitySet Name="vw_proveedor" EntityType="inventarioModel.vw_proveedor" />
   </EntityContainer>
   <EntityType Name="vw_movimientos">
     <Key>
@@ -566,5 +567,18 @@
     <Property Name="categoria" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="subcategoia" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vw_proveedor">
+    <Key>
+      <PropertyRef Name="id_proveedor" />
+    </Key>
+    <Property Name="id_proveedor" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="nit" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="nrc" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="correo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="razon_social" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="tipo_proveedor" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

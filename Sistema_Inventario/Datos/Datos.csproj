@@ -87,6 +87,7 @@
     <Compile Include="SubCategoriaDAL.cs" />
     <Compile Include="SucursalDAL.cs" />
     <Compile Include="TipoBodegaDAL.cs" />
+    <Compile Include="TipoProveedorDAL.cs" />
     <Compile Include="UsuarioDAL.cs" />
     <Compile Include="VigenciaDAL.cs" />
   </ItemGroup>

@@ -249,6 +249,21 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
           <Property Name="subcategoia" Type="nvarchar" MaxLength="250" />
           <Property Name="descripcion" Type="nvarchar" MaxLength="250" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'inventario.dbo.vw_proveedor' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_proveedor">
+          <Key>
+            <PropertyRef Name="id_proveedor" />
+          </Key>
+          <Property Name="id_proveedor" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="250" />
+          <Property Name="direccion" Type="nvarchar" MaxLength="250" />
+          <Property Name="nit" Type="nvarchar" MaxLength="250" />
+          <Property Name="nrc" Type="nvarchar" MaxLength="250" />
+          <Property Name="correo" Type="nvarchar" MaxLength="250" />
+          <Property Name="razon_social" Type="nvarchar" MaxLength="250" />
+          <Property Name="tipo_proveedor" Type="nvarchar" MaxLength="250" />
+        </EntityType>
         <Association Name="FK_bitacora_movimientos">
           <End Role="movimientos" Type="Self.movimientos" Multiplicity="0..1" />
           <End Role="bitacora" Type="Self.bitacora" Multiplicity="*" />
@@ -513,6 +528,18 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
     [vw_producto].[subcategoia] AS [subcategoia], 
     [vw_producto].[descripcion] AS [descripcion]
     FROM [dbo].[vw_producto] AS [vw_producto]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_proveedor" EntityType="Self.vw_proveedor" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_proveedor].[id_proveedor] AS [id_proveedor], 
+    [vw_proveedor].[nombre] AS [nombre], 
+    [vw_proveedor].[direccion] AS [direccion], 
+    [vw_proveedor].[nit] AS [nit], 
+    [vw_proveedor].[nrc] AS [nrc], 
+    [vw_proveedor].[correo] AS [correo], 
+    [vw_proveedor].[razon_social] AS [razon_social], 
+    [vw_proveedor].[tipo_proveedor] AS [tipo_proveedor]
+    FROM [dbo].[vw_proveedor] AS [vw_proveedor]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_bitacora_movimientos" Association="Self.FK_bitacora_movimientos">
             <End Role="movimientos" EntitySet="movimientos" />
@@ -1121,6 +1148,7 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
           </AssociationSet>
           <EntitySet Name="vw_movimientos" EntityType="inventarioModel.vw_movimientos" />
           <EntitySet Name="vw_producto" EntityType="inventarioModel.vw_producto" />
+          <EntitySet Name="vw_proveedor" EntityType="inventarioModel.vw_proveedor" />
         </EntityContainer>
         <EntityType Name="vw_movimientos">
           <Key>
@@ -1153,6 +1181,19 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
           <Property Name="categoria" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="subcategoia" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vw_proveedor">
+          <Key>
+            <PropertyRef Name="id_proveedor" />
+          </Key>
+          <Property Name="id_proveedor" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="nit" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="nrc" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="correo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="razon_social" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="tipo_proveedor" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1414,6 +1455,20 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_producto' no tiene definid
                 <ScalarProperty Name="dias" ColumnName="dias" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_proveedor">
+            <EntityTypeMapping TypeName="inventarioModel.vw_proveedor">
+              <MappingFragment StoreEntitySet="vw_proveedor">
+                <ScalarProperty Name="tipo_proveedor" ColumnName="tipo_proveedor" />
+                <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="nrc" ColumnName="nrc" />
+                <ScalarProperty Name="nit" ColumnName="nit" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

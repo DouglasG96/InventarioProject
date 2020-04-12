@@ -96,6 +96,12 @@
     <Compile Include="FormCrearProducto.Designer.cs">
       <DependentUpon>FormCrearProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCrearProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCrearProveedor.Designer.cs">
+      <DependentUpon>FormCrearProveedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDetalleProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +144,12 @@
     <Compile Include="FormProducto.Designer.cs">
       <DependentUpon>FormProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProveedor.Designer.cs">
+      <DependentUpon>FormProveedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormReportes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +188,9 @@
     <EmbeddedResource Include="FormCrearProducto.resx">
       <DependentUpon>FormCrearProducto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormCrearProveedor.resx">
+      <DependentUpon>FormCrearProveedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDetalleProducto.resx">
       <DependentUpon>FormDetalleProducto.cs</DependentUpon>
     </EmbeddedResource>
@@ -196,6 +211,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormProducto.resx">
       <DependentUpon>FormProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProveedor.resx">
+      <DependentUpon>FormProveedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormReportes.resx">
       <DependentUpon>FormReportes.cs</DependentUpon>

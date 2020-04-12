@@ -21,7 +21,7 @@ namespace Logica
             return CategoriaDAL.CargarCategoriasOpcional();
         }
 
-        //Metodo para buscar  producto por id
+        //Metodo para buscar  categoria por id
         public static clasificacion DetalleCategoria(int id)
         {
             return CategoriaDAL.DetalleCategoria(id);

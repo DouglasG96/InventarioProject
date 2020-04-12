@@ -258,5 +258,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="vw_proveedor">
+      <EntityTypeMapping TypeName="inventarioModel.vw_proveedor">
+        <MappingFragment StoreEntitySet="vw_proveedor">
+          <ScalarProperty Name="tipo_proveedor" ColumnName="tipo_proveedor" />
+          <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="nrc" ColumnName="nrc" />
+          <ScalarProperty Name="nit" ColumnName="nit" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

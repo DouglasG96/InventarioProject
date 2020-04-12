@@ -351,3 +351,10 @@ C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventar
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Presentacion.csproj.CopyComplete
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.exe
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.pdb
+C:\Users\Cristian\Desktop\Proyecto ETPS3\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormBodega.resources
+C:\Users\Cristian\Desktop\Proyecto ETPS3\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormMovimientos.resources
+C:\Users\Cristian\Desktop\Proyecto ETPS3\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormSucursal.resources
+C:\Users\Cristian\Desktop\Proyecto ETPS3\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormTipoBodega.resources
+C:\Users\Cristian\Desktop\Proyecto ETPS3\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormUsuarios.resources
+C:\Users\Cristian\Desktop\Proyecto ETPS3\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormProveedor.resources
+C:\Users\Cristian\Desktop\Proyecto ETPS3\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormCrearProveedor.resources

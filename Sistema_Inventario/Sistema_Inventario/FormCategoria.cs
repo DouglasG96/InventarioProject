@@ -1,4 +1,5 @@
-﻿using Logica;
+﻿using DevComponents.DotNetBar.Metro;
+using Logica;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Sistema_Inventario
 {
-    public partial class FormCategoria : DevComponents.DotNetBar.Metro.MetroForm
+    public partial class FormCategoria : MetroForm
     {
         public FormCategoria()
         {

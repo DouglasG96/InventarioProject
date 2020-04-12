@@ -11,15 +11,43 @@ namespace Logica
     public class ProveedorBL
     {
         //metodo para cargar listado de proveedores
-        public static List<proveedores> CargarProveedores()
+        public static List<vw_proveedor> CargarProveedores()
         {
             return ProveedorDAL.CargarProveedores();
         }
 
         //metodo para cargar listado de proveedores item opcional
-        public static List<proveedores> CargarProveedoresOpcional()
+        public static List<vw_proveedor> CargarProveedoresOpcional()
         {
             return ProveedorDAL.CargarProveedoresOpcional();
+        }
+
+        //Metodo para buscar  proveedor por id
+        public static proveedores DetalleProveedor(int id)
+        {
+            return ProveedorDAL.DetalleProveedor(id);
+        }
+
+
+        //Metodo para buscar  proveedor por nombre
+        public static List<proveedores> BuscarProveedor(string nombre)
+        {
+            return ProveedorDAL.BuscarProveedor(nombre);
+        }
+
+        public static proveedores CrearProveedor(proveedores proveedor)
+        {
+            return ProveedorDAL.CrearProveedor(proveedor);
+        }
+
+        public static proveedores EditarProveedor(proveedores proveedor)
+        {
+            return ProveedorDAL.EditarProveedor(proveedor);
+        }
+
+        public static int EliminarProveedor(int id)
+        {
+            return ProveedorDAL.EliminarProveedor(id);
         }
     }
 }
