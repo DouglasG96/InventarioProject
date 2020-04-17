@@ -30,7 +30,7 @@ namespace Logica
 
 
         //Metodo para buscar  proveedor por nombre
-        public static List<proveedores> BuscarProveedor(string nombre)
+        public static List<vw_proveedor> BuscarProveedor(string nombre)
         {
             return ProveedorDAL.BuscarProveedor(nombre);
         }

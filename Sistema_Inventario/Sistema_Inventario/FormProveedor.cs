@@ -77,6 +77,16 @@ namespace Sistema_Inventario
                 MessageBox.Show("Error: " + error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnEditarProveedor_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = dtgProveedores.CurrentRow;
+            int id = Convert.ToInt32(row.Cells["Id"].Value);
+
+            FormEditarProveedor frmeditarproveedor = new FormEditarProveedor(id);
+            frmeditarproveedor.FormClosed += new FormClosedEventHandler(frmcrearproveedor_FormClosed);//para actualizar datos al cerrar formulario
+            frmeditarproveedor.ShowDialog();
+        }
     }
 
 }

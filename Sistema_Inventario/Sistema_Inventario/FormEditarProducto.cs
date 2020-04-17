@@ -55,6 +55,7 @@ namespace Sistema_Inventario
         private void btnEditar_Click(object sender, EventArgs e)
         {
             productos producto = new productos();
+
             producto.id_producto = idProducto;
             producto.nombre = txtNombreProducto.Text;
             producto.codigo = txtCodigoProducto.Text;

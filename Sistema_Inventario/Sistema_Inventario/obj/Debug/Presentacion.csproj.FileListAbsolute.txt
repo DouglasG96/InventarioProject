@@ -358,3 +358,4 @@ C:\Users\Cristian\Desktop\Proyecto ETPS3\InventarioProject\Sistema_Inventario\Si
 C:\Users\Cristian\Desktop\Proyecto ETPS3\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormUsuarios.resources
 C:\Users\Cristian\Desktop\Proyecto ETPS3\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormProveedor.resources
 C:\Users\Cristian\Desktop\Proyecto ETPS3\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormCrearProveedor.resources
+C:\Users\Cristian\Desktop\Proyecto ETPS3\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormEditarProveedor.resources

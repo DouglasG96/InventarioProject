@@ -44,12 +44,12 @@ namespace Datos
         }
 
         //Metodo para buscar  proveedor por nombre
-        public static List<proveedores> BuscarProveedor(string nombre)
+        public static List<vw_proveedor> BuscarProveedor(string nombre)
         {
             using (inventarioEntities bd = new inventarioEntities())
             {
 
-                var proveedor = bd.proveedores.Where(x => x.nombre.StartsWith(nombre)).ToList();
+                var proveedor = bd.vw_proveedor.Where(x => x.nombre.StartsWith(nombre)).ToList();
 
                 return proveedor;
             }
