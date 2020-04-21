@@ -1,6 +1,7 @@
 ﻿using Entidades;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,42 @@ namespace Datos
             using (inventarioEntities bd = new inventarioEntities())
             {
                 return bd.vw_producto.ToList();
+            }
+        }
+
+        public static List<productos> cargarProductosSelector()
+        {
+            using (inventarioEntities bd = new inventarioEntities())
+            {
+                List<productos> list = cargarProductosOpcional();
+
+                list.Insert(0, new productos() { id_producto = 0, nombre = "Seleccione" });
+
+                return list;
+            }
+        }
+
+        public static List<productos> cargarProductosOpcional()
+        {
+            using (inventarioEntities bd = new inventarioEntities())
+            {
+                List<productos> listaProductos = new List<productos>();
+                try
+                {
+                    bd.Database.Connection.Open();
+
+                    listaProductos = bd.productos.Where(indice => indice.estado == 1).ToList();
+                }
+                catch (Exception e)
+                {
+                    // Imprime error en la consola
+                    Debug.Write(e);
+                }
+                finally
+                {
+                    bd.Database.Connection.Close();
+                }
+                return listaProductos;
             }
         }
 

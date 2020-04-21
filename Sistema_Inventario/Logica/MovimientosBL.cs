@@ -16,6 +16,27 @@ namespace Logica
             return MovimientosDAL.cargarMovimientos();
         }
 
+        public static int consultarNumeroMovimientos()
+        {
+            return MovimientosDAL.consultarNumeroMovimientos();
+        }
+
+        public static String consultarCostoUnitario(String idProducto)
+        {
+            double costoUnitario = MovimientosDAL.consultarCostoUnitario(idProducto);
+            return costoUnitario.ToString();
+        }
+
+        public static double calcularCostoTotalConIva(double costo, double cantidad)
+        {
+            return (costo * cantidad);
+        }
+
+        public static double calcularCostoTotalSinIva(double costoTotalConIva)
+        {
+            return (costoTotalConIva / 1.13);
+        }
+
         /*
         //Metodo para buscar  producto por id
         public static vw_producto DetalleProducto(int id)

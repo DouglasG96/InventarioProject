@@ -30,18 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dtgMovimientos = new System.Windows.Forms.DataGridView();
-            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnBuscarProducto = new System.Windows.Forms.Button();
-            this.txtBuscarProducto = new System.Windows.Forms.TextBox();
-            this.lblProducto = new System.Windows.Forms.Label();
-            this.btnAgregarMovimiento = new System.Windows.Forms.Button();
-            this.btnEditarProducto = new System.Windows.Forms.Button();
-            this.rdbEntradas = new System.Windows.Forms.RadioButton();
-            this.rdbSalidas = new System.Windows.Forms.RadioButton();
-            this.rdbTraslados = new System.Windows.Forms.RadioButton();
-            this.rdbDescartes = new System.Windows.Forms.RadioButton();
-            this.rdbTodos = new System.Windows.Forms.RadioButton();
             this.id_movimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipo_movimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +40,15 @@
             this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbFiltro = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnBuscarMovimiento = new System.Windows.Forms.Button();
+            this.txtBuscarProducto = new System.Windows.Forms.TextBox();
+            this.lblProducto = new System.Windows.Forms.Label();
+            this.btnAgregarMovimiento = new System.Windows.Forms.Button();
+            this.btnEditarProducto = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgMovimientos)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -80,144 +77,6 @@
             this.dtgMovimientos.Size = new System.Drawing.Size(870, 251);
             this.dtgMovimientos.TabIndex = 0;
             this.dtgMovimientos.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgProductos_CellContentDoubleClick);
-            // 
-            // styleManager1
-            // 
-            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
-            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(163)))), ((int)(((byte)(26))))));
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.Color.White;
-            this.groupBox1.Controls.Add(this.rdbTodos);
-            this.groupBox1.Controls.Add(this.rdbDescartes);
-            this.groupBox1.Controls.Add(this.rdbTraslados);
-            this.groupBox1.Controls.Add(this.rdbSalidas);
-            this.groupBox1.Controls.Add(this.rdbEntradas);
-            this.groupBox1.Controls.Add(this.btnBuscarProducto);
-            this.groupBox1.Controls.Add(this.txtBuscarProducto);
-            this.groupBox1.Controls.Add(this.lblProducto);
-            this.groupBox1.ForeColor = System.Drawing.Color.Black;
-            this.groupBox1.Location = new System.Drawing.Point(126, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(636, 105);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Buscar Movimientos";
-            // 
-            // btnBuscarProducto
-            // 
-            this.btnBuscarProducto.BackColor = System.Drawing.Color.White;
-            this.btnBuscarProducto.ForeColor = System.Drawing.Color.Black;
-            this.btnBuscarProducto.Location = new System.Drawing.Point(393, 19);
-            this.btnBuscarProducto.Name = "btnBuscarProducto";
-            this.btnBuscarProducto.Size = new System.Drawing.Size(75, 33);
-            this.btnBuscarProducto.TabIndex = 2;
-            this.btnBuscarProducto.Text = "Buscar";
-            this.btnBuscarProducto.UseVisualStyleBackColor = false;
-            this.btnBuscarProducto.Click += new System.EventHandler(this.btnBuscarProducto_Click);
-            // 
-            // txtBuscarProducto
-            // 
-            this.txtBuscarProducto.BackColor = System.Drawing.Color.White;
-            this.txtBuscarProducto.ForeColor = System.Drawing.Color.Black;
-            this.txtBuscarProducto.Location = new System.Drawing.Point(274, 22);
-            this.txtBuscarProducto.Name = "txtBuscarProducto";
-            this.txtBuscarProducto.Size = new System.Drawing.Size(100, 20);
-            this.txtBuscarProducto.TabIndex = 1;
-            // 
-            // lblProducto
-            // 
-            this.lblProducto.AutoSize = true;
-            this.lblProducto.BackColor = System.Drawing.Color.White;
-            this.lblProducto.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProducto.ForeColor = System.Drawing.Color.Black;
-            this.lblProducto.Location = new System.Drawing.Point(206, 27);
-            this.lblProducto.Name = "lblProducto";
-            this.lblProducto.Size = new System.Drawing.Size(62, 15);
-            this.lblProducto.TabIndex = 0;
-            this.lblProducto.Text = "Producto:";
-            // 
-            // btnAgregarMovimiento
-            // 
-            this.btnAgregarMovimiento.BackColor = System.Drawing.Color.White;
-            this.btnAgregarMovimiento.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarMovimiento.ForeColor = System.Drawing.Color.Black;
-            this.btnAgregarMovimiento.Location = new System.Drawing.Point(274, 421);
-            this.btnAgregarMovimiento.Name = "btnAgregarMovimiento";
-            this.btnAgregarMovimiento.Size = new System.Drawing.Size(108, 39);
-            this.btnAgregarMovimiento.TabIndex = 2;
-            this.btnAgregarMovimiento.Text = "Agregar Movimiento";
-            this.btnAgregarMovimiento.UseVisualStyleBackColor = false;
-            this.btnAgregarMovimiento.Click += new System.EventHandler(this.btnAgregarMovimiento_Click);
-            // 
-            // btnEditarProducto
-            // 
-            this.btnEditarProducto.BackColor = System.Drawing.Color.White;
-            this.btnEditarProducto.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditarProducto.ForeColor = System.Drawing.Color.Black;
-            this.btnEditarProducto.Location = new System.Drawing.Point(443, 421);
-            this.btnEditarProducto.Name = "btnEditarProducto";
-            this.btnEditarProducto.Size = new System.Drawing.Size(101, 39);
-            this.btnEditarProducto.TabIndex = 3;
-            this.btnEditarProducto.Text = "Editar Movimiento";
-            this.btnEditarProducto.UseVisualStyleBackColor = false;
-            this.btnEditarProducto.Click += new System.EventHandler(this.btnEditarProducto_Click);
-            // 
-            // rdbEntradas
-            // 
-            this.rdbEntradas.AutoSize = true;
-            this.rdbEntradas.Location = new System.Drawing.Point(25, 73);
-            this.rdbEntradas.Name = "rdbEntradas";
-            this.rdbEntradas.Size = new System.Drawing.Size(67, 17);
-            this.rdbEntradas.TabIndex = 3;
-            this.rdbEntradas.TabStop = true;
-            this.rdbEntradas.Text = "Entradas";
-            this.rdbEntradas.UseVisualStyleBackColor = true;
-            // 
-            // rdbSalidas
-            // 
-            this.rdbSalidas.AutoSize = true;
-            this.rdbSalidas.Location = new System.Drawing.Point(148, 73);
-            this.rdbSalidas.Name = "rdbSalidas";
-            this.rdbSalidas.Size = new System.Drawing.Size(59, 17);
-            this.rdbSalidas.TabIndex = 4;
-            this.rdbSalidas.TabStop = true;
-            this.rdbSalidas.Text = "Salidas";
-            this.rdbSalidas.UseVisualStyleBackColor = true;
-            // 
-            // rdbTraslados
-            // 
-            this.rdbTraslados.AutoSize = true;
-            this.rdbTraslados.Location = new System.Drawing.Point(274, 73);
-            this.rdbTraslados.Name = "rdbTraslados";
-            this.rdbTraslados.Size = new System.Drawing.Size(71, 17);
-            this.rdbTraslados.TabIndex = 5;
-            this.rdbTraslados.TabStop = true;
-            this.rdbTraslados.Text = "Traslados";
-            this.rdbTraslados.UseVisualStyleBackColor = true;
-            // 
-            // rdbDescartes
-            // 
-            this.rdbDescartes.AutoSize = true;
-            this.rdbDescartes.Location = new System.Drawing.Point(393, 73);
-            this.rdbDescartes.Name = "rdbDescartes";
-            this.rdbDescartes.Size = new System.Drawing.Size(73, 17);
-            this.rdbDescartes.TabIndex = 6;
-            this.rdbDescartes.TabStop = true;
-            this.rdbDescartes.Text = "Descartes";
-            this.rdbDescartes.UseVisualStyleBackColor = true;
-            // 
-            // rdbTodos
-            // 
-            this.rdbTodos.AutoSize = true;
-            this.rdbTodos.Location = new System.Drawing.Point(531, 73);
-            this.rdbTodos.Name = "rdbTodos";
-            this.rdbTodos.Size = new System.Drawing.Size(55, 17);
-            this.rdbTodos.TabIndex = 7;
-            this.rdbTodos.TabStop = true;
-            this.rdbTodos.Text = "Todos";
-            this.rdbTodos.UseVisualStyleBackColor = true;
             // 
             // id_movimiento
             // 
@@ -295,6 +154,108 @@
             this.estado.Name = "estado";
             this.estado.ReadOnly = true;
             // 
+            // styleManager1
+            // 
+            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
+            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(163)))), ((int)(((byte)(26))))));
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.cmbFiltro);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.btnBuscarMovimiento);
+            this.groupBox1.Controls.Add(this.txtBuscarProducto);
+            this.groupBox1.Controls.Add(this.lblProducto);
+            this.groupBox1.ForeColor = System.Drawing.Color.Black;
+            this.groupBox1.Location = new System.Drawing.Point(126, -2);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(636, 119);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Buscar Movimientos";
+            // 
+            // cmbFiltro
+            // 
+            this.cmbFiltro.BackColor = System.Drawing.Color.White;
+            this.cmbFiltro.ForeColor = System.Drawing.Color.Black;
+            this.cmbFiltro.FormattingEnabled = true;
+            this.cmbFiltro.Location = new System.Drawing.Point(267, 69);
+            this.cmbFiltro.Name = "cmbFiltro";
+            this.cmbFiltro.Size = new System.Drawing.Size(121, 21);
+            this.cmbFiltro.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(156, 69);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(103, 15);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Filtrar Busqueda:";
+            // 
+            // btnBuscarMovimiento
+            // 
+            this.btnBuscarMovimiento.BackColor = System.Drawing.Color.White;
+            this.btnBuscarMovimiento.ForeColor = System.Drawing.Color.Black;
+            this.btnBuscarMovimiento.Location = new System.Drawing.Point(426, 37);
+            this.btnBuscarMovimiento.Name = "btnBuscarMovimiento";
+            this.btnBuscarMovimiento.Size = new System.Drawing.Size(75, 33);
+            this.btnBuscarMovimiento.TabIndex = 2;
+            this.btnBuscarMovimiento.Text = "Buscar";
+            this.btnBuscarMovimiento.UseVisualStyleBackColor = false;
+            this.btnBuscarMovimiento.Click += new System.EventHandler(this.btnBuscarProducto_Click);
+            // 
+            // txtBuscarProducto
+            // 
+            this.txtBuscarProducto.BackColor = System.Drawing.Color.White;
+            this.txtBuscarProducto.ForeColor = System.Drawing.Color.Black;
+            this.txtBuscarProducto.Location = new System.Drawing.Point(267, 21);
+            this.txtBuscarProducto.Name = "txtBuscarProducto";
+            this.txtBuscarProducto.Size = new System.Drawing.Size(121, 20);
+            this.txtBuscarProducto.TabIndex = 1;
+            // 
+            // lblProducto
+            // 
+            this.lblProducto.AutoSize = true;
+            this.lblProducto.BackColor = System.Drawing.Color.White;
+            this.lblProducto.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProducto.ForeColor = System.Drawing.Color.Black;
+            this.lblProducto.Location = new System.Drawing.Point(156, 27);
+            this.lblProducto.Name = "lblProducto";
+            this.lblProducto.Size = new System.Drawing.Size(62, 15);
+            this.lblProducto.TabIndex = 0;
+            this.lblProducto.Text = "Producto:";
+            // 
+            // btnAgregarMovimiento
+            // 
+            this.btnAgregarMovimiento.BackColor = System.Drawing.Color.White;
+            this.btnAgregarMovimiento.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarMovimiento.ForeColor = System.Drawing.Color.Black;
+            this.btnAgregarMovimiento.Location = new System.Drawing.Point(274, 421);
+            this.btnAgregarMovimiento.Name = "btnAgregarMovimiento";
+            this.btnAgregarMovimiento.Size = new System.Drawing.Size(108, 39);
+            this.btnAgregarMovimiento.TabIndex = 2;
+            this.btnAgregarMovimiento.Text = "Agregar Movimiento";
+            this.btnAgregarMovimiento.UseVisualStyleBackColor = false;
+            this.btnAgregarMovimiento.Click += new System.EventHandler(this.btnAgregarMovimiento_Click);
+            // 
+            // btnEditarProducto
+            // 
+            this.btnEditarProducto.BackColor = System.Drawing.Color.White;
+            this.btnEditarProducto.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarProducto.ForeColor = System.Drawing.Color.Black;
+            this.btnEditarProducto.Location = new System.Drawing.Point(443, 421);
+            this.btnEditarProducto.Name = "btnEditarProducto";
+            this.btnEditarProducto.Size = new System.Drawing.Size(101, 39);
+            this.btnEditarProducto.TabIndex = 3;
+            this.btnEditarProducto.Text = "Editar Movimiento";
+            this.btnEditarProducto.UseVisualStyleBackColor = false;
+            this.btnEditarProducto.Click += new System.EventHandler(this.btnEditarProducto_Click);
+            // 
             // FormMovimientos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -324,16 +285,11 @@
         private System.Windows.Forms.DataGridView dtgMovimientos;
         private DevComponents.DotNetBar.StyleManager styleManager1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnBuscarProducto;
+        private System.Windows.Forms.Button btnBuscarMovimiento;
         private System.Windows.Forms.TextBox txtBuscarProducto;
         private System.Windows.Forms.Label lblProducto;
         private System.Windows.Forms.Button btnAgregarMovimiento;
         private System.Windows.Forms.Button btnEditarProducto;
-        private System.Windows.Forms.RadioButton rdbTodos;
-        private System.Windows.Forms.RadioButton rdbDescartes;
-        private System.Windows.Forms.RadioButton rdbTraslados;
-        private System.Windows.Forms.RadioButton rdbSalidas;
-        private System.Windows.Forms.RadioButton rdbEntradas;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_movimiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipo_movimiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
@@ -344,5 +300,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;
+        private System.Windows.Forms.ComboBox cmbFiltro;
+        private System.Windows.Forms.Label label1;
     }
 }

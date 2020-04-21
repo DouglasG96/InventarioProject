@@ -97,6 +97,7 @@
     <Property Name="fecha_creacion" Type="DateTime" Precision="0" />
     <Property Name="hora_creacion" Type="Time" Precision="7" />
     <Property Name="estado" Type="Int32" />
+    <Property Name="costo_unitario_con_iva" Type="Decimal" Precision="18" Scale="4" />
     <NavigationProperty Name="detalles_movimientos" Relationship="Self.FK_detalles_movimientos_productos" FromRole="productos" ToRole="detalles_movimientos" />
     <NavigationProperty Name="sub_clasificaciones" Relationship="Self.FK_productos_sub_clasificaciones" FromRole="productos" ToRole="sub_clasificaciones" />
     <NavigationProperty Name="vigencia_promedio" Relationship="Self.fk_prouctos_viegncia_promedio" FromRole="productos" ToRole="vigencia_promedio" />
@@ -225,6 +226,20 @@
     <Property Name="estado" Type="Int32" />
     <NavigationProperty Name="productos" Relationship="Self.fk_prouctos_viegncia_promedio" FromRole="vigencia_promedio" ToRole="productos" />
   </EntityType>
+  <EntityType Name="vw_bodegas">
+    <Key>
+      <PropertyRef Name="id_bodega" />
+      <PropertyRef Name="nombre_bodega" />
+      <PropertyRef Name="id_sucursal" />
+      <PropertyRef Name="id_tipo_bodega" />
+    </Key>
+    <Property Name="id_bodega" Type="Int32" Nullable="false" />
+    <Property Name="nombre_bodega" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="sucursal" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="tipo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="id_sucursal" Type="Int32" Nullable="false" />
+    <Property Name="id_tipo_bodega" Type="Int32" Nullable="false" />
+  </EntityType>
   <EntityType Name="vw_login">
     <Key>
       <PropertyRef Name="id_usuario" />
@@ -239,6 +254,67 @@
     <Property Name="fecha_ultimo_ingreso" Type="DateTime" Precision="0" />
     <Property Name="hora_ultimo_ingreso" Type="Time" Precision="7" />
     <Property Name="id_rol" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vw_movimientos">
+    <Key>
+      <PropertyRef Name="estado" />
+      <PropertyRef Name="id_movimiento" />
+    </Key>
+    <Property Name="estado" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id_movimiento" Type="Int32" Nullable="false" />
+    <Property Name="tipo_movimiento" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="fecha" Type="DateTime" Precision="0" />
+    <Property Name="hora" Type="Time" Precision="7" />
+    <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="costo_total_con_iva" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="costo_total_sin_iva" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vw_producto">
+    <Key>
+      <PropertyRef Name="id_producto" />
+      <PropertyRef Name="nombre" />
+    </Key>
+    <Property Name="id_producto" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="dias" Type="Int32" />
+    <Property Name="codigo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="hora_creacion" Type="Time" Precision="7" />
+    <Property Name="fecha_creacion" Type="DateTime" Precision="0" />
+    <Property Name="proveedor" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="categoria" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="subcategoia" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vw_proveedor">
+    <Key>
+      <PropertyRef Name="id_proveedor" />
+    </Key>
+    <Property Name="id_proveedor" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="nit" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="nrc" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="correo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="razon_social" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="tipo_proveedor" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vw_sucursal">
+    <Key>
+      <PropertyRef Name="id_sucursal" />
+    </Key>
+    <Property Name="id_sucursal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sucursal" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="estado" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vw_tipo_movimiento">
+    <Key>
+      <PropertyRef Name="id_tipo_movimiento" />
+    </Key>
+    <Property Name="id_tipo_movimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tipo_movimiento" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="estado" Type="Int32" />
   </EntityType>
   <Association Name="FK_bitacora_movimientos">
     <End Role="movimientos" Type="Self.movimientos" Multiplicity="0..1" />
@@ -463,7 +539,13 @@
     <EntitySet Name="tipo_proveedor" EntityType="Self.tipo_proveedor" />
     <EntitySet Name="usuarios" EntityType="Self.usuarios" />
     <EntitySet Name="vigencia_promedio" EntityType="Self.vigencia_promedio" />
+    <EntitySet Name="vw_bodegas" EntityType="Self.vw_bodegas" />
     <EntitySet Name="vw_login" EntityType="Self.vw_login" />
+    <EntitySet Name="vw_movimientos" EntityType="Self.vw_movimientos" />
+    <EntitySet Name="vw_producto" EntityType="Self.vw_producto" />
+    <EntitySet Name="vw_proveedor" EntityType="Self.vw_proveedor" />
+    <EntitySet Name="vw_sucursal" EntityType="Self.vw_sucursal" />
+    <EntitySet Name="vw_tipo_movimiento" EntityType="Self.vw_tipo_movimiento" />
     <AssociationSet Name="FK_bitacora_movimientos" Association="Self.FK_bitacora_movimientos">
       <End Role="movimientos" EntitySet="movimientos" />
       <End Role="bitacora" EntitySet="bitacora" />
@@ -532,53 +614,5 @@
       <End Role="tipo_bodega" EntitySet="tipo_bodega" />
       <End Role="tipo_bodega_bodegas" EntitySet="tipo_bodega_bodegas" />
     </AssociationSet>
-    <EntitySet Name="vw_movimientos" EntityType="inventarioModel.vw_movimientos" />
-    <EntitySet Name="vw_producto" EntityType="inventarioModel.vw_producto" />
-    <EntitySet Name="vw_proveedor" EntityType="inventarioModel.vw_proveedor" />
   </EntityContainer>
-  <EntityType Name="vw_movimientos">
-    <Key>
-      <PropertyRef Name="estado" />
-      <PropertyRef Name="id_movimiento" />
-    </Key>
-    <Property Name="estado" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
-    <Property Name="id_movimiento" Type="Int32" Nullable="false" />
-    <Property Name="tipo_movimiento" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="fecha" Type="DateTime" Precision="0" />
-    <Property Name="hora" Type="Time" Precision="7" />
-    <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="costo_total_con_iva" Type="Decimal" Precision="10" Scale="2" />
-    <Property Name="costo_total_sin_iva" Type="Decimal" Precision="10" Scale="2" />
-    <Property Name="usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="vw_producto">
-    <Key>
-      <PropertyRef Name="id_producto" />
-      <PropertyRef Name="nombre" />
-    </Key>
-    <Property Name="id_producto" Type="Int32" Nullable="false" />
-    <Property Name="nombre" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="dias" Type="Int32" />
-    <Property Name="codigo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="hora_creacion" Type="Time" Precision="7" />
-    <Property Name="fecha_creacion" Type="DateTime" Precision="0" />
-    <Property Name="proveedor" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="categoria" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="subcategoia" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="vw_proveedor">
-    <Key>
-      <PropertyRef Name="id_proveedor" />
-    </Key>
-    <Property Name="id_proveedor" Type="Int32" Nullable="false" />
-    <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="nit" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="nrc" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="correo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="razon_social" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="tipo_proveedor" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-  </EntityType>
 </Schema>

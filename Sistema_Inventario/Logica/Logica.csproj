@@ -52,6 +52,7 @@
     <Compile Include="SubCategoriaBL.cs" />
     <Compile Include="SucursalBL.cs" />
     <Compile Include="TipoBodegasBL.cs" />
+    <Compile Include="TipoMovimientoBL.cs" />
     <Compile Include="TipoProveedorBL.cs" />
     <Compile Include="UsuarioBL.cs" />
     <Compile Include="VigenciaBL.cs" />

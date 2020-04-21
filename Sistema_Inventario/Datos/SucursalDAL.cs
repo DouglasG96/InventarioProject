@@ -9,6 +9,13 @@ namespace Datos
 {
     public class SucursalDAL
     {
+        public static List<vw_sucursal> DetalleSucursales()
+        {
+            using (inventarioEntities bd = new inventarioEntities())
+            {
+                return bd.vw_sucursal.ToList();
+            }
+        }
         public static List<sucursales> CargarSucursales()
         {
             using (inventarioEntities bd = new inventarioEntities())
@@ -29,7 +36,7 @@ namespace Datos
                 nuevasucursal.estado = sucursal.estado;
                 bd.sucursales.Add(nuevasucursal);
                 bd.SaveChanges();
-                
+
 
             }
 

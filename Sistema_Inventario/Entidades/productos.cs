@@ -32,6 +32,7 @@ namespace Entidades
         public Nullable<System.DateTime> fecha_creacion { get; set; }
         public Nullable<System.TimeSpan> hora_creacion { get; set; }
         public Nullable<int> estado { get; set; }
+        public Nullable<decimal> costo_unitario_con_iva { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<detalles_movimientos> detalles_movimientos { get; set; }

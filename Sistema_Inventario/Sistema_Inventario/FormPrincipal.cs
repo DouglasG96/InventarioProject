@@ -197,7 +197,7 @@ namespace Sistema_Inventario
         {
             if (formMovimientos == null)
             {
-                formMovimientos = new FormMovimientos();
+                formMovimientos = new FormMovimientos(nombreUsuario, idUsuario);
                 formMovimientos.FormClosed += new FormClosedEventHandler(formMovimientos_FormClosed);
                 formMovimientos.MdiParent = this;
                 formMovimientos.Show();
@@ -212,7 +212,7 @@ namespace Sistema_Inventario
         {
             if (formMovimientos == null)
             {
-                formMovimientos = new FormMovimientos();
+                formMovimientos = new FormMovimientos(nombreUsuario, idUsuario);
                 formMovimientos.FormClosed += new FormClosedEventHandler(formMovimientos_FormClosed);
                 formMovimientos.MdiParent = this;
                 formMovimientos.Show();
@@ -244,7 +244,7 @@ namespace Sistema_Inventario
         }
         private void frmproveedor_FormClosed(object sender, EventArgs e)
         {
-            formMovimientos = null;
+            frmproveedor = null;
         }
     }
 }

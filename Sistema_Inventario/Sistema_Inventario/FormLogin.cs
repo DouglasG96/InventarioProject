@@ -27,7 +27,7 @@ namespace Sistema_Inventario
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            
+
             usuario = txtUsuario.Text.Trim();
             clave = txtContrasena.Text.Trim();
             idUsuario = loginBL.validarCampos(usuario, clave);
@@ -38,6 +38,13 @@ namespace Sistema_Inventario
             else if (idUsuario == 0)
             {
                 MessageBox.Show("Datos Inconrrectos", "Error al iniciar sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtUsuario.Clear();
+                txtContrasena.Clear();
+                txtUsuario.Focus();
+            }
+            else if (idUsuario < 0)
+            {
+                MessageBox.Show("Error de conexión", "Error al conectar a la base de datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtUsuario.Clear();
                 txtContrasena.Clear();
                 txtUsuario.Focus();

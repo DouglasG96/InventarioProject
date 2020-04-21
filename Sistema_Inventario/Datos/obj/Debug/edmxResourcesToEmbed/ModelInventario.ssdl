@@ -84,6 +84,7 @@
     <Property Name="fecha_creacion" Type="date" />
     <Property Name="hora_creacion" Type="time" Precision="7" />
     <Property Name="estado" Type="int" />
+    <Property Name="costo_unitario_con_iva" Type="decimal" Precision="18" Scale="4" />
   </EntityType>
   <EntityType Name="proveedor_producto">
     <Key>
@@ -192,6 +193,22 @@
     <Property Name="estado" Type="int" />
   </EntityType>
   <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'inventario.dbo.vw_bodegas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vw_bodegas">
+    <Key>
+      <PropertyRef Name="id_bodega" />
+      <PropertyRef Name="nombre_bodega" />
+      <PropertyRef Name="id_sucursal" />
+      <PropertyRef Name="id_tipo_bodega" />
+    </Key>
+    <Property Name="id_bodega" Type="int" Nullable="false" />
+    <Property Name="nombre_bodega" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="sucursal" Type="nvarchar" MaxLength="100" />
+    <Property Name="tipo" Type="nvarchar" MaxLength="250" />
+    <Property Name="id_sucursal" Type="int" Nullable="false" />
+    <Property Name="id_tipo_bodega" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'inventario.dbo.vw_login' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
   <EntityType Name="vw_login">
     <Key>
@@ -258,6 +275,26 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_proveedor' no tiene defini
     <Property Name="correo" Type="nvarchar" MaxLength="250" />
     <Property Name="razon_social" Type="nvarchar" MaxLength="250" />
     <Property Name="tipo_proveedor" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'inventario.dbo.vw_sucursal' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vw_sucursal">
+    <Key>
+      <PropertyRef Name="id_sucursal" />
+    </Key>
+    <Property Name="id_sucursal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sucursal" Type="nvarchar" MaxLength="100" />
+    <Property Name="estado" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'inventario.dbo.vw_tipo_movimiento' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vw_tipo_movimiento">
+    <Key>
+      <PropertyRef Name="id_tipo_movimiento" />
+    </Key>
+    <Property Name="id_tipo_movimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tipo_movimiento" Type="nvarchar" MaxLength="250" />
+    <Property Name="estado" Type="int" />
   </EntityType>
   <Association Name="FK_bitacora_movimientos">
     <End Role="movimientos" Type="Self.movimientos" Multiplicity="0..1" />
@@ -482,6 +519,16 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_proveedor' no tiene defini
     <EntitySet Name="tipo_proveedor" EntityType="Self.tipo_proveedor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="vigencia_promedio" EntityType="Self.vigencia_promedio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vw_bodegas" EntityType="Self.vw_bodegas" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_bodegas].[id_bodega] AS [id_bodega], 
+    [vw_bodegas].[nombre_bodega] AS [nombre_bodega], 
+    [vw_bodegas].[sucursal] AS [sucursal], 
+    [vw_bodegas].[tipo] AS [tipo], 
+    [vw_bodegas].[id_sucursal] AS [id_sucursal], 
+    [vw_bodegas].[id_tipo_bodega] AS [id_tipo_bodega]
+    FROM [dbo].[vw_bodegas] AS [vw_bodegas]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="vw_login" EntityType="Self.vw_login" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [vw_login].[id_usuario] AS [id_usuario], 
@@ -535,6 +582,20 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_proveedor' no tiene defini
     [vw_proveedor].[razon_social] AS [razon_social], 
     [vw_proveedor].[tipo_proveedor] AS [tipo_proveedor]
     FROM [dbo].[vw_proveedor] AS [vw_proveedor]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_sucursal" EntityType="Self.vw_sucursal" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_sucursal].[id_sucursal] AS [id_sucursal], 
+    [vw_sucursal].[sucursal] AS [sucursal], 
+    [vw_sucursal].[estado] AS [estado]
+    FROM [dbo].[vw_sucursal] AS [vw_sucursal]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_tipo_movimiento" EntityType="Self.vw_tipo_movimiento" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_tipo_movimiento].[id_tipo_movimiento] AS [id_tipo_movimiento], 
+    [vw_tipo_movimiento].[tipo_movimiento] AS [tipo_movimiento], 
+    [vw_tipo_movimiento].[estado] AS [estado]
+    FROM [dbo].[vw_tipo_movimiento] AS [vw_tipo_movimiento]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK_bitacora_movimientos" Association="Self.FK_bitacora_movimientos">
       <End Role="movimientos" EntitySet="movimientos" />

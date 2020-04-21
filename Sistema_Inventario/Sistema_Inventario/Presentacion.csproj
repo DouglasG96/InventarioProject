@@ -90,6 +90,12 @@
     <Compile Include="FormCrearCategoria.Designer.cs">
       <DependentUpon>FormCrearCategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCrearMovimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCrearMovimiento.Designer.cs">
+      <DependentUpon>FormCrearMovimiento.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCrearProducto.cs">
       <SubType>Form</SubType>
     </Compile>

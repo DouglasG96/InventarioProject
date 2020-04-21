@@ -8,6 +8,74 @@ namespace Datos
 {
     public class BodegaDAL
     {
+        public static List<vw_bodegas> CargarBodegas()
+        {
+            using (inventarioEntities bd = new inventarioEntities())
+            {
+                return bd.vw_bodegas.ToList();
+            }
+        }
+
+        public static List<bodegas> CargarBodegasSelector()
+        {
+            using (inventarioEntities bd = new inventarioEntities())
+            {
+                List<bodegas> list = CargarBodegasOpcional();
+
+                list.Insert(0, new bodegas() { id_bodega = 0, nombre_bodega = "Seleccione" });
+
+                return list;
+            }
+        }
+
+        public static List<bodegas> CargarBodegasOpcional()
+        {
+            using (inventarioEntities bd = new inventarioEntities())
+            {
+                return bd.bodegas.ToList();
+            }
+        }
+
+        public static List<bodegas> BuscarBodega(string nombre)
+        {
+            using (inventarioEntities bd = new inventarioEntities())
+            {
+                //var producto = (from p in bd.productos
+                //              where p.nombre == nombre
+                //              select p).ToList();
+                var bodega = bd.bodegas.Where(x => x.nombre_bodega.StartsWith(nombre)).ToList();
+
+                return bodega;
+            }
+        }
+
+        public static vw_bodegas DetalleBodega(int id)
+        {
+            using (inventarioEntities bd = new inventarioEntities())
+            {
+                var bodega = bd.vw_bodegas.First(x => x.id_bodega == id);
+
+                return bodega;
+            }
+        }
+
+        public static bodegas ObtenerIdBodega(int id)
+        {
+            bodegas bod = new bodegas();
+            using (inventarioEntities bd = new inventarioEntities())
+            {
+                var bodega = bd.bodegas.First(x => x.id_bodega == id);
+
+                bodega.id_bodega = bodega.id_bodega;
+                bodega.nombre_bodega = bodega.nombre_bodega;
+                bodega.id_sucursal = bodega.id_sucursal;
+                bodega.id_tipo_bodega = bodega.id_tipo_bodega;
+                bodega.estado = bodega.estado;
+
+                return bodega;
+            }
+        }
+
         public static bodegas CrearBodega(bodegas bodegas)
         {
             using (inventarioEntities bd = new inventarioEntities())
@@ -44,17 +112,38 @@ namespace Datos
 
             return tipobodegasbodegas;
         }
-        /*public static List<bodegas> BuscarMaximo()
+        public static bodegas EditarBodega(bodegas bodegat)
         {
             using (inventarioEntities bd = new inventarioEntities())
             {
-                var LastRecord = (from c in bd.bodegas
-                                  select c).Max();
 
-                return LastRecord;
+                var bg = bd.bodegas.First(x => x.id_bodega == bodegat.id_bodega);//obtenemos registro por medio de id
+
+                bg.id_bodega = bodegat.id_bodega;
+                bg.nombre_bodega = bodegat.nombre_bodega;
+                bg.id_sucursal = bodegat.id_sucursal;
+                bg.id_tipo_bodega = bodegat.id_tipo_bodega;
+
+                bd.Entry(bg).State = System.Data.Entity.EntityState.Modified;
+                bd.SaveChanges();
             }
+            return bodegat;
+        }
 
-           
-        }*/
+        public static int EliminarBodega(int id)
+        {
+            using (inventarioEntities bd = new inventarioEntities())
+            {
+                //var prod = (from p in bd.productos
+                //              where p.id_producto == id
+                //              select p).FirstOrDefault();
+
+                var bod = bd.bodegas.First(x => x.id_bodega == id);//obtenemos registro por medio de id
+                bod.estado = 0;
+                bd.Entry(bod).State = System.Data.Entity.EntityState.Modified;
+                bd.SaveChanges();
+            }
+            return id;
+        }
     }
 }

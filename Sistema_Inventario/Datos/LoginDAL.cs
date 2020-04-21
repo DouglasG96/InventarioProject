@@ -20,29 +20,43 @@ namespace Datos
 
         public int validarCredenciales(String usuario, String clave)
         {
-            //Consulta solo usuarios activos y sin sesion iniciada
-            var datosUsuarios = bd.vw_login.ToArray();
-            for (int i = 0; i < datosUsuarios.Count(); i++)
+            try
             {
-                //Debug.Write(i);
-                if (datosUsuarios[i].usuario == usuario && datosUsuarios[i].clave == clave)
+                bd.Database.Connection.Open();
+                //Consulta solo usuarios activos y sin sesion iniciada
+                var datosUsuarios = bd.vw_login.ToArray();
+                for (int i = 0; i < datosUsuarios.Count(); i++)
                 {
-                    if (datosUsuarios[i].estado_sesion == 0)
+                    //Debug.Write(i);
+                    if (datosUsuarios[i].usuario == usuario && datosUsuarios[i].clave == clave)
                     {
-                        //Datos Correctos
-                        banderaCredenciales = this.actualizarEstadoSesion(datosUsuarios[i].id_usuario); ;
-                        // Finaliza el bucle y la busqueda ya que encontro un registro que coincide
-                        break;
+                        if (datosUsuarios[i].estado_sesion == 0)
+                        {
+                            //Datos Correctos
+                            banderaCredenciales = this.actualizarEstadoSesion(datosUsuarios[i].id_usuario); ;
+                            // Finaliza el bucle y la busqueda ya que encontro un registro que coincide
+                            break;
+                        }
                     }
-                }
-                else
-                {
-                    //Datos incorrectos o está inactivo o ya ha iniciado sesión
-                    banderaCredenciales = 0;
-                }
+                    else
+                    {
+                        //Datos incorrectos o está inactivo o ya ha iniciado sesión
+                        banderaCredenciales = 0;
+                    }
 
+                }
+                return banderaCredenciales;
             }
-            return banderaCredenciales;
+            catch (Exception e)
+            {
+                // Imprime error en la consola
+                Debug.Write(e);
+            }
+            finally
+            {
+                bd.Database.Connection.Close();
+            }
+            return banderaCredenciales = -1;
         }
 
         //metodo para actualizar estado de la sesión

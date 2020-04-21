@@ -101,6 +101,9 @@
     <Compile Include="vigencia_promedio.cs">
       <DependentUpon>ModelInventario.tt</DependentUpon>
     </Compile>
+    <Compile Include="vw_bodegas.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
     <Compile Include="vw_login.cs">
       <DependentUpon>ModelInventario.tt</DependentUpon>
     </Compile>
@@ -111,6 +114,12 @@
       <DependentUpon>ModelInventario.tt</DependentUpon>
     </Compile>
     <Compile Include="vw_proveedor.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_sucursal.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_tipo_movimiento.cs">
       <DependentUpon>ModelInventario.tt</DependentUpon>
     </Compile>
   </ItemGroup>
