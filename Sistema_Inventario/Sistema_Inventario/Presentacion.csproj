@@ -197,6 +197,9 @@
     <EmbeddedResource Include="FormCrearCategoria.resx">
       <DependentUpon>FormCrearCategoria.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormCrearMovimiento.resx">
+      <DependentUpon>FormCrearMovimiento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormCrearProducto.resx">
       <DependentUpon>FormCrearProducto.cs</DependentUpon>
     </EmbeddedResource>

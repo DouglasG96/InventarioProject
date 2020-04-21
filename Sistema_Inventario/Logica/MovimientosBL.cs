@@ -21,11 +21,7 @@ namespace Logica
             return MovimientosDAL.consultarNumeroMovimientos();
         }
 
-        public static String consultarCostoUnitario(String idProducto)
-        {
-            double costoUnitario = MovimientosDAL.consultarCostoUnitario(idProducto);
-            return costoUnitario.ToString();
-        }
+
 
         public static double calcularCostoTotalConIva(double costo, double cantidad)
         {

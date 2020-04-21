@@ -10,6 +10,8 @@ namespace Datos
 {
     public class ProductosDAL
     {
+        static int idProducto = 0;
+
         //metodo para cargar listado de productos
         public static List<vw_producto> CargarProductos()
         {
@@ -159,6 +161,24 @@ namespace Datos
                 bd.SaveChanges();
             }
             return id;
+        }
+
+        public static productos consultarDatosProducto(String identificadorProducto)
+        {
+            productos objProductos = new productos();
+            try
+            {
+                using (inventarioEntities bd = new inventarioEntities())
+                {
+                    idProducto = Convert.ToInt32(identificadorProducto);
+                    objProductos = bd.productos.First(indice => indice.id_producto == idProducto && indice.estado == 1);
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.Write(e.Message);
+            }
+            return objProductos;
         }
     }
 }

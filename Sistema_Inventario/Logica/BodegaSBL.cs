@@ -53,6 +53,16 @@ namespace Logica
         {
             return BodegaDAL.EliminarBodega(id);
         }
+
+        public static tipo_bodega_bodegas consultarDatosBodega(String idBodega)
+        {
+            return BodegaDAL.consultarDatosBodega(idBodega);
+        }
+
+        public static bool calcularCapacidadMaxima(double cantidadMovimiento, double cantidadCapacidadMaxima, double cantidadCapacidadActual)
+        {
+            return ((cantidadMovimiento + cantidadCapacidadActual) > cantidadCapacidadMaxima) ? true : false;
+        }
     }
 }
 

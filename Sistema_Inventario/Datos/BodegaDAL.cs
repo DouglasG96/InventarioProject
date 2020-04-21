@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ namespace Datos
 {
     public class BodegaDAL
     {
+        static int idBodega = 0;
         public static List<vw_bodegas> CargarBodegas()
         {
             using (inventarioEntities bd = new inventarioEntities())
@@ -144,6 +146,39 @@ namespace Datos
                 bd.SaveChanges();
             }
             return id;
+        }
+
+        public static tipo_bodega_bodegas consultarDatosBodega(String pidBodega)
+        {
+            tipo_bodega_bodegas lista = new tipo_bodega_bodegas();
+            if(pidBodega != "")
+            {
+                try
+                {
+                    idBodega = Convert.ToInt32(pidBodega);
+                    if(idBodega > 0)
+                    {
+                        using (inventarioEntities bd = new inventarioEntities())
+                        {
+                            lista = bd.tipo_bodega_bodegas.First(indice => indice.id_bodega == idBodega);
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    Debug.Write(e.Message);
+                }
+
+            }
+            return lista;
+        }
+
+        public static List<tipo_bodega_bodegas> cargarTipoBodegaBodegas()
+        {
+            using (inventarioEntities bd = new inventarioEntities())
+            {
+                return bd.tipo_bodega_bodegas.ToList();
+            }
         }
     }
 }

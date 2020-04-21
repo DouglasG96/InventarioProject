@@ -10,9 +10,7 @@ namespace Datos
 {
     public class MovimientosDAL
     {
-        static int idProducto = 0;
-        static double costoUnitario = 0.0000;
-
+        
         //metodo para cargar listado de productos
         public static List<vw_movimientos> cargarMovimientos()
         {
@@ -30,23 +28,7 @@ namespace Datos
             }
         }
 
-        public static double consultarCostoUnitario(String identificadorProducto)
-        {
-            try
-            {
-                using (inventarioEntities bd = new inventarioEntities())
-                {
-                    idProducto = Convert.ToInt32(identificadorProducto);
-                    var productos = bd.productos.First(indice => indice.id_producto == idProducto && indice.estado == 1);
-                    costoUnitario = Convert.ToDouble(productos.costo_unitario_con_iva);
-                }
-            }
-            catch (Exception e)
-            {
-                Debug.Write(e.Message);
-            }
-            return costoUnitario;
-        }
+
 
         /*
         //Metodo para buscar  producto por id

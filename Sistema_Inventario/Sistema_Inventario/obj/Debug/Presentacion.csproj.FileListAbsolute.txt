@@ -362,3 +362,4 @@ C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventar
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Presentacion.csproj.CopyComplete
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.exe
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.pdb
+C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormCrearMovimiento.resources

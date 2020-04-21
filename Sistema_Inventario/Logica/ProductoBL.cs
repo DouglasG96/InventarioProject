@@ -52,5 +52,10 @@ namespace Logica
         {
             return ProductosDAL.EliminarProducto(id);
         }
+
+        public static productos consultarDatosProducto(String idProducto)
+        {
+            return ProductosDAL.consultarDatosProducto(idProducto);
+        }
     }
 }
