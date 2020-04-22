@@ -30,6 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtTemperaturaPromedio = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtCapacidadActual = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtCapacidadMaxima = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtCostoUnitario = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.nudCantidad = new System.Windows.Forms.NumericUpDown();
             this.txtIdUsuario = new System.Windows.Forms.TextBox();
             this.cmbProveedor = new System.Windows.Forms.ComboBox();
@@ -56,29 +64,21 @@
             this.btnAgregarDetalleMovimiento = new System.Windows.Forms.Button();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dgvDetallesMovimientos = new System.Windows.Forms.DataGridView();
-            this.id_detalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_movimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_bodega = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fecha_vencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lote = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costo_unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costo_unitario_promedio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.existencia_anterior = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.existencia_total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCrearMovimiento = new System.Windows.Forms.Button();
             this.btnCancelarMovimiento = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtCostoUnitario = new System.Windows.Forms.TextBox();
-            this.txtCapacidadMaxima = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtCapacidadActual = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtTemperaturaPromedio = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
+            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.existencia_total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.existencia_anterior = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costo_unitario_promedio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costo_unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lote = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha_vencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_bodega = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_movimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_detalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvDetallesMovimientos = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -127,6 +127,94 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Encabezado";
             // 
+            // txtTemperaturaPromedio
+            // 
+            this.txtTemperaturaPromedio.BackColor = System.Drawing.Color.White;
+            this.txtTemperaturaPromedio.ForeColor = System.Drawing.Color.Black;
+            this.txtTemperaturaPromedio.Location = new System.Drawing.Point(453, 168);
+            this.txtTemperaturaPromedio.Name = "txtTemperaturaPromedio";
+            this.txtTemperaturaPromedio.ReadOnly = true;
+            this.txtTemperaturaPromedio.Size = new System.Drawing.Size(82, 20);
+            this.txtTemperaturaPromedio.TabIndex = 39;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.White;
+            this.label14.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(309, 173);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(141, 15);
+            this.label14.TabIndex = 38;
+            this.label14.Text = "Temperatura Promedio:";
+            // 
+            // txtCapacidadActual
+            // 
+            this.txtCapacidadActual.BackColor = System.Drawing.Color.White;
+            this.txtCapacidadActual.ForeColor = System.Drawing.Color.Black;
+            this.txtCapacidadActual.Location = new System.Drawing.Point(453, 103);
+            this.txtCapacidadActual.Name = "txtCapacidadActual";
+            this.txtCapacidadActual.ReadOnly = true;
+            this.txtCapacidadActual.Size = new System.Drawing.Size(82, 20);
+            this.txtCapacidadActual.TabIndex = 37;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.White;
+            this.label13.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Black;
+            this.label13.Location = new System.Drawing.Point(309, 108);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(109, 15);
+            this.label13.TabIndex = 36;
+            this.label13.Text = "Capacidad Actual:";
+            // 
+            // txtCapacidadMaxima
+            // 
+            this.txtCapacidadMaxima.BackColor = System.Drawing.Color.White;
+            this.txtCapacidadMaxima.ForeColor = System.Drawing.Color.Black;
+            this.txtCapacidadMaxima.Location = new System.Drawing.Point(453, 34);
+            this.txtCapacidadMaxima.Name = "txtCapacidadMaxima";
+            this.txtCapacidadMaxima.ReadOnly = true;
+            this.txtCapacidadMaxima.Size = new System.Drawing.Size(82, 20);
+            this.txtCapacidadMaxima.TabIndex = 35;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.White;
+            this.label12.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(309, 36);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(118, 15);
+            this.label12.TabIndex = 34;
+            this.label12.Text = "Capacidad Máxima:";
+            // 
+            // txtCostoUnitario
+            // 
+            this.txtCostoUnitario.BackColor = System.Drawing.Color.White;
+            this.txtCostoUnitario.ForeColor = System.Drawing.Color.Black;
+            this.txtCostoUnitario.Location = new System.Drawing.Point(699, 106);
+            this.txtCostoUnitario.Name = "txtCostoUnitario";
+            this.txtCostoUnitario.ReadOnly = true;
+            this.txtCostoUnitario.Size = new System.Drawing.Size(82, 20);
+            this.txtCostoUnitario.TabIndex = 33;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.White;
+            this.label11.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(562, 109);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(90, 15);
+            this.label11.TabIndex = 32;
+            this.label11.Text = "Costo Unitario:";
+            // 
             // nudCantidad
             // 
             this.nudCantidad.BackColor = System.Drawing.Color.White;
@@ -147,7 +235,7 @@
             // 
             this.txtIdUsuario.BackColor = System.Drawing.Color.White;
             this.txtIdUsuario.ForeColor = System.Drawing.Color.Black;
-            this.txtIdUsuario.Location = new System.Drawing.Point(977, 244);
+            this.txtIdUsuario.Location = new System.Drawing.Point(1192, 288);
             this.txtIdUsuario.Name = "txtIdUsuario";
             this.txtIdUsuario.ReadOnly = true;
             this.txtIdUsuario.Size = new System.Drawing.Size(49, 20);
@@ -158,7 +246,7 @@
             this.cmbProveedor.BackColor = System.Drawing.Color.White;
             this.cmbProveedor.ForeColor = System.Drawing.Color.Black;
             this.cmbProveedor.FormattingEnabled = true;
-            this.cmbProveedor.Location = new System.Drawing.Point(977, 170);
+            this.cmbProveedor.Location = new System.Drawing.Point(1026, 168);
             this.cmbProveedor.Name = "cmbProveedor";
             this.cmbProveedor.Size = new System.Drawing.Size(120, 21);
             this.cmbProveedor.TabIndex = 29;
@@ -239,7 +327,7 @@
             // 
             this.txtUsuario.BackColor = System.Drawing.Color.White;
             this.txtUsuario.ForeColor = System.Drawing.Color.Black;
-            this.txtUsuario.Location = new System.Drawing.Point(977, 106);
+            this.txtUsuario.Location = new System.Drawing.Point(1026, 103);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.ReadOnly = true;
             this.txtUsuario.Size = new System.Drawing.Size(155, 20);
@@ -269,7 +357,7 @@
             // 
             this.txtFecha.BackColor = System.Drawing.Color.White;
             this.txtFecha.ForeColor = System.Drawing.Color.Black;
-            this.txtFecha.Location = new System.Drawing.Point(977, 28);
+            this.txtFecha.Location = new System.Drawing.Point(1026, 30);
             this.txtFecha.Name = "txtFecha";
             this.txtFecha.ReadOnly = true;
             this.txtFecha.Size = new System.Drawing.Size(118, 20);
@@ -421,88 +509,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalle";
             // 
-            // dgvDetallesMovimientos
-            // 
-            this.dgvDetallesMovimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDetallesMovimientos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id_detalle,
-            this.id_movimiento,
-            this.id_producto,
-            this.id_bodega,
-            this.fecha_vencimiento,
-            this.lote,
-            this.cantidad,
-            this.costo_unitario,
-            this.costo_unitario_promedio,
-            this.existencia_anterior,
-            this.existencia_total,
-            this.estado});
-            this.dgvDetallesMovimientos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDetallesMovimientos.Location = new System.Drawing.Point(3, 16);
-            this.dgvDetallesMovimientos.Name = "dgvDetallesMovimientos";
-            this.dgvDetallesMovimientos.Size = new System.Drawing.Size(1244, 276);
-            this.dgvDetallesMovimientos.TabIndex = 0;
-            // 
-            // id_detalle
-            // 
-            this.id_detalle.HeaderText = "Numero de detalle";
-            this.id_detalle.Name = "id_detalle";
-            // 
-            // id_movimiento
-            // 
-            this.id_movimiento.HeaderText = "Número de Movimiento";
-            this.id_movimiento.Name = "id_movimiento";
-            // 
-            // id_producto
-            // 
-            this.id_producto.HeaderText = "Producto";
-            this.id_producto.Name = "id_producto";
-            // 
-            // id_bodega
-            // 
-            this.id_bodega.HeaderText = "Bodega";
-            this.id_bodega.Name = "id_bodega";
-            // 
-            // fecha_vencimiento
-            // 
-            this.fecha_vencimiento.HeaderText = "Fecha de Vencimiento";
-            this.fecha_vencimiento.Name = "fecha_vencimiento";
-            // 
-            // lote
-            // 
-            this.lote.HeaderText = "Número de Lote";
-            this.lote.Name = "lote";
-            // 
-            // cantidad
-            // 
-            this.cantidad.HeaderText = "Cantidad";
-            this.cantidad.Name = "cantidad";
-            // 
-            // costo_unitario
-            // 
-            this.costo_unitario.HeaderText = "Costo Unitario";
-            this.costo_unitario.Name = "costo_unitario";
-            // 
-            // costo_unitario_promedio
-            // 
-            this.costo_unitario_promedio.HeaderText = "Costo Unitario Promedio";
-            this.costo_unitario_promedio.Name = "costo_unitario_promedio";
-            // 
-            // existencia_anterior
-            // 
-            this.existencia_anterior.HeaderText = "Existencia Anterior";
-            this.existencia_anterior.Name = "existencia_anterior";
-            // 
-            // existencia_total
-            // 
-            this.existencia_total.HeaderText = "Existencia Total";
-            this.existencia_total.Name = "existencia_total";
-            // 
-            // estado
-            // 
-            this.estado.HeaderText = "Estado";
-            this.estado.Name = "estado";
-            // 
             // btnCrearMovimiento
             // 
             this.btnCrearMovimiento.BackColor = System.Drawing.Color.White;
@@ -529,93 +535,87 @@
             this.btnCancelarMovimiento.UseVisualStyleBackColor = false;
             this.btnCancelarMovimiento.Click += new System.EventHandler(this.btnCancelarMovimiento_Click);
             // 
-            // label11
+            // estado
             // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.White;
-            this.label11.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(562, 109);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(90, 15);
-            this.label11.TabIndex = 32;
-            this.label11.Text = "Costo Unitario:";
+            this.estado.HeaderText = "Estado";
+            this.estado.Name = "estado";
             // 
-            // txtCostoUnitario
+            // existencia_total
             // 
-            this.txtCostoUnitario.BackColor = System.Drawing.Color.White;
-            this.txtCostoUnitario.ForeColor = System.Drawing.Color.Black;
-            this.txtCostoUnitario.Location = new System.Drawing.Point(699, 106);
-            this.txtCostoUnitario.Name = "txtCostoUnitario";
-            this.txtCostoUnitario.ReadOnly = true;
-            this.txtCostoUnitario.Size = new System.Drawing.Size(82, 20);
-            this.txtCostoUnitario.TabIndex = 33;
+            this.existencia_total.HeaderText = "Existencia Total";
+            this.existencia_total.Name = "existencia_total";
             // 
-            // txtCapacidadMaxima
+            // existencia_anterior
             // 
-            this.txtCapacidadMaxima.BackColor = System.Drawing.Color.White;
-            this.txtCapacidadMaxima.ForeColor = System.Drawing.Color.Black;
-            this.txtCapacidadMaxima.Location = new System.Drawing.Point(453, 34);
-            this.txtCapacidadMaxima.Name = "txtCapacidadMaxima";
-            this.txtCapacidadMaxima.ReadOnly = true;
-            this.txtCapacidadMaxima.Size = new System.Drawing.Size(82, 20);
-            this.txtCapacidadMaxima.TabIndex = 35;
+            this.existencia_anterior.HeaderText = "Existencia Anterior";
+            this.existencia_anterior.Name = "existencia_anterior";
             // 
-            // label12
+            // costo_unitario_promedio
             // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.White;
-            this.label12.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(309, 36);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(118, 15);
-            this.label12.TabIndex = 34;
-            this.label12.Text = "Capacidad Máxima:";
+            this.costo_unitario_promedio.HeaderText = "Costo Unitario Promedio";
+            this.costo_unitario_promedio.Name = "costo_unitario_promedio";
             // 
-            // txtCapacidadActual
+            // costo_unitario
             // 
-            this.txtCapacidadActual.BackColor = System.Drawing.Color.White;
-            this.txtCapacidadActual.ForeColor = System.Drawing.Color.Black;
-            this.txtCapacidadActual.Location = new System.Drawing.Point(453, 103);
-            this.txtCapacidadActual.Name = "txtCapacidadActual";
-            this.txtCapacidadActual.ReadOnly = true;
-            this.txtCapacidadActual.Size = new System.Drawing.Size(82, 20);
-            this.txtCapacidadActual.TabIndex = 37;
+            this.costo_unitario.HeaderText = "Costo Unitario";
+            this.costo_unitario.Name = "costo_unitario";
             // 
-            // label13
+            // cantidad
             // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.White;
-            this.label13.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(309, 108);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(109, 15);
-            this.label13.TabIndex = 36;
-            this.label13.Text = "Capacidad Actual:";
+            this.cantidad.HeaderText = "Cantidad";
+            this.cantidad.Name = "cantidad";
             // 
-            // txtTemperaturaPromedio
+            // lote
             // 
-            this.txtTemperaturaPromedio.BackColor = System.Drawing.Color.White;
-            this.txtTemperaturaPromedio.ForeColor = System.Drawing.Color.Black;
-            this.txtTemperaturaPromedio.Location = new System.Drawing.Point(453, 168);
-            this.txtTemperaturaPromedio.Name = "txtTemperaturaPromedio";
-            this.txtTemperaturaPromedio.ReadOnly = true;
-            this.txtTemperaturaPromedio.Size = new System.Drawing.Size(82, 20);
-            this.txtTemperaturaPromedio.TabIndex = 39;
+            this.lote.HeaderText = "Número de Lote";
+            this.lote.Name = "lote";
             // 
-            // label14
+            // fecha_vencimiento
             // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.White;
-            this.label14.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(309, 173);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(141, 15);
-            this.label14.TabIndex = 38;
-            this.label14.Text = "Temperatura Promedio:";
+            this.fecha_vencimiento.HeaderText = "Fecha de Vencimiento";
+            this.fecha_vencimiento.Name = "fecha_vencimiento";
+            // 
+            // id_bodega
+            // 
+            this.id_bodega.HeaderText = "Bodega";
+            this.id_bodega.Name = "id_bodega";
+            // 
+            // id_producto
+            // 
+            this.id_producto.HeaderText = "Producto";
+            this.id_producto.Name = "id_producto";
+            // 
+            // id_movimiento
+            // 
+            this.id_movimiento.HeaderText = "Número de Movimiento";
+            this.id_movimiento.Name = "id_movimiento";
+            // 
+            // id_detalle
+            // 
+            this.id_detalle.HeaderText = "Numero de detalle";
+            this.id_detalle.Name = "id_detalle";
+            // 
+            // dgvDetallesMovimientos
+            // 
+            this.dgvDetallesMovimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDetallesMovimientos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id_detalle,
+            this.id_movimiento,
+            this.id_producto,
+            this.id_bodega,
+            this.fecha_vencimiento,
+            this.lote,
+            this.cantidad,
+            this.costo_unitario,
+            this.costo_unitario_promedio,
+            this.existencia_anterior,
+            this.existencia_total,
+            this.estado});
+            this.dgvDetallesMovimientos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDetallesMovimientos.Location = new System.Drawing.Point(3, 16);
+            this.dgvDetallesMovimientos.Name = "dgvDetallesMovimientos";
+            this.dgvDetallesMovimientos.Size = new System.Drawing.Size(1244, 276);
+            this.dgvDetallesMovimientos.TabIndex = 0;
             // 
             // FormCrearMovimiento
             // 
@@ -658,7 +658,6 @@
         private System.Windows.Forms.Button btnAgregarDetalleMovimiento;
         private DevComponents.DotNetBar.StyleManager styleManager1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView dgvDetallesMovimientos;
         private System.Windows.Forms.ComboBox cmbTipoMovimiento;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cmbBodega;
@@ -673,6 +672,17 @@
         private System.Windows.Forms.Label lblProveedor;
         private System.Windows.Forms.Button btnCrearMovimiento;
         private System.Windows.Forms.Button btnCancelarMovimiento;
+        private System.Windows.Forms.TextBox txtIdUsuario;
+        private System.Windows.Forms.NumericUpDown nudCantidad;
+        private System.Windows.Forms.TextBox txtTemperaturaPromedio;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtCapacidadActual;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtCapacidadMaxima;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtCostoUnitario;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.DataGridView dgvDetallesMovimientos;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_detalle;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_movimiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_producto;
@@ -685,15 +695,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn existencia_anterior;
         private System.Windows.Forms.DataGridViewTextBoxColumn existencia_total;
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;
-        private System.Windows.Forms.TextBox txtIdUsuario;
-        private System.Windows.Forms.NumericUpDown nudCantidad;
-        private System.Windows.Forms.TextBox txtTemperaturaPromedio;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtCapacidadActual;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtCapacidadMaxima;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtCostoUnitario;
-        private System.Windows.Forms.Label label11;
     }
 }

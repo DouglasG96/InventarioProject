@@ -47,8 +47,9 @@ namespace Sistema_Inventario
         private void btnAgregarMovimiento_Click(object sender, EventArgs e)
         {
             FormCrearMovimiento frmCrearMovimiento = new FormCrearMovimiento(nombreUsuario, numeroMovimiento, idUsuario);
+            //frmCrearMovimiento.MdiParent = this;
             frmCrearMovimiento.FormClosed += new FormClosedEventHandler(frmCrearMovimiento_FormClosed);//para actualizar datos al cerrar formulario
-            frmCrearMovimiento.ShowDialog();
+            frmCrearMovimiento.Show();
         }
 
         private void frmCrearMovimiento_FormClosed(object sender, FormClosedEventArgs e)
