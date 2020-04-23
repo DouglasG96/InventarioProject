@@ -38,7 +38,13 @@ namespace Sistema_Inventario
         detalles_movimientos objDetallesMovimientos, datosDetallesMovimientos;
         productos datosProducto;
         String[] datosDetalle;
-
+        
+        /// <summary>
+        /// Recibo datos precargados del movimiento
+        /// </summary>
+        /// <param name="nombreUsuario"></param>
+        /// <param name="numeroMovimiento"></param>
+        /// <param name="idUsuario"></param>
         public FormCrearMovimiento(String nombreUsuario, int numeroMovimiento, int idUsuario)
         {
             InitializeComponent();
@@ -58,39 +64,19 @@ namespace Sistema_Inventario
             txtIdUsuario.Visible = false;
 
             //Oculto selector de proveedores
-            cmbProveedor.Visible = false;
-            lblProveedor.Visible = false;
+            cmbAuxiliar.Visible = false;
+            lblAuxiliar.Visible = false;
 
             cmbProducto.Enabled = false;
             cmbBodega.Enabled = false;
         }
 
-        private void btnCancelarMovimiento_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void cargarTipoMovimiento()
-        {
-            cmbTipoMovimiento.DataSource = TipoMovimientoBL.CargarTipoMovimientoSelector();
-            cmbTipoMovimiento.DisplayMember = "tipo_movimiento";
-            cmbTipoMovimiento.ValueMember = "id_tipo_movimiento";
-        }
-
-        private void cargarBodegas()
-        {
-            cmbBodega.DataSource = BodegasBL.CargarBodegasSelector();
-            cmbBodega.DisplayMember = "nombre_bodega";
-            cmbBodega.ValueMember = "id_bodega";
-        }
-
-        private void cargarProductos()
-        {
-            cmbProducto.DataSource = ProductoBL.cargarProductosSelector();
-            cmbProducto.DisplayMember = "nombre";
-            cmbProducto.ValueMember = "id_producto";
-        }
-
+        /// <summary>
+        /// Seteo los textBox correspondientes con datos precargados
+        /// </summary>
+        /// <param name="nombreUsuario"></param>
+        /// <param name="idUsuario"></param>
+        /// <param name="numeroMovimiento"></param>
         private void cargarDatosSesion(String nombreUsuario, int idUsuario, int numeroMovimiento)
         {
             txtUsuario.Text = nombreUsuario.Trim();
@@ -99,41 +85,90 @@ namespace Sistema_Inventario
             txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
         }
 
-        private void cargarComboBoxProveedores()
+        /// <summary>
+        /// Cargo selector de tipos de movimientos
+        /// </summary>
+        private void cargarTipoMovimiento()
         {
-            cmbProveedor.DataSource = ProveedorBL.CargarProveedoresOpcional();
-            cmbProveedor.DisplayMember = "nombre";
-            cmbProveedor.ValueMember = "id_proveedor";
-            cmbProveedor.Visible = true;
-            lblProveedor.Visible = true;
+            cmbTipoMovimiento.DataSource = TipoMovimientoBL.CargarTipoMovimientoSelector();
+            cmbTipoMovimiento.DisplayMember = "tipo_movimiento";
+            cmbTipoMovimiento.ValueMember = "id_tipo_movimiento";
+        }
+
+        /// <summary>
+        /// Cargo selector de bodegas
+        /// </summary>
+        private void cargarBodegas()
+        {
+            cmbBodega.DataSource = BodegasBL.CargarBodegasSelector();
+            cmbBodega.DisplayMember = "nombre_bodega";
+            cmbBodega.ValueMember = "id_bodega";
+        }
+
+        /// <summary>
+        /// Cargo selector de producto
+        /// </summary>
+        private void cargarProductos()
+        {
+            cmbProducto.DataSource = ProductoBL.cargarProductosSelector();
+            cmbProducto.DisplayMember = "nombre";
+            cmbProducto.ValueMember = "id_producto";
+        }
+
+        /// <summary>
+        /// Recibo el tipo de movimiento seleccionado cargo el selector respectivo para ese movimiento
+        /// </summary>
+        /// <param name="banderaTipoMovimiento"></param>
+        private void cargarComboBoxAuxiliar(int banderaTipoMovimiento)
+        {
+            //Cargo proveedores
+            if (banderaTipoMovimiento == 1)
+            {
+                lblAuxiliar.Text = "Proveedores: ";
+                cmbAuxiliar.DataSource = ProveedorBL.CargarProveedoresOpcional();
+                cmbAuxiliar.DisplayMember = "nombre";
+                cmbAuxiliar.ValueMember = "id_proveedor";
+            }
+            //Cargo bodega para trasladar producto
+            else
+            {
+                lblAuxiliar.Text = "Bodega de cargo: ";
+                cmbAuxiliar.DataSource = SucursalBL.CargarSucursales();
+                cmbAuxiliar.DisplayMember = "sucursal";
+                cmbAuxiliar.ValueMember = "id_sucursal";
+            }
+            //Muestro selector y label
+            cmbAuxiliar.Visible = true;
+            lblAuxiliar.Visible = true;
         }
 
         private void validarSeleccionTipoMovimiento(object sender, EventArgs e)
         {
-            Process[] LocalByName = Process.GetProcessesByName("FormCrearMovimiento_Load");
-
-            foreach (Process proc in LocalByName)
-            {
-                MessageBox.Show(proc.ProcessName);
-
-            }
+            // Valido una sola vez el tipo de movimiento a realizar
             DialogResult dialogResult = MessageBox.Show(
                     "¿Estas seguro?, mas adelante no se podrá elegir otro tipo de movimiento",
                     "¡Alerta!",
                     MessageBoxButtons.OKCancel,
                     MessageBoxIcon.Question
             );
-            if(dialogResult == DialogResult.OK)
+            if (dialogResult == DialogResult.OK)
             {
                 tipoMovimiento = cmbTipoMovimiento.SelectedValue.ToString();
                 nombreMovimiento = cmbTipoMovimiento.GetItemText(this.cmbTipoMovimiento.SelectedItem).ToString();
+                // Entrada de producto
                 if (tipoMovimiento == "1")
                 {
-                    cargarComboBoxProveedores();
+                    cargarComboBoxAuxiliar(1);
                     txtDescripcion.Text = nombreMovimiento;
                     validacionSelector(cmbProducto, true);
                     validacionSelector(cmbTipoMovimiento, false);
                     cargarProductos();
+                }
+                //Traslado de producto
+                else if(tipoMovimiento == "3")
+                {
+                    cargarComboBoxAuxiliar(3);
+                    lblBodega.Text = "Bodega de descargo";
                 }
                 else if (tipoMovimiento == "0")
                 {
@@ -141,17 +176,18 @@ namespace Sistema_Inventario
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     cmbTipoMovimiento.Focus();
-                    cmbProveedor.SelectedValue = 0;
+                    cmbAuxiliar.SelectedValue = 0;
                     txtDescripcion.Text = "";
                     validacionSelector(cmbProducto, false);
                 }
                 else
                 {
-                    cmbProveedor.SelectedValue = 0;
+                    cmbAuxiliar.SelectedValue = 0;
                     txtDescripcion.Text = nombreMovimiento;
-                    cmbProveedor.Visible = false;
-                    lblProveedor.Visible = false;
+                    cmbAuxiliar.Visible = false;
+                    lblAuxiliar.Visible = false;
                     validacionSelector(cmbProducto, true);
+                    //Ejecuto metodo para cargar productos
                     cargarProductos();
                 }
             }
@@ -167,15 +203,22 @@ namespace Sistema_Inventario
 
             if(idProducto == "0" )
             {
+                // Deshabilito selector de bodega
                 validacionSelector(cmbBodega, false);    
             }
             else
             {
+                //Habilito selector de bodega
                 validacionSelector(cmbBodega, true);
+                //Cargo selector de bodegas
                 cargarBodegas();
             }
         }
 
+        /// <summary>
+        /// Seteo el textBox de descripcion con el tipo de movimiento y nombre de producto
+        /// </summary>
+        /// <param name="nombreProducto"></param>
         protected void cargarDescripcion(String nombreProducto)
         {
             if (nombreMovimiento != "")
@@ -185,6 +228,10 @@ namespace Sistema_Inventario
             }
         }
 
+        /// <summary>
+        /// Cargo costo unitario del producto seleccionado
+        /// </summary>
+        /// <param name="idProducto"></param>
         protected void cargarCostoUnitario(String idProducto)
         {
             datosProducto = ProductoBL.consultarDatosProducto(idProducto);
@@ -192,55 +239,107 @@ namespace Sistema_Inventario
             txtCostoUnitario.Text = datosProducto.costo_unitario_con_iva.ToString().Trim();
         }
 
+        /// <summary>
+        /// Calculo los respectivos totales del producto seleccionado en base a la cantidad
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void calcularTotales(object sender, EventArgs e)
         {
-            cantidadMovimiento = Convert.ToDouble(nudCantidad.Value);
-            cantidadCapacidadMaxima = Convert.ToDouble(txtCapacidadMaxima.Text);
-            cantidadCapacidadActual = Convert.ToDouble(txtCapacidadActual.Text);
+            try
+            {
+                cantidadMovimiento = Convert.ToDouble(nudCantidad.Value);
+                cantidadCapacidadMaxima = Convert.ToDouble(txtCapacidadMaxima.Text);
+                cantidadCapacidadActual = Convert.ToDouble(txtCapacidadActual.Text);
+            }
+            catch(Exception excepcion)
+            {
+                MessageBox.Show(
+                    excepcion.Message,
+                    "Error al Convertir Datos Para Calcular Totales",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
+
             if(cantidadMovimiento > 0)
             {
-                //Validar capacidad maxima de bodega
+                //Valida capacidad maxima de bodega
                 excesoCapacidadMaxima = BodegasBL.calcularCapacidadMaxima(cantidadMovimiento, cantidadCapacidadMaxima, cantidadCapacidadActual);
                 if (excesoCapacidadMaxima)
                 {
-                    MessageBox.Show("La cantidad seleccionada sobrepasa la cantidad maxima de la bodega seleccionada, reduzca la cantidad", "Error al cargar cantidad",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                    MessageBox.Show(
+                        "La cantidad seleccionada sobrepasa la cantidad maxima de la bodega seleccionada, reduzca la cantidad",
+                        "Error al Cargar Cantidad",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
                     nudCantidad.Focus();
                     nudCantidad.Value = 0;
                 }
+                // Si el calculo no sobre pasa la cantidad maxima de la bodega se procede a mostrar el calculo realizado
                 else
                 {
-                    // Calcular costos totales
-                    costoTotalConIva = MovimientosBL.calcularCostoTotalConIva(costoUnitarioConIva, cantidadMovimiento);
-                    costoTotalSinIva = costoTotalConIva / 1.13;
+                    // Validar que costo unitario no este vacío
+                    if (txtCostoUnitario.Text.Trim() != "")
+                    {
+                        // Calcular costos totales
+                        costoTotalConIva = MovimientosBL.calcularCostoTotalConIva(costoUnitarioConIva, cantidadMovimiento);
+                        costoTotalSinIva = costoTotalConIva / 1.13;
 
-                    // Calcular costos unitarios
-                    costoUnitarioConIva = Convert.ToDouble(txtCostoUnitario.Text.Trim());
-                    costoUnitarioSinIva = (costoUnitarioConIva / 1.13);
+                        // Calcular costos unitarios
+                        costoUnitarioConIva = Convert.ToDouble(txtCostoUnitario.Text.Trim());
+                        costoUnitarioSinIva = (costoUnitarioConIva / 1.13);
 
-                    //Mostrar valores
-                    txtVentaTotalSinIva.Text = costoTotalSinIva.ToString();
-                    txtVentaTotalConIva.Text = costoTotalConIva.ToString();
+                        //Mostrar valores
+                        txtVentaTotalSinIva.Text = costoTotalSinIva.ToString();
+                        txtVentaTotalConIva.Text = costoTotalConIva.ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show(
+                            "Verificar costo unitario del producto",
+                            "Error al Calcular los Totales",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                    }
                 }
                 btnAgregarDetalleMovimiento.Enabled = true;
             }
             else
             {
+                //Limipio los textBox de totales
+                txtVentaTotalSinIva.Text = "";
+                txtVentaTotalConIva.Text = "";
                 btnAgregarDetalleMovimiento.Enabled = false;
             }
         }
-
+        /// <summary>
+        /// Valida que selector habilitar o desabilitar segun parametros recibidos
+        /// </summary>
+        /// <param name="comboBox"></param>
+        /// <param name="habilitarSelector"></param>
         private void validacionSelector(ComboBox comboBox, bool habilitarSelector)
         {
             comboBox.Enabled = habilitarSelector;
         }
 
+        /// <summary>
+        /// Valida que TextBox habilitar o desabilitar segun parametros recibidos
+        /// </summary>
+        /// <param name="textBox"></param>
+        /// <param name="habilitarTextBox"></param>
         private void validacionTextBox(TextBox textBox, bool habilitarTextBox)
         {
             textBox.Enabled = habilitarTextBox;
         }
 
+        /// <summary>
+        /// Valida que NumberUpDown habilita o desabilita segun parametros recibidos
+        /// </summary>
+        /// <param name="numericUpDown"></param>
+        /// <param name="habilitarNumeric"></param>
         private void validacionNumeric(NumericUpDown numericUpDown, bool habilitarNumeric)
         {
             numericUpDown.Enabled = habilitarNumeric;
@@ -250,8 +349,11 @@ namespace Sistema_Inventario
         {
             idBodega = cmbBodega.SelectedValue.ToString();
             nombreBodega = cmbBodega.GetItemText(this.cmbBodega.SelectedItem).ToString();
+
+            //Valido que se haya seleccionado una bodega
             if (idBodega != "0")
             {
+                //Cargo datos respectivos de bodega seleccionada
                 var datosBodega = BodegasBL.consultarDatosBodega(idBodega);
                 txtCapacidadMaxima.Text = datosBodega.capacidad_maxima.ToString().Trim();
                 txtCapacidadActual.Text = datosBodega.capacidad_actual.ToString().Trim();
@@ -270,58 +372,166 @@ namespace Sistema_Inventario
 
         private void btnAgregarDetalleMovimiento_Click(object sender, EventArgs e)
         {
-            
-            var nombreProducto = datosProducto.nombre.ToString().Trim();
-            var existenciaAnterior = datosDetallesMovimientos.existencia_anterior.ToString().Trim();
-            if(existenciaAnterior == "")
-            {
-                existenciaAnterior = "0";
-            }
-            var existenciaTotal = Convert.ToInt32(existenciaAnterior) + cantidadMovimiento;
-
-            DateTime fechaRegistro = DateTime.Parse(datosProducto.fecha_creacion.ToString());
-            var fechaVencimiento = fechaRegistro.AddMonths(4);
-
-
-            //Generamos aleatoriamente numero de lote
-            int longitud = 7;
-            Guid miGuid = Guid.NewGuid();
-            string lote = Convert.ToBase64String(miGuid.ToByteArray());
-            lote = lote.Replace("=", "").Replace("+", "");
-
-            //DataTable dt = new DataTable();
-            DataGridView dgvDetallesMovimientos = new DataGridView();
-
-            datosDetalle = new String[] {
-                (contadorDetalle+1).ToString(),
-                numeroMovimiento.ToString() ,
-                nombreProducto,nombreBodega,
-                fechaVencimiento.ToString(),
-                lote.Substring(0, longitud),
-                cantidadMovimiento.ToString(), 
-                costoUnitarioConIva.ToString(),
-                costoUnitarioSinIva.ToString(), 
-                existenciaAnterior,
-                existenciaTotal.ToString(),
-                "Pendiente"
-            };
-
-                //Debug.Write(datosDetalle);
-                cargarDetallesMovimiento();
+            //Debug.Write(datosDetalle);
             try
             {
+                //Aumento Contador de detalle
+                contadorDetalle++;
+                String contador = contadorDetalle.ToString();
+                //Capturo nombre de producto
+                var nombreProducto = datosProducto.nombre.ToString().Trim();
+
+                var existenciaAnterior = datosDetallesMovimientos.existencia_anterior.ToString().Trim();
+                //Valido que dato no este vacio
+                if (existenciaAnterior == "")
+                {
+                    // Si esta vacio lo igualo a 0
+                    existenciaAnterior = "0";
+                }
+                //Calculo existencia total del producto
+                var existenciaTotal = Convert.ToInt32(existenciaAnterior) + cantidadMovimiento;
+
+                //Calculo automáticamente fecha de vencimiento en base a fecha de creación del producto
+                DateTime fechaRegistro = DateTime.Parse(datosProducto.fecha_creacion.ToString());
+                var fechaVencimiento = fechaRegistro.AddMonths(4);
+
+                //Generamos aleatoriamente numero de lote con letras y números
+                int longitud = 7;
+                Guid miGuid = Guid.NewGuid();
+                string lote = Convert.ToBase64String(miGuid.ToByteArray());
+                lote = lote.Replace("=", "").Replace("+", "");
+
+                //Genero arreglo para agregar a dataGridView
+                datosDetalle = new String[] {
+                    contador,
+                    numeroMovimiento.ToString() ,
+                    nombreProducto,nombreBodega,
+                    fechaVencimiento.ToString(),
+                    lote.Substring(0, longitud),
+                    cantidadMovimiento.ToString(),
+                    costoUnitarioConIva.ToString(),
+                    costoUnitarioSinIva.ToString(),
+                    existenciaAnterior,
+                    existenciaTotal.ToString(),
+                    "Pendiente"
+                };
+                //Ejecuto Metodo para cargar detalle
+                cargarDetallesMovimiento();
+                //Habilito botón para eliminar detalle
+                btnEliminarDetalle.Enabled = true;
             }
             catch(Exception exepcion)
             {
-                Debug.Write(exepcion);
-                /*
-                MessageBox.Show(exepcion.Message, "Error al agregar detalle",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
-                */
+                MessageBox.Show(
+                    exepcion.Message, 
+                    "Error al agregar detalle",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }            
+        }
+
+        /// <summary>
+        /// Carga detalles en dataGridView
+        /// </summary>
+        private void cargarDetallesMovimiento()
+        {
+            try
+            {
+                //Cargo arreglo en una fila del dataGridView
+                dgvDetallesMovimientos.Rows.Add(datosDetalle);
             }
- 
+            catch(Exception e)
+            {
+                MessageBox.Show(
+                    e.Message, 
+                    "Error al cargar los detalles",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+               );
+            }
+            // Limpio el formulario
+            limpiarFormulario();
+        }
+
+        /// <summary>
+        /// Limpia formulario
+        /// </summary>
+        private void limpiarFormulario()
+        {
+            cmbProducto.SelectedIndex = 0;
+            cmbAuxiliar.SelectedIndex = 0;
+            cmbBodega.SelectedIndex = 0;
+            txtCapacidadMaxima.Text = "0";
+            txtCapacidadActual.Text = "0";
+            txtCostoUnitario.Text = "";
+            txtVentaTotalConIva.Text = "";
+            txtVentaTotalSinIva.Text = "";
+            txtDescripcion.Text = "";
+            txtTemperaturaPromedio.Text = "";
+            validacionNumeric(nudCantidad, false);
+            nudCantidad.Value = 0;
+            btnAgregarDetalleMovimiento.Enabled = false;
+        }
+
+        private void btnEliminarDetalle_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "¿Seguro que quiere eliminar el detalle?", 
+                "Eliminar detalle",
+                MessageBoxButtons.YesNo
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                DataGridViewRow row = dgvDetallesMovimientos.CurrentRow;
+                int id = Convert.ToInt32(row.Cells["id_detalle"].Value);
+                //Valido si ya no hay detalles
+                if(id == 0)
+                {
+                    MessageBox.Show(
+                        "No se puede borrar este detalle", 
+                        "Error borrar detalle",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
+                    //Deshabilito botón para eliminar detalle
+                    btnEliminarDetalle.Enabled = false;
+                }
+                else
+                {
+                    //Elimino fila seleccionada del dataGridView
+                    dgvDetallesMovimientos.Rows.RemoveAt(dgvDetallesMovimientos.CurrentRow.Index);
+                    MessageBox.Show(
+                        "Se eliminó el detalle con numero: " + id,
+                        "Eliminar Registro del Detalle",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Exclamation
+                    );
+                }
+            }
+        }
+       
+        private void btnCancelarMovimiento_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnCrearMovimiento_Click(object sender, EventArgs e)
+        {
+            
+            //Recorre las filas..
+            foreach (DataGridViewRow fila in dgvDetallesMovimientos.Rows)
+            {
+                //Accede a la columna que quieras, o las recorres todas con otro foreach...
+                foreach(DataGridViewColumn columna in dgvDetallesMovimientos.Columns)
+                {
+                    
+                }
+            }
             /*
+            //Crear Objeto de detalles_movimientos
+            
             objDetallesMovimientos = new detalles_movimientos();
 
             //Generamos fecha vencimiento
@@ -337,40 +547,9 @@ namespace Sistema_Inventario
             producto.id_proveedor = Convert.ToInt32(cbxProveedor.SelectedValue);
             producto.fecha_creacion = DateTime.Now.Date;
             producto.hora_creacion = DateTime.Now.TimeOfDay;
-            ProductoBL.CrearProducto(producto);
-            MessageBox.Show("Producto Agregado Correctamente", "Registro Agregado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
-            */
-        }
+           
+            //Crear Objeto de movimientos
 
-        private void cargarDetallesMovimiento()
-        {
-            try
-            {
-                dgvDetallesMovimientos.Rows.Add(datosDetalle);
-            }
-            catch(Exception e)
-            {
-                MessageBox.Show(e.Message, "Error al cargar los detalles",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
-            }
-            cmbProducto.SelectedIndex = 0;
-            cmbProveedor.SelectedIndex = 0;
-            txtCapacidadMaxima.Text = "0";
-            txtCapacidadActual.Text = "0";
-            txtCostoUnitario.Text = "";
-            txtVentaTotalConIva.Text = "";
-            txtVentaTotalSinIva.Text = "";
-            txtDescripcion.Text = "";
-            txtTemperaturaPromedio.Text = "";
-            validacionNumeric(nudCantidad, false);
-            nudCantidad.Value = 0;
-            btnAgregarDetalleMovimiento.Enabled = false;
-        }
-
-        private void btnCrearMovimiento_Click(object sender, EventArgs e)
-        {
             TimeSpan hora = new TimeSpan();
             objMovimientos = new movimientos();
             objMovimientos.id_tipo_movimiento = Convert.ToInt32(tipoMovimiento);
@@ -381,8 +560,13 @@ namespace Sistema_Inventario
             objMovimientos.costo_total_sin_iva =
             objMovimientos.id_usuario = Convert.ToInt32(txtIdUsuario.Text.Trim());
             objMovimientos.estado = 0;
-            objMovimientos.id_proveedor = Convert.ToInt32(cmbProveedor.SelectedValue.ToString());
-        }
+            objMovimientos.id_proveedor = Convert.ToInt32(cmbAuxiliar.SelectedValue.ToString());
 
+            
+            ProductoBL.CrearProducto(producto);
+            MessageBox.Show("Producto Agregado Correctamente", "Registro Agregado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
+            */
+        }
     }
 }

@@ -40,11 +40,11 @@
             this.label11 = new System.Windows.Forms.Label();
             this.nudCantidad = new System.Windows.Forms.NumericUpDown();
             this.txtIdUsuario = new System.Windows.Forms.TextBox();
-            this.cmbProveedor = new System.Windows.Forms.ComboBox();
-            this.lblProveedor = new System.Windows.Forms.Label();
+            this.cmbAuxiliar = new System.Windows.Forms.ComboBox();
+            this.lblAuxiliar = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.cmbBodega = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblBodega = new System.Windows.Forms.Label();
             this.cmbProducto = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
@@ -64,21 +64,22 @@
             this.btnAgregarDetalleMovimiento = new System.Windows.Forms.Button();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dgvDetallesMovimientos = new System.Windows.Forms.DataGridView();
+            this.id_detalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_movimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_bodega = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha_vencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lote = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costo_unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costo_unitario_promedio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.existencia_anterior = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.existencia_total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCrearMovimiento = new System.Windows.Forms.Button();
             this.btnCancelarMovimiento = new System.Windows.Forms.Button();
-            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.existencia_total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.existencia_anterior = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costo_unitario_promedio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costo_unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lote = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fecha_vencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_bodega = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_movimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_detalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvDetallesMovimientos = new System.Windows.Forms.DataGridView();
+            this.btnEliminarDetalle = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -98,11 +99,11 @@
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.nudCantidad);
             this.groupBox1.Controls.Add(this.txtIdUsuario);
-            this.groupBox1.Controls.Add(this.cmbProveedor);
-            this.groupBox1.Controls.Add(this.lblProveedor);
+            this.groupBox1.Controls.Add(this.cmbAuxiliar);
+            this.groupBox1.Controls.Add(this.lblAuxiliar);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.cmbBodega);
-            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.lblBodega);
             this.groupBox1.Controls.Add(this.cmbProducto);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.txtUsuario);
@@ -241,27 +242,27 @@
             this.txtIdUsuario.Size = new System.Drawing.Size(49, 20);
             this.txtIdUsuario.TabIndex = 30;
             // 
-            // cmbProveedor
+            // cmbAuxiliar
             // 
-            this.cmbProveedor.BackColor = System.Drawing.Color.White;
-            this.cmbProveedor.ForeColor = System.Drawing.Color.Black;
-            this.cmbProveedor.FormattingEnabled = true;
-            this.cmbProveedor.Location = new System.Drawing.Point(1026, 168);
-            this.cmbProveedor.Name = "cmbProveedor";
-            this.cmbProveedor.Size = new System.Drawing.Size(120, 21);
-            this.cmbProveedor.TabIndex = 29;
+            this.cmbAuxiliar.BackColor = System.Drawing.Color.White;
+            this.cmbAuxiliar.ForeColor = System.Drawing.Color.Black;
+            this.cmbAuxiliar.FormattingEnabled = true;
+            this.cmbAuxiliar.Location = new System.Drawing.Point(1026, 168);
+            this.cmbAuxiliar.Name = "cmbAuxiliar";
+            this.cmbAuxiliar.Size = new System.Drawing.Size(120, 21);
+            this.cmbAuxiliar.TabIndex = 29;
             // 
-            // lblProveedor
+            // lblAuxiliar
             // 
-            this.lblProveedor.AutoSize = true;
-            this.lblProveedor.BackColor = System.Drawing.Color.White;
-            this.lblProveedor.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProveedor.ForeColor = System.Drawing.Color.Black;
-            this.lblProveedor.Location = new System.Drawing.Point(902, 173);
-            this.lblProveedor.Name = "lblProveedor";
-            this.lblProveedor.Size = new System.Drawing.Size(69, 15);
-            this.lblProveedor.TabIndex = 28;
-            this.lblProveedor.Text = "Proveedor:";
+            this.lblAuxiliar.AutoSize = true;
+            this.lblAuxiliar.BackColor = System.Drawing.Color.White;
+            this.lblAuxiliar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAuxiliar.ForeColor = System.Drawing.Color.Black;
+            this.lblAuxiliar.Location = new System.Drawing.Point(902, 173);
+            this.lblAuxiliar.Name = "lblAuxiliar";
+            this.lblAuxiliar.Size = new System.Drawing.Size(63, 15);
+            this.lblAuxiliar.TabIndex = 28;
+            this.lblAuxiliar.Text = "lblAuxiliar";
             // 
             // label10
             // 
@@ -285,19 +286,19 @@
             this.cmbBodega.Name = "cmbBodega";
             this.cmbBodega.Size = new System.Drawing.Size(120, 21);
             this.cmbBodega.TabIndex = 25;
-            this.cmbBodega.SelectedIndexChanged += new System.EventHandler(this.cmbBodega_SelectedIndexChanged);
+            this.cmbBodega.SelectionChangeCommitted += new System.EventHandler(this.cmbBodega_SelectedIndexChanged);
             // 
-            // label9
+            // lblBodega
             // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.White;
-            this.label9.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(24, 247);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 15);
-            this.label9.TabIndex = 24;
-            this.label9.Text = "Bodega:";
+            this.lblBodega.AutoSize = true;
+            this.lblBodega.BackColor = System.Drawing.Color.White;
+            this.lblBodega.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBodega.ForeColor = System.Drawing.Color.Black;
+            this.lblBodega.Location = new System.Drawing.Point(24, 247);
+            this.lblBodega.Name = "lblBodega";
+            this.lblBodega.Size = new System.Drawing.Size(53, 15);
+            this.lblBodega.TabIndex = 24;
+            this.lblBodega.Text = "Bodega:";
             // 
             // cmbProducto
             // 
@@ -309,7 +310,7 @@
             this.cmbProducto.Name = "cmbProducto";
             this.cmbProducto.Size = new System.Drawing.Size(120, 21);
             this.cmbProducto.TabIndex = 23;
-            this.cmbProducto.SelectedIndexChanged += new System.EventHandler(this.cmbProducto_SelectedIndexChanged);
+            this.cmbProducto.SelectionChangeCommitted += new System.EventHandler(this.cmbProducto_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -372,7 +373,7 @@
             this.cmbTipoMovimiento.Name = "cmbTipoMovimiento";
             this.cmbTipoMovimiento.Size = new System.Drawing.Size(120, 21);
             this.cmbTipoMovimiento.TabIndex = 17;
-            this.cmbTipoMovimiento.SelectedIndexChanged += new System.EventHandler(this.validarSeleccionTipoMovimiento);
+            this.cmbTipoMovimiento.SelectionChangeCommitted += new System.EventHandler(this.validarSeleccionTipoMovimiento);
             // 
             // label7
             // 
@@ -484,7 +485,7 @@
             this.btnAgregarDetalleMovimiento.Enabled = false;
             this.btnAgregarDetalleMovimiento.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarDetalleMovimiento.ForeColor = System.Drawing.Color.Black;
-            this.btnAgregarDetalleMovimiento.Location = new System.Drawing.Point(547, 361);
+            this.btnAgregarDetalleMovimiento.Location = new System.Drawing.Point(421, 361);
             this.btnAgregarDetalleMovimiento.Name = "btnAgregarDetalleMovimiento";
             this.btnAgregarDetalleMovimiento.Size = new System.Drawing.Size(175, 32);
             this.btnAgregarDetalleMovimiento.TabIndex = 2;
@@ -508,6 +509,88 @@
             this.groupBox2.TabIndex = 17;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalle";
+            // 
+            // dgvDetallesMovimientos
+            // 
+            this.dgvDetallesMovimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDetallesMovimientos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id_detalle,
+            this.id_movimiento,
+            this.id_producto,
+            this.id_bodega,
+            this.fecha_vencimiento,
+            this.lote,
+            this.cantidad,
+            this.costo_unitario,
+            this.costo_unitario_promedio,
+            this.existencia_anterior,
+            this.existencia_total,
+            this.estado});
+            this.dgvDetallesMovimientos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDetallesMovimientos.Location = new System.Drawing.Point(3, 16);
+            this.dgvDetallesMovimientos.Name = "dgvDetallesMovimientos";
+            this.dgvDetallesMovimientos.Size = new System.Drawing.Size(1244, 276);
+            this.dgvDetallesMovimientos.TabIndex = 0;
+            // 
+            // id_detalle
+            // 
+            this.id_detalle.HeaderText = "Numero de detalle";
+            this.id_detalle.Name = "id_detalle";
+            // 
+            // id_movimiento
+            // 
+            this.id_movimiento.HeaderText = "Número de Movimiento";
+            this.id_movimiento.Name = "id_movimiento";
+            // 
+            // id_producto
+            // 
+            this.id_producto.HeaderText = "Producto";
+            this.id_producto.Name = "id_producto";
+            // 
+            // id_bodega
+            // 
+            this.id_bodega.HeaderText = "Bodega";
+            this.id_bodega.Name = "id_bodega";
+            // 
+            // fecha_vencimiento
+            // 
+            this.fecha_vencimiento.HeaderText = "Fecha de Vencimiento";
+            this.fecha_vencimiento.Name = "fecha_vencimiento";
+            // 
+            // lote
+            // 
+            this.lote.HeaderText = "Número de Lote";
+            this.lote.Name = "lote";
+            // 
+            // cantidad
+            // 
+            this.cantidad.HeaderText = "Cantidad";
+            this.cantidad.Name = "cantidad";
+            // 
+            // costo_unitario
+            // 
+            this.costo_unitario.HeaderText = "Costo Unitario";
+            this.costo_unitario.Name = "costo_unitario";
+            // 
+            // costo_unitario_promedio
+            // 
+            this.costo_unitario_promedio.HeaderText = "Costo Unitario Promedio";
+            this.costo_unitario_promedio.Name = "costo_unitario_promedio";
+            // 
+            // existencia_anterior
+            // 
+            this.existencia_anterior.HeaderText = "Existencia Anterior";
+            this.existencia_anterior.Name = "existencia_anterior";
+            // 
+            // existencia_total
+            // 
+            this.existencia_total.HeaderText = "Existencia Total";
+            this.existencia_total.Name = "existencia_total";
+            // 
+            // estado
+            // 
+            this.estado.HeaderText = "Estado";
+            this.estado.Name = "estado";
             // 
             // btnCrearMovimiento
             // 
@@ -535,93 +618,26 @@
             this.btnCancelarMovimiento.UseVisualStyleBackColor = false;
             this.btnCancelarMovimiento.Click += new System.EventHandler(this.btnCancelarMovimiento_Click);
             // 
-            // estado
+            // btnEliminarDetalle
             // 
-            this.estado.HeaderText = "Estado";
-            this.estado.Name = "estado";
-            // 
-            // existencia_total
-            // 
-            this.existencia_total.HeaderText = "Existencia Total";
-            this.existencia_total.Name = "existencia_total";
-            // 
-            // existencia_anterior
-            // 
-            this.existencia_anterior.HeaderText = "Existencia Anterior";
-            this.existencia_anterior.Name = "existencia_anterior";
-            // 
-            // costo_unitario_promedio
-            // 
-            this.costo_unitario_promedio.HeaderText = "Costo Unitario Promedio";
-            this.costo_unitario_promedio.Name = "costo_unitario_promedio";
-            // 
-            // costo_unitario
-            // 
-            this.costo_unitario.HeaderText = "Costo Unitario";
-            this.costo_unitario.Name = "costo_unitario";
-            // 
-            // cantidad
-            // 
-            this.cantidad.HeaderText = "Cantidad";
-            this.cantidad.Name = "cantidad";
-            // 
-            // lote
-            // 
-            this.lote.HeaderText = "Número de Lote";
-            this.lote.Name = "lote";
-            // 
-            // fecha_vencimiento
-            // 
-            this.fecha_vencimiento.HeaderText = "Fecha de Vencimiento";
-            this.fecha_vencimiento.Name = "fecha_vencimiento";
-            // 
-            // id_bodega
-            // 
-            this.id_bodega.HeaderText = "Bodega";
-            this.id_bodega.Name = "id_bodega";
-            // 
-            // id_producto
-            // 
-            this.id_producto.HeaderText = "Producto";
-            this.id_producto.Name = "id_producto";
-            // 
-            // id_movimiento
-            // 
-            this.id_movimiento.HeaderText = "Número de Movimiento";
-            this.id_movimiento.Name = "id_movimiento";
-            // 
-            // id_detalle
-            // 
-            this.id_detalle.HeaderText = "Numero de detalle";
-            this.id_detalle.Name = "id_detalle";
-            // 
-            // dgvDetallesMovimientos
-            // 
-            this.dgvDetallesMovimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDetallesMovimientos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id_detalle,
-            this.id_movimiento,
-            this.id_producto,
-            this.id_bodega,
-            this.fecha_vencimiento,
-            this.lote,
-            this.cantidad,
-            this.costo_unitario,
-            this.costo_unitario_promedio,
-            this.existencia_anterior,
-            this.existencia_total,
-            this.estado});
-            this.dgvDetallesMovimientos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDetallesMovimientos.Location = new System.Drawing.Point(3, 16);
-            this.dgvDetallesMovimientos.Name = "dgvDetallesMovimientos";
-            this.dgvDetallesMovimientos.Size = new System.Drawing.Size(1244, 276);
-            this.dgvDetallesMovimientos.TabIndex = 0;
+            this.btnEliminarDetalle.BackColor = System.Drawing.Color.White;
+            this.btnEliminarDetalle.Enabled = false;
+            this.btnEliminarDetalle.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarDetalle.ForeColor = System.Drawing.Color.Black;
+            this.btnEliminarDetalle.Location = new System.Drawing.Point(649, 361);
+            this.btnEliminarDetalle.Name = "btnEliminarDetalle";
+            this.btnEliminarDetalle.Size = new System.Drawing.Size(175, 32);
+            this.btnEliminarDetalle.TabIndex = 19;
+            this.btnEliminarDetalle.Text = "Eliminar detalle";
+            this.btnEliminarDetalle.UseVisualStyleBackColor = false;
+            this.btnEliminarDetalle.Click += new System.EventHandler(this.btnEliminarDetalle_Click);
             // 
             // FormCrearMovimiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1280, 795);
+            this.Controls.Add(this.btnEliminarDetalle);
             this.Controls.Add(this.btnCrearMovimiento);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnAgregarDetalleMovimiento);
@@ -661,15 +677,15 @@
         private System.Windows.Forms.ComboBox cmbTipoMovimiento;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cmbBodega;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblBodega;
         private System.Windows.Forms.ComboBox cmbProducto;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.TextBox txtVentaTotalSinIva;
         private System.Windows.Forms.TextBox txtVentaTotalConIva;
         private System.Windows.Forms.TextBox txtFecha;
-        private System.Windows.Forms.ComboBox cmbProveedor;
-        private System.Windows.Forms.Label lblProveedor;
+        private System.Windows.Forms.ComboBox cmbAuxiliar;
+        private System.Windows.Forms.Label lblAuxiliar;
         private System.Windows.Forms.Button btnCrearMovimiento;
         private System.Windows.Forms.Button btnCancelarMovimiento;
         private System.Windows.Forms.TextBox txtIdUsuario;
@@ -695,5 +711,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn existencia_anterior;
         private System.Windows.Forms.DataGridViewTextBoxColumn existencia_total;
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;
+        private System.Windows.Forms.Button btnEliminarDetalle;
     }
 }
