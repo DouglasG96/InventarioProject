@@ -284,16 +284,12 @@ namespace Sistema_Inventario
                     if (txtCostoUnitario.Text.Trim() != "")
                     {
                         // Calcular costos totales
-                        costoTotalConIva = MovimientosBL.calcularCostoTotalConIva(costoUnitarioConIva, cantidadMovimiento);
+                        costoTotalConIva = MovimientosBL.calcularCostoTotalConIva(costoUnitarioConIva, cantidadMovimiento,costoTotalConIva);
                         costoTotalSinIva = costoTotalConIva / 1.13;
 
                         // Calcular costos unitarios
                         costoUnitarioConIva = Convert.ToDouble(txtCostoUnitario.Text.Trim());
                         costoUnitarioSinIva = (costoUnitarioConIva / 1.13);
-
-                        //Mostrar valores
-                        txtVentaTotalSinIva.Text = costoTotalSinIva.ToString();
-                        txtVentaTotalConIva.Text = costoTotalConIva.ToString();
                     }
                     else
                     {
@@ -401,20 +397,40 @@ namespace Sistema_Inventario
                 string lote = Convert.ToBase64String(miGuid.ToByteArray());
                 lote = lote.Replace("=", "").Replace("+", "");
 
-                //Genero arreglo para agregar a dataGridView
+                //Genero arreglo para agregar a dataGridVie
+                //dgvDetallesMovimientos.Rows.Add(datosDetalle);
                 datosDetalle = new String[] {
+                    //Contador de detalle
                     contador,
-                    numeroMovimiento.ToString() ,
-                    nombreProducto,nombreBodega,
+                    //id_movimiento
+                    numeroMovimiento.ToString(),
+                    // Nombre del producto
+                    nombreProducto,
+                    // id_producto
+                    idProducto.ToString(),
+                    // nombre de la bodeg
+                    nombreBodega,
+                    // id_bodega
+                    idBodega.ToString(),
+                    // fecha de vencimiento
                     fechaVencimiento.ToString(),
+                    // numero de lote
                     lote.Substring(0, longitud),
+                    // Cantidad de productos en detalle
                     cantidadMovimiento.ToString(),
+                    // Costo unitario con IVA
                     costoUnitarioConIva.ToString(),
+                    // Costo unitario sin IVA
                     costoUnitarioSinIva.ToString(),
+                    // Existencia anterior del producto
                     existenciaAnterior,
+                    // Existencia total (actual) del producto
                     existenciaTotal.ToString(),
-                    "Pendiente"
-                };
+                    // Descripcion de estado
+                    "Pendiente",
+                    // estado
+                    "0"
+                };               
                 //Ejecuto Metodo para cargar detalle
                 cargarDetallesMovimiento();
                 //Habilito botón para eliminar detalle
@@ -438,8 +454,13 @@ namespace Sistema_Inventario
         {
             try
             {
+                //Mostrar valores
+                txtVentaTotalSinIva.Text = costoTotalSinIva.ToString();
+                txtVentaTotalConIva.Text = costoTotalConIva.ToString();
                 //Cargo arreglo en una fila del dataGridView
                 dgvDetallesMovimientos.Rows.Add(datosDetalle);
+                datosDetalle = new String[]{
+                };
             }
             catch(Exception e)
             {
@@ -451,7 +472,7 @@ namespace Sistema_Inventario
                );
             }
             // Limpio el formulario
-            limpiarFormulario();
+            //limpiarFormulario();
         }
 
         /// <summary>
@@ -464,11 +485,11 @@ namespace Sistema_Inventario
             cmbBodega.SelectedIndex = 0;
             txtCapacidadMaxima.Text = "0";
             txtCapacidadActual.Text = "0";
-            txtCostoUnitario.Text = "";
-            txtVentaTotalConIva.Text = "";
-            txtVentaTotalSinIva.Text = "";
+            txtCostoUnitario.Text = "0";
+            txtVentaTotalConIva.Text = "0";
+            txtVentaTotalSinIva.Text = "0";
             txtDescripcion.Text = "";
-            txtTemperaturaPromedio.Text = "";
+            txtTemperaturaPromedio.Text = "0";
             validacionNumeric(nudCantidad, false);
             nudCantidad.Value = 0;
             btnAgregarDetalleMovimiento.Enabled = false;
@@ -519,35 +540,6 @@ namespace Sistema_Inventario
 
         private void btnCrearMovimiento_Click(object sender, EventArgs e)
         {
-            
-            //Recorre las filas..
-            foreach (DataGridViewRow fila in dgvDetallesMovimientos.Rows)
-            {
-                //Accede a la columna que quieras, o las recorres todas con otro foreach...
-                foreach(DataGridViewColumn columna in dgvDetallesMovimientos.Columns)
-                {
-                    
-                }
-            }
-            /*
-            //Crear Objeto de detalles_movimientos
-            
-            objDetallesMovimientos = new detalles_movimientos();
-
-            //Generamos fecha vencimiento
-            DateTime fechaRegistro = DateTime.Parse(datosProducto.fecha_creacion.ToString());
-            var fechaVencimiento = fechaRegistro.AddMonths(4)
-
-            objDetallesMovimientos.fecha_vencimiento = fechaVencimiento;
-            objDetallesMovimientos.lote = lote.Substring(0, longitud);
-            objDetallesMovimientos.cantidad = 
-            
-            producto.id_vigencia_promedio = Convert.ToInt32(cbxVigencia.SelectedValue);
-            producto.id_sub_clasificacion = Convert.ToInt32(cbxSubCategoria.SelectedValue);
-            producto.id_proveedor = Convert.ToInt32(cbxProveedor.SelectedValue);
-            producto.fecha_creacion = DateTime.Now.Date;
-            producto.hora_creacion = DateTime.Now.TimeOfDay;
-           
             //Crear Objeto de movimientos
 
             TimeSpan hora = new TimeSpan();
@@ -556,17 +548,82 @@ namespace Sistema_Inventario
             objMovimientos.fecha = Convert.ToDateTime(txtFecha.Text.Trim());
             objMovimientos.hora = hora;
             objMovimientos.descripcion = txtDescripcion.Text.Trim();
-            objMovimientos.costo_total_con_iva =
-            objMovimientos.costo_total_sin_iva =
+            objMovimientos.costo_total_con_iva = Convert.ToDecimal(txtVentaTotalConIva.Text.Trim());
+            objMovimientos.costo_total_sin_iva = Convert.ToDecimal(txtVentaTotalSinIva.Text.Trim());
             objMovimientos.id_usuario = Convert.ToInt32(txtIdUsuario.Text.Trim());
             objMovimientos.estado = 0;
             objMovimientos.id_proveedor = Convert.ToInt32(cmbAuxiliar.SelectedValue.ToString());
 
-            
-            ProductoBL.CrearProducto(producto);
-            MessageBox.Show("Producto Agregado Correctamente", "Registro Agregado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
-            */
+            var confirmacionMovimiento = MovimientosBL.crearMovimiento(objMovimientos);
+            int idMovimiento = Convert.ToInt32(confirmacionMovimiento.id_movimiento);
+            if(idMovimiento > 1)
+            {
+                bool detalleCreado = crearDetalleMovimiento();
+
+                if(detalleCreado)
+                {
+                    MessageBox.Show(
+                    "Producto Agregado Correctamente",
+                    "Registro Agregado",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                    );
+                    this.Close();
+                }
+            }
+        }
+
+        private bool crearDetalleMovimiento()
+        {
+            bool bandera = false;
+            //Recorre las filas..
+            foreach (DataGridViewRow fila in dgvDetallesMovimientos.Rows)
+            {
+                if (fila.Cells[0].Value != null)
+                {
+                    try
+                    {
+                        //Crear Objeto de detalles_movimientos
+                        objDetallesMovimientos = new detalles_movimientos();
+                        objDetallesMovimientos.id_movimiento = Convert.ToInt32(fila.Cells["id_movimiento"].Value.ToString());
+                        objDetallesMovimientos.id_producto = Convert.ToInt32(fila.Cells["id_producto"].Value.ToString());
+                        objDetallesMovimientos.id_bodega = Convert.ToInt32(fila.Cells["id_bodega"].Value.ToString());
+                        objDetallesMovimientos.fecha_vencimiento = Convert.ToDateTime(fila.Cells["fecha_vencimiento"].Value.ToString());
+                        objDetallesMovimientos.lote = Convert.ToString(fila.Cells["lote"].Value.ToString());
+                        objDetallesMovimientos.cantidad = Convert.ToInt32(fila.Cells["cantidad"].Value.ToString());
+                        objDetallesMovimientos.costo_unitario = Convert.ToDecimal(fila.Cells["costo_unitario"].Value.ToString());
+                        objDetallesMovimientos.costo_unitario_promedio = Convert.ToDecimal(fila.Cells["costo_unitario_promedio"].Value.ToString());
+                        objDetallesMovimientos.existencia_anterior = Convert.ToInt32(fila.Cells["existencia_anterior"].Value.ToString());
+                        objDetallesMovimientos.existencia_total = Convert.ToInt32(fila.Cells["existencia_total"].Value.ToString());
+                        objDetallesMovimientos.estado = Convert.ToInt32(fila.Cells["estado"].Value.ToString());
+
+                        MovimientosBL.crearDetalleMovimientos(objDetallesMovimientos);
+                    }
+                    catch (Exception error)
+                    {
+                        MessageBox.Show(
+                            "Error al crear detalle de este movimiento " + error,
+                            "Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Exclamation
+                        );
+                        bandera = false;
+                        break;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "Error al crear detalle de este movimiento",
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Exclamation
+                    );
+                    bandera = false;
+                    break;
+                }
+            }
+            return bandera;
         }
     }
 }

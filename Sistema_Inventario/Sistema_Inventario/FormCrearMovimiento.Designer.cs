@@ -65,9 +65,14 @@
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvDetallesMovimientos = new System.Windows.Forms.DataGridView();
+            this.btnCrearMovimiento = new System.Windows.Forms.Button();
+            this.btnCancelarMovimiento = new System.Windows.Forms.Button();
+            this.btnEliminarDetalle = new System.Windows.Forms.Button();
             this.id_detalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_movimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre_bodega = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_bodega = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fecha_vencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lote = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,10 +81,8 @@
             this.costo_unitario_promedio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.existencia_anterior = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.existencia_total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcion_estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnCrearMovimiento = new System.Windows.Forms.Button();
-            this.btnCancelarMovimiento = new System.Windows.Forms.Button();
-            this.btnEliminarDetalle = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -516,7 +519,9 @@
             this.dgvDetallesMovimientos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_detalle,
             this.id_movimiento,
+            this.nombre_producto,
             this.id_producto,
+            this.nombre_bodega,
             this.id_bodega,
             this.fecha_vencimiento,
             this.lote,
@@ -525,72 +530,13 @@
             this.costo_unitario_promedio,
             this.existencia_anterior,
             this.existencia_total,
+            this.descripcion_estado,
             this.estado});
             this.dgvDetallesMovimientos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDetallesMovimientos.Location = new System.Drawing.Point(3, 16);
             this.dgvDetallesMovimientos.Name = "dgvDetallesMovimientos";
             this.dgvDetallesMovimientos.Size = new System.Drawing.Size(1244, 276);
             this.dgvDetallesMovimientos.TabIndex = 0;
-            // 
-            // id_detalle
-            // 
-            this.id_detalle.HeaderText = "Numero de detalle";
-            this.id_detalle.Name = "id_detalle";
-            // 
-            // id_movimiento
-            // 
-            this.id_movimiento.HeaderText = "Número de Movimiento";
-            this.id_movimiento.Name = "id_movimiento";
-            // 
-            // id_producto
-            // 
-            this.id_producto.HeaderText = "Producto";
-            this.id_producto.Name = "id_producto";
-            // 
-            // id_bodega
-            // 
-            this.id_bodega.HeaderText = "Bodega";
-            this.id_bodega.Name = "id_bodega";
-            // 
-            // fecha_vencimiento
-            // 
-            this.fecha_vencimiento.HeaderText = "Fecha de Vencimiento";
-            this.fecha_vencimiento.Name = "fecha_vencimiento";
-            // 
-            // lote
-            // 
-            this.lote.HeaderText = "Número de Lote";
-            this.lote.Name = "lote";
-            // 
-            // cantidad
-            // 
-            this.cantidad.HeaderText = "Cantidad";
-            this.cantidad.Name = "cantidad";
-            // 
-            // costo_unitario
-            // 
-            this.costo_unitario.HeaderText = "Costo Unitario";
-            this.costo_unitario.Name = "costo_unitario";
-            // 
-            // costo_unitario_promedio
-            // 
-            this.costo_unitario_promedio.HeaderText = "Costo Unitario Promedio";
-            this.costo_unitario_promedio.Name = "costo_unitario_promedio";
-            // 
-            // existencia_anterior
-            // 
-            this.existencia_anterior.HeaderText = "Existencia Anterior";
-            this.existencia_anterior.Name = "existencia_anterior";
-            // 
-            // existencia_total
-            // 
-            this.existencia_total.HeaderText = "Existencia Total";
-            this.existencia_total.Name = "existencia_total";
-            // 
-            // estado
-            // 
-            this.estado.HeaderText = "Estado";
-            this.estado.Name = "estado";
             // 
             // btnCrearMovimiento
             // 
@@ -631,6 +577,99 @@
             this.btnEliminarDetalle.Text = "Eliminar detalle";
             this.btnEliminarDetalle.UseVisualStyleBackColor = false;
             this.btnEliminarDetalle.Click += new System.EventHandler(this.btnEliminarDetalle_Click);
+            // 
+            // id_detalle
+            // 
+            this.id_detalle.HeaderText = "Numero de detalle";
+            this.id_detalle.Name = "id_detalle";
+            this.id_detalle.ReadOnly = true;
+            // 
+            // id_movimiento
+            // 
+            this.id_movimiento.HeaderText = "Número de Movimiento";
+            this.id_movimiento.Name = "id_movimiento";
+            this.id_movimiento.ReadOnly = true;
+            // 
+            // nombre_producto
+            // 
+            this.nombre_producto.HeaderText = "Producto";
+            this.nombre_producto.Name = "nombre_producto";
+            this.nombre_producto.ReadOnly = true;
+            // 
+            // id_producto
+            // 
+            this.id_producto.HeaderText = "id_producto";
+            this.id_producto.Name = "id_producto";
+            this.id_producto.ReadOnly = true;
+            this.id_producto.Visible = false;
+            // 
+            // nombre_bodega
+            // 
+            this.nombre_bodega.HeaderText = "Bodega";
+            this.nombre_bodega.Name = "nombre_bodega";
+            this.nombre_bodega.ReadOnly = true;
+            // 
+            // id_bodega
+            // 
+            this.id_bodega.HeaderText = "id_bodega";
+            this.id_bodega.Name = "id_bodega";
+            this.id_bodega.ReadOnly = true;
+            this.id_bodega.Visible = false;
+            // 
+            // fecha_vencimiento
+            // 
+            this.fecha_vencimiento.HeaderText = "Fecha de Vencimiento";
+            this.fecha_vencimiento.Name = "fecha_vencimiento";
+            this.fecha_vencimiento.ReadOnly = true;
+            // 
+            // lote
+            // 
+            this.lote.HeaderText = "Número de Lote";
+            this.lote.Name = "lote";
+            this.lote.ReadOnly = true;
+            // 
+            // cantidad
+            // 
+            this.cantidad.HeaderText = "Cantidad";
+            this.cantidad.Name = "cantidad";
+            this.cantidad.ReadOnly = true;
+            // 
+            // costo_unitario
+            // 
+            this.costo_unitario.HeaderText = "Costo Unitario";
+            this.costo_unitario.Name = "costo_unitario";
+            this.costo_unitario.ReadOnly = true;
+            // 
+            // costo_unitario_promedio
+            // 
+            this.costo_unitario_promedio.HeaderText = "Costo Unitario Promedio";
+            this.costo_unitario_promedio.Name = "costo_unitario_promedio";
+            this.costo_unitario_promedio.ReadOnly = true;
+            // 
+            // existencia_anterior
+            // 
+            this.existencia_anterior.HeaderText = "Existencia Anterior";
+            this.existencia_anterior.Name = "existencia_anterior";
+            this.existencia_anterior.ReadOnly = true;
+            // 
+            // existencia_total
+            // 
+            this.existencia_total.HeaderText = "Existencia Total";
+            this.existencia_total.Name = "existencia_total";
+            this.existencia_total.ReadOnly = true;
+            // 
+            // descripcion_estado
+            // 
+            this.descripcion_estado.HeaderText = "Estado";
+            this.descripcion_estado.Name = "descripcion_estado";
+            this.descripcion_estado.ReadOnly = true;
+            // 
+            // estado
+            // 
+            this.estado.HeaderText = "estado";
+            this.estado.Name = "estado";
+            this.estado.ReadOnly = true;
+            this.estado.Visible = false;
             // 
             // FormCrearMovimiento
             // 
@@ -699,9 +738,12 @@
         private System.Windows.Forms.TextBox txtCostoUnitario;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DataGridView dgvDetallesMovimientos;
+        private System.Windows.Forms.Button btnEliminarDetalle;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_detalle;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_movimiento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre_producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_producto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre_bodega;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_bodega;
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha_vencimiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn lote;
@@ -710,7 +752,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn costo_unitario_promedio;
         private System.Windows.Forms.DataGridViewTextBoxColumn existencia_anterior;
         private System.Windows.Forms.DataGridViewTextBoxColumn existencia_total;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descripcion_estado;
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;
-        private System.Windows.Forms.Button btnEliminarDetalle;
     }
 }

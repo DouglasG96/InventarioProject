@@ -2,6 +2,7 @@
 using Entidades;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,8 @@ namespace Logica
 {
     public class MovimientosBL
     {
+        static movimientos objMovimientos;
+
         //metodo para cargar listado de productos
         public static List<vw_movimientos> cargarMovimientos()
         {
@@ -21,11 +24,9 @@ namespace Logica
             return MovimientosDAL.consultarNumeroMovimientos();
         }
 
-
-
-        public static double calcularCostoTotalConIva(double costo, double cantidad)
+        public static double calcularCostoTotalConIva(double costo, double cantidad,double costoTotalConIva)
         {
-            return (costo * cantidad);
+            return (costoTotalConIva + (costo * cantidad));
         }
 
         public static double calcularCostoTotalSinIva(double costoTotalConIva)
@@ -33,38 +34,15 @@ namespace Logica
             return (costoTotalConIva / 1.13);
         }
 
-        /*
-        //Metodo para buscar  producto por id
-        public static vw_producto DetalleProducto(int id)
+        public static movimientos crearMovimiento(movimientos objMovimiento)
         {
-            return ProductosDAL.DetalleProducto(id);
+            objMovimientos = objMovimiento;
+            return MovimientosDAL.crearMovimiento(objMovimientos);
         }
 
-        public static productos ObtenerIdProducto(int id)
+        public static detalles_movimientos crearDetalleMovimientos(detalles_movimientos detallesMovimientos)
         {
-            return ProductosDAL.ObtenerIdProducto(id);
+            return MovimientosDAL.crearDetalleMovimientos(objMovimientos , detallesMovimientos);
         }
-
-        //Metodo para buscar  producto por nombre
-        public static List<productos> BuscarProducto(string nombre)
-        {
-            return ProductosDAL.BuscarProducto(nombre);
-        }
-
-        public static productos CrearProducto(productos producto)
-        {
-            return ProductosDAL.CrearProducto(producto);
-        }
-
-        public static productos EditarProducto(productos producto)
-        {
-            return ProductosDAL.EditarProducto(producto);
-        }
-
-        public static int EliminarProducto(int id)
-        {
-            return ProductosDAL.EliminarProducto(id);
-        }
-        */
     }
 }
