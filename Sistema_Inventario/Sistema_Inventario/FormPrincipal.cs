@@ -23,6 +23,7 @@ namespace Sistema_Inventario
         FormProveedor frmproveedor;
         FormSucursal frmsucursal;
         FormListaSucursales frmListaSucursales;
+        FormListaBodega frmListaBodega;
         LoginBL loginBL;
         int idUsuario;
         int idRol;
@@ -141,15 +142,15 @@ namespace Sistema_Inventario
 
         private void btnBodegas_Click(object sender, EventArgs e)
         {
-            if (formBodega == null)
+            if (frmListaBodega == null)
             {
-                formBodega = new FormBodega();
-                formBodega.MdiParent = this;
-                formBodega.Show();
+                frmListaBodega = new FormListaBodega();
+                frmListaBodega.MdiParent = this;
+                frmListaBodega.Show();
             }
             else
             {
-                formBodega.Activate();
+                frmListaBodega.Activate();
             }
         }
         private void formBodega_FormClosed(object sender, EventArgs e)
