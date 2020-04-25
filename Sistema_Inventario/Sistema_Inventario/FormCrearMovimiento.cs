@@ -297,6 +297,7 @@ namespace Sistema_Inventario
         {
             datosProducto = ProductoBL.consultarDatosProducto(idProducto);
             existenciaAnterior = DetallesMovimientosBL.consultarExistenciaAnteriorProducto(idProducto);
+            //existenciaProductoBodega = DetallesMovimientosBL.consultarExistenciaProducto(idProducto,idBodega);
             txtCostoUnitario.Text = datosProducto.costo_unitario_con_iva.ToString().Trim();
         }
 

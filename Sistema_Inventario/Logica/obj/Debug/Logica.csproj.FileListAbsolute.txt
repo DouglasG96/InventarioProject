@@ -24,6 +24,7 @@ C:\Users\Cristian\Desktop\Proyecto ETPS3\InventarioProject\Sistema_Inventario\Lo
 C:\Users\Cristian\Desktop\Proyecto ETPS3\InventarioProject\Sistema_Inventario\Logica\obj\Debug\Logica.csproj.CopyComplete
 C:\Users\Cristian\Desktop\Proyecto ETPS3\InventarioProject\Sistema_Inventario\Logica\obj\Debug\Logica.dll
 C:\Users\Cristian\Desktop\Proyecto ETPS3\InventarioProject\Sistema_Inventario\Logica\obj\Debug\Logica.pdb
+C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Logica\bin\Debug\Logica.dll
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Logica\bin\Debug\Logica.pdb
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Logica\bin\Debug\Datos.dll
@@ -33,6 +34,7 @@ C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Logica\bin\Debug
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Logica\bin\Debug\Datos.dll.config
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Logica\bin\Debug\Entidades.pdb
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Logica\bin\Debug\EntityFramework.xml
-C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Logica\obj\Debug\Logica.csprojAssemblyReference.cache
+C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Logica\obj\Debug\Logica.csproj.CopyComplete
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Logica\obj\Debug\Logica.dll
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Logica\obj\Debug\Logica.pdb

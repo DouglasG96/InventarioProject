@@ -26,6 +26,7 @@ namespace Entidades
         public Nullable<int> id_producto { get; set; }
         public Nullable<int> id_movimiento { get; set; }
         public Nullable<int> id_bodega { get; set; }
+        public Nullable<int> id_bodega_traslado { get; set; }
     
         public virtual bodegas bodegas { get; set; }
         public virtual movimientos movimientos { get; set; }

@@ -49,6 +49,7 @@
     <Property Name="id_producto" Type="Int32" />
     <Property Name="id_movimiento" Type="Int32" />
     <Property Name="id_bodega" Type="Int32" />
+    <Property Name="id_bodega_traslado" Type="Int32" />
     <NavigationProperty Name="bodegas" Relationship="Self.FK_detalles_movimientos_bodegas" FromRole="detalles_movimientos" ToRole="bodegas" />
     <NavigationProperty Name="movimientos" Relationship="Self.FK_detalles_movimientos_movimientos" FromRole="detalles_movimientos" ToRole="movimientos" />
     <NavigationProperty Name="productos" Relationship="Self.FK_detalles_movimientos_productos" FromRole="detalles_movimientos" ToRole="productos" />
@@ -76,7 +77,6 @@
     <Property Name="id_usuario" Type="Int32" />
     <Property Name="estado" Type="Int32" />
     <Property Name="id_proveedor" Type="Int32" />
-    <Property Name="id_bodega_cargo" Type="Int32" />
     <NavigationProperty Name="bitacora" Relationship="Self.FK_bitacora_movimientos" FromRole="movimientos" ToRole="bitacora" />
     <NavigationProperty Name="detalles_movimientos" Relationship="Self.FK_detalles_movimientos_movimientos" FromRole="movimientos" ToRole="detalles_movimientos" />
     <NavigationProperty Name="proveedores" Relationship="Self.FK_movimientos_proveedores" FromRole="movimientos" ToRole="proveedores" />
@@ -676,11 +676,11 @@
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="sp_helpdiagramdefinition">
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(inventarioModel.sp_helpdiagramdefinition_Result)">
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="sp_helpdiagrams">
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(inventarioModel.sp_helpdiagrams_Result)">
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -1064,5 +1064,16 @@
     <Property Type="Int32" Name="estado4" Nullable="true" />
     <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
     <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
   </ComplexType>
 </Schema>

@@ -110,6 +110,12 @@
     <Compile Include="sp_consulta_producto_subc_fr_Result.cs">
       <DependentUpon>ModelInventario.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
     <Compile Include="sub_clasificaciones.cs">
       <DependentUpon>ModelInventario.tt</DependentUpon>
     </Compile>

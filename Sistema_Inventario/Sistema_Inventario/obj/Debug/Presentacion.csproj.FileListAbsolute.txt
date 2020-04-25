@@ -269,7 +269,7 @@ C:\Users\Cristian\Desktop\Proyecto ETPS3\InventarioProject\Sistema_Inventario\Si
 C:\Users\Cristian\Desktop\Proyecto ETPS3\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormProveedor.resources
 C:\Users\Cristian\Desktop\Proyecto ETPS3\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormCrearProveedor.resources
 C:\Users\Cristian\Desktop\Proyecto ETPS3\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormEditarProveedor.resources
-C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Presentacion.csprojResolveAssemblyReference.cache
+C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Presentacion.csprojAssemblyReference.cache
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormBodega.resources
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormCategoria.resources
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormCrearCategoria.resources
@@ -277,11 +277,13 @@ C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventar
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormCrearProducto.resources
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormCrearProveedor.resources
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormDetalleProducto.resources
+C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormEditarBodega.resources
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormEditarCategoria.resources
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormEditarProducto.resources
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormEditarProveedor.resources
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormEditarSucursal.resources
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormEditarTipoBodega.resources
+C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormListaBodega.resources
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormListaSucursales.resources
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormLogin.resources
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormPrincipal.resources
@@ -294,7 +296,8 @@ C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventar
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\CrudVigenciaPromedio.FmVigenciaPromedio.resources
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.FormUsuarios.resources
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.Properties.Resources.resources
-C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Presentacion.csproj.GenerateResource.Cache
+C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Presentacion.csproj.GenerateResource.cache
+C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Presentacion.csproj.CoreCompileInputs.cache
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\bin\Debug\Sistema_Inventario.exe.config
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\bin\Debug\Sistema_Inventario.exe
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\bin\Debug\Sistema_Inventario.pdb
@@ -363,5 +366,6 @@ C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventar
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\bin\Debug\ru\Microsoft.ReportViewer.DataVisualization.resources.dll
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\bin\Debug\zh-CHS\Microsoft.ReportViewer.DataVisualization.resources.dll
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\bin\Debug\zh-CHT\Microsoft.ReportViewer.DataVisualization.resources.dll
+C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Presentacion.csproj.CopyComplete
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.exe
 C:\Users\Douglas\Documents\InventarioProject\Sistema_Inventario\Sistema_Inventario\obj\Debug\Sistema_Inventario.pdb

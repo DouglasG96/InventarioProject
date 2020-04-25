@@ -44,6 +44,7 @@
     <Property Name="id_producto" Type="int" />
     <Property Name="id_movimiento" Type="int" />
     <Property Name="id_bodega" Type="int" />
+    <Property Name="id_bodega_traslado" Type="int" />
   </EntityType>
   <EntityType Name="medidas_peso">
     <Key>
@@ -68,7 +69,6 @@
     <Property Name="id_usuario" Type="int" />
     <Property Name="estado" Type="int" />
     <Property Name="id_proveedor" Type="int" />
-    <Property Name="id_bodega_cargo" Type="int" />
   </EntityType>
   <EntityType Name="productos">
     <Key>

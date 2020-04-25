@@ -131,6 +131,7 @@
             this.btnSucursales.TabIndex = 2;
             this.btnSucursales.Text = "&Sucursales";
             this.btnSucursales.UseVisualStyleBackColor = false;
+            this.btnSucursales.Click += new System.EventHandler(this.btnSucursales_Click);
             // 
             // btnMovimientos
             // 

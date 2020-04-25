@@ -114,6 +114,12 @@
     <Compile Include="FormDetalleProducto.Designer.cs">
       <DependentUpon>FormDetalleProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormEditarBodega.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditarBodega.Designer.cs">
+      <DependentUpon>FormEditarBodega.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormEditarCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +149,12 @@
     </Compile>
     <Compile Include="FormEditarTipoBodega.Designer.cs">
       <DependentUpon>FormEditarTipoBodega.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormListaBodega.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormListaBodega.Designer.cs">
+      <DependentUpon>FormListaBodega.cs</DependentUpon>
     </Compile>
     <Compile Include="FormListaSucursales.cs">
       <SubType>Form</SubType>
@@ -233,6 +245,9 @@
     <EmbeddedResource Include="FormDetalleProducto.resx">
       <DependentUpon>FormDetalleProducto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormEditarBodega.resx">
+      <DependentUpon>FormEditarBodega.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormEditarCategoria.resx">
       <DependentUpon>FormEditarCategoria.cs</DependentUpon>
     </EmbeddedResource>
@@ -247,6 +262,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormEditarTipoBodega.resx">
       <DependentUpon>FormEditarTipoBodega.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormListaBodega.resx">
+      <DependentUpon>FormListaBodega.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormListaSucursales.resx">
       <DependentUpon>FormListaSucursales.cs</DependentUpon>
