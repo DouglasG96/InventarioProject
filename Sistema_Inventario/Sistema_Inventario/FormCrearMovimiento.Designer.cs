@@ -65,9 +65,6 @@
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvDetallesMovimientos = new System.Windows.Forms.DataGridView();
-            this.btnCrearMovimiento = new System.Windows.Forms.Button();
-            this.btnCancelarMovimiento = new System.Windows.Forms.Button();
-            this.btnEliminarDetalle = new System.Windows.Forms.Button();
             this.id_detalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_movimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,6 +80,9 @@
             this.existencia_total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion_estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCrearMovimiento = new System.Windows.Forms.Button();
+            this.btnCancelarMovimiento = new System.Windows.Forms.Button();
+            this.btnEliminarDetalle = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -250,10 +250,11 @@
             this.cmbAuxiliar.BackColor = System.Drawing.Color.White;
             this.cmbAuxiliar.ForeColor = System.Drawing.Color.Black;
             this.cmbAuxiliar.FormattingEnabled = true;
-            this.cmbAuxiliar.Location = new System.Drawing.Point(1026, 168);
+            this.cmbAuxiliar.Location = new System.Drawing.Point(1033, 167);
             this.cmbAuxiliar.Name = "cmbAuxiliar";
             this.cmbAuxiliar.Size = new System.Drawing.Size(120, 21);
             this.cmbAuxiliar.TabIndex = 29;
+            this.cmbAuxiliar.SelectionChangeCommitted += new System.EventHandler(this.validarSelectorAuxiliar);
             // 
             // lblAuxiliar
             // 
@@ -285,7 +286,7 @@
             this.cmbBodega.Enabled = false;
             this.cmbBodega.ForeColor = System.Drawing.Color.Black;
             this.cmbBodega.FormattingEnabled = true;
-            this.cmbBodega.Location = new System.Drawing.Point(167, 241);
+            this.cmbBodega.Location = new System.Drawing.Point(167, 168);
             this.cmbBodega.Name = "cmbBodega";
             this.cmbBodega.Size = new System.Drawing.Size(120, 21);
             this.cmbBodega.TabIndex = 25;
@@ -297,7 +298,7 @@
             this.lblBodega.BackColor = System.Drawing.Color.White;
             this.lblBodega.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBodega.ForeColor = System.Drawing.Color.Black;
-            this.lblBodega.Location = new System.Drawing.Point(24, 247);
+            this.lblBodega.Location = new System.Drawing.Point(24, 174);
             this.lblBodega.Name = "lblBodega";
             this.lblBodega.Size = new System.Drawing.Size(53, 15);
             this.lblBodega.TabIndex = 24;
@@ -309,7 +310,7 @@
             this.cmbProducto.Enabled = false;
             this.cmbProducto.ForeColor = System.Drawing.Color.Black;
             this.cmbProducto.FormattingEnabled = true;
-            this.cmbProducto.Location = new System.Drawing.Point(167, 170);
+            this.cmbProducto.Location = new System.Drawing.Point(167, 245);
             this.cmbProducto.Name = "cmbProducto";
             this.cmbProducto.Size = new System.Drawing.Size(120, 21);
             this.cmbProducto.TabIndex = 23;
@@ -321,7 +322,7 @@
             this.label8.BackColor = System.Drawing.Color.White;
             this.label8.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(24, 176);
+            this.label8.Location = new System.Drawing.Point(24, 251);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(62, 15);
             this.label8.TabIndex = 22;
@@ -331,7 +332,7 @@
             // 
             this.txtUsuario.BackColor = System.Drawing.Color.White;
             this.txtUsuario.ForeColor = System.Drawing.Color.Black;
-            this.txtUsuario.Location = new System.Drawing.Point(1026, 103);
+            this.txtUsuario.Location = new System.Drawing.Point(1033, 106);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.ReadOnly = true;
             this.txtUsuario.Size = new System.Drawing.Size(155, 20);
@@ -361,7 +362,7 @@
             // 
             this.txtFecha.BackColor = System.Drawing.Color.White;
             this.txtFecha.ForeColor = System.Drawing.Color.Black;
-            this.txtFecha.Location = new System.Drawing.Point(1026, 30);
+            this.txtFecha.Location = new System.Drawing.Point(1033, 28);
             this.txtFecha.Name = "txtFecha";
             this.txtFecha.ReadOnly = true;
             this.txtFecha.Size = new System.Drawing.Size(118, 20);
@@ -408,7 +409,7 @@
             this.label5.BackColor = System.Drawing.Color.White;
             this.label5.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(906, 30);
+            this.label5.Location = new System.Drawing.Point(902, 30);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 15);
             this.label5.TabIndex = 8;
@@ -538,46 +539,6 @@
             this.dgvDetallesMovimientos.Size = new System.Drawing.Size(1244, 276);
             this.dgvDetallesMovimientos.TabIndex = 0;
             // 
-            // btnCrearMovimiento
-            // 
-            this.btnCrearMovimiento.BackColor = System.Drawing.Color.White;
-            this.btnCrearMovimiento.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCrearMovimiento.ForeColor = System.Drawing.Color.Black;
-            this.btnCrearMovimiento.Location = new System.Drawing.Point(521, 738);
-            this.btnCrearMovimiento.Name = "btnCrearMovimiento";
-            this.btnCrearMovimiento.Size = new System.Drawing.Size(75, 32);
-            this.btnCrearMovimiento.TabIndex = 18;
-            this.btnCrearMovimiento.Text = "Agregar";
-            this.btnCrearMovimiento.UseVisualStyleBackColor = false;
-            this.btnCrearMovimiento.Click += new System.EventHandler(this.btnCrearMovimiento_Click);
-            // 
-            // btnCancelarMovimiento
-            // 
-            this.btnCancelarMovimiento.BackColor = System.Drawing.Color.White;
-            this.btnCancelarMovimiento.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelarMovimiento.ForeColor = System.Drawing.Color.Black;
-            this.btnCancelarMovimiento.Location = new System.Drawing.Point(681, 738);
-            this.btnCancelarMovimiento.Name = "btnCancelarMovimiento";
-            this.btnCancelarMovimiento.Size = new System.Drawing.Size(75, 32);
-            this.btnCancelarMovimiento.TabIndex = 1;
-            this.btnCancelarMovimiento.Text = "Cancelar";
-            this.btnCancelarMovimiento.UseVisualStyleBackColor = false;
-            this.btnCancelarMovimiento.Click += new System.EventHandler(this.btnCancelarMovimiento_Click);
-            // 
-            // btnEliminarDetalle
-            // 
-            this.btnEliminarDetalle.BackColor = System.Drawing.Color.White;
-            this.btnEliminarDetalle.Enabled = false;
-            this.btnEliminarDetalle.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminarDetalle.ForeColor = System.Drawing.Color.Black;
-            this.btnEliminarDetalle.Location = new System.Drawing.Point(649, 361);
-            this.btnEliminarDetalle.Name = "btnEliminarDetalle";
-            this.btnEliminarDetalle.Size = new System.Drawing.Size(175, 32);
-            this.btnEliminarDetalle.TabIndex = 19;
-            this.btnEliminarDetalle.Text = "Eliminar detalle";
-            this.btnEliminarDetalle.UseVisualStyleBackColor = false;
-            this.btnEliminarDetalle.Click += new System.EventHandler(this.btnEliminarDetalle_Click);
-            // 
             // id_detalle
             // 
             this.id_detalle.HeaderText = "Numero de detalle";
@@ -670,6 +631,46 @@
             this.estado.Name = "estado";
             this.estado.ReadOnly = true;
             this.estado.Visible = false;
+            // 
+            // btnCrearMovimiento
+            // 
+            this.btnCrearMovimiento.BackColor = System.Drawing.Color.White;
+            this.btnCrearMovimiento.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCrearMovimiento.ForeColor = System.Drawing.Color.Black;
+            this.btnCrearMovimiento.Location = new System.Drawing.Point(521, 738);
+            this.btnCrearMovimiento.Name = "btnCrearMovimiento";
+            this.btnCrearMovimiento.Size = new System.Drawing.Size(75, 32);
+            this.btnCrearMovimiento.TabIndex = 18;
+            this.btnCrearMovimiento.Text = "Agregar";
+            this.btnCrearMovimiento.UseVisualStyleBackColor = false;
+            this.btnCrearMovimiento.Click += new System.EventHandler(this.btnCrearMovimiento_Click);
+            // 
+            // btnCancelarMovimiento
+            // 
+            this.btnCancelarMovimiento.BackColor = System.Drawing.Color.White;
+            this.btnCancelarMovimiento.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarMovimiento.ForeColor = System.Drawing.Color.Black;
+            this.btnCancelarMovimiento.Location = new System.Drawing.Point(681, 738);
+            this.btnCancelarMovimiento.Name = "btnCancelarMovimiento";
+            this.btnCancelarMovimiento.Size = new System.Drawing.Size(75, 32);
+            this.btnCancelarMovimiento.TabIndex = 1;
+            this.btnCancelarMovimiento.Text = "Cancelar";
+            this.btnCancelarMovimiento.UseVisualStyleBackColor = false;
+            this.btnCancelarMovimiento.Click += new System.EventHandler(this.btnCancelarMovimiento_Click);
+            // 
+            // btnEliminarDetalle
+            // 
+            this.btnEliminarDetalle.BackColor = System.Drawing.Color.White;
+            this.btnEliminarDetalle.Enabled = false;
+            this.btnEliminarDetalle.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarDetalle.ForeColor = System.Drawing.Color.Black;
+            this.btnEliminarDetalle.Location = new System.Drawing.Point(649, 361);
+            this.btnEliminarDetalle.Name = "btnEliminarDetalle";
+            this.btnEliminarDetalle.Size = new System.Drawing.Size(175, 32);
+            this.btnEliminarDetalle.TabIndex = 19;
+            this.btnEliminarDetalle.Text = "Eliminar detalle";
+            this.btnEliminarDetalle.UseVisualStyleBackColor = false;
+            this.btnEliminarDetalle.Click += new System.EventHandler(this.btnEliminarDetalle_Click);
             // 
             // FormCrearMovimiento
             // 

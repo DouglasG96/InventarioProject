@@ -19,6 +19,7 @@ namespace Sistema_Inventario
         String clave = "";
         LoginBL loginBL;
         int idUsuario;
+        int idrol = 0;
         public FormLogin()
         {
             InitializeComponent();
@@ -51,7 +52,8 @@ namespace Sistema_Inventario
             }
             else
             {
-                FormPrincipal form = new FormPrincipal(idUsuario);
+                idrol = loginBL.consultarDatosRol(idUsuario);
+                FormPrincipal form = new FormPrincipal(idUsuario, idrol);
                 form.Show();
                 this.Hide();
             }

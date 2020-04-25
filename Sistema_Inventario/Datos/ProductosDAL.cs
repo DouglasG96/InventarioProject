@@ -33,6 +33,32 @@ namespace Datos
             }
         }
 
+        public static List<productos> cargarProductosBodega(int idBodega)
+        {
+            using (inventarioEntities bd = new inventarioEntities())
+            {
+                List<productos> listaProductos = new List<productos>();
+                try
+                {
+                    bd.Database.Connection.Open();
+                    /*
+                    listaProductos = (from i in bd.bodegas
+                                      join b).ToList();
+                    */
+                }
+                catch (Exception e)
+                {
+                    // Imprime error en la consola
+                    Debug.Write(e);
+                }
+                finally
+                {
+                    bd.Database.Connection.Close();
+                }
+                return listaProductos;
+            }
+        }
+
         public static List<productos> cargarProductosOpcional()
         {
             using (inventarioEntities bd = new inventarioEntities())
@@ -128,10 +154,6 @@ namespace Datos
         {
             using (inventarioEntities bd = new inventarioEntities())
             {
-                //var prod = (from p in bd.productos
-                //              where p.id_producto == id
-                //              select p).FirstOrDefault();
-
                 var prod = bd.productos.First(x => x.id_producto == producto.id_producto);//obtenemos registro por medio de id
 
                 prod.id_producto = producto.id_producto;
@@ -151,10 +173,6 @@ namespace Datos
         {
             using (inventarioEntities bd = new inventarioEntities())
             {
-                //var prod = (from p in bd.productos
-                //              where p.id_producto == id
-                //              select p).FirstOrDefault();
-
                 var prod = bd.productos.First(x => x.id_producto == id);//obtenemos registro por medio de id
                 prod.estado = 0;
                 bd.Entry(prod).State = System.Data.Entity.EntityState.Modified;

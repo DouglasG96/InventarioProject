@@ -182,12 +182,16 @@ namespace Datos
         {
             using (inventarioEntities bd = new inventarioEntities())
             {
+                var bg = bd.tipo_bodega_bodegas.First(indice => indice.id_bodega == idBodega);
+                if (bg != null)
+                {
+                    tipo_Bodega_Bodegas.capacidad_maxima = bg.capacidad_maxima;
+                    tipo_Bodega_Bodegas.capacidad_actual = bg.capacidad_actual;
+                }
+                else
+                {
 
-                var bg = bd.tipo_bodega_bodegas.First(indice => indice.id_bodega == tipo_Bodega_Bodegas.id_bodega);
-
-                bg.capacidad_maxima = tipo_Bodega_Bodegas.capacidad_maxima;
-                bg.capacidad_actual = tipo_Bodega_Bodegas.capacidad_actual;
-                //bg.id_tipo_bodega = tipo_Bodega_Bodegas.id_tipo_bodega;
+                }
             }
             return tipo_Bodega_Bodegas;
         }

@@ -40,9 +40,9 @@ namespace Logica
             return MovimientosDAL.crearMovimiento(objMovimientos);
         }
 
-        public static detalles_movimientos crearDetalleMovimientos(detalles_movimientos detallesMovimientos)
+        public static detalles_movimientos crearDetalleMovimientos(detalles_movimientos detallesMovimientos,movimientos objMovimientos)
         {
-            return MovimientosDAL.crearDetalleMovimientos(objMovimientos , detallesMovimientos);
+            return MovimientosDAL.crearDetalleMovimientos(detallesMovimientos, objMovimientos);
         }
     }
 }

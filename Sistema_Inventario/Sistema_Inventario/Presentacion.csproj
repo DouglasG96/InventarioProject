@@ -132,6 +132,24 @@
     <Compile Include="FormEditarProveedor.Designer.cs">
       <DependentUpon>FormEditarProveedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormEditarSucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditarSucursal.Designer.cs">
+      <DependentUpon>FormEditarSucursal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEditarTipoBodega.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditarTipoBodega.Designer.cs">
+      <DependentUpon>FormEditarTipoBodega.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormListaSucursales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormListaSucursales.Designer.cs">
+      <DependentUpon>FormListaSucursales.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +198,12 @@
     <Compile Include="FormTipoBodega.Designer.cs">
       <DependentUpon>FormTipoBodega.cs</DependentUpon>
     </Compile>
+    <Compile Include="formVigenciaPromedio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formVigenciaPromedio.Designer.cs">
+      <DependentUpon>formVigenciaPromedio.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,6 +242,15 @@
     <EmbeddedResource Include="FormEditarProveedor.resx">
       <DependentUpon>FormEditarProveedor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormEditarSucursal.resx">
+      <DependentUpon>FormEditarSucursal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditarTipoBodega.resx">
+      <DependentUpon>FormEditarTipoBodega.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormListaSucursales.resx">
+      <DependentUpon>FormListaSucursales.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -241,6 +274,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormTipoBodega.resx">
       <DependentUpon>FormTipoBodega.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formVigenciaPromedio.resx">
+      <DependentUpon>formVigenciaPromedio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormUsuarios.resx">
       <DependentUpon>FormUsuarios.cs</DependentUpon>

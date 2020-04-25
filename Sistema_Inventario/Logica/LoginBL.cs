@@ -32,5 +32,10 @@ namespace Logica
            return loginDAL.consultarDatosUsuario(idUsuario);
         }
 
-    }        
+        public int consultarDatosRol(int idUsuario)
+        {
+            return loginDAL.consultarDatosRol(idUsuario);
+        }
+
+    }
 }

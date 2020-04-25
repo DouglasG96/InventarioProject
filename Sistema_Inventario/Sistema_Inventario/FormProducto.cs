@@ -15,9 +15,11 @@ namespace Sistema_Inventario
 {
    public partial class FormProducto : DevComponents.DotNetBar.Metro.MetroForm
     {
-        public FormProducto()
+        private int idrol;
+        public FormProducto(int idroll)
         {
             InitializeComponent();
+            idrol = idroll;
         }
 
         private void CargarProductos()
@@ -28,7 +30,12 @@ namespace Sistema_Inventario
 
         private void FormProducto_FormClosed(object sender, FormClosedEventArgs e)
         {
-
+            if (idrol == 2)
+            {
+                btnAgregarProducto.Enabled = false;
+                btnEditarProducto.Enabled = false;
+                btnEliminarProducto.Enabled = false;
+            }
         }
 
         private void FormProducto_Load(object sender, EventArgs e)

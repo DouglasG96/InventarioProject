@@ -14,7 +14,7 @@ namespace Sistema_Inventario
 {
     public partial class FormSucursal : DevComponents.DotNetBar.Metro.MetroForm
     {
-        public FormSucursal()
+        public FormSucursal(int idRol)
         {
             InitializeComponent();
         }

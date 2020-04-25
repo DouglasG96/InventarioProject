@@ -10,9 +10,9 @@ namespace Logica
 {
     public class DetallesMovimientosBL
     {
-        public static detalles_movimientos consultarDetallesMovimientosProducto(String idProducto)
+        public static decimal consultarExistenciaAnteriorProducto(String idProducto)
         {
-            return DetallesMovimientosDAL.consultarDetallesMovimientosProducto(idProducto);
+            return DetallesMovimientosDAL.consultarExistenciaAnteriorProducto(idProducto);
         }
     }
 }

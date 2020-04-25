@@ -10,7 +10,7 @@ namespace Datos
 {
     public class MovimientosDAL
     {
-        static tipo_bodega_bodegas Tipo_Bodega_Bodegas;
+        
         static int tipoMovimiento = 0;
         static int idBodega = 0;
         static double cantidadMovimiento = 0;
@@ -37,49 +37,99 @@ namespace Datos
         {
             using (inventarioEntities bd = new inventarioEntities())
             {
+                if(objMovimiento.id_proveedor == 0)
+                {
+                    objMovimiento.id_proveedor = null;
+                }
                 bd.movimientos.Add(objMovimiento);
                 bd.SaveChanges();
             }
             return objMovimiento;
         }
 
-        public static detalles_movimientos crearDetalleMovimientos(movimientos objMovimientos, detalles_movimientos detallesMovimientos)
+        public static detalles_movimientos crearDetalleMovimientos(detalles_movimientos detallesMovimientos, movimientos objMovimientos)
         {
             using (inventarioEntities bd = new inventarioEntities())
             {
-                tipoMovimiento = Convert.ToInt32(objMovimientos.tipo_movimiento);
+                tipo_bodega_bodegas tipoBodegaBodegas = new tipo_bodega_bodegas();
+                tipoMovimiento = Convert.ToInt32(objMovimientos.id_tipo_movimiento);
                 idBodega = Convert.ToInt32(detallesMovimientos.id_bodega);
                 cantidadMovimiento = Convert.ToDouble(detallesMovimientos.cantidad);
-                Tipo_Bodega_Bodegas = BodegaDAL.cargarDatosBodega(Tipo_Bodega_Bodegas,idBodega);
+                tipo_bodega_bodegas Tipo_Bodega_Bodegas = BodegaDAL.cargarDatosBodega(tipoBodegaBodegas, idBodega);
                 cantidadCapacidadMaxima = Convert.ToDouble(Tipo_Bodega_Bodegas.capacidad_maxima);
                 cantidadCapacidadActual = Convert.ToDouble(Tipo_Bodega_Bodegas.capacidad_actual);
                 switch (tipoMovimiento)
                 {
                     case 1:
-                        if(aumentarExistenciaBodega(idBodega,cantidadMovimiento,cantidadCapacidadMaxima,cantidadCapacidadActual))
+                        if(actualizarExistenciaBodega(idBodega,cantidadMovimiento,cantidadCapacidadMaxima,cantidadCapacidadActual))
                         {
                             bd.detalles_movimientos.Add(detallesMovimientos);
                             bd.SaveChanges();
                         }
                         else
                         {
-                            return detallesMovimientos = null;
+                            detallesMovimientos = null;
+                        }
+                        break;
+                    case 2:
+                        cantidadCapacidadActual = (cantidadCapacidadActual - cantidadMovimiento);
+                        if(cantidadCapacidadActual == 0)
+                        {
+                            detallesMovimientos = null;
+                        }
+                        else
+                        {
+                            var bg = bd.tipo_bodega_bodegas.First(indice => indice.id_bodega == idBodega);
+                            if (bg != null)
+                            {
+                                bg.capacidad_actual = Convert.ToDecimal(cantidadCapacidadActual);
+
+                                bd.Entry(bg).State = System.Data.Entity.EntityState.Modified;
+                                bd.SaveChanges();
+
+                            }
+                            bd.detalles_movimientos.Add(detallesMovimientos);
+                            bd.SaveChanges();
                         }
                         break;
                     case 3:
+                        
                         bd.detalles_movimientos.Add(detallesMovimientos);
                         bd.SaveChanges();
+                        
+                        break;
+                    case 4:
+                        cantidadCapacidadActual = (cantidadCapacidadActual - cantidadMovimiento);
+                        if (cantidadCapacidadActual == 0)
+                        {
+                            detallesMovimientos = null;
+                        }
+                        else
+                        {
+                            var bg = bd.tipo_bodega_bodegas.First(indice => indice.id_bodega == idBodega);
+                            if (bg != null)
+                            {
+                                bg.capacidad_actual = Convert.ToDecimal(cantidadCapacidadActual);
+
+                                bd.Entry(bg).State = System.Data.Entity.EntityState.Modified;
+                                bd.SaveChanges();
+
+                            }
+                            bd.detalles_movimientos.Add(detallesMovimientos);
+                            bd.SaveChanges();
+                        }
                         break;
                 }
             }
             return detallesMovimientos;
         } 
         
-        public static bool aumentarExistenciaBodega(int idBodega, double cantidadMovimiento, double capacidadMaxima, double cantidadCapacidadActual)
+        public static bool actualizarExistenciaBodega(int idBodega, double cantidadMovimiento, double capacidadMaxima, double cantidadCapacidadActual)
         {
+            bool bandera = false;
             if ((cantidadMovimiento + cantidadCapacidadActual) >= cantidadCapacidadMaxima)
             {
-                return false;
+                bandera = false;
             }
             else
             {
@@ -87,14 +137,17 @@ namespace Datos
                 using (inventarioEntities bd = new inventarioEntities())
                 {
                     var bg = bd.tipo_bodega_bodegas.First(indice => indice.id_bodega == idBodega);
+                    if(bg != null)
+                    {
+                        bg.capacidad_actual = Convert.ToDecimal(cantidadCapacidadActual);
 
-                    bg.capacidad_actual = Convert.ToDecimal(cantidadCapacidadActual);
-
-                    bd.Entry(bg).State = System.Data.Entity.EntityState.Modified;
-                    bd.SaveChanges();
+                        bd.Entry(bg).State = System.Data.Entity.EntityState.Modified;
+                        bd.SaveChanges();
+                        bandera = true;
+                    }
                 }
-                return true;
             }
+            return bandera;
         }
     }
 }

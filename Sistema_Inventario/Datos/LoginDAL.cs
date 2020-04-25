@@ -98,5 +98,13 @@ namespace Datos
             var usuarios = bd.usuarios.First(indice => indice.id_usuario == idUsuario);
             return nombreUsuario = usuarios.nombre_completo;
         }
+
+        public int consultarDatosRol(int idUsuario)
+        {
+            int nombreUsuario;
+            var usuarios = bd.usuarios.First(indice => indice.id_usuario == idUsuario);
+            return nombreUsuario = Convert.ToInt32(usuarios.id_rol);
+        }
+
     }
 }

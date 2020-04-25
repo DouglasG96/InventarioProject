@@ -20,22 +20,28 @@ namespace Datos
         }
 
 
-        public static detalles_movimientos consultarDetallesMovimientosProducto(String identificadorProducto)
+        public static decimal consultarExistenciaAnteriorProducto(String identificadorProducto)
         {
-            detalles_movimientos objDetallesMovimientos = new detalles_movimientos();
+            decimal value = 0;
             try
             {
                 using (inventarioEntities bd = new inventarioEntities())
                 {
                     idProducto = Convert.ToInt32(identificadorProducto);
-                    objDetallesMovimientos = bd.detalles_movimientos.First(indice => indice.id_producto == idProducto && indice.estado == 1);
+                    //Consulto el último registro en la bd del producto
+                    value =  Convert.ToDecimal(bd.detalles_movimientos
+                               .Where(indice => indice.id_producto == idProducto)
+                               .OrderByDescending(indice => indice.id_detalle_movimiento)
+                               .Select(indice => indice.existencia_anterior)
+                               .First()
+                               .ToString());
                 }
             }
             catch (Exception e)
             {
                 Debug.Write(e.Message);
             }
-            return objDetallesMovimientos;
+            return value;
         }
     }
 }

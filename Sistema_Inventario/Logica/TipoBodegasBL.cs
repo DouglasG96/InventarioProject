@@ -19,5 +19,25 @@ namespace Logica
         {
             return TipoBodegaDAL.CrearTipoBodega(tipobode);
         }
+
+        public static int EliminarTipoBodega(int id)
+        {
+            return TipoBodegaDAL.EliminarTipoBodega(id);
+        }
+
+        public static tipo_bodega EditarTipoBodega(tipo_bodega tipobodegat)
+        {
+            return TipoBodegaDAL.EditarTipoBodega(tipobodegat);
+        }
+
+        public static tipo_bodega ObtenerIdTipoBodega(int id)
+        {
+            return TipoBodegaDAL.ObtenerIdTipoBodega(id);
+        }
+
+        public static List<tipo_bodega> BuscarTipoBodega(string nombre)
+        {
+            return TipoBodegaDAL.BuscarTipoBodega(nombre);
+        }
     }
 }

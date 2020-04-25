@@ -24,5 +24,23 @@ namespace Logica
         {
             return SucursalDAL.CrearSucursal(nuevasucursal);
         }
+
+        public static List<sucursales> BuscarSucursal(string nombre)
+        {
+            return SucursalDAL.BuscarSucursal(nombre);
+        }
+        public static sucursales ObtenerIdSucursal(int id)
+        {
+            return SucursalDAL.ObtenerIdSucursales(id);
+        }
+        public static sucursales EditarSucursal(sucursales sucursales)
+        {
+            return SucursalDAL.EditarSucursal(sucursales);
+        }
+
+        public static int EliminarSucursal(int id)
+        {
+            return SucursalDAL.EliminarSucursal(id);
+        }
     }
 }

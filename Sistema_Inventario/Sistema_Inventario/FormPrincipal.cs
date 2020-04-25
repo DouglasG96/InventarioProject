@@ -21,16 +21,20 @@ namespace Sistema_Inventario
         FormBodega formBodega;
         FormMovimientos formMovimientos;
         FormProveedor frmproveedor;
-
+        FormSucursal frmsucursal;
+        FormListaSucursales frmListaSucursales;
         LoginBL loginBL;
         int idUsuario;
+        int idRol;
         String nombreUsuario = "";
         
-        public FormPrincipal(int idUsuario)
+        public FormPrincipal(int idUsuario, int idrol)
         {
             InitializeComponent();
             timer1.Enabled = true;
             this.idUsuario = idUsuario;
+            this.idRol = idrol;
+
 
             loginBL = new LoginBL();
             consultarDatosUsuario(idUsuario);
@@ -57,7 +61,7 @@ namespace Sistema_Inventario
             //valido si no esta abierto el form para solo abrir 1
             if (frmProducto == null)
             {
-                frmProducto = new FormProducto();
+                frmProducto = new FormProducto(idRol);
                 frmProducto.FormClosed += new FormClosedEventHandler(frmProducto_FormClosed);
                 frmProducto.MdiParent = this;
                 frmProducto.Show();
@@ -107,7 +111,7 @@ namespace Sistema_Inventario
         {
             if (frmProducto == null)
             {
-                frmProducto = new FormProducto();
+                frmProducto = new FormProducto(idRol);
                 frmProducto.FormClosed += new FormClosedEventHandler(frmProducto_FormClosed);
                 frmProducto.MdiParent = this;
                 frmProducto.Show();
@@ -155,16 +159,23 @@ namespace Sistema_Inventario
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (formUsuario == null)
+            if (idRol == 1)
             {
-                formUsuario = new FormUsuarios();
-                formUsuario.FormClosed += new FormClosedEventHandler(frmUsuarios_FormClosed);
-                formUsuario.MdiParent = this;
-                formUsuario.Show();
+                if (formUsuario == null)
+                {
+                    formUsuario = new FormUsuarios();
+                    formUsuario.FormClosed += new FormClosedEventHandler(frmUsuarios_FormClosed);
+                    formUsuario.MdiParent = this;
+                    formUsuario.Show();
+                }
+                else
+                {
+                    formUsuario.Activate();
+                }
             }
             else
             {
-                formUsuario.Activate();
+                MessageBox.Show("Usted no tiene permiso para ejecutar esta opción", "Permiso denegado", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -246,5 +257,51 @@ namespace Sistema_Inventario
         {
             frmproveedor = null;
         }
+
+        private void sucursalesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (idRol == 1)
+            {
+                //valido si no esta abierto el form para solo abrir 1
+                if (frmsucursal == null)
+                {
+                    frmsucursal = new FormSucursal(idRol);
+                    frmsucursal.FormClosed += new FormClosedEventHandler(frmsucursal_FormClosed);
+                    frmsucursal.MdiParent = this;
+                    frmsucursal.Show();
+                }
+                //si esta activo solo lo muestro
+                else
+                    frmsucursal.Activate();
+            }
+            else
+            {
+
+                MessageBox.Show("Usted no tiene permiso para registrar", "Permiso denegado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+        private void frmsucursal_FormClosed(object sender, EventArgs e)
+        {
+            frmsucursal = null;
+        }
+
+        private void FormPrincipal_Load(object sender, EventArgs e)
+        {
+            if (idRol == 2)
+            {
+                mantenimientosToolStripMenuItem.Enabled = false;
+                herramientasToolStripMenuItem.Enabled = false;
+
+            }
+
+        }
+
+        private void btnSucursales_Click(object sender, EventArgs e)
+        {
+            //aqui va el formulario de lista de sucursales
+            frmListaSucursales = new FormListaSucursales(idRol);
+        }
+
     }
 }
