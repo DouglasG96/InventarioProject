@@ -1,0 +1,217 @@
+﻿
+@{
+    ViewBag.Title = "Reporte Productos por Vencer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container">
+        <br />
+        <div class="form-row">
+            <div class="col-xs-12 col-md-10">
+                <div class="form-group col-md-6">
+                    <label>Desde:</label>
+                    <div class="input-group date">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" id="txtInitDate" autocomplete="off" data-date-format='yyyy-mm-dd'  class="form-control pull-right datepicker">
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6 ">
+                    <label>Hasta:</label>
+                    <div class="input-group date">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" id="txtEndDate" data-date-format='yyyy-mm-dd' autocomplete="off" class="form-control pull-right datepicker">
+                    </div>
+
+                </div>
+
+                <button class="btn btn-success" id="btnLoadReport">Generar</button>
+            </div>
+
+
+            @*<div class="form-group col-6">
+                    <label class="radio-inline ml-5"><input type="radio" id="reporte" name="reporte" value="1" onclick="LoadData('/Reportes/LoadData', document.getElementById('Date').value)"> Consumptions</label>
+                    <label class="radio-inline ml-5" style="color:red"><input type="radio" id="reporte" name="reporte" value="2" onclick="LoadData('/Reportes/TopOfenderMas', document.getElementById('Date').value);"> Top Ofenders +</label>
+                    <label class="radio-inline ml-5" style="color:green"><input type="radio" id="reporte" name="reporte" value="3" onclick="LoadData('/Reportes/TopOfenderMenos',document.getElementById('Date').value);"> Top Ofenders -</label>
+                </div>*@
+
+        </div>
+        @*<div class="form-row">
+
+                <div class="form-group col-12">
+
+                    <button class="btn btn-success">Generar</button>
+                </div>
+            </div>*@
+    </div>
+
+
+    <br />
+    <br />
+
+    <table class="table table-striped table-bordered" style="width:100%" id="tblReport">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Codigo</th>
+                <th>Categoria</th>
+                <th>Sub Categoria</th>
+                <th>Cantidad</th>
+                <th>Costo Unitario</th>
+                <th>Lote</th>
+                <th>Fecha Vencimiento</th>
+            </tr>
+        </thead>
+    </table>
+
+
+    @*<script src="~/Content/js/plugins/jquery/jquery-3.3.1.js"></script>*@
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#tblReport').DataTable({
+
+                language: {
+                    sProcessing: "Procesando...",
+                    sLengthMenu: "Mostrar _MENU_ registros",
+                    sZeroRecords: "No se encontraron resultados",
+                    sEmptyTable: "No se Encontraron resultados ",
+                    sInfo: "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    sInfoEmpty: "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    sInfoFiltered: "(filtrado de un total de _MAX_ registros)",
+                    sInfoPostFix: "",
+                    sSearch: "Buscar:",
+                    sUrl: "",
+                    sInfoThousands: ",",
+                    sLoadingRecords: "Cargando...",
+                    oPaginate: {
+                        sFirst: "Primero",
+                        sLast: "Último",
+                        sNext: "Siguiente",
+                        sPrevious: "Anterior"
+                    }
+                },
+            });
+
+
+             //envio data ajax
+            $('#btnLoadReport').click(function () {
+                var InitDate = $("#txtInitDate").val().toString();//capturo fecha para hacer filtro
+                var EndDate = $("#txtEndDate").val().toString();
+                var tabla = $('#tblReport').DataTable();
+                tabla.destroy();
+                $('#tblReport').DataTable({
+                language: {
+                    sProcessing: "Procesando...",
+                    sLengthMenu: "Mostrar _MENU_ registros",
+                    sZeroRecords: "No se encontraron resultados",
+                    sEmptyTable: "No se Encontraron resultados ",
+                    sInfo: "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    sInfoEmpty: "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    sInfoFiltered: "(filtrado de un total de _MAX_ registros)",
+                    sInfoPostFix: "",
+                    sSearch: "Buscar:",
+                    sUrl: "",
+                    sInfoThousands: ",",
+                    sLoadingRecords: "Cargando...",
+                    oPaginate: {
+                        sFirst: "Primero",
+                        sLast: "Último",
+                        sNext: "Siguiente",
+                        sPrevious: "Anterior"
+                    }
+                },
+                dom: 'Bfrtip',//agregar botones exportacion
+                buttons: [
+                    //'copy', 'excel', 'pdf', 'print',
+                    {
+                        extend: 'copyHtml5',
+                        text: '<i class="fa fa-files-o fa-lg"; style="color: blue; margin-right: 6px"></i>',
+                        title: 'Reporte Productos por Vencer',
+                        messageTop: 'Desde: '+InitDate+' Hasta: '+EndDate+'  ',
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        text: '<i class="fa fa-file-excel-o fa-lg"; style="color: green; margin-right: 6px"></i>',
+                        title: 'Reporte Productos por Vencer',
+                        messageTop: 'Desde: '+InitDate+' Hasta: '+EndDate+'  ',
+                        autoFilter: true,
+                        
+                        customize: function( xlsx ) {
+                            var sheet = xlsx.xl.worksheets['sheet1.xml'];
+                            $('row c[r*="3"]', sheet).attr( 's', '32' );
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        text: '<i class="fa fa-file-pdf-o fa-lg"; style="color: red; margin-right: 6px"></i>',
+                        title: 'Reporte Productos por Vencer',
+                        messageTop: 'Desde: '+InitDate+' Hasta: '+EndDate+'  ',
+
+                    },
+                    {
+                        extend: 'print',
+                        text: '<i class="fa fa-print fa-lg" style="color: blue;"></i>',
+                        title: 'Reporte Productos por Vencer',
+                        messageTop: 'Desde: '+InitDate+' Hasta: '+EndDate+'  ',
+                    },
+                ],
+                    processing: true,
+                    ordering: false,
+                    responsive: true,
+
+                    "ajax": {
+                        url: '@Url.Action("ProductsToExpire", "Reports")',
+                        data: { InitDate:InitDate, EndDate: EndDate },
+                         type: "POST",
+                         datatype: "json",
+                    },
+
+                    //"createdRow": function (row, data, index) {
+                    //    $('td', row).eq(5).css('color', 'red');
+                    //    $('td', row).eq(5).css('font-weight', 'bold');
+
+                    //},
+
+
+                    //mostrar fecha mes y ano
+                    columnDefs: [{
+                        targets: 7, render: function (data) {
+                            return moment(data).format('YYYY-MM-DD');
+                        }
+                    }],
+
+                    columns: [
+
+
+                        { data: "nombre", name: "Producto", "autoWidth": true },
+                        { data: "codigo", name: "Codigo", "autoWidth": true },
+                        { data: "nombre_clasificacion", name: "Categoria", "autoWidth": true },                        
+                        { data: "sub_clasificacion", name: "SubCategoria", "autoWidth": true },
+                        { data: "existencia_total", name: "Cantidad", "autoWidth": true },
+                        { data: "costo_unitario", name: "Costo Unitario", "autoWidth": true, render: $.fn.dataTable.render.number(',', '.', 2, '$') },
+                        { data: "lote", name: "Lote", "autoWidth": true},
+                        { "data": "fecha_vencimiento", "name": "Fecha Vencimiento", "autoWidth": true,},
+
+
+                    ]
+                });
+
+
+            });
+
+        });
+    </script>
+
+
+
