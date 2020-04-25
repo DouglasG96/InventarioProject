@@ -73,6 +73,7 @@
           <Property Name="id_usuario" Type="int" />
           <Property Name="estado" Type="int" />
           <Property Name="id_proveedor" Type="int" />
+          <Property Name="id_bodega_cargo" Type="int" />
         </EntityType>
         <EntityType Name="productos">
           <Key>
@@ -505,6 +506,82 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_tipo_movimiento' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_consulta_bodega_habilitada" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="estado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_consulta_bodega_tipo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tipo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_consulta_kardex_tipo_f" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fecha_inicio" Type="date" Mode="In" />
+          <Parameter Name="fecha_fin" Type="date" Mode="In" />
+        </Function>
+        <Function Name="sp_consulta_kardex_tipo_m" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tipo_m" Type="int" Mode="In" />
+          <Parameter Name="fecha_inicio" Type="date" Mode="In" />
+          <Parameter Name="fecha_fin" Type="date" Mode="In" />
+        </Function>
+        <Function Name="sp_consulta_producto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cod_prod" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_consulta_producto_clas_fr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fecha_inicio" Type="date" Mode="In" />
+          <Parameter Name="fecha_fin" Type="date" Mode="In" />
+          <Parameter Name="cla" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_consulta_producto_clas_sub_fr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fecha_inicio" Type="date" Mode="In" />
+          <Parameter Name="fecha_fin" Type="date" Mode="In" />
+          <Parameter Name="cla" Type="int" Mode="In" />
+          <Parameter Name="sub_cla" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_consulta_producto_fr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fecha_inicio" Type="date" Mode="In" />
+          <Parameter Name="fecha_fin" Type="date" Mode="In" />
+        </Function>
+        <Function Name="sp_consulta_producto_nom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nom_prod" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_consulta_producto_subc_fr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fecha_inicio" Type="date" Mode="In" />
+          <Parameter Name="fecha_fin" Type="date" Mode="In" />
+          <Parameter Name="sub_cla" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_consulta_productos_por_vencer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fecha_inicio" Type="date" Mode="In" />
+          <Parameter Name="fecha_fin" Type="date" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="inventarioModelStoreContainer">
           <EntitySet Name="bitacora" EntityType="Self.bitacora" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bodegas" EntityType="Self.bodegas" Schema="dbo" store:Type="Tables" />
@@ -752,6 +829,7 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_tipo_movimiento' no tiene 
           <Property Name="id_usuario" Type="Int32" />
           <Property Name="estado" Type="Int32" />
           <Property Name="id_proveedor" Type="Int32" />
+          <Property Name="id_bodega_cargo" Type="Int32" />
           <NavigationProperty Name="bitacora" Relationship="Self.FK_bitacora_movimientos" FromRole="movimientos" ToRole="bitacora" />
           <NavigationProperty Name="detalles_movimientos" Relationship="Self.FK_detalles_movimientos_movimientos" FromRole="movimientos" ToRole="detalles_movimientos" />
           <NavigationProperty Name="proveedores" Relationship="Self.FK_movimientos_proveedores" FromRole="movimientos" ToRole="proveedores" />
@@ -1290,7 +1368,456 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_tipo_movimiento' no tiene 
             <End Role="tipo_bodega" EntitySet="tipo_bodega" />
             <End Role="tipo_bodega_bodegas" EntitySet="tipo_bodega_bodegas" />
           </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_consulta_bodega_habilitada" ReturnType="Collection(inventarioModel.sp_consulta_bodega_habilitada_Result)">
+            <Parameter Name="estado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_consulta_bodega_tipo" ReturnType="Collection(inventarioModel.sp_consulta_bodega_tipo_Result)">
+            <Parameter Name="tipo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_consulta_kardex_tipo_f" ReturnType="Collection(inventarioModel.sp_consulta_kardex_tipo_f_Result)">
+            <Parameter Name="fecha_inicio" Mode="In" Type="DateTime" />
+            <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_consulta_kardex_tipo_m" ReturnType="Collection(inventarioModel.sp_consulta_kardex_tipo_m_Result)">
+            <Parameter Name="tipo_m" Mode="In" Type="Int32" />
+            <Parameter Name="fecha_inicio" Mode="In" Type="DateTime" />
+            <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_consulta_producto" ReturnType="Collection(inventarioModel.sp_consulta_producto_Result)">
+            <Parameter Name="Cod_prod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_consulta_producto_clas_fr" ReturnType="Collection(inventarioModel.sp_consulta_producto_clas_fr_Result)">
+            <Parameter Name="fecha_inicio" Mode="In" Type="DateTime" />
+            <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
+            <Parameter Name="cla" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_consulta_producto_clas_sub_fr" ReturnType="Collection(inventarioModel.sp_consulta_producto_clas_sub_fr_Result)">
+            <Parameter Name="fecha_inicio" Mode="In" Type="DateTime" />
+            <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
+            <Parameter Name="cla" Mode="In" Type="Int32" />
+            <Parameter Name="sub_cla" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_consulta_producto_fr" ReturnType="Collection(inventarioModel.sp_consulta_producto_fr_Result)">
+            <Parameter Name="fecha_inicio" Mode="In" Type="DateTime" />
+            <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_consulta_producto_nom" ReturnType="Collection(inventarioModel.sp_consulta_producto_nom_Result)">
+            <Parameter Name="nom_prod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_consulta_producto_subc_fr" ReturnType="Collection(inventarioModel.sp_consulta_producto_subc_fr_Result)">
+            <Parameter Name="fecha_inicio" Mode="In" Type="DateTime" />
+            <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
+            <Parameter Name="sub_cla" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_consulta_productos_por_vencer" ReturnType="Collection(inventarioModel.sp_consulta_productos_por_vencer_Result)">
+            <Parameter Name="fecha_inicio" Mode="In" Type="DateTime" />
+            <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
+        <ComplexType Name="sp_consulta_bodega_habilitada_Result">
+          <Property Type="Int32" Name="id_bodega" Nullable="false" />
+          <Property Type="String" Name="nombre_bodega" Nullable="false" MaxLength="250" />
+          <Property Type="Int32" Name="id_sucursal" Nullable="true" />
+          <Property Type="Int32" Name="id_tipo_bodega" Nullable="true" />
+          <Property Type="Int32" Name="estado" Nullable="true" />
+          <Property Type="Int32" Name="id_sucursal1" Nullable="false" />
+          <Property Type="String" Name="sucursal" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="estado1" Nullable="true" />
+          <Property Type="Int32" Name="id_tipo_bodega1" Nullable="false" />
+          <Property Type="String" Name="tipo" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="estado2" Nullable="true" />
+          <Property Type="Int32" Name="id_tipo_bodega_bodegas" Nullable="false" />
+          <Property Type="Int32" Name="id_tipo_bodega2" Nullable="true" />
+          <Property Type="Int32" Name="id_bodega1" Nullable="true" />
+          <Property Type="Decimal" Name="temperatura_promedio" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="capacidad_maxima" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="capacidad_actual" Nullable="true" Precision="10" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="sp_consulta_bodega_tipo_Result">
+          <Property Type="Int32" Name="id_bodega" Nullable="false" />
+          <Property Type="String" Name="nombre_bodega" Nullable="false" MaxLength="250" />
+          <Property Type="Int32" Name="id_sucursal" Nullable="true" />
+          <Property Type="Int32" Name="id_tipo_bodega" Nullable="true" />
+          <Property Type="Int32" Name="estado" Nullable="true" />
+          <Property Type="Int32" Name="id_sucursal1" Nullable="false" />
+          <Property Type="String" Name="sucursal" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="estado1" Nullable="true" />
+          <Property Type="Int32" Name="id_tipo_bodega1" Nullable="false" />
+          <Property Type="String" Name="tipo" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="estado2" Nullable="true" />
+          <Property Type="Int32" Name="id_tipo_bodega_bodegas" Nullable="false" />
+          <Property Type="Int32" Name="id_tipo_bodega2" Nullable="true" />
+          <Property Type="Int32" Name="id_bodega1" Nullable="true" />
+          <Property Type="Decimal" Name="temperatura_promedio" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="capacidad_maxima" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="capacidad_actual" Nullable="true" Precision="10" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="sp_consulta_kardex_tipo_f_Result">
+          <Property Type="DateTime" Name="fecha" Nullable="true" />
+          <Property Type="Time" Name="hora" Nullable="true" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+          <Property Type="Decimal" Name="costo_total_con_iva" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="costo_total_sin_iva" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Int32" Name="estado" Nullable="true" />
+          <Property Type="DateTime" Name="fecha_vencimiento" Nullable="true" />
+          <Property Type="String" Name="lote" Nullable="true" MaxLength="250" />
+          <Property Type="Decimal" Name="cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="costo_unitario" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="costo_unitario_promedio" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="existencia_anterior" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="existencia_total" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Int32" Name="estado1" Nullable="true" />
+          <Property Type="String" Name="usuario" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="nombre_completo" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="dui" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="estado2" Nullable="true" />
+          <Property Type="Int32" Name="estado_sesion" Nullable="true" />
+          <Property Type="DateTime" Name="fecha_ultimo_ingreso" Nullable="true" />
+          <Property Type="Time" Name="hora_ultimo_ingreso" Nullable="true" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="codigo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="descripcion1" Nullable="true" MaxLength="250" />
+          <Property Type="DateTime" Name="fecha_creacion" Nullable="true" />
+          <Property Type="Time" Name="hora_creacion" Nullable="true" />
+          <Property Type="Int32" Name="estado3" Nullable="true" />
+          <Property Type="Decimal" Name="costo_unitario_con_iva" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="Int32" Name="dias" Nullable="true" />
+          <Property Type="Int32" Name="estado4" Nullable="true" />
+          <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_consulta_kardex_tipo_m_Result">
+          <Property Type="DateTime" Name="fecha" Nullable="true" />
+          <Property Type="Time" Name="hora" Nullable="true" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+          <Property Type="Decimal" Name="costo_total_con_iva" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="costo_total_sin_iva" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Int32" Name="estado" Nullable="true" />
+          <Property Type="DateTime" Name="fecha_vencimiento" Nullable="true" />
+          <Property Type="String" Name="lote" Nullable="true" MaxLength="250" />
+          <Property Type="Decimal" Name="cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="costo_unitario" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="costo_unitario_promedio" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="existencia_anterior" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="existencia_total" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Int32" Name="estado1" Nullable="true" />
+          <Property Type="String" Name="usuario" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="nombre_completo" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="dui" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="estado2" Nullable="true" />
+          <Property Type="Int32" Name="estado_sesion" Nullable="true" />
+          <Property Type="DateTime" Name="fecha_ultimo_ingreso" Nullable="true" />
+          <Property Type="Time" Name="hora_ultimo_ingreso" Nullable="true" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="codigo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="descripcion1" Nullable="true" MaxLength="250" />
+          <Property Type="DateTime" Name="fecha_creacion" Nullable="true" />
+          <Property Type="Time" Name="hora_creacion" Nullable="true" />
+          <Property Type="Int32" Name="estado3" Nullable="true" />
+          <Property Type="Decimal" Name="costo_unitario_con_iva" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="Int32" Name="dias" Nullable="true" />
+          <Property Type="Int32" Name="estado4" Nullable="true" />
+          <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="nombre1" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="direccion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="nit" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="nrc" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="correo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="razon_social" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="estado5" Nullable="true" />
+          <Property Type="String" Name="tipo_proveedor" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="estado6" Nullable="true" />
+          <Property Type="String" Name="nombre_bodega" Nullable="false" MaxLength="250" />
+          <Property Type="Int32" Name="estado7" Nullable="true" />
+          <Property Type="String" Name="sucursal" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="estado8" Nullable="true" />
+          <Property Type="String" Name="tipo" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="estado9" Nullable="true" />
+          <Property Type="Decimal" Name="temperatura_promedio" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="capacidad_maxima" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="capacidad_actual" Nullable="true" Precision="10" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="sp_consulta_producto_Result">
+          <Property Type="Int32" Name="id_producto" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="codigo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="id_vigencia_promedio" Nullable="true" />
+          <Property Type="Int32" Name="id_clasificacion" Nullable="true" />
+          <Property Type="Int32" Name="id_sub_clasificacion" Nullable="true" />
+          <Property Type="Int32" Name="id_proveedor" Nullable="true" />
+          <Property Type="DateTime" Name="fecha_creacion" Nullable="true" />
+          <Property Type="Time" Name="hora_creacion" Nullable="true" />
+          <Property Type="Int32" Name="estado" Nullable="true" />
+          <Property Type="Decimal" Name="costo_unitario_con_iva" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="Int32" Name="id_vigencia_promedio1" Nullable="false" />
+          <Property Type="Int32" Name="dias" Nullable="true" />
+          <Property Type="Int32" Name="estado1" Nullable="true" />
+          <Property Type="Int32" Name="id_clasificacion1" Nullable="false" />
+          <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="estado2" Nullable="true" />
+          <Property Type="Int32" Name="id_sub_clasificacion1" Nullable="false" />
+          <Property Type="Int32" Name="id_clasificacion2" Nullable="true" />
+          <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="estado3" Nullable="true" />
+          <Property Type="Int32" Name="id_proveedor1" Nullable="false" />
+          <Property Type="String" Name="nombre1" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="direccion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="nit" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="nrc" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="correo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="razon_social" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="id_tipo_proveedor" Nullable="true" />
+          <Property Type="Int32" Name="estado4" Nullable="true" />
+          <Property Type="Int32" Name="id_tipo_proveedor1" Nullable="false" />
+          <Property Type="String" Name="tipo_proveedor" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="estado5" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_consulta_producto_clas_fr_Result">
+          <Property Type="Int32" Name="id_producto" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="codigo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="id_vigencia_promedio" Nullable="true" />
+          <Property Type="Int32" Name="id_clasificacion" Nullable="true" />
+          <Property Type="Int32" Name="id_sub_clasificacion" Nullable="true" />
+          <Property Type="Int32" Name="id_proveedor" Nullable="true" />
+          <Property Type="DateTime" Name="fecha_creacion" Nullable="true" />
+          <Property Type="Time" Name="hora_creacion" Nullable="true" />
+          <Property Type="Int32" Name="estado" Nullable="true" />
+          <Property Type="Decimal" Name="costo_unitario_con_iva" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="Int32" Name="id_vigencia_promedio1" Nullable="false" />
+          <Property Type="Int32" Name="dias" Nullable="true" />
+          <Property Type="Int32" Name="estado1" Nullable="true" />
+          <Property Type="Int32" Name="id_clasificacion1" Nullable="false" />
+          <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="estado2" Nullable="true" />
+          <Property Type="Int32" Name="id_sub_clasificacion1" Nullable="false" />
+          <Property Type="Int32" Name="id_clasificacion2" Nullable="true" />
+          <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="estado3" Nullable="true" />
+          <Property Type="Int32" Name="id_proveedor1" Nullable="false" />
+          <Property Type="String" Name="nombre1" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="direccion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="nit" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="nrc" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="correo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="razon_social" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="id_tipo_proveedor" Nullable="true" />
+          <Property Type="Int32" Name="estado4" Nullable="true" />
+          <Property Type="Int32" Name="id_tipo_proveedor1" Nullable="false" />
+          <Property Type="String" Name="tipo_proveedor" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="estado5" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_consulta_producto_clas_sub_fr_Result">
+          <Property Type="Int32" Name="id_producto" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="codigo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="id_vigencia_promedio" Nullable="true" />
+          <Property Type="Int32" Name="id_clasificacion" Nullable="true" />
+          <Property Type="Int32" Name="id_sub_clasificacion" Nullable="true" />
+          <Property Type="Int32" Name="id_proveedor" Nullable="true" />
+          <Property Type="DateTime" Name="fecha_creacion" Nullable="true" />
+          <Property Type="Time" Name="hora_creacion" Nullable="true" />
+          <Property Type="Int32" Name="estado" Nullable="true" />
+          <Property Type="Decimal" Name="costo_unitario_con_iva" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="Int32" Name="id_vigencia_promedio1" Nullable="false" />
+          <Property Type="Int32" Name="dias" Nullable="true" />
+          <Property Type="Int32" Name="estado1" Nullable="true" />
+          <Property Type="Int32" Name="id_clasificacion1" Nullable="false" />
+          <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="estado2" Nullable="true" />
+          <Property Type="Int32" Name="id_sub_clasificacion1" Nullable="false" />
+          <Property Type="Int32" Name="id_clasificacion2" Nullable="true" />
+          <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="estado3" Nullable="true" />
+          <Property Type="Int32" Name="id_proveedor1" Nullable="false" />
+          <Property Type="String" Name="nombre1" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="direccion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="nit" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="nrc" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="correo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="razon_social" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="id_tipo_proveedor" Nullable="true" />
+          <Property Type="Int32" Name="estado4" Nullable="true" />
+          <Property Type="Int32" Name="id_tipo_proveedor1" Nullable="false" />
+          <Property Type="String" Name="tipo_proveedor" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="estado5" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_consulta_producto_fr_Result">
+          <Property Type="Int32" Name="id_producto" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="codigo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="id_vigencia_promedio" Nullable="true" />
+          <Property Type="Int32" Name="id_clasificacion" Nullable="true" />
+          <Property Type="Int32" Name="id_sub_clasificacion" Nullable="true" />
+          <Property Type="Int32" Name="id_proveedor" Nullable="true" />
+          <Property Type="DateTime" Name="fecha_creacion" Nullable="true" />
+          <Property Type="Time" Name="hora_creacion" Nullable="true" />
+          <Property Type="Int32" Name="estado" Nullable="true" />
+          <Property Type="Decimal" Name="costo_unitario_con_iva" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="Int32" Name="id_vigencia_promedio1" Nullable="false" />
+          <Property Type="Int32" Name="dias" Nullable="true" />
+          <Property Type="Int32" Name="estado1" Nullable="true" />
+          <Property Type="Int32" Name="id_clasificacion1" Nullable="false" />
+          <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="estado2" Nullable="true" />
+          <Property Type="Int32" Name="id_sub_clasificacion1" Nullable="false" />
+          <Property Type="Int32" Name="id_clasificacion2" Nullable="true" />
+          <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="estado3" Nullable="true" />
+          <Property Type="Int32" Name="id_proveedor1" Nullable="false" />
+          <Property Type="String" Name="nombre1" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="direccion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="nit" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="nrc" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="correo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="razon_social" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="id_tipo_proveedor" Nullable="true" />
+          <Property Type="Int32" Name="estado4" Nullable="true" />
+          <Property Type="Int32" Name="id_tipo_proveedor1" Nullable="false" />
+          <Property Type="String" Name="tipo_proveedor" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="estado5" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_consulta_producto_nom_Result">
+          <Property Type="Int32" Name="id_producto" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="codigo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="id_vigencia_promedio" Nullable="true" />
+          <Property Type="Int32" Name="id_clasificacion" Nullable="true" />
+          <Property Type="Int32" Name="id_sub_clasificacion" Nullable="true" />
+          <Property Type="Int32" Name="id_proveedor" Nullable="true" />
+          <Property Type="DateTime" Name="fecha_creacion" Nullable="true" />
+          <Property Type="Time" Name="hora_creacion" Nullable="true" />
+          <Property Type="Int32" Name="estado" Nullable="true" />
+          <Property Type="Decimal" Name="costo_unitario_con_iva" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="Int32" Name="id_vigencia_promedio1" Nullable="false" />
+          <Property Type="Int32" Name="dias" Nullable="true" />
+          <Property Type="Int32" Name="estado1" Nullable="true" />
+          <Property Type="Int32" Name="id_clasificacion1" Nullable="false" />
+          <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="estado2" Nullable="true" />
+          <Property Type="Int32" Name="id_sub_clasificacion1" Nullable="false" />
+          <Property Type="Int32" Name="id_clasificacion2" Nullable="true" />
+          <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="estado3" Nullable="true" />
+          <Property Type="Int32" Name="id_proveedor1" Nullable="false" />
+          <Property Type="String" Name="nombre1" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="direccion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="nit" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="nrc" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="correo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="razon_social" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="id_tipo_proveedor" Nullable="true" />
+          <Property Type="Int32" Name="estado4" Nullable="true" />
+          <Property Type="Int32" Name="id_tipo_proveedor1" Nullable="false" />
+          <Property Type="String" Name="tipo_proveedor" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="estado5" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_consulta_producto_subc_fr_Result">
+          <Property Type="Int32" Name="id_producto" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="codigo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="id_vigencia_promedio" Nullable="true" />
+          <Property Type="Int32" Name="id_clasificacion" Nullable="true" />
+          <Property Type="Int32" Name="id_sub_clasificacion" Nullable="true" />
+          <Property Type="Int32" Name="id_proveedor" Nullable="true" />
+          <Property Type="DateTime" Name="fecha_creacion" Nullable="true" />
+          <Property Type="Time" Name="hora_creacion" Nullable="true" />
+          <Property Type="Int32" Name="estado" Nullable="true" />
+          <Property Type="Decimal" Name="costo_unitario_con_iva" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="Int32" Name="id_vigencia_promedio1" Nullable="false" />
+          <Property Type="Int32" Name="dias" Nullable="true" />
+          <Property Type="Int32" Name="estado1" Nullable="true" />
+          <Property Type="Int32" Name="id_clasificacion1" Nullable="false" />
+          <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="estado2" Nullable="true" />
+          <Property Type="Int32" Name="id_sub_clasificacion1" Nullable="false" />
+          <Property Type="Int32" Name="id_clasificacion2" Nullable="true" />
+          <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="estado3" Nullable="true" />
+          <Property Type="Int32" Name="id_proveedor1" Nullable="false" />
+          <Property Type="String" Name="nombre1" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="direccion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="nit" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="nrc" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="correo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="razon_social" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="id_tipo_proveedor" Nullable="true" />
+          <Property Type="Int32" Name="estado4" Nullable="true" />
+          <Property Type="Int32" Name="id_tipo_proveedor1" Nullable="false" />
+          <Property Type="String" Name="tipo_proveedor" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="estado5" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_consulta_productos_por_vencer_Result">
+          <Property Type="DateTime" Name="fecha" Nullable="true" />
+          <Property Type="Time" Name="hora" Nullable="true" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+          <Property Type="Decimal" Name="costo_total_con_iva" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="costo_total_sin_iva" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Int32" Name="estado" Nullable="true" />
+          <Property Type="DateTime" Name="fecha_vencimiento" Nullable="true" />
+          <Property Type="String" Name="lote" Nullable="true" MaxLength="250" />
+          <Property Type="Decimal" Name="cantidad" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="costo_unitario" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="costo_unitario_promedio" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="existencia_anterior" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="existencia_total" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Int32" Name="estado1" Nullable="true" />
+          <Property Type="String" Name="usuario" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="nombre_completo" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="dui" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="estado2" Nullable="true" />
+          <Property Type="Int32" Name="estado_sesion" Nullable="true" />
+          <Property Type="DateTime" Name="fecha_ultimo_ingreso" Nullable="true" />
+          <Property Type="Time" Name="hora_ultimo_ingreso" Nullable="true" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="codigo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="descripcion1" Nullable="true" MaxLength="250" />
+          <Property Type="DateTime" Name="fecha_creacion" Nullable="true" />
+          <Property Type="Time" Name="hora_creacion" Nullable="true" />
+          <Property Type="Int32" Name="estado3" Nullable="true" />
+          <Property Type="Decimal" Name="costo_unitario_con_iva" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="Int32" Name="dias" Nullable="true" />
+          <Property Type="Int32" Name="estado4" Nullable="true" />
+          <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1369,6 +1896,7 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_tipo_movimiento' no tiene 
                 <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
                 <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+                <ScalarProperty Name="id_bodega_cargo" ColumnName="id_bodega_cargo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1599,6 +2127,431 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_tipo_movimiento' no tiene 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="inventarioModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_consulta_bodega_habilitada" FunctionName="inventarioModel.Store.sp_consulta_bodega_habilitada">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="inventarioModel.sp_consulta_bodega_habilitada_Result">
+                <ScalarProperty Name="id_bodega" ColumnName="id_bodega" />
+                <ScalarProperty Name="nombre_bodega" ColumnName="nombre_bodega" />
+                <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+                <ScalarProperty Name="id_tipo_bodega" ColumnName="id_tipo_bodega" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="id_sucursal1" ColumnName="id_sucursal1" />
+                <ScalarProperty Name="sucursal" ColumnName="sucursal" />
+                <ScalarProperty Name="estado1" ColumnName="estado1" />
+                <ScalarProperty Name="id_tipo_bodega1" ColumnName="id_tipo_bodega1" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="estado2" ColumnName="estado2" />
+                <ScalarProperty Name="id_tipo_bodega_bodegas" ColumnName="id_tipo_bodega_bodegas" />
+                <ScalarProperty Name="id_tipo_bodega2" ColumnName="id_tipo_bodega2" />
+                <ScalarProperty Name="id_bodega1" ColumnName="id_bodega1" />
+                <ScalarProperty Name="temperatura_promedio" ColumnName="temperatura_promedio" />
+                <ScalarProperty Name="capacidad_maxima" ColumnName="capacidad_maxima" />
+                <ScalarProperty Name="capacidad_actual" ColumnName="capacidad_actual" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_consulta_bodega_tipo" FunctionName="inventarioModel.Store.sp_consulta_bodega_tipo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="inventarioModel.sp_consulta_bodega_tipo_Result">
+                <ScalarProperty Name="id_bodega" ColumnName="id_bodega" />
+                <ScalarProperty Name="nombre_bodega" ColumnName="nombre_bodega" />
+                <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+                <ScalarProperty Name="id_tipo_bodega" ColumnName="id_tipo_bodega" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="id_sucursal1" ColumnName="id_sucursal1" />
+                <ScalarProperty Name="sucursal" ColumnName="sucursal" />
+                <ScalarProperty Name="estado1" ColumnName="estado1" />
+                <ScalarProperty Name="id_tipo_bodega1" ColumnName="id_tipo_bodega1" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="estado2" ColumnName="estado2" />
+                <ScalarProperty Name="id_tipo_bodega_bodegas" ColumnName="id_tipo_bodega_bodegas" />
+                <ScalarProperty Name="id_tipo_bodega2" ColumnName="id_tipo_bodega2" />
+                <ScalarProperty Name="id_bodega1" ColumnName="id_bodega1" />
+                <ScalarProperty Name="temperatura_promedio" ColumnName="temperatura_promedio" />
+                <ScalarProperty Name="capacidad_maxima" ColumnName="capacidad_maxima" />
+                <ScalarProperty Name="capacidad_actual" ColumnName="capacidad_actual" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_consulta_kardex_tipo_f" FunctionName="inventarioModel.Store.sp_consulta_kardex_tipo_f">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="inventarioModel.sp_consulta_kardex_tipo_f_Result">
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="costo_total_con_iva" ColumnName="costo_total_con_iva" />
+                <ScalarProperty Name="costo_total_sin_iva" ColumnName="costo_total_sin_iva" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="fecha_vencimiento" ColumnName="fecha_vencimiento" />
+                <ScalarProperty Name="lote" ColumnName="lote" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="costo_unitario" ColumnName="costo_unitario" />
+                <ScalarProperty Name="costo_unitario_promedio" ColumnName="costo_unitario_promedio" />
+                <ScalarProperty Name="existencia_anterior" ColumnName="existencia_anterior" />
+                <ScalarProperty Name="existencia_total" ColumnName="existencia_total" />
+                <ScalarProperty Name="estado1" ColumnName="estado1" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
+                <ScalarProperty Name="dui" ColumnName="dui" />
+                <ScalarProperty Name="estado2" ColumnName="estado2" />
+                <ScalarProperty Name="estado_sesion" ColumnName="estado_sesion" />
+                <ScalarProperty Name="fecha_ultimo_ingreso" ColumnName="fecha_ultimo_ingreso" />
+                <ScalarProperty Name="hora_ultimo_ingreso" ColumnName="hora_ultimo_ingreso" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="descripcion1" ColumnName="descripcion1" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="hora_creacion" ColumnName="hora_creacion" />
+                <ScalarProperty Name="estado3" ColumnName="estado3" />
+                <ScalarProperty Name="costo_unitario_con_iva" ColumnName="costo_unitario_con_iva" />
+                <ScalarProperty Name="dias" ColumnName="dias" />
+                <ScalarProperty Name="estado4" ColumnName="estado4" />
+                <ScalarProperty Name="nombre_clasificacion" ColumnName="nombre_clasificacion" />
+                <ScalarProperty Name="sub_clasificacion" ColumnName="sub_clasificacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_consulta_kardex_tipo_m" FunctionName="inventarioModel.Store.sp_consulta_kardex_tipo_m">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="inventarioModel.sp_consulta_kardex_tipo_m_Result">
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="costo_total_con_iva" ColumnName="costo_total_con_iva" />
+                <ScalarProperty Name="costo_total_sin_iva" ColumnName="costo_total_sin_iva" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="fecha_vencimiento" ColumnName="fecha_vencimiento" />
+                <ScalarProperty Name="lote" ColumnName="lote" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="costo_unitario" ColumnName="costo_unitario" />
+                <ScalarProperty Name="costo_unitario_promedio" ColumnName="costo_unitario_promedio" />
+                <ScalarProperty Name="existencia_anterior" ColumnName="existencia_anterior" />
+                <ScalarProperty Name="existencia_total" ColumnName="existencia_total" />
+                <ScalarProperty Name="estado1" ColumnName="estado1" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
+                <ScalarProperty Name="dui" ColumnName="dui" />
+                <ScalarProperty Name="estado2" ColumnName="estado2" />
+                <ScalarProperty Name="estado_sesion" ColumnName="estado_sesion" />
+                <ScalarProperty Name="fecha_ultimo_ingreso" ColumnName="fecha_ultimo_ingreso" />
+                <ScalarProperty Name="hora_ultimo_ingreso" ColumnName="hora_ultimo_ingreso" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="descripcion1" ColumnName="descripcion1" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="hora_creacion" ColumnName="hora_creacion" />
+                <ScalarProperty Name="estado3" ColumnName="estado3" />
+                <ScalarProperty Name="costo_unitario_con_iva" ColumnName="costo_unitario_con_iva" />
+                <ScalarProperty Name="dias" ColumnName="dias" />
+                <ScalarProperty Name="estado4" ColumnName="estado4" />
+                <ScalarProperty Name="nombre_clasificacion" ColumnName="nombre_clasificacion" />
+                <ScalarProperty Name="sub_clasificacion" ColumnName="sub_clasificacion" />
+                <ScalarProperty Name="nombre1" ColumnName="nombre1" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="nit" ColumnName="nit" />
+                <ScalarProperty Name="nrc" ColumnName="nrc" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+                <ScalarProperty Name="estado5" ColumnName="estado5" />
+                <ScalarProperty Name="tipo_proveedor" ColumnName="tipo_proveedor" />
+                <ScalarProperty Name="estado6" ColumnName="estado6" />
+                <ScalarProperty Name="nombre_bodega" ColumnName="nombre_bodega" />
+                <ScalarProperty Name="estado7" ColumnName="estado7" />
+                <ScalarProperty Name="sucursal" ColumnName="sucursal" />
+                <ScalarProperty Name="estado8" ColumnName="estado8" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="estado9" ColumnName="estado9" />
+                <ScalarProperty Name="temperatura_promedio" ColumnName="temperatura_promedio" />
+                <ScalarProperty Name="capacidad_maxima" ColumnName="capacidad_maxima" />
+                <ScalarProperty Name="capacidad_actual" ColumnName="capacidad_actual" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_consulta_producto" FunctionName="inventarioModel.Store.sp_consulta_producto">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="inventarioModel.sp_consulta_producto_Result">
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id_vigencia_promedio" ColumnName="id_vigencia_promedio" />
+                <ScalarProperty Name="id_clasificacion" ColumnName="id_clasificacion" />
+                <ScalarProperty Name="id_sub_clasificacion" ColumnName="id_sub_clasificacion" />
+                <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="hora_creacion" ColumnName="hora_creacion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="costo_unitario_con_iva" ColumnName="costo_unitario_con_iva" />
+                <ScalarProperty Name="id_vigencia_promedio1" ColumnName="id_vigencia_promedio1" />
+                <ScalarProperty Name="dias" ColumnName="dias" />
+                <ScalarProperty Name="estado1" ColumnName="estado1" />
+                <ScalarProperty Name="id_clasificacion1" ColumnName="id_clasificacion1" />
+                <ScalarProperty Name="nombre_clasificacion" ColumnName="nombre_clasificacion" />
+                <ScalarProperty Name="estado2" ColumnName="estado2" />
+                <ScalarProperty Name="id_sub_clasificacion1" ColumnName="id_sub_clasificacion1" />
+                <ScalarProperty Name="id_clasificacion2" ColumnName="id_clasificacion2" />
+                <ScalarProperty Name="sub_clasificacion" ColumnName="sub_clasificacion" />
+                <ScalarProperty Name="estado3" ColumnName="estado3" />
+                <ScalarProperty Name="id_proveedor1" ColumnName="id_proveedor1" />
+                <ScalarProperty Name="nombre1" ColumnName="nombre1" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="nit" ColumnName="nit" />
+                <ScalarProperty Name="nrc" ColumnName="nrc" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+                <ScalarProperty Name="id_tipo_proveedor" ColumnName="id_tipo_proveedor" />
+                <ScalarProperty Name="estado4" ColumnName="estado4" />
+                <ScalarProperty Name="id_tipo_proveedor1" ColumnName="id_tipo_proveedor1" />
+                <ScalarProperty Name="tipo_proveedor" ColumnName="tipo_proveedor" />
+                <ScalarProperty Name="estado5" ColumnName="estado5" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_consulta_producto_clas_fr" FunctionName="inventarioModel.Store.sp_consulta_producto_clas_fr">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="inventarioModel.sp_consulta_producto_clas_fr_Result">
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id_vigencia_promedio" ColumnName="id_vigencia_promedio" />
+                <ScalarProperty Name="id_clasificacion" ColumnName="id_clasificacion" />
+                <ScalarProperty Name="id_sub_clasificacion" ColumnName="id_sub_clasificacion" />
+                <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="hora_creacion" ColumnName="hora_creacion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="costo_unitario_con_iva" ColumnName="costo_unitario_con_iva" />
+                <ScalarProperty Name="id_vigencia_promedio1" ColumnName="id_vigencia_promedio1" />
+                <ScalarProperty Name="dias" ColumnName="dias" />
+                <ScalarProperty Name="estado1" ColumnName="estado1" />
+                <ScalarProperty Name="id_clasificacion1" ColumnName="id_clasificacion1" />
+                <ScalarProperty Name="nombre_clasificacion" ColumnName="nombre_clasificacion" />
+                <ScalarProperty Name="estado2" ColumnName="estado2" />
+                <ScalarProperty Name="id_sub_clasificacion1" ColumnName="id_sub_clasificacion1" />
+                <ScalarProperty Name="id_clasificacion2" ColumnName="id_clasificacion2" />
+                <ScalarProperty Name="sub_clasificacion" ColumnName="sub_clasificacion" />
+                <ScalarProperty Name="estado3" ColumnName="estado3" />
+                <ScalarProperty Name="id_proveedor1" ColumnName="id_proveedor1" />
+                <ScalarProperty Name="nombre1" ColumnName="nombre1" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="nit" ColumnName="nit" />
+                <ScalarProperty Name="nrc" ColumnName="nrc" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+                <ScalarProperty Name="id_tipo_proveedor" ColumnName="id_tipo_proveedor" />
+                <ScalarProperty Name="estado4" ColumnName="estado4" />
+                <ScalarProperty Name="id_tipo_proveedor1" ColumnName="id_tipo_proveedor1" />
+                <ScalarProperty Name="tipo_proveedor" ColumnName="tipo_proveedor" />
+                <ScalarProperty Name="estado5" ColumnName="estado5" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_consulta_producto_clas_sub_fr" FunctionName="inventarioModel.Store.sp_consulta_producto_clas_sub_fr">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="inventarioModel.sp_consulta_producto_clas_sub_fr_Result">
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id_vigencia_promedio" ColumnName="id_vigencia_promedio" />
+                <ScalarProperty Name="id_clasificacion" ColumnName="id_clasificacion" />
+                <ScalarProperty Name="id_sub_clasificacion" ColumnName="id_sub_clasificacion" />
+                <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="hora_creacion" ColumnName="hora_creacion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="costo_unitario_con_iva" ColumnName="costo_unitario_con_iva" />
+                <ScalarProperty Name="id_vigencia_promedio1" ColumnName="id_vigencia_promedio1" />
+                <ScalarProperty Name="dias" ColumnName="dias" />
+                <ScalarProperty Name="estado1" ColumnName="estado1" />
+                <ScalarProperty Name="id_clasificacion1" ColumnName="id_clasificacion1" />
+                <ScalarProperty Name="nombre_clasificacion" ColumnName="nombre_clasificacion" />
+                <ScalarProperty Name="estado2" ColumnName="estado2" />
+                <ScalarProperty Name="id_sub_clasificacion1" ColumnName="id_sub_clasificacion1" />
+                <ScalarProperty Name="id_clasificacion2" ColumnName="id_clasificacion2" />
+                <ScalarProperty Name="sub_clasificacion" ColumnName="sub_clasificacion" />
+                <ScalarProperty Name="estado3" ColumnName="estado3" />
+                <ScalarProperty Name="id_proveedor1" ColumnName="id_proveedor1" />
+                <ScalarProperty Name="nombre1" ColumnName="nombre1" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="nit" ColumnName="nit" />
+                <ScalarProperty Name="nrc" ColumnName="nrc" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+                <ScalarProperty Name="id_tipo_proveedor" ColumnName="id_tipo_proveedor" />
+                <ScalarProperty Name="estado4" ColumnName="estado4" />
+                <ScalarProperty Name="id_tipo_proveedor1" ColumnName="id_tipo_proveedor1" />
+                <ScalarProperty Name="tipo_proveedor" ColumnName="tipo_proveedor" />
+                <ScalarProperty Name="estado5" ColumnName="estado5" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_consulta_producto_fr" FunctionName="inventarioModel.Store.sp_consulta_producto_fr">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="inventarioModel.sp_consulta_producto_fr_Result">
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id_vigencia_promedio" ColumnName="id_vigencia_promedio" />
+                <ScalarProperty Name="id_clasificacion" ColumnName="id_clasificacion" />
+                <ScalarProperty Name="id_sub_clasificacion" ColumnName="id_sub_clasificacion" />
+                <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="hora_creacion" ColumnName="hora_creacion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="costo_unitario_con_iva" ColumnName="costo_unitario_con_iva" />
+                <ScalarProperty Name="id_vigencia_promedio1" ColumnName="id_vigencia_promedio1" />
+                <ScalarProperty Name="dias" ColumnName="dias" />
+                <ScalarProperty Name="estado1" ColumnName="estado1" />
+                <ScalarProperty Name="id_clasificacion1" ColumnName="id_clasificacion1" />
+                <ScalarProperty Name="nombre_clasificacion" ColumnName="nombre_clasificacion" />
+                <ScalarProperty Name="estado2" ColumnName="estado2" />
+                <ScalarProperty Name="id_sub_clasificacion1" ColumnName="id_sub_clasificacion1" />
+                <ScalarProperty Name="id_clasificacion2" ColumnName="id_clasificacion2" />
+                <ScalarProperty Name="sub_clasificacion" ColumnName="sub_clasificacion" />
+                <ScalarProperty Name="estado3" ColumnName="estado3" />
+                <ScalarProperty Name="id_proveedor1" ColumnName="id_proveedor1" />
+                <ScalarProperty Name="nombre1" ColumnName="nombre1" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="nit" ColumnName="nit" />
+                <ScalarProperty Name="nrc" ColumnName="nrc" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+                <ScalarProperty Name="id_tipo_proveedor" ColumnName="id_tipo_proveedor" />
+                <ScalarProperty Name="estado4" ColumnName="estado4" />
+                <ScalarProperty Name="id_tipo_proveedor1" ColumnName="id_tipo_proveedor1" />
+                <ScalarProperty Name="tipo_proveedor" ColumnName="tipo_proveedor" />
+                <ScalarProperty Name="estado5" ColumnName="estado5" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_consulta_producto_nom" FunctionName="inventarioModel.Store.sp_consulta_producto_nom">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="inventarioModel.sp_consulta_producto_nom_Result">
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id_vigencia_promedio" ColumnName="id_vigencia_promedio" />
+                <ScalarProperty Name="id_clasificacion" ColumnName="id_clasificacion" />
+                <ScalarProperty Name="id_sub_clasificacion" ColumnName="id_sub_clasificacion" />
+                <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="hora_creacion" ColumnName="hora_creacion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="costo_unitario_con_iva" ColumnName="costo_unitario_con_iva" />
+                <ScalarProperty Name="id_vigencia_promedio1" ColumnName="id_vigencia_promedio1" />
+                <ScalarProperty Name="dias" ColumnName="dias" />
+                <ScalarProperty Name="estado1" ColumnName="estado1" />
+                <ScalarProperty Name="id_clasificacion1" ColumnName="id_clasificacion1" />
+                <ScalarProperty Name="nombre_clasificacion" ColumnName="nombre_clasificacion" />
+                <ScalarProperty Name="estado2" ColumnName="estado2" />
+                <ScalarProperty Name="id_sub_clasificacion1" ColumnName="id_sub_clasificacion1" />
+                <ScalarProperty Name="id_clasificacion2" ColumnName="id_clasificacion2" />
+                <ScalarProperty Name="sub_clasificacion" ColumnName="sub_clasificacion" />
+                <ScalarProperty Name="estado3" ColumnName="estado3" />
+                <ScalarProperty Name="id_proveedor1" ColumnName="id_proveedor1" />
+                <ScalarProperty Name="nombre1" ColumnName="nombre1" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="nit" ColumnName="nit" />
+                <ScalarProperty Name="nrc" ColumnName="nrc" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+                <ScalarProperty Name="id_tipo_proveedor" ColumnName="id_tipo_proveedor" />
+                <ScalarProperty Name="estado4" ColumnName="estado4" />
+                <ScalarProperty Name="id_tipo_proveedor1" ColumnName="id_tipo_proveedor1" />
+                <ScalarProperty Name="tipo_proveedor" ColumnName="tipo_proveedor" />
+                <ScalarProperty Name="estado5" ColumnName="estado5" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_consulta_producto_subc_fr" FunctionName="inventarioModel.Store.sp_consulta_producto_subc_fr">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="inventarioModel.sp_consulta_producto_subc_fr_Result">
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id_vigencia_promedio" ColumnName="id_vigencia_promedio" />
+                <ScalarProperty Name="id_clasificacion" ColumnName="id_clasificacion" />
+                <ScalarProperty Name="id_sub_clasificacion" ColumnName="id_sub_clasificacion" />
+                <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="hora_creacion" ColumnName="hora_creacion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="costo_unitario_con_iva" ColumnName="costo_unitario_con_iva" />
+                <ScalarProperty Name="id_vigencia_promedio1" ColumnName="id_vigencia_promedio1" />
+                <ScalarProperty Name="dias" ColumnName="dias" />
+                <ScalarProperty Name="estado1" ColumnName="estado1" />
+                <ScalarProperty Name="id_clasificacion1" ColumnName="id_clasificacion1" />
+                <ScalarProperty Name="nombre_clasificacion" ColumnName="nombre_clasificacion" />
+                <ScalarProperty Name="estado2" ColumnName="estado2" />
+                <ScalarProperty Name="id_sub_clasificacion1" ColumnName="id_sub_clasificacion1" />
+                <ScalarProperty Name="id_clasificacion2" ColumnName="id_clasificacion2" />
+                <ScalarProperty Name="sub_clasificacion" ColumnName="sub_clasificacion" />
+                <ScalarProperty Name="estado3" ColumnName="estado3" />
+                <ScalarProperty Name="id_proveedor1" ColumnName="id_proveedor1" />
+                <ScalarProperty Name="nombre1" ColumnName="nombre1" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="nit" ColumnName="nit" />
+                <ScalarProperty Name="nrc" ColumnName="nrc" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+                <ScalarProperty Name="id_tipo_proveedor" ColumnName="id_tipo_proveedor" />
+                <ScalarProperty Name="estado4" ColumnName="estado4" />
+                <ScalarProperty Name="id_tipo_proveedor1" ColumnName="id_tipo_proveedor1" />
+                <ScalarProperty Name="tipo_proveedor" ColumnName="tipo_proveedor" />
+                <ScalarProperty Name="estado5" ColumnName="estado5" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_consulta_productos_por_vencer" FunctionName="inventarioModel.Store.sp_consulta_productos_por_vencer">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="inventarioModel.sp_consulta_productos_por_vencer_Result">
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="costo_total_con_iva" ColumnName="costo_total_con_iva" />
+                <ScalarProperty Name="costo_total_sin_iva" ColumnName="costo_total_sin_iva" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="fecha_vencimiento" ColumnName="fecha_vencimiento" />
+                <ScalarProperty Name="lote" ColumnName="lote" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="costo_unitario" ColumnName="costo_unitario" />
+                <ScalarProperty Name="costo_unitario_promedio" ColumnName="costo_unitario_promedio" />
+                <ScalarProperty Name="existencia_anterior" ColumnName="existencia_anterior" />
+                <ScalarProperty Name="existencia_total" ColumnName="existencia_total" />
+                <ScalarProperty Name="estado1" ColumnName="estado1" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
+                <ScalarProperty Name="dui" ColumnName="dui" />
+                <ScalarProperty Name="estado2" ColumnName="estado2" />
+                <ScalarProperty Name="estado_sesion" ColumnName="estado_sesion" />
+                <ScalarProperty Name="fecha_ultimo_ingreso" ColumnName="fecha_ultimo_ingreso" />
+                <ScalarProperty Name="hora_ultimo_ingreso" ColumnName="hora_ultimo_ingreso" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="descripcion1" ColumnName="descripcion1" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="hora_creacion" ColumnName="hora_creacion" />
+                <ScalarProperty Name="estado3" ColumnName="estado3" />
+                <ScalarProperty Name="costo_unitario_con_iva" ColumnName="costo_unitario_con_iva" />
+                <ScalarProperty Name="dias" ColumnName="dias" />
+                <ScalarProperty Name="estado4" ColumnName="estado4" />
+                <ScalarProperty Name="nombre_clasificacion" ColumnName="nombre_clasificacion" />
+                <ScalarProperty Name="sub_clasificacion" ColumnName="sub_clasificacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="inventarioModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="inventarioModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="inventarioModel.Store.sp_helpdiagramdefinition" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="inventarioModel.Store.sp_helpdiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="inventarioModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="inventarioModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

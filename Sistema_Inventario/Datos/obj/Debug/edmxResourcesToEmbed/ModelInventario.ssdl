@@ -68,6 +68,7 @@
     <Property Name="id_usuario" Type="int" />
     <Property Name="estado" Type="int" />
     <Property Name="id_proveedor" Type="int" />
+    <Property Name="id_bodega_cargo" Type="int" />
   </EntityType>
   <EntityType Name="productos">
     <Key>
@@ -500,6 +501,82 @@ advertencia 6002: La tabla o vista 'inventario.dbo.vw_tipo_movimiento' no tiene 
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_consulta_bodega_habilitada" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_consulta_bodega_tipo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tipo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_consulta_kardex_tipo_f" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha_inicio" Type="date" Mode="In" />
+    <Parameter Name="fecha_fin" Type="date" Mode="In" />
+  </Function>
+  <Function Name="sp_consulta_kardex_tipo_m" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tipo_m" Type="int" Mode="In" />
+    <Parameter Name="fecha_inicio" Type="date" Mode="In" />
+    <Parameter Name="fecha_fin" Type="date" Mode="In" />
+  </Function>
+  <Function Name="sp_consulta_producto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Cod_prod" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_consulta_producto_clas_fr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha_inicio" Type="date" Mode="In" />
+    <Parameter Name="fecha_fin" Type="date" Mode="In" />
+    <Parameter Name="cla" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_consulta_producto_clas_sub_fr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha_inicio" Type="date" Mode="In" />
+    <Parameter Name="fecha_fin" Type="date" Mode="In" />
+    <Parameter Name="cla" Type="int" Mode="In" />
+    <Parameter Name="sub_cla" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_consulta_producto_fr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha_inicio" Type="date" Mode="In" />
+    <Parameter Name="fecha_fin" Type="date" Mode="In" />
+  </Function>
+  <Function Name="sp_consulta_producto_nom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nom_prod" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_consulta_producto_subc_fr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha_inicio" Type="date" Mode="In" />
+    <Parameter Name="fecha_fin" Type="date" Mode="In" />
+    <Parameter Name="sub_cla" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_consulta_productos_por_vencer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha_inicio" Type="date" Mode="In" />
+    <Parameter Name="fecha_fin" Type="date" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="inventarioModelStoreContainer">
     <EntitySet Name="bitacora" EntityType="Self.bitacora" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="bodegas" EntityType="Self.bodegas" Schema="dbo" store:Type="Tables" />

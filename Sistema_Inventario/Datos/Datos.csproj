@@ -69,6 +69,7 @@
     <Compile Include="BodegaDAL.cs" />
     <Compile Include="CategoriaDAL.cs" />
     <Compile Include="LoginDAL.cs" />
+    <Compile Include="DetallesMovimientosDAL.cs" />
     <Compile Include="ModelInventario.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -79,7 +80,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelInventario.edmx</DependentUpon>
     </Compile>
-    <Compile Include="DetallesMovimientosDAL.cs" />
     <Compile Include="MovimientosDAL.cs" />
     <Compile Include="ProductosDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

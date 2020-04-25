@@ -77,6 +77,39 @@
     <Compile Include="roles.cs">
       <DependentUpon>ModelInventario.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_consulta_bodega_habilitada_Result.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_consulta_bodega_tipo_Result.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_consulta_kardex_tipo_f_Result.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_consulta_kardex_tipo_m_Result.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_consulta_productos_por_vencer_Result.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_consulta_producto_clas_fr_Result.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_consulta_producto_clas_sub_fr_Result.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_consulta_producto_fr_Result.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_consulta_producto_nom_Result.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_consulta_producto_Result.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_consulta_producto_subc_fr_Result.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
     <Compile Include="sub_clasificaciones.cs">
       <DependentUpon>ModelInventario.tt</DependentUpon>
     </Compile>

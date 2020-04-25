@@ -144,8 +144,8 @@ namespace Sistema_Inventario
             if (formBodega == null)
             {
                 formBodega = new FormBodega();
-                frmCategoria.MdiParent = this;
-                formBodega.ShowDialog();
+                formBodega.MdiParent = this;
+                formBodega.Show();
             }
             else
             {
@@ -276,11 +276,10 @@ namespace Sistema_Inventario
             }
             else
             {
-
                 MessageBox.Show("Usted no tiene permiso para registrar", "Permiso denegado", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
+
         private void frmsucursal_FormClosed(object sender, EventArgs e)
         {
             frmsucursal = null;
@@ -291,17 +290,27 @@ namespace Sistema_Inventario
             if (idRol == 2)
             {
                 mantenimientosToolStripMenuItem.Enabled = false;
-                herramientasToolStripMenuItem.Enabled = false;
-
             }
-
         }
 
         private void btnSucursales_Click(object sender, EventArgs e)
         {
             //aqui va el formulario de lista de sucursales
-            frmListaSucursales = new FormListaSucursales(idRol);
+            if (frmListaSucursales == null)
+            {
+                frmListaSucursales = new FormListaSucursales(idRol);
+                frmListaSucursales.FormClosed += new FormClosedEventHandler(frmListaSucursales_FormClosed);
+                frmListaSucursales.MdiParent = this;
+                frmListaSucursales.Show();
+            }
+            else
+            {
+                frmListaSucursales.Activate();
+            }
         }
-
+        private void frmListaSucursales_FormClosed(object sender, EventArgs e)
+        {
+            frmListaSucursales = null;
+        }
     }
 }

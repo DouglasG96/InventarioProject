@@ -12,7 +12,10 @@ namespace Datos
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     using Entidades;
+    
     public partial class inventarioEntities : DbContext
     {
         public inventarioEntities()
@@ -50,5 +53,255 @@ namespace Datos
         public virtual DbSet<vw_proveedor> vw_proveedor { get; set; }
         public virtual DbSet<vw_sucursal> vw_sucursal { get; set; }
         public virtual DbSet<vw_tipo_movimiento> vw_tipo_movimiento { get; set; }
+    
+        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual ObjectResult<sp_consulta_bodega_habilitada_Result> sp_consulta_bodega_habilitada(Nullable<int> estado)
+        {
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("estado", estado) :
+                new ObjectParameter("estado", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_consulta_bodega_habilitada_Result>("sp_consulta_bodega_habilitada", estadoParameter);
+        }
+    
+        public virtual ObjectResult<sp_consulta_bodega_tipo_Result> sp_consulta_bodega_tipo(Nullable<int> tipo)
+        {
+            var tipoParameter = tipo.HasValue ?
+                new ObjectParameter("tipo", tipo) :
+                new ObjectParameter("tipo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_consulta_bodega_tipo_Result>("sp_consulta_bodega_tipo", tipoParameter);
+        }
+    
+        public virtual ObjectResult<sp_consulta_kardex_tipo_f_Result> sp_consulta_kardex_tipo_f(Nullable<System.DateTime> fecha_inicio, Nullable<System.DateTime> fecha_fin)
+        {
+            var fecha_inicioParameter = fecha_inicio.HasValue ?
+                new ObjectParameter("fecha_inicio", fecha_inicio) :
+                new ObjectParameter("fecha_inicio", typeof(System.DateTime));
+    
+            var fecha_finParameter = fecha_fin.HasValue ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_consulta_kardex_tipo_f_Result>("sp_consulta_kardex_tipo_f", fecha_inicioParameter, fecha_finParameter);
+        }
+    
+        public virtual ObjectResult<sp_consulta_kardex_tipo_m_Result> sp_consulta_kardex_tipo_m(Nullable<int> tipo_m, Nullable<System.DateTime> fecha_inicio, Nullable<System.DateTime> fecha_fin)
+        {
+            var tipo_mParameter = tipo_m.HasValue ?
+                new ObjectParameter("tipo_m", tipo_m) :
+                new ObjectParameter("tipo_m", typeof(int));
+    
+            var fecha_inicioParameter = fecha_inicio.HasValue ?
+                new ObjectParameter("fecha_inicio", fecha_inicio) :
+                new ObjectParameter("fecha_inicio", typeof(System.DateTime));
+    
+            var fecha_finParameter = fecha_fin.HasValue ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_consulta_kardex_tipo_m_Result>("sp_consulta_kardex_tipo_m", tipo_mParameter, fecha_inicioParameter, fecha_finParameter);
+        }
+    
+        public virtual ObjectResult<sp_consulta_producto_Result> sp_consulta_producto(string cod_prod)
+        {
+            var cod_prodParameter = cod_prod != null ?
+                new ObjectParameter("Cod_prod", cod_prod) :
+                new ObjectParameter("Cod_prod", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_consulta_producto_Result>("sp_consulta_producto", cod_prodParameter);
+        }
+    
+        public virtual ObjectResult<sp_consulta_producto_clas_fr_Result> sp_consulta_producto_clas_fr(Nullable<System.DateTime> fecha_inicio, Nullable<System.DateTime> fecha_fin, Nullable<int> cla)
+        {
+            var fecha_inicioParameter = fecha_inicio.HasValue ?
+                new ObjectParameter("fecha_inicio", fecha_inicio) :
+                new ObjectParameter("fecha_inicio", typeof(System.DateTime));
+    
+            var fecha_finParameter = fecha_fin.HasValue ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(System.DateTime));
+    
+            var claParameter = cla.HasValue ?
+                new ObjectParameter("cla", cla) :
+                new ObjectParameter("cla", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_consulta_producto_clas_fr_Result>("sp_consulta_producto_clas_fr", fecha_inicioParameter, fecha_finParameter, claParameter);
+        }
+    
+        public virtual ObjectResult<sp_consulta_producto_clas_sub_fr_Result> sp_consulta_producto_clas_sub_fr(Nullable<System.DateTime> fecha_inicio, Nullable<System.DateTime> fecha_fin, Nullable<int> cla, Nullable<int> sub_cla)
+        {
+            var fecha_inicioParameter = fecha_inicio.HasValue ?
+                new ObjectParameter("fecha_inicio", fecha_inicio) :
+                new ObjectParameter("fecha_inicio", typeof(System.DateTime));
+    
+            var fecha_finParameter = fecha_fin.HasValue ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(System.DateTime));
+    
+            var claParameter = cla.HasValue ?
+                new ObjectParameter("cla", cla) :
+                new ObjectParameter("cla", typeof(int));
+    
+            var sub_claParameter = sub_cla.HasValue ?
+                new ObjectParameter("sub_cla", sub_cla) :
+                new ObjectParameter("sub_cla", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_consulta_producto_clas_sub_fr_Result>("sp_consulta_producto_clas_sub_fr", fecha_inicioParameter, fecha_finParameter, claParameter, sub_claParameter);
+        }
+    
+        public virtual ObjectResult<sp_consulta_producto_fr_Result> sp_consulta_producto_fr(Nullable<System.DateTime> fecha_inicio, Nullable<System.DateTime> fecha_fin)
+        {
+            var fecha_inicioParameter = fecha_inicio.HasValue ?
+                new ObjectParameter("fecha_inicio", fecha_inicio) :
+                new ObjectParameter("fecha_inicio", typeof(System.DateTime));
+    
+            var fecha_finParameter = fecha_fin.HasValue ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_consulta_producto_fr_Result>("sp_consulta_producto_fr", fecha_inicioParameter, fecha_finParameter);
+        }
+    
+        public virtual ObjectResult<sp_consulta_producto_nom_Result> sp_consulta_producto_nom(string nom_prod)
+        {
+            var nom_prodParameter = nom_prod != null ?
+                new ObjectParameter("nom_prod", nom_prod) :
+                new ObjectParameter("nom_prod", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_consulta_producto_nom_Result>("sp_consulta_producto_nom", nom_prodParameter);
+        }
+    
+        public virtual ObjectResult<sp_consulta_producto_subc_fr_Result> sp_consulta_producto_subc_fr(Nullable<System.DateTime> fecha_inicio, Nullable<System.DateTime> fecha_fin, Nullable<int> sub_cla)
+        {
+            var fecha_inicioParameter = fecha_inicio.HasValue ?
+                new ObjectParameter("fecha_inicio", fecha_inicio) :
+                new ObjectParameter("fecha_inicio", typeof(System.DateTime));
+    
+            var fecha_finParameter = fecha_fin.HasValue ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(System.DateTime));
+    
+            var sub_claParameter = sub_cla.HasValue ?
+                new ObjectParameter("sub_cla", sub_cla) :
+                new ObjectParameter("sub_cla", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_consulta_producto_subc_fr_Result>("sp_consulta_producto_subc_fr", fecha_inicioParameter, fecha_finParameter, sub_claParameter);
+        }
+    
+        public virtual ObjectResult<sp_consulta_productos_por_vencer_Result> sp_consulta_productos_por_vencer(Nullable<System.DateTime> fecha_inicio, Nullable<System.DateTime> fecha_fin)
+        {
+            var fecha_inicioParameter = fecha_inicio.HasValue ?
+                new ObjectParameter("fecha_inicio", fecha_inicio) :
+                new ObjectParameter("fecha_inicio", typeof(System.DateTime));
+    
+            var fecha_finParameter = fecha_fin.HasValue ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_consulta_productos_por_vencer_Result>("sp_consulta_productos_por_vencer", fecha_inicioParameter, fecha_finParameter);
+        }
+    
+        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual int sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual int sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var new_diagramnameParameter = new_diagramname != null ?
+                new ObjectParameter("new_diagramname", new_diagramname) :
+                new ObjectParameter("new_diagramname", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
+        }
+    
+        public virtual int sp_upgraddiagrams()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
     }
 }

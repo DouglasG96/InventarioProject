@@ -53,7 +53,6 @@
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesBodegasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesProveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.herramientasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label2 = new System.Windows.Forms.Label();
@@ -169,7 +168,6 @@
             this.mantenimientosToolStripMenuItem,
             this.procesosToolStripMenuItem,
             this.reportesToolStripMenuItem,
-            this.herramientasToolStripMenuItem,
             this.cerrarSesionToolStripMenuItem});
             this.menuMantenimientos.Location = new System.Drawing.Point(0, 0);
             this.menuMantenimientos.Name = "menuMantenimientos";
@@ -295,12 +293,6 @@
             this.reportesProveedoresToolStripMenuItem.Name = "reportesProveedoresToolStripMenuItem";
             this.reportesProveedoresToolStripMenuItem.Size = new System.Drawing.Size(212, 24);
             this.reportesProveedoresToolStripMenuItem.Text = "Reportes Proveedores";
-            // 
-            // herramientasToolStripMenuItem
-            // 
-            this.herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
-            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(103, 23);
-            this.herramientasToolStripMenuItem.Text = "Herramientas";
             // 
             // cerrarSesionToolStripMenuItem
             // 
@@ -432,7 +424,6 @@
         private System.Windows.Forms.ToolStripMenuItem entradaProductosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificacionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem herramientasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem trasladoDeProductosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportesBodegasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportesProveedoresToolStripMenuItem;

@@ -76,6 +76,7 @@
     <Property Name="id_usuario" Type="Int32" />
     <Property Name="estado" Type="Int32" />
     <Property Name="id_proveedor" Type="Int32" />
+    <Property Name="id_bodega_cargo" Type="Int32" />
     <NavigationProperty Name="bitacora" Relationship="Self.FK_bitacora_movimientos" FromRole="movimientos" ToRole="bitacora" />
     <NavigationProperty Name="detalles_movimientos" Relationship="Self.FK_detalles_movimientos_movimientos" FromRole="movimientos" ToRole="detalles_movimientos" />
     <NavigationProperty Name="proveedores" Relationship="Self.FK_movimientos_proveedores" FromRole="movimientos" ToRole="proveedores" />
@@ -614,5 +615,454 @@
       <End Role="tipo_bodega" EntitySet="tipo_bodega" />
       <End Role="tipo_bodega_bodegas" EntitySet="tipo_bodega_bodegas" />
     </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_consulta_bodega_habilitada" ReturnType="Collection(inventarioModel.sp_consulta_bodega_habilitada_Result)">
+      <Parameter Name="estado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_consulta_bodega_tipo" ReturnType="Collection(inventarioModel.sp_consulta_bodega_tipo_Result)">
+      <Parameter Name="tipo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_consulta_kardex_tipo_f" ReturnType="Collection(inventarioModel.sp_consulta_kardex_tipo_f_Result)">
+      <Parameter Name="fecha_inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_consulta_kardex_tipo_m" ReturnType="Collection(inventarioModel.sp_consulta_kardex_tipo_m_Result)">
+      <Parameter Name="tipo_m" Mode="In" Type="Int32" />
+      <Parameter Name="fecha_inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_consulta_producto" ReturnType="Collection(inventarioModel.sp_consulta_producto_Result)">
+      <Parameter Name="Cod_prod" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_consulta_producto_clas_fr" ReturnType="Collection(inventarioModel.sp_consulta_producto_clas_fr_Result)">
+      <Parameter Name="fecha_inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
+      <Parameter Name="cla" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_consulta_producto_clas_sub_fr" ReturnType="Collection(inventarioModel.sp_consulta_producto_clas_sub_fr_Result)">
+      <Parameter Name="fecha_inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
+      <Parameter Name="cla" Mode="In" Type="Int32" />
+      <Parameter Name="sub_cla" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_consulta_producto_fr" ReturnType="Collection(inventarioModel.sp_consulta_producto_fr_Result)">
+      <Parameter Name="fecha_inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_consulta_producto_nom" ReturnType="Collection(inventarioModel.sp_consulta_producto_nom_Result)">
+      <Parameter Name="nom_prod" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_consulta_producto_subc_fr" ReturnType="Collection(inventarioModel.sp_consulta_producto_subc_fr_Result)">
+      <Parameter Name="fecha_inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
+      <Parameter Name="sub_cla" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_consulta_productos_por_vencer" ReturnType="Collection(inventarioModel.sp_consulta_productos_por_vencer_Result)">
+      <Parameter Name="fecha_inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
   </EntityContainer>
+  <ComplexType Name="sp_consulta_bodega_habilitada_Result">
+    <Property Type="Int32" Name="id_bodega" Nullable="false" />
+    <Property Type="String" Name="nombre_bodega" Nullable="false" MaxLength="250" />
+    <Property Type="Int32" Name="id_sucursal" Nullable="true" />
+    <Property Type="Int32" Name="id_tipo_bodega" Nullable="true" />
+    <Property Type="Int32" Name="estado" Nullable="true" />
+    <Property Type="Int32" Name="id_sucursal1" Nullable="false" />
+    <Property Type="String" Name="sucursal" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="estado1" Nullable="true" />
+    <Property Type="Int32" Name="id_tipo_bodega1" Nullable="false" />
+    <Property Type="String" Name="tipo" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado2" Nullable="true" />
+    <Property Type="Int32" Name="id_tipo_bodega_bodegas" Nullable="false" />
+    <Property Type="Int32" Name="id_tipo_bodega2" Nullable="true" />
+    <Property Type="Int32" Name="id_bodega1" Nullable="true" />
+    <Property Type="Decimal" Name="temperatura_promedio" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="capacidad_maxima" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="capacidad_actual" Nullable="true" Precision="10" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="sp_consulta_bodega_tipo_Result">
+    <Property Type="Int32" Name="id_bodega" Nullable="false" />
+    <Property Type="String" Name="nombre_bodega" Nullable="false" MaxLength="250" />
+    <Property Type="Int32" Name="id_sucursal" Nullable="true" />
+    <Property Type="Int32" Name="id_tipo_bodega" Nullable="true" />
+    <Property Type="Int32" Name="estado" Nullable="true" />
+    <Property Type="Int32" Name="id_sucursal1" Nullable="false" />
+    <Property Type="String" Name="sucursal" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="estado1" Nullable="true" />
+    <Property Type="Int32" Name="id_tipo_bodega1" Nullable="false" />
+    <Property Type="String" Name="tipo" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado2" Nullable="true" />
+    <Property Type="Int32" Name="id_tipo_bodega_bodegas" Nullable="false" />
+    <Property Type="Int32" Name="id_tipo_bodega2" Nullable="true" />
+    <Property Type="Int32" Name="id_bodega1" Nullable="true" />
+    <Property Type="Decimal" Name="temperatura_promedio" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="capacidad_maxima" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="capacidad_actual" Nullable="true" Precision="10" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="sp_consulta_kardex_tipo_f_Result">
+    <Property Type="DateTime" Name="fecha" Nullable="true" />
+    <Property Type="Time" Name="hora" Nullable="true" />
+    <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+    <Property Type="Decimal" Name="costo_total_con_iva" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="costo_total_sin_iva" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Int32" Name="estado" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_vencimiento" Nullable="true" />
+    <Property Type="String" Name="lote" Nullable="true" MaxLength="250" />
+    <Property Type="Decimal" Name="cantidad" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="costo_unitario" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="costo_unitario_promedio" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="existencia_anterior" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="existencia_total" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Int32" Name="estado1" Nullable="true" />
+    <Property Type="String" Name="usuario" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="nombre_completo" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="dui" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="estado2" Nullable="true" />
+    <Property Type="Int32" Name="estado_sesion" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_ultimo_ingreso" Nullable="true" />
+    <Property Type="Time" Name="hora_ultimo_ingreso" Nullable="true" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="codigo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="descripcion1" Nullable="true" MaxLength="250" />
+    <Property Type="DateTime" Name="fecha_creacion" Nullable="true" />
+    <Property Type="Time" Name="hora_creacion" Nullable="true" />
+    <Property Type="Int32" Name="estado3" Nullable="true" />
+    <Property Type="Decimal" Name="costo_unitario_con_iva" Nullable="true" Precision="18" Scale="4" />
+    <Property Type="Int32" Name="dias" Nullable="true" />
+    <Property Type="Int32" Name="estado4" Nullable="true" />
+    <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+  </ComplexType>
+  <ComplexType Name="sp_consulta_kardex_tipo_m_Result">
+    <Property Type="DateTime" Name="fecha" Nullable="true" />
+    <Property Type="Time" Name="hora" Nullable="true" />
+    <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+    <Property Type="Decimal" Name="costo_total_con_iva" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="costo_total_sin_iva" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Int32" Name="estado" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_vencimiento" Nullable="true" />
+    <Property Type="String" Name="lote" Nullable="true" MaxLength="250" />
+    <Property Type="Decimal" Name="cantidad" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="costo_unitario" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="costo_unitario_promedio" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="existencia_anterior" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="existencia_total" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Int32" Name="estado1" Nullable="true" />
+    <Property Type="String" Name="usuario" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="nombre_completo" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="dui" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="estado2" Nullable="true" />
+    <Property Type="Int32" Name="estado_sesion" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_ultimo_ingreso" Nullable="true" />
+    <Property Type="Time" Name="hora_ultimo_ingreso" Nullable="true" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="codigo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="descripcion1" Nullable="true" MaxLength="250" />
+    <Property Type="DateTime" Name="fecha_creacion" Nullable="true" />
+    <Property Type="Time" Name="hora_creacion" Nullable="true" />
+    <Property Type="Int32" Name="estado3" Nullable="true" />
+    <Property Type="Decimal" Name="costo_unitario_con_iva" Nullable="true" Precision="18" Scale="4" />
+    <Property Type="Int32" Name="dias" Nullable="true" />
+    <Property Type="Int32" Name="estado4" Nullable="true" />
+    <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nombre1" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="direccion" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nit" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nrc" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="correo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="razon_social" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado5" Nullable="true" />
+    <Property Type="String" Name="tipo_proveedor" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado6" Nullable="true" />
+    <Property Type="String" Name="nombre_bodega" Nullable="false" MaxLength="250" />
+    <Property Type="Int32" Name="estado7" Nullable="true" />
+    <Property Type="String" Name="sucursal" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="estado8" Nullable="true" />
+    <Property Type="String" Name="tipo" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado9" Nullable="true" />
+    <Property Type="Decimal" Name="temperatura_promedio" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="capacidad_maxima" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="capacidad_actual" Nullable="true" Precision="10" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="sp_consulta_producto_Result">
+    <Property Type="Int32" Name="id_producto" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="codigo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="id_vigencia_promedio" Nullable="true" />
+    <Property Type="Int32" Name="id_clasificacion" Nullable="true" />
+    <Property Type="Int32" Name="id_sub_clasificacion" Nullable="true" />
+    <Property Type="Int32" Name="id_proveedor" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_creacion" Nullable="true" />
+    <Property Type="Time" Name="hora_creacion" Nullable="true" />
+    <Property Type="Int32" Name="estado" Nullable="true" />
+    <Property Type="Decimal" Name="costo_unitario_con_iva" Nullable="true" Precision="18" Scale="4" />
+    <Property Type="Int32" Name="id_vigencia_promedio1" Nullable="false" />
+    <Property Type="Int32" Name="dias" Nullable="true" />
+    <Property Type="Int32" Name="estado1" Nullable="true" />
+    <Property Type="Int32" Name="id_clasificacion1" Nullable="false" />
+    <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado2" Nullable="true" />
+    <Property Type="Int32" Name="id_sub_clasificacion1" Nullable="false" />
+    <Property Type="Int32" Name="id_clasificacion2" Nullable="true" />
+    <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado3" Nullable="true" />
+    <Property Type="Int32" Name="id_proveedor1" Nullable="false" />
+    <Property Type="String" Name="nombre1" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="direccion" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nit" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nrc" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="correo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="razon_social" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="id_tipo_proveedor" Nullable="true" />
+    <Property Type="Int32" Name="estado4" Nullable="true" />
+    <Property Type="Int32" Name="id_tipo_proveedor1" Nullable="false" />
+    <Property Type="String" Name="tipo_proveedor" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado5" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_consulta_producto_clas_fr_Result">
+    <Property Type="Int32" Name="id_producto" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="codigo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="id_vigencia_promedio" Nullable="true" />
+    <Property Type="Int32" Name="id_clasificacion" Nullable="true" />
+    <Property Type="Int32" Name="id_sub_clasificacion" Nullable="true" />
+    <Property Type="Int32" Name="id_proveedor" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_creacion" Nullable="true" />
+    <Property Type="Time" Name="hora_creacion" Nullable="true" />
+    <Property Type="Int32" Name="estado" Nullable="true" />
+    <Property Type="Decimal" Name="costo_unitario_con_iva" Nullable="true" Precision="18" Scale="4" />
+    <Property Type="Int32" Name="id_vigencia_promedio1" Nullable="false" />
+    <Property Type="Int32" Name="dias" Nullable="true" />
+    <Property Type="Int32" Name="estado1" Nullable="true" />
+    <Property Type="Int32" Name="id_clasificacion1" Nullable="false" />
+    <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado2" Nullable="true" />
+    <Property Type="Int32" Name="id_sub_clasificacion1" Nullable="false" />
+    <Property Type="Int32" Name="id_clasificacion2" Nullable="true" />
+    <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado3" Nullable="true" />
+    <Property Type="Int32" Name="id_proveedor1" Nullable="false" />
+    <Property Type="String" Name="nombre1" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="direccion" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nit" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nrc" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="correo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="razon_social" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="id_tipo_proveedor" Nullable="true" />
+    <Property Type="Int32" Name="estado4" Nullable="true" />
+    <Property Type="Int32" Name="id_tipo_proveedor1" Nullable="false" />
+    <Property Type="String" Name="tipo_proveedor" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado5" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_consulta_producto_clas_sub_fr_Result">
+    <Property Type="Int32" Name="id_producto" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="codigo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="id_vigencia_promedio" Nullable="true" />
+    <Property Type="Int32" Name="id_clasificacion" Nullable="true" />
+    <Property Type="Int32" Name="id_sub_clasificacion" Nullable="true" />
+    <Property Type="Int32" Name="id_proveedor" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_creacion" Nullable="true" />
+    <Property Type="Time" Name="hora_creacion" Nullable="true" />
+    <Property Type="Int32" Name="estado" Nullable="true" />
+    <Property Type="Decimal" Name="costo_unitario_con_iva" Nullable="true" Precision="18" Scale="4" />
+    <Property Type="Int32" Name="id_vigencia_promedio1" Nullable="false" />
+    <Property Type="Int32" Name="dias" Nullable="true" />
+    <Property Type="Int32" Name="estado1" Nullable="true" />
+    <Property Type="Int32" Name="id_clasificacion1" Nullable="false" />
+    <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado2" Nullable="true" />
+    <Property Type="Int32" Name="id_sub_clasificacion1" Nullable="false" />
+    <Property Type="Int32" Name="id_clasificacion2" Nullable="true" />
+    <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado3" Nullable="true" />
+    <Property Type="Int32" Name="id_proveedor1" Nullable="false" />
+    <Property Type="String" Name="nombre1" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="direccion" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nit" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nrc" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="correo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="razon_social" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="id_tipo_proveedor" Nullable="true" />
+    <Property Type="Int32" Name="estado4" Nullable="true" />
+    <Property Type="Int32" Name="id_tipo_proveedor1" Nullable="false" />
+    <Property Type="String" Name="tipo_proveedor" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado5" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_consulta_producto_fr_Result">
+    <Property Type="Int32" Name="id_producto" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="codigo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="id_vigencia_promedio" Nullable="true" />
+    <Property Type="Int32" Name="id_clasificacion" Nullable="true" />
+    <Property Type="Int32" Name="id_sub_clasificacion" Nullable="true" />
+    <Property Type="Int32" Name="id_proveedor" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_creacion" Nullable="true" />
+    <Property Type="Time" Name="hora_creacion" Nullable="true" />
+    <Property Type="Int32" Name="estado" Nullable="true" />
+    <Property Type="Decimal" Name="costo_unitario_con_iva" Nullable="true" Precision="18" Scale="4" />
+    <Property Type="Int32" Name="id_vigencia_promedio1" Nullable="false" />
+    <Property Type="Int32" Name="dias" Nullable="true" />
+    <Property Type="Int32" Name="estado1" Nullable="true" />
+    <Property Type="Int32" Name="id_clasificacion1" Nullable="false" />
+    <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado2" Nullable="true" />
+    <Property Type="Int32" Name="id_sub_clasificacion1" Nullable="false" />
+    <Property Type="Int32" Name="id_clasificacion2" Nullable="true" />
+    <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado3" Nullable="true" />
+    <Property Type="Int32" Name="id_proveedor1" Nullable="false" />
+    <Property Type="String" Name="nombre1" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="direccion" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nit" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nrc" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="correo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="razon_social" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="id_tipo_proveedor" Nullable="true" />
+    <Property Type="Int32" Name="estado4" Nullable="true" />
+    <Property Type="Int32" Name="id_tipo_proveedor1" Nullable="false" />
+    <Property Type="String" Name="tipo_proveedor" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado5" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_consulta_producto_nom_Result">
+    <Property Type="Int32" Name="id_producto" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="codigo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="id_vigencia_promedio" Nullable="true" />
+    <Property Type="Int32" Name="id_clasificacion" Nullable="true" />
+    <Property Type="Int32" Name="id_sub_clasificacion" Nullable="true" />
+    <Property Type="Int32" Name="id_proveedor" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_creacion" Nullable="true" />
+    <Property Type="Time" Name="hora_creacion" Nullable="true" />
+    <Property Type="Int32" Name="estado" Nullable="true" />
+    <Property Type="Decimal" Name="costo_unitario_con_iva" Nullable="true" Precision="18" Scale="4" />
+    <Property Type="Int32" Name="id_vigencia_promedio1" Nullable="false" />
+    <Property Type="Int32" Name="dias" Nullable="true" />
+    <Property Type="Int32" Name="estado1" Nullable="true" />
+    <Property Type="Int32" Name="id_clasificacion1" Nullable="false" />
+    <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado2" Nullable="true" />
+    <Property Type="Int32" Name="id_sub_clasificacion1" Nullable="false" />
+    <Property Type="Int32" Name="id_clasificacion2" Nullable="true" />
+    <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado3" Nullable="true" />
+    <Property Type="Int32" Name="id_proveedor1" Nullable="false" />
+    <Property Type="String" Name="nombre1" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="direccion" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nit" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nrc" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="correo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="razon_social" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="id_tipo_proveedor" Nullable="true" />
+    <Property Type="Int32" Name="estado4" Nullable="true" />
+    <Property Type="Int32" Name="id_tipo_proveedor1" Nullable="false" />
+    <Property Type="String" Name="tipo_proveedor" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado5" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_consulta_producto_subc_fr_Result">
+    <Property Type="Int32" Name="id_producto" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="codigo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="id_vigencia_promedio" Nullable="true" />
+    <Property Type="Int32" Name="id_clasificacion" Nullable="true" />
+    <Property Type="Int32" Name="id_sub_clasificacion" Nullable="true" />
+    <Property Type="Int32" Name="id_proveedor" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_creacion" Nullable="true" />
+    <Property Type="Time" Name="hora_creacion" Nullable="true" />
+    <Property Type="Int32" Name="estado" Nullable="true" />
+    <Property Type="Decimal" Name="costo_unitario_con_iva" Nullable="true" Precision="18" Scale="4" />
+    <Property Type="Int32" Name="id_vigencia_promedio1" Nullable="false" />
+    <Property Type="Int32" Name="dias" Nullable="true" />
+    <Property Type="Int32" Name="estado1" Nullable="true" />
+    <Property Type="Int32" Name="id_clasificacion1" Nullable="false" />
+    <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado2" Nullable="true" />
+    <Property Type="Int32" Name="id_sub_clasificacion1" Nullable="false" />
+    <Property Type="Int32" Name="id_clasificacion2" Nullable="true" />
+    <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado3" Nullable="true" />
+    <Property Type="Int32" Name="id_proveedor1" Nullable="false" />
+    <Property Type="String" Name="nombre1" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="direccion" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nit" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nrc" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="correo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="razon_social" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="id_tipo_proveedor" Nullable="true" />
+    <Property Type="Int32" Name="estado4" Nullable="true" />
+    <Property Type="Int32" Name="id_tipo_proveedor1" Nullable="false" />
+    <Property Type="String" Name="tipo_proveedor" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado5" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_consulta_productos_por_vencer_Result">
+    <Property Type="DateTime" Name="fecha" Nullable="true" />
+    <Property Type="Time" Name="hora" Nullable="true" />
+    <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+    <Property Type="Decimal" Name="costo_total_con_iva" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="costo_total_sin_iva" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Int32" Name="estado" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_vencimiento" Nullable="true" />
+    <Property Type="String" Name="lote" Nullable="true" MaxLength="250" />
+    <Property Type="Decimal" Name="cantidad" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="costo_unitario" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="costo_unitario_promedio" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="existencia_anterior" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="existencia_total" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Int32" Name="estado1" Nullable="true" />
+    <Property Type="String" Name="usuario" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="nombre_completo" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="dui" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="estado2" Nullable="true" />
+    <Property Type="Int32" Name="estado_sesion" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_ultimo_ingreso" Nullable="true" />
+    <Property Type="Time" Name="hora_ultimo_ingreso" Nullable="true" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="codigo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="descripcion1" Nullable="true" MaxLength="250" />
+    <Property Type="DateTime" Name="fecha_creacion" Nullable="true" />
+    <Property Type="Time" Name="hora_creacion" Nullable="true" />
+    <Property Type="Int32" Name="estado3" Nullable="true" />
+    <Property Type="Decimal" Name="costo_unitario_con_iva" Nullable="true" Precision="18" Scale="4" />
+    <Property Type="Int32" Name="dias" Nullable="true" />
+    <Property Type="Int32" Name="estado4" Nullable="true" />
+    <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+  </ComplexType>
 </Schema>
