@@ -115,9 +115,9 @@ namespace Sistema_Inventario
         /// </summary>
         private void cargarProductos(String idBodega)
         {
-            int idBodega1 = Convert.ToInt32(idBodega);
+            int idbod = Convert.ToInt32(idBodega);
             cmbProducto.DataSource = ProductoBL.cargarProductosSelector();
-            //cmbProducto.DataSource = ProductoBL.cargarProductosBodega(idBodega1);
+            //cmbProducto.DataSource = DetallesMovimientosBL.cargarProductosBodega(idbod);
             cmbProducto.DisplayMember = "nombre";
             cmbProducto.ValueMember = "id_producto";
         }

@@ -33,32 +33,6 @@ namespace Datos
             }
         }
 
-        public static List<productos> cargarProductosBodega(int idBodega)
-        {
-            using (inventarioEntities bd = new inventarioEntities())
-            {
-                List<productos> listaProductos = new List<productos>();
-                try
-                {
-                    bd.Database.Connection.Open();
-                    /*
-                    listaProductos = (from i in bd.bodegas
-                                      join b).ToList();
-                    */
-                }
-                catch (Exception e)
-                {
-                    // Imprime error en la consola
-                    Debug.Write(e);
-                }
-                finally
-                {
-                    bd.Database.Connection.Close();
-                }
-                return listaProductos;
-            }
-        }
-
         public static List<productos> cargarProductosOpcional()
         {
             using (inventarioEntities bd = new inventarioEntities())

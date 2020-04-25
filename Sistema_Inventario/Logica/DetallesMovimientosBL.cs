@@ -14,5 +14,10 @@ namespace Logica
         {
             return DetallesMovimientosDAL.consultarExistenciaAnteriorProducto(idProducto);
         }
+
+        public static List<productos> cargarProductosBodega(int idBodega)
+        {
+            return DetallesMovimientosDAL.cargarProductosBodega(idBodega);
+        }
     }
 }
