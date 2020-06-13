@@ -1,0 +1,1079 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="inventarioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="bitacora">
+    <Key>
+      <PropertyRef Name="id_bitacora" />
+    </Key>
+    <Property Name="id_bitacora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha" Type="DateTime" Precision="0" />
+    <Property Name="hora" Type="Time" Precision="7" />
+    <Property Name="accion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="id_movimiento" Type="Int32" />
+    <NavigationProperty Name="movimientos" Relationship="Self.FK_bitacora_movimientos" FromRole="bitacora" ToRole="movimientos" />
+  </EntityType>
+  <EntityType Name="bodegas">
+    <Key>
+      <PropertyRef Name="id_bodega" />
+    </Key>
+    <Property Name="id_bodega" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre_bodega" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="id_sucursal" Type="Int32" />
+    <Property Name="id_tipo_bodega" Type="Int32" />
+    <Property Name="estado" Type="Int32" />
+    <NavigationProperty Name="sucursales" Relationship="Self.fk_bodegas_sucursales" FromRole="bodegas" ToRole="sucursales" />
+    <NavigationProperty Name="detalles_movimientos" Relationship="Self.FK_detalles_movimientos_bodegas" FromRole="bodegas" ToRole="detalles_movimientos" />
+    <NavigationProperty Name="tipo_bodega_bodegas" Relationship="Self.FK_tipo_bodega_bodegas_bodegas" FromRole="bodegas" ToRole="tipo_bodega_bodegas" />
+  </EntityType>
+  <EntityType Name="clasificacion">
+    <Key>
+      <PropertyRef Name="id_clasificacion" />
+    </Key>
+    <Property Name="id_clasificacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre_clasificacion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="estado" Type="Int32" />
+    <NavigationProperty Name="sub_clasificaciones" Relationship="Self.fk_sub_clasificacion_clasificaciones" FromRole="clasificacion" ToRole="sub_clasificaciones" />
+  </EntityType>
+  <EntityType Name="detalles_movimientos">
+    <Key>
+      <PropertyRef Name="id_detalle_movimiento" />
+    </Key>
+    <Property Name="id_detalle_movimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha_vencimiento" Type="DateTime" Precision="0" />
+    <Property Name="lote" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="cantidad" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="costo_unitario" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="costo_unitario_promedio" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="existencia_anterior" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="existencia_total" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="estado" Type="Int32" />
+    <Property Name="id_producto" Type="Int32" />
+    <Property Name="id_movimiento" Type="Int32" />
+    <Property Name="id_bodega" Type="Int32" />
+    <Property Name="id_bodega_traslado" Type="Int32" />
+    <NavigationProperty Name="bodegas" Relationship="Self.FK_detalles_movimientos_bodegas" FromRole="detalles_movimientos" ToRole="bodegas" />
+    <NavigationProperty Name="movimientos" Relationship="Self.FK_detalles_movimientos_movimientos" FromRole="detalles_movimientos" ToRole="movimientos" />
+    <NavigationProperty Name="productos" Relationship="Self.FK_detalles_movimientos_productos" FromRole="detalles_movimientos" ToRole="productos" />
+  </EntityType>
+  <EntityType Name="medidas_peso">
+    <Key>
+      <PropertyRef Name="id_medida_peso" />
+    </Key>
+    <Property Name="id_medida_peso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="abreviatura" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="estado" Type="Int32" />
+  </EntityType>
+  <EntityType Name="movimientos">
+    <Key>
+      <PropertyRef Name="id_movimiento" />
+    </Key>
+    <Property Name="id_movimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_tipo_movimiento" Type="Int32" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Precision="0" />
+    <Property Name="hora" Type="Time" Precision="7" />
+    <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="costo_total_con_iva" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="costo_total_sin_iva" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="id_usuario" Type="Int32" />
+    <Property Name="estado" Type="Int32" />
+    <Property Name="id_proveedor" Type="Int32" />
+    <NavigationProperty Name="bitacora" Relationship="Self.FK_bitacora_movimientos" FromRole="movimientos" ToRole="bitacora" />
+    <NavigationProperty Name="detalles_movimientos" Relationship="Self.FK_detalles_movimientos_movimientos" FromRole="movimientos" ToRole="detalles_movimientos" />
+    <NavigationProperty Name="proveedores" Relationship="Self.FK_movimientos_proveedores" FromRole="movimientos" ToRole="proveedores" />
+    <NavigationProperty Name="tipo_movimiento" Relationship="Self.fk_movimientos_tipo_movimiento" FromRole="movimientos" ToRole="tipo_movimiento" />
+    <NavigationProperty Name="usuarios" Relationship="Self.FK_movimientos_usuarios" FromRole="movimientos" ToRole="usuarios" />
+  </EntityType>
+  <EntityType Name="productos">
+    <Key>
+      <PropertyRef Name="id_producto" />
+    </Key>
+    <Property Name="id_producto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="codigo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="id_vigencia_promedio" Type="Int32" />
+    <Property Name="id_clasificacion" Type="Int32" />
+    <Property Name="id_sub_clasificacion" Type="Int32" />
+    <Property Name="id_proveedor" Type="Int32" />
+    <Property Name="fecha_creacion" Type="DateTime" Precision="0" />
+    <Property Name="hora_creacion" Type="Time" Precision="7" />
+    <Property Name="estado" Type="Int32" />
+    <Property Name="costo_unitario_con_iva" Type="Decimal" Precision="18" Scale="4" />
+    <NavigationProperty Name="detalles_movimientos" Relationship="Self.FK_detalles_movimientos_productos" FromRole="productos" ToRole="detalles_movimientos" />
+    <NavigationProperty Name="sub_clasificaciones" Relationship="Self.FK_productos_sub_clasificaciones" FromRole="productos" ToRole="sub_clasificaciones" />
+    <NavigationProperty Name="vigencia_promedio" Relationship="Self.fk_prouctos_viegncia_promedio" FromRole="productos" ToRole="vigencia_promedio" />
+    <NavigationProperty Name="proveedor_producto" Relationship="Self.FK_proveedor_producto_productos" FromRole="productos" ToRole="proveedor_producto" />
+  </EntityType>
+  <EntityType Name="proveedor_producto">
+    <Key>
+      <PropertyRef Name="id_proveedor_producto" />
+    </Key>
+    <Property Name="id_proveedor_producto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_proveedor" Type="Int32" />
+    <Property Name="id_producto" Type="Int32" />
+    <Property Name="estado" Type="Int32" />
+    <NavigationProperty Name="productos" Relationship="Self.FK_proveedor_producto_productos" FromRole="proveedor_producto" ToRole="productos" />
+    <NavigationProperty Name="proveedores" Relationship="Self.FK_proveedor_producto_proveedores" FromRole="proveedor_producto" ToRole="proveedores" />
+  </EntityType>
+  <EntityType Name="proveedores">
+    <Key>
+      <PropertyRef Name="id_proveedor" />
+    </Key>
+    <Property Name="id_proveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="nit" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="nrc" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="correo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="razon_social" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="id_tipo_proveedor" Type="Int32" />
+    <Property Name="estado" Type="Int32" />
+    <NavigationProperty Name="movimientos" Relationship="Self.FK_movimientos_proveedores" FromRole="proveedores" ToRole="movimientos" />
+    <NavigationProperty Name="proveedor_producto" Relationship="Self.FK_proveedor_producto_proveedores" FromRole="proveedores" ToRole="proveedor_producto" />
+    <NavigationProperty Name="tipo_proveedor" Relationship="Self.fk_proveedores" FromRole="proveedores" ToRole="tipo_proveedor" />
+  </EntityType>
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="id_rol" />
+    </Key>
+    <Property Name="id_rol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rol" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="estado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="usuarios" Relationship="Self.FK_usuarios_roles" FromRole="roles" ToRole="usuarios" />
+  </EntityType>
+  <EntityType Name="sub_clasificaciones">
+    <Key>
+      <PropertyRef Name="id_sub_clasificacion" />
+    </Key>
+    <Property Name="id_sub_clasificacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_clasificacion" Type="Int32" />
+    <Property Name="sub_clasificacion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="estado" Type="Int32" />
+    <NavigationProperty Name="clasificacion" Relationship="Self.fk_sub_clasificacion_clasificaciones" FromRole="sub_clasificaciones" ToRole="clasificacion" />
+    <NavigationProperty Name="productos" Relationship="Self.FK_productos_sub_clasificaciones" FromRole="sub_clasificaciones" ToRole="productos" />
+  </EntityType>
+  <EntityType Name="sucursales">
+    <Key>
+      <PropertyRef Name="id_sucursal" />
+    </Key>
+    <Property Name="id_sucursal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sucursal" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="estado" Type="Int32" />
+    <NavigationProperty Name="bodegas" Relationship="Self.fk_bodegas_sucursales" FromRole="sucursales" ToRole="bodegas" />
+  </EntityType>
+  <EntityType Name="tipo_bodega">
+    <Key>
+      <PropertyRef Name="id_tipo_bodega" />
+    </Key>
+    <Property Name="id_tipo_bodega" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tipo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="estado" Type="Int32" />
+    <NavigationProperty Name="tipo_bodega_bodegas" Relationship="Self.FK_tipo_bodega_bodegas_tipo_bodega" FromRole="tipo_bodega" ToRole="tipo_bodega_bodegas" />
+  </EntityType>
+  <EntityType Name="tipo_bodega_bodegas">
+    <Key>
+      <PropertyRef Name="id_tipo_bodega_bodegas" />
+    </Key>
+    <Property Name="id_tipo_bodega_bodegas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_tipo_bodega" Type="Int32" />
+    <Property Name="id_bodega" Type="Int32" />
+    <Property Name="temperatura_promedio" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="capacidad_maxima" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="capacidad_actual" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="bodegas" Relationship="Self.FK_tipo_bodega_bodegas_bodegas" FromRole="tipo_bodega_bodegas" ToRole="bodegas" />
+    <NavigationProperty Name="tipo_bodega" Relationship="Self.FK_tipo_bodega_bodegas_tipo_bodega" FromRole="tipo_bodega_bodegas" ToRole="tipo_bodega" />
+  </EntityType>
+  <EntityType Name="tipo_movimiento">
+    <Key>
+      <PropertyRef Name="id_tipo_movimiento" />
+    </Key>
+    <Property Name="id_tipo_movimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tipo_movimiento1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="estado" Type="Int32" />
+    <NavigationProperty Name="movimientos" Relationship="Self.fk_movimientos_tipo_movimiento" FromRole="tipo_movimiento" ToRole="movimientos" />
+  </EntityType>
+  <EntityType Name="tipo_proveedor">
+    <Key>
+      <PropertyRef Name="id_tipo_proveedor" />
+    </Key>
+    <Property Name="id_tipo_proveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tipo_proveedor1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="estado" Type="Int32" />
+    <NavigationProperty Name="proveedores" Relationship="Self.fk_proveedores" FromRole="tipo_proveedor" ToRole="proveedores" />
+  </EntityType>
+  <EntityType Name="usuarios">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+    </Key>
+    <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="clave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nombre_completo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="dui" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Int32" />
+    <Property Name="estado_sesion" Type="Int32" />
+    <Property Name="fecha_ultimo_ingreso" Type="DateTime" Precision="0" />
+    <Property Name="hora_ultimo_ingreso" Type="Time" Precision="7" />
+    <Property Name="id_rol" Type="Int32" />
+    <NavigationProperty Name="movimientos" Relationship="Self.FK_movimientos_usuarios" FromRole="usuarios" ToRole="movimientos" />
+    <NavigationProperty Name="roles" Relationship="Self.FK_usuarios_roles" FromRole="usuarios" ToRole="roles" />
+  </EntityType>
+  <EntityType Name="vigencia_promedio">
+    <Key>
+      <PropertyRef Name="id_vigencia_promedio" />
+    </Key>
+    <Property Name="id_vigencia_promedio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dias" Type="Int32" />
+    <Property Name="estado" Type="Int32" />
+    <NavigationProperty Name="productos" Relationship="Self.fk_prouctos_viegncia_promedio" FromRole="vigencia_promedio" ToRole="productos" />
+  </EntityType>
+  <EntityType Name="vw_bodegas">
+    <Key>
+      <PropertyRef Name="id_bodega" />
+      <PropertyRef Name="nombre_bodega" />
+      <PropertyRef Name="id_sucursal" />
+      <PropertyRef Name="id_tipo_bodega" />
+    </Key>
+    <Property Name="id_bodega" Type="Int32" Nullable="false" />
+    <Property Name="nombre_bodega" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="sucursal" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="tipo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="id_sucursal" Type="Int32" Nullable="false" />
+    <Property Name="id_tipo_bodega" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vw_login">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+    </Key>
+    <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="clave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nombre_completo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="dui" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="Int32" />
+    <Property Name="estado_sesion" Type="Int32" />
+    <Property Name="fecha_ultimo_ingreso" Type="DateTime" Precision="0" />
+    <Property Name="hora_ultimo_ingreso" Type="Time" Precision="7" />
+    <Property Name="id_rol" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vw_movimientos">
+    <Key>
+      <PropertyRef Name="estado" />
+      <PropertyRef Name="id_movimiento" />
+    </Key>
+    <Property Name="estado" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id_movimiento" Type="Int32" Nullable="false" />
+    <Property Name="tipo_movimiento" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="fecha" Type="DateTime" Precision="0" />
+    <Property Name="hora" Type="Time" Precision="7" />
+    <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="costo_total_con_iva" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="costo_total_sin_iva" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vw_producto">
+    <Key>
+      <PropertyRef Name="id_producto" />
+      <PropertyRef Name="nombre" />
+    </Key>
+    <Property Name="id_producto" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="dias" Type="Int32" />
+    <Property Name="codigo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="hora_creacion" Type="Time" Precision="7" />
+    <Property Name="fecha_creacion" Type="DateTime" Precision="0" />
+    <Property Name="proveedor" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="categoria" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="subcategoia" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vw_proveedor">
+    <Key>
+      <PropertyRef Name="id_proveedor" />
+    </Key>
+    <Property Name="id_proveedor" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="nit" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="nrc" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="correo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="razon_social" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="tipo_proveedor" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vw_sucursal">
+    <Key>
+      <PropertyRef Name="id_sucursal" />
+    </Key>
+    <Property Name="id_sucursal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sucursal" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="estado" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vw_tipo_movimiento">
+    <Key>
+      <PropertyRef Name="id_tipo_movimiento" />
+    </Key>
+    <Property Name="id_tipo_movimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tipo_movimiento" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="estado" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_bitacora_movimientos">
+    <End Role="movimientos" Type="Self.movimientos" Multiplicity="0..1" />
+    <End Role="bitacora" Type="Self.bitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="movimientos">
+        <PropertyRef Name="id_movimiento" />
+      </Principal>
+      <Dependent Role="bitacora">
+        <PropertyRef Name="id_movimiento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_bodegas_sucursales">
+    <End Role="sucursales" Type="Self.sucursales" Multiplicity="0..1" />
+    <End Role="bodegas" Type="Self.bodegas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sucursales">
+        <PropertyRef Name="id_sucursal" />
+      </Principal>
+      <Dependent Role="bodegas">
+        <PropertyRef Name="id_sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_detalles_movimientos_bodegas">
+    <End Role="bodegas" Type="Self.bodegas" Multiplicity="0..1" />
+    <End Role="detalles_movimientos" Type="Self.detalles_movimientos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bodegas">
+        <PropertyRef Name="id_bodega" />
+      </Principal>
+      <Dependent Role="detalles_movimientos">
+        <PropertyRef Name="id_bodega" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tipo_bodega_bodegas_bodegas">
+    <End Role="bodegas" Type="Self.bodegas" Multiplicity="0..1" />
+    <End Role="tipo_bodega_bodegas" Type="Self.tipo_bodega_bodegas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bodegas">
+        <PropertyRef Name="id_bodega" />
+      </Principal>
+      <Dependent Role="tipo_bodega_bodegas">
+        <PropertyRef Name="id_bodega" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_sub_clasificacion_clasificaciones">
+    <End Role="clasificacion" Type="Self.clasificacion" Multiplicity="0..1" />
+    <End Role="sub_clasificaciones" Type="Self.sub_clasificaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clasificacion">
+        <PropertyRef Name="id_clasificacion" />
+      </Principal>
+      <Dependent Role="sub_clasificaciones">
+        <PropertyRef Name="id_clasificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_detalles_movimientos_movimientos">
+    <End Role="movimientos" Type="Self.movimientos" Multiplicity="0..1" />
+    <End Role="detalles_movimientos" Type="Self.detalles_movimientos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="movimientos">
+        <PropertyRef Name="id_movimiento" />
+      </Principal>
+      <Dependent Role="detalles_movimientos">
+        <PropertyRef Name="id_movimiento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_detalles_movimientos_productos">
+    <End Role="productos" Type="Self.productos" Multiplicity="0..1" />
+    <End Role="detalles_movimientos" Type="Self.detalles_movimientos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="productos">
+        <PropertyRef Name="id_producto" />
+      </Principal>
+      <Dependent Role="detalles_movimientos">
+        <PropertyRef Name="id_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_movimientos_proveedores">
+    <End Role="proveedores" Type="Self.proveedores" Multiplicity="0..1" />
+    <End Role="movimientos" Type="Self.movimientos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedores">
+        <PropertyRef Name="id_proveedor" />
+      </Principal>
+      <Dependent Role="movimientos">
+        <PropertyRef Name="id_proveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_movimientos_tipo_movimiento">
+    <End Role="tipo_movimiento" Type="Self.tipo_movimiento" Multiplicity="1" />
+    <End Role="movimientos" Type="Self.movimientos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_movimiento">
+        <PropertyRef Name="id_tipo_movimiento" />
+      </Principal>
+      <Dependent Role="movimientos">
+        <PropertyRef Name="id_tipo_movimiento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_movimientos_usuarios">
+    <End Role="usuarios" Type="Self.usuarios" Multiplicity="0..1" />
+    <End Role="movimientos" Type="Self.movimientos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="movimientos">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_productos_sub_clasificaciones">
+    <End Role="sub_clasificaciones" Type="Self.sub_clasificaciones" Multiplicity="0..1" />
+    <End Role="productos" Type="Self.productos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sub_clasificaciones">
+        <PropertyRef Name="id_sub_clasificacion" />
+      </Principal>
+      <Dependent Role="productos">
+        <PropertyRef Name="id_sub_clasificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_prouctos_viegncia_promedio">
+    <End Role="vigencia_promedio" Type="Self.vigencia_promedio" Multiplicity="0..1" />
+    <End Role="productos" Type="Self.productos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vigencia_promedio">
+        <PropertyRef Name="id_vigencia_promedio" />
+      </Principal>
+      <Dependent Role="productos">
+        <PropertyRef Name="id_vigencia_promedio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_proveedor_producto_productos">
+    <End Role="productos" Type="Self.productos" Multiplicity="0..1" />
+    <End Role="proveedor_producto" Type="Self.proveedor_producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="productos">
+        <PropertyRef Name="id_producto" />
+      </Principal>
+      <Dependent Role="proveedor_producto">
+        <PropertyRef Name="id_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_proveedor_producto_proveedores">
+    <End Role="proveedores" Type="Self.proveedores" Multiplicity="0..1" />
+    <End Role="proveedor_producto" Type="Self.proveedor_producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedores">
+        <PropertyRef Name="id_proveedor" />
+      </Principal>
+      <Dependent Role="proveedor_producto">
+        <PropertyRef Name="id_proveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_proveedores">
+    <End Role="tipo_proveedor" Type="Self.tipo_proveedor" Multiplicity="0..1" />
+    <End Role="proveedores" Type="Self.proveedores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_proveedor">
+        <PropertyRef Name="id_tipo_proveedor" />
+      </Principal>
+      <Dependent Role="proveedores">
+        <PropertyRef Name="id_tipo_proveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_usuarios_roles">
+    <End Role="roles" Type="Self.roles" Multiplicity="0..1" />
+    <End Role="usuarios" Type="Self.usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="id_rol" />
+      </Principal>
+      <Dependent Role="usuarios">
+        <PropertyRef Name="id_rol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tipo_bodega_bodegas_tipo_bodega">
+    <End Role="tipo_bodega" Type="Self.tipo_bodega" Multiplicity="0..1" />
+    <End Role="tipo_bodega_bodegas" Type="Self.tipo_bodega_bodegas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_bodega">
+        <PropertyRef Name="id_tipo_bodega" />
+      </Principal>
+      <Dependent Role="tipo_bodega_bodegas">
+        <PropertyRef Name="id_tipo_bodega" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="inventarioEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="bitacora" EntityType="Self.bitacora" />
+    <EntitySet Name="bodegas" EntityType="Self.bodegas" />
+    <EntitySet Name="clasificacion" EntityType="Self.clasificacion" />
+    <EntitySet Name="detalles_movimientos" EntityType="Self.detalles_movimientos" />
+    <EntitySet Name="medidas_peso" EntityType="Self.medidas_peso" />
+    <EntitySet Name="movimientos" EntityType="Self.movimientos" />
+    <EntitySet Name="productos" EntityType="Self.productos" />
+    <EntitySet Name="proveedor_producto" EntityType="Self.proveedor_producto" />
+    <EntitySet Name="proveedores" EntityType="Self.proveedores" />
+    <EntitySet Name="roles" EntityType="Self.roles" />
+    <EntitySet Name="sub_clasificaciones" EntityType="Self.sub_clasificaciones" />
+    <EntitySet Name="sucursales" EntityType="Self.sucursales" />
+    <EntitySet Name="tipo_bodega" EntityType="Self.tipo_bodega" />
+    <EntitySet Name="tipo_bodega_bodegas" EntityType="Self.tipo_bodega_bodegas" />
+    <EntitySet Name="tipo_movimiento" EntityType="Self.tipo_movimiento" />
+    <EntitySet Name="tipo_proveedor" EntityType="Self.tipo_proveedor" />
+    <EntitySet Name="usuarios" EntityType="Self.usuarios" />
+    <EntitySet Name="vigencia_promedio" EntityType="Self.vigencia_promedio" />
+    <EntitySet Name="vw_bodegas" EntityType="Self.vw_bodegas" />
+    <EntitySet Name="vw_login" EntityType="Self.vw_login" />
+    <EntitySet Name="vw_movimientos" EntityType="Self.vw_movimientos" />
+    <EntitySet Name="vw_producto" EntityType="Self.vw_producto" />
+    <EntitySet Name="vw_proveedor" EntityType="Self.vw_proveedor" />
+    <EntitySet Name="vw_sucursal" EntityType="Self.vw_sucursal" />
+    <EntitySet Name="vw_tipo_movimiento" EntityType="Self.vw_tipo_movimiento" />
+    <AssociationSet Name="FK_bitacora_movimientos" Association="Self.FK_bitacora_movimientos">
+      <End Role="movimientos" EntitySet="movimientos" />
+      <End Role="bitacora" EntitySet="bitacora" />
+    </AssociationSet>
+    <AssociationSet Name="fk_bodegas_sucursales" Association="Self.fk_bodegas_sucursales">
+      <End Role="sucursales" EntitySet="sucursales" />
+      <End Role="bodegas" EntitySet="bodegas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_detalles_movimientos_bodegas" Association="Self.FK_detalles_movimientos_bodegas">
+      <End Role="bodegas" EntitySet="bodegas" />
+      <End Role="detalles_movimientos" EntitySet="detalles_movimientos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tipo_bodega_bodegas_bodegas" Association="Self.FK_tipo_bodega_bodegas_bodegas">
+      <End Role="bodegas" EntitySet="bodegas" />
+      <End Role="tipo_bodega_bodegas" EntitySet="tipo_bodega_bodegas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_sub_clasificacion_clasificaciones" Association="Self.fk_sub_clasificacion_clasificaciones">
+      <End Role="clasificacion" EntitySet="clasificacion" />
+      <End Role="sub_clasificaciones" EntitySet="sub_clasificaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_detalles_movimientos_movimientos" Association="Self.FK_detalles_movimientos_movimientos">
+      <End Role="movimientos" EntitySet="movimientos" />
+      <End Role="detalles_movimientos" EntitySet="detalles_movimientos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_detalles_movimientos_productos" Association="Self.FK_detalles_movimientos_productos">
+      <End Role="productos" EntitySet="productos" />
+      <End Role="detalles_movimientos" EntitySet="detalles_movimientos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_movimientos_proveedores" Association="Self.FK_movimientos_proveedores">
+      <End Role="proveedores" EntitySet="proveedores" />
+      <End Role="movimientos" EntitySet="movimientos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_movimientos_tipo_movimiento" Association="Self.fk_movimientos_tipo_movimiento">
+      <End Role="tipo_movimiento" EntitySet="tipo_movimiento" />
+      <End Role="movimientos" EntitySet="movimientos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_movimientos_usuarios" Association="Self.FK_movimientos_usuarios">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="movimientos" EntitySet="movimientos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_productos_sub_clasificaciones" Association="Self.FK_productos_sub_clasificaciones">
+      <End Role="sub_clasificaciones" EntitySet="sub_clasificaciones" />
+      <End Role="productos" EntitySet="productos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_prouctos_viegncia_promedio" Association="Self.fk_prouctos_viegncia_promedio">
+      <End Role="vigencia_promedio" EntitySet="vigencia_promedio" />
+      <End Role="productos" EntitySet="productos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_proveedor_producto_productos" Association="Self.FK_proveedor_producto_productos">
+      <End Role="productos" EntitySet="productos" />
+      <End Role="proveedor_producto" EntitySet="proveedor_producto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_proveedor_producto_proveedores" Association="Self.FK_proveedor_producto_proveedores">
+      <End Role="proveedores" EntitySet="proveedores" />
+      <End Role="proveedor_producto" EntitySet="proveedor_producto" />
+    </AssociationSet>
+    <AssociationSet Name="fk_proveedores" Association="Self.fk_proveedores">
+      <End Role="tipo_proveedor" EntitySet="tipo_proveedor" />
+      <End Role="proveedores" EntitySet="proveedores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_usuarios_roles" Association="Self.FK_usuarios_roles">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="usuarios" EntitySet="usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tipo_bodega_bodegas_tipo_bodega" Association="Self.FK_tipo_bodega_bodegas_tipo_bodega">
+      <End Role="tipo_bodega" EntitySet="tipo_bodega" />
+      <End Role="tipo_bodega_bodegas" EntitySet="tipo_bodega_bodegas" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_consulta_bodega_habilitada" ReturnType="Collection(inventarioModel.sp_consulta_bodega_habilitada_Result)">
+      <Parameter Name="estado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_consulta_bodega_tipo" ReturnType="Collection(inventarioModel.sp_consulta_bodega_tipo_Result)">
+      <Parameter Name="tipo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_consulta_kardex_tipo_f" ReturnType="Collection(inventarioModel.sp_consulta_kardex_tipo_f_Result)">
+      <Parameter Name="fecha_inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_consulta_kardex_tipo_m" ReturnType="Collection(inventarioModel.sp_consulta_kardex_tipo_m_Result)">
+      <Parameter Name="tipo_m" Mode="In" Type="Int32" />
+      <Parameter Name="fecha_inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_consulta_producto" ReturnType="Collection(inventarioModel.sp_consulta_producto_Result)">
+      <Parameter Name="Cod_prod" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_consulta_producto_clas_fr" ReturnType="Collection(inventarioModel.sp_consulta_producto_clas_fr_Result)">
+      <Parameter Name="fecha_inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
+      <Parameter Name="cla" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_consulta_producto_clas_sub_fr" ReturnType="Collection(inventarioModel.sp_consulta_producto_clas_sub_fr_Result)">
+      <Parameter Name="fecha_inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
+      <Parameter Name="cla" Mode="In" Type="Int32" />
+      <Parameter Name="sub_cla" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_consulta_producto_fr" ReturnType="Collection(inventarioModel.sp_consulta_producto_fr_Result)">
+      <Parameter Name="fecha_inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_consulta_producto_nom" ReturnType="Collection(inventarioModel.sp_consulta_producto_nom_Result)">
+      <Parameter Name="nom_prod" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_consulta_producto_subc_fr" ReturnType="Collection(inventarioModel.sp_consulta_producto_subc_fr_Result)">
+      <Parameter Name="fecha_inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
+      <Parameter Name="sub_cla" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_consulta_productos_por_vencer" ReturnType="Collection(inventarioModel.sp_consulta_productos_por_vencer_Result)">
+      <Parameter Name="fecha_inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(inventarioModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(inventarioModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_consulta_bodega_habilitada_Result">
+    <Property Type="Int32" Name="id_bodega" Nullable="false" />
+    <Property Type="String" Name="nombre_bodega" Nullable="false" MaxLength="250" />
+    <Property Type="Int32" Name="id_sucursal" Nullable="true" />
+    <Property Type="Int32" Name="id_tipo_bodega" Nullable="true" />
+    <Property Type="Int32" Name="estado" Nullable="true" />
+    <Property Type="Int32" Name="id_sucursal1" Nullable="false" />
+    <Property Type="String" Name="sucursal" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="estado1" Nullable="true" />
+    <Property Type="Int32" Name="id_tipo_bodega1" Nullable="false" />
+    <Property Type="String" Name="tipo" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado2" Nullable="true" />
+    <Property Type="Int32" Name="id_tipo_bodega_bodegas" Nullable="false" />
+    <Property Type="Int32" Name="id_tipo_bodega2" Nullable="true" />
+    <Property Type="Int32" Name="id_bodega1" Nullable="true" />
+    <Property Type="Decimal" Name="temperatura_promedio" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="capacidad_maxima" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="capacidad_actual" Nullable="true" Precision="10" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="sp_consulta_bodega_tipo_Result">
+    <Property Type="Int32" Name="id_bodega" Nullable="false" />
+    <Property Type="String" Name="nombre_bodega" Nullable="false" MaxLength="250" />
+    <Property Type="Int32" Name="id_sucursal" Nullable="true" />
+    <Property Type="Int32" Name="id_tipo_bodega" Nullable="true" />
+    <Property Type="Int32" Name="estado" Nullable="true" />
+    <Property Type="Int32" Name="id_sucursal1" Nullable="false" />
+    <Property Type="String" Name="sucursal" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="estado1" Nullable="true" />
+    <Property Type="Int32" Name="id_tipo_bodega1" Nullable="false" />
+    <Property Type="String" Name="tipo" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado2" Nullable="true" />
+    <Property Type="Int32" Name="id_tipo_bodega_bodegas" Nullable="false" />
+    <Property Type="Int32" Name="id_tipo_bodega2" Nullable="true" />
+    <Property Type="Int32" Name="id_bodega1" Nullable="true" />
+    <Property Type="Decimal" Name="temperatura_promedio" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="capacidad_maxima" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="capacidad_actual" Nullable="true" Precision="10" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="sp_consulta_kardex_tipo_f_Result">
+    <Property Type="DateTime" Name="fecha" Nullable="true" />
+    <Property Type="Time" Name="hora" Nullable="true" />
+    <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+    <Property Type="Decimal" Name="costo_total_con_iva" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="costo_total_sin_iva" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Int32" Name="estado" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_vencimiento" Nullable="true" />
+    <Property Type="String" Name="lote" Nullable="true" MaxLength="250" />
+    <Property Type="Decimal" Name="cantidad" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="costo_unitario" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="costo_unitario_promedio" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="existencia_anterior" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="existencia_total" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Int32" Name="estado1" Nullable="true" />
+    <Property Type="String" Name="usuario" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="nombre_completo" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="dui" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="estado2" Nullable="true" />
+    <Property Type="Int32" Name="estado_sesion" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_ultimo_ingreso" Nullable="true" />
+    <Property Type="Time" Name="hora_ultimo_ingreso" Nullable="true" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="codigo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="descripcion1" Nullable="true" MaxLength="250" />
+    <Property Type="DateTime" Name="fecha_creacion" Nullable="true" />
+    <Property Type="Time" Name="hora_creacion" Nullable="true" />
+    <Property Type="Int32" Name="estado3" Nullable="true" />
+    <Property Type="Decimal" Name="costo_unitario_con_iva" Nullable="true" Precision="18" Scale="4" />
+    <Property Type="Int32" Name="dias" Nullable="true" />
+    <Property Type="Int32" Name="estado4" Nullable="true" />
+    <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+  </ComplexType>
+  <ComplexType Name="sp_consulta_kardex_tipo_m_Result">
+    <Property Type="DateTime" Name="fecha" Nullable="true" />
+    <Property Type="Time" Name="hora" Nullable="true" />
+    <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+    <Property Type="Decimal" Name="costo_total_con_iva" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="costo_total_sin_iva" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Int32" Name="estado" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_vencimiento" Nullable="true" />
+    <Property Type="String" Name="lote" Nullable="true" MaxLength="250" />
+    <Property Type="Decimal" Name="cantidad" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="costo_unitario" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="costo_unitario_promedio" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="existencia_anterior" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="existencia_total" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Int32" Name="estado1" Nullable="true" />
+    <Property Type="String" Name="usuario" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="nombre_completo" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="dui" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="estado2" Nullable="true" />
+    <Property Type="Int32" Name="estado_sesion" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_ultimo_ingreso" Nullable="true" />
+    <Property Type="Time" Name="hora_ultimo_ingreso" Nullable="true" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="codigo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="descripcion1" Nullable="true" MaxLength="250" />
+    <Property Type="DateTime" Name="fecha_creacion" Nullable="true" />
+    <Property Type="Time" Name="hora_creacion" Nullable="true" />
+    <Property Type="Int32" Name="estado3" Nullable="true" />
+    <Property Type="Decimal" Name="costo_unitario_con_iva" Nullable="true" Precision="18" Scale="4" />
+    <Property Type="Int32" Name="dias" Nullable="true" />
+    <Property Type="Int32" Name="estado4" Nullable="true" />
+    <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nombre1" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="direccion" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nit" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nrc" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="correo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="razon_social" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado5" Nullable="true" />
+    <Property Type="String" Name="tipo_proveedor" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado6" Nullable="true" />
+    <Property Type="String" Name="nombre_bodega" Nullable="false" MaxLength="250" />
+    <Property Type="Int32" Name="estado7" Nullable="true" />
+    <Property Type="String" Name="sucursal" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="estado8" Nullable="true" />
+    <Property Type="String" Name="tipo" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado9" Nullable="true" />
+    <Property Type="Decimal" Name="temperatura_promedio" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="capacidad_maxima" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="capacidad_actual" Nullable="true" Precision="10" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="sp_consulta_producto_Result">
+    <Property Type="Int32" Name="id_producto" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="codigo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="id_vigencia_promedio" Nullable="true" />
+    <Property Type="Int32" Name="id_clasificacion" Nullable="true" />
+    <Property Type="Int32" Name="id_sub_clasificacion" Nullable="true" />
+    <Property Type="Int32" Name="id_proveedor" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_creacion" Nullable="true" />
+    <Property Type="Time" Name="hora_creacion" Nullable="true" />
+    <Property Type="Int32" Name="estado" Nullable="true" />
+    <Property Type="Decimal" Name="costo_unitario_con_iva" Nullable="true" Precision="18" Scale="4" />
+    <Property Type="Int32" Name="id_vigencia_promedio1" Nullable="false" />
+    <Property Type="Int32" Name="dias" Nullable="true" />
+    <Property Type="Int32" Name="estado1" Nullable="true" />
+    <Property Type="Int32" Name="id_clasificacion1" Nullable="false" />
+    <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado2" Nullable="true" />
+    <Property Type="Int32" Name="id_sub_clasificacion1" Nullable="false" />
+    <Property Type="Int32" Name="id_clasificacion2" Nullable="true" />
+    <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado3" Nullable="true" />
+    <Property Type="Int32" Name="id_proveedor1" Nullable="false" />
+    <Property Type="String" Name="nombre1" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="direccion" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nit" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nrc" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="correo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="razon_social" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="id_tipo_proveedor" Nullable="true" />
+    <Property Type="Int32" Name="estado4" Nullable="true" />
+    <Property Type="Int32" Name="id_tipo_proveedor1" Nullable="false" />
+    <Property Type="String" Name="tipo_proveedor" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado5" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_consulta_producto_clas_fr_Result">
+    <Property Type="Int32" Name="id_producto" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="codigo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="id_vigencia_promedio" Nullable="true" />
+    <Property Type="Int32" Name="id_clasificacion" Nullable="true" />
+    <Property Type="Int32" Name="id_sub_clasificacion" Nullable="true" />
+    <Property Type="Int32" Name="id_proveedor" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_creacion" Nullable="true" />
+    <Property Type="Time" Name="hora_creacion" Nullable="true" />
+    <Property Type="Int32" Name="estado" Nullable="true" />
+    <Property Type="Decimal" Name="costo_unitario_con_iva" Nullable="true" Precision="18" Scale="4" />
+    <Property Type="Int32" Name="id_vigencia_promedio1" Nullable="false" />
+    <Property Type="Int32" Name="dias" Nullable="true" />
+    <Property Type="Int32" Name="estado1" Nullable="true" />
+    <Property Type="Int32" Name="id_clasificacion1" Nullable="false" />
+    <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado2" Nullable="true" />
+    <Property Type="Int32" Name="id_sub_clasificacion1" Nullable="false" />
+    <Property Type="Int32" Name="id_clasificacion2" Nullable="true" />
+    <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado3" Nullable="true" />
+    <Property Type="Int32" Name="id_proveedor1" Nullable="false" />
+    <Property Type="String" Name="nombre1" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="direccion" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nit" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nrc" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="correo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="razon_social" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="id_tipo_proveedor" Nullable="true" />
+    <Property Type="Int32" Name="estado4" Nullable="true" />
+    <Property Type="Int32" Name="id_tipo_proveedor1" Nullable="false" />
+    <Property Type="String" Name="tipo_proveedor" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado5" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_consulta_producto_clas_sub_fr_Result">
+    <Property Type="Int32" Name="id_producto" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="codigo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="id_vigencia_promedio" Nullable="true" />
+    <Property Type="Int32" Name="id_clasificacion" Nullable="true" />
+    <Property Type="Int32" Name="id_sub_clasificacion" Nullable="true" />
+    <Property Type="Int32" Name="id_proveedor" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_creacion" Nullable="true" />
+    <Property Type="Time" Name="hora_creacion" Nullable="true" />
+    <Property Type="Int32" Name="estado" Nullable="true" />
+    <Property Type="Decimal" Name="costo_unitario_con_iva" Nullable="true" Precision="18" Scale="4" />
+    <Property Type="Int32" Name="id_vigencia_promedio1" Nullable="false" />
+    <Property Type="Int32" Name="dias" Nullable="true" />
+    <Property Type="Int32" Name="estado1" Nullable="true" />
+    <Property Type="Int32" Name="id_clasificacion1" Nullable="false" />
+    <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado2" Nullable="true" />
+    <Property Type="Int32" Name="id_sub_clasificacion1" Nullable="false" />
+    <Property Type="Int32" Name="id_clasificacion2" Nullable="true" />
+    <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado3" Nullable="true" />
+    <Property Type="Int32" Name="id_proveedor1" Nullable="false" />
+    <Property Type="String" Name="nombre1" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="direccion" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nit" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nrc" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="correo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="razon_social" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="id_tipo_proveedor" Nullable="true" />
+    <Property Type="Int32" Name="estado4" Nullable="true" />
+    <Property Type="Int32" Name="id_tipo_proveedor1" Nullable="false" />
+    <Property Type="String" Name="tipo_proveedor" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado5" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_consulta_producto_fr_Result">
+    <Property Type="Int32" Name="id_producto" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="codigo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="id_vigencia_promedio" Nullable="true" />
+    <Property Type="Int32" Name="id_clasificacion" Nullable="true" />
+    <Property Type="Int32" Name="id_sub_clasificacion" Nullable="true" />
+    <Property Type="Int32" Name="id_proveedor" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_creacion" Nullable="true" />
+    <Property Type="Time" Name="hora_creacion" Nullable="true" />
+    <Property Type="Int32" Name="estado" Nullable="true" />
+    <Property Type="Decimal" Name="costo_unitario_con_iva" Nullable="true" Precision="18" Scale="4" />
+    <Property Type="Int32" Name="id_vigencia_promedio1" Nullable="false" />
+    <Property Type="Int32" Name="dias" Nullable="true" />
+    <Property Type="Int32" Name="estado1" Nullable="true" />
+    <Property Type="Int32" Name="id_clasificacion1" Nullable="false" />
+    <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado2" Nullable="true" />
+    <Property Type="Int32" Name="id_sub_clasificacion1" Nullable="false" />
+    <Property Type="Int32" Name="id_clasificacion2" Nullable="true" />
+    <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado3" Nullable="true" />
+    <Property Type="Int32" Name="id_proveedor1" Nullable="false" />
+    <Property Type="String" Name="nombre1" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="direccion" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nit" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nrc" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="correo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="razon_social" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="id_tipo_proveedor" Nullable="true" />
+    <Property Type="Int32" Name="estado4" Nullable="true" />
+    <Property Type="Int32" Name="id_tipo_proveedor1" Nullable="false" />
+    <Property Type="String" Name="tipo_proveedor" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado5" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_consulta_producto_nom_Result">
+    <Property Type="Int32" Name="id_producto" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="codigo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="id_vigencia_promedio" Nullable="true" />
+    <Property Type="Int32" Name="id_clasificacion" Nullable="true" />
+    <Property Type="Int32" Name="id_sub_clasificacion" Nullable="true" />
+    <Property Type="Int32" Name="id_proveedor" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_creacion" Nullable="true" />
+    <Property Type="Time" Name="hora_creacion" Nullable="true" />
+    <Property Type="Int32" Name="estado" Nullable="true" />
+    <Property Type="Decimal" Name="costo_unitario_con_iva" Nullable="true" Precision="18" Scale="4" />
+    <Property Type="Int32" Name="id_vigencia_promedio1" Nullable="false" />
+    <Property Type="Int32" Name="dias" Nullable="true" />
+    <Property Type="Int32" Name="estado1" Nullable="true" />
+    <Property Type="Int32" Name="id_clasificacion1" Nullable="false" />
+    <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado2" Nullable="true" />
+    <Property Type="Int32" Name="id_sub_clasificacion1" Nullable="false" />
+    <Property Type="Int32" Name="id_clasificacion2" Nullable="true" />
+    <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado3" Nullable="true" />
+    <Property Type="Int32" Name="id_proveedor1" Nullable="false" />
+    <Property Type="String" Name="nombre1" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="direccion" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nit" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nrc" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="correo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="razon_social" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="id_tipo_proveedor" Nullable="true" />
+    <Property Type="Int32" Name="estado4" Nullable="true" />
+    <Property Type="Int32" Name="id_tipo_proveedor1" Nullable="false" />
+    <Property Type="String" Name="tipo_proveedor" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado5" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_consulta_producto_subc_fr_Result">
+    <Property Type="Int32" Name="id_producto" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="codigo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="id_vigencia_promedio" Nullable="true" />
+    <Property Type="Int32" Name="id_clasificacion" Nullable="true" />
+    <Property Type="Int32" Name="id_sub_clasificacion" Nullable="true" />
+    <Property Type="Int32" Name="id_proveedor" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_creacion" Nullable="true" />
+    <Property Type="Time" Name="hora_creacion" Nullable="true" />
+    <Property Type="Int32" Name="estado" Nullable="true" />
+    <Property Type="Decimal" Name="costo_unitario_con_iva" Nullable="true" Precision="18" Scale="4" />
+    <Property Type="Int32" Name="id_vigencia_promedio1" Nullable="false" />
+    <Property Type="Int32" Name="dias" Nullable="true" />
+    <Property Type="Int32" Name="estado1" Nullable="true" />
+    <Property Type="Int32" Name="id_clasificacion1" Nullable="false" />
+    <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado2" Nullable="true" />
+    <Property Type="Int32" Name="id_sub_clasificacion1" Nullable="false" />
+    <Property Type="Int32" Name="id_clasificacion2" Nullable="true" />
+    <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado3" Nullable="true" />
+    <Property Type="Int32" Name="id_proveedor1" Nullable="false" />
+    <Property Type="String" Name="nombre1" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="direccion" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nit" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="nrc" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="correo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="razon_social" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="id_tipo_proveedor" Nullable="true" />
+    <Property Type="Int32" Name="estado4" Nullable="true" />
+    <Property Type="Int32" Name="id_tipo_proveedor1" Nullable="false" />
+    <Property Type="String" Name="tipo_proveedor" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="estado5" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_consulta_productos_por_vencer_Result">
+    <Property Type="DateTime" Name="fecha" Nullable="true" />
+    <Property Type="Time" Name="hora" Nullable="true" />
+    <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+    <Property Type="Decimal" Name="costo_total_con_iva" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="costo_total_sin_iva" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Int32" Name="estado" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_vencimiento" Nullable="true" />
+    <Property Type="String" Name="lote" Nullable="true" MaxLength="250" />
+    <Property Type="Decimal" Name="cantidad" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="costo_unitario" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="costo_unitario_promedio" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="existencia_anterior" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="existencia_total" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Int32" Name="estado1" Nullable="true" />
+    <Property Type="String" Name="usuario" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="nombre_completo" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="dui" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="estado2" Nullable="true" />
+    <Property Type="Int32" Name="estado_sesion" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_ultimo_ingreso" Nullable="true" />
+    <Property Type="Time" Name="hora_ultimo_ingreso" Nullable="true" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="codigo" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="descripcion1" Nullable="true" MaxLength="250" />
+    <Property Type="DateTime" Name="fecha_creacion" Nullable="true" />
+    <Property Type="Time" Name="hora_creacion" Nullable="true" />
+    <Property Type="Int32" Name="estado3" Nullable="true" />
+    <Property Type="Decimal" Name="costo_unitario_con_iva" Nullable="true" Precision="18" Scale="4" />
+    <Property Type="Int32" Name="dias" Nullable="true" />
+    <Property Type="Int32" Name="estado4" Nullable="true" />
+    <Property Type="String" Name="nombre_clasificacion" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="sub_clasificacion" Nullable="true" MaxLength="250" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

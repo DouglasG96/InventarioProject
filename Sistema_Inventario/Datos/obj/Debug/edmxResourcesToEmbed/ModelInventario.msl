@@ -1,0 +1,750 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="inventarioModelStoreContainer" CdmEntityContainer="inventarioEntities">
+    <EntitySetMapping Name="bitacora">
+      <EntityTypeMapping TypeName="inventarioModel.bitacora">
+        <MappingFragment StoreEntitySet="bitacora">
+          <ScalarProperty Name="id_bitacora" ColumnName="id_bitacora" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="hora" ColumnName="hora" />
+          <ScalarProperty Name="accion" ColumnName="accion" />
+          <ScalarProperty Name="id_movimiento" ColumnName="id_movimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bodegas">
+      <EntityTypeMapping TypeName="inventarioModel.bodegas">
+        <MappingFragment StoreEntitySet="bodegas">
+          <ScalarProperty Name="id_bodega" ColumnName="id_bodega" />
+          <ScalarProperty Name="nombre_bodega" ColumnName="nombre_bodega" />
+          <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+          <ScalarProperty Name="id_tipo_bodega" ColumnName="id_tipo_bodega" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="clasificacion">
+      <EntityTypeMapping TypeName="inventarioModel.clasificacion">
+        <MappingFragment StoreEntitySet="clasificacion">
+          <ScalarProperty Name="id_clasificacion" ColumnName="id_clasificacion" />
+          <ScalarProperty Name="nombre_clasificacion" ColumnName="nombre_clasificacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="detalles_movimientos">
+      <EntityTypeMapping TypeName="inventarioModel.detalles_movimientos">
+        <MappingFragment StoreEntitySet="detalles_movimientos">
+          <ScalarProperty Name="id_detalle_movimiento" ColumnName="id_detalle_movimiento" />
+          <ScalarProperty Name="fecha_vencimiento" ColumnName="fecha_vencimiento" />
+          <ScalarProperty Name="lote" ColumnName="lote" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="costo_unitario" ColumnName="costo_unitario" />
+          <ScalarProperty Name="costo_unitario_promedio" ColumnName="costo_unitario_promedio" />
+          <ScalarProperty Name="existencia_anterior" ColumnName="existencia_anterior" />
+          <ScalarProperty Name="existencia_total" ColumnName="existencia_total" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+          <ScalarProperty Name="id_movimiento" ColumnName="id_movimiento" />
+          <ScalarProperty Name="id_bodega" ColumnName="id_bodega" />
+          <ScalarProperty Name="id_bodega_traslado" ColumnName="id_bodega_traslado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="medidas_peso">
+      <EntityTypeMapping TypeName="inventarioModel.medidas_peso">
+        <MappingFragment StoreEntitySet="medidas_peso">
+          <ScalarProperty Name="id_medida_peso" ColumnName="id_medida_peso" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="abreviatura" ColumnName="abreviatura" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="movimientos">
+      <EntityTypeMapping TypeName="inventarioModel.movimientos">
+        <MappingFragment StoreEntitySet="movimientos">
+          <ScalarProperty Name="id_movimiento" ColumnName="id_movimiento" />
+          <ScalarProperty Name="id_tipo_movimiento" ColumnName="id_tipo_movimiento" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="hora" ColumnName="hora" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="costo_total_con_iva" ColumnName="costo_total_con_iva" />
+          <ScalarProperty Name="costo_total_sin_iva" ColumnName="costo_total_sin_iva" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productos">
+      <EntityTypeMapping TypeName="inventarioModel.productos">
+        <MappingFragment StoreEntitySet="productos">
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id_vigencia_promedio" ColumnName="id_vigencia_promedio" />
+          <ScalarProperty Name="id_clasificacion" ColumnName="id_clasificacion" />
+          <ScalarProperty Name="id_sub_clasificacion" ColumnName="id_sub_clasificacion" />
+          <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="hora_creacion" ColumnName="hora_creacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="costo_unitario_con_iva" ColumnName="costo_unitario_con_iva" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="proveedor_producto">
+      <EntityTypeMapping TypeName="inventarioModel.proveedor_producto">
+        <MappingFragment StoreEntitySet="proveedor_producto">
+          <ScalarProperty Name="id_proveedor_producto" ColumnName="id_proveedor_producto" />
+          <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="proveedores">
+      <EntityTypeMapping TypeName="inventarioModel.proveedores">
+        <MappingFragment StoreEntitySet="proveedores">
+          <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="nit" ColumnName="nit" />
+          <ScalarProperty Name="nrc" ColumnName="nrc" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+          <ScalarProperty Name="id_tipo_proveedor" ColumnName="id_tipo_proveedor" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roles">
+      <EntityTypeMapping TypeName="inventarioModel.roles">
+        <MappingFragment StoreEntitySet="roles">
+          <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+          <ScalarProperty Name="rol" ColumnName="rol" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sub_clasificaciones">
+      <EntityTypeMapping TypeName="inventarioModel.sub_clasificaciones">
+        <MappingFragment StoreEntitySet="sub_clasificaciones">
+          <ScalarProperty Name="id_sub_clasificacion" ColumnName="id_sub_clasificacion" />
+          <ScalarProperty Name="id_clasificacion" ColumnName="id_clasificacion" />
+          <ScalarProperty Name="sub_clasificacion" ColumnName="sub_clasificacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sucursales">
+      <EntityTypeMapping TypeName="inventarioModel.sucursales">
+        <MappingFragment StoreEntitySet="sucursales">
+          <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+          <ScalarProperty Name="sucursal" ColumnName="sucursal" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_bodega">
+      <EntityTypeMapping TypeName="inventarioModel.tipo_bodega">
+        <MappingFragment StoreEntitySet="tipo_bodega">
+          <ScalarProperty Name="id_tipo_bodega" ColumnName="id_tipo_bodega" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_bodega_bodegas">
+      <EntityTypeMapping TypeName="inventarioModel.tipo_bodega_bodegas">
+        <MappingFragment StoreEntitySet="tipo_bodega_bodegas">
+          <ScalarProperty Name="id_tipo_bodega_bodegas" ColumnName="id_tipo_bodega_bodegas" />
+          <ScalarProperty Name="id_tipo_bodega" ColumnName="id_tipo_bodega" />
+          <ScalarProperty Name="id_bodega" ColumnName="id_bodega" />
+          <ScalarProperty Name="temperatura_promedio" ColumnName="temperatura_promedio" />
+          <ScalarProperty Name="capacidad_maxima" ColumnName="capacidad_maxima" />
+          <ScalarProperty Name="capacidad_actual" ColumnName="capacidad_actual" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_movimiento">
+      <EntityTypeMapping TypeName="inventarioModel.tipo_movimiento">
+        <MappingFragment StoreEntitySet="tipo_movimiento">
+          <ScalarProperty Name="id_tipo_movimiento" ColumnName="id_tipo_movimiento" />
+          <ScalarProperty Name="tipo_movimiento1" ColumnName="tipo_movimiento" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_proveedor">
+      <EntityTypeMapping TypeName="inventarioModel.tipo_proveedor">
+        <MappingFragment StoreEntitySet="tipo_proveedor">
+          <ScalarProperty Name="id_tipo_proveedor" ColumnName="id_tipo_proveedor" />
+          <ScalarProperty Name="tipo_proveedor1" ColumnName="tipo_proveedor" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuarios">
+      <EntityTypeMapping TypeName="inventarioModel.usuarios">
+        <MappingFragment StoreEntitySet="usuarios">
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="clave" ColumnName="clave" />
+          <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
+          <ScalarProperty Name="dui" ColumnName="dui" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="estado_sesion" ColumnName="estado_sesion" />
+          <ScalarProperty Name="fecha_ultimo_ingreso" ColumnName="fecha_ultimo_ingreso" />
+          <ScalarProperty Name="hora_ultimo_ingreso" ColumnName="hora_ultimo_ingreso" />
+          <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vigencia_promedio">
+      <EntityTypeMapping TypeName="inventarioModel.vigencia_promedio">
+        <MappingFragment StoreEntitySet="vigencia_promedio">
+          <ScalarProperty Name="id_vigencia_promedio" ColumnName="id_vigencia_promedio" />
+          <ScalarProperty Name="dias" ColumnName="dias" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_bodegas">
+      <EntityTypeMapping TypeName="inventarioModel.vw_bodegas">
+        <MappingFragment StoreEntitySet="vw_bodegas">
+          <ScalarProperty Name="id_bodega" ColumnName="id_bodega" />
+          <ScalarProperty Name="nombre_bodega" ColumnName="nombre_bodega" />
+          <ScalarProperty Name="sucursal" ColumnName="sucursal" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+          <ScalarProperty Name="id_tipo_bodega" ColumnName="id_tipo_bodega" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_login">
+      <EntityTypeMapping TypeName="inventarioModel.vw_login">
+        <MappingFragment StoreEntitySet="vw_login">
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="clave" ColumnName="clave" />
+          <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
+          <ScalarProperty Name="dui" ColumnName="dui" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="estado_sesion" ColumnName="estado_sesion" />
+          <ScalarProperty Name="fecha_ultimo_ingreso" ColumnName="fecha_ultimo_ingreso" />
+          <ScalarProperty Name="hora_ultimo_ingreso" ColumnName="hora_ultimo_ingreso" />
+          <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_movimientos">
+      <EntityTypeMapping TypeName="inventarioModel.vw_movimientos">
+        <MappingFragment StoreEntitySet="vw_movimientos">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="id_movimiento" ColumnName="id_movimiento" />
+          <ScalarProperty Name="tipo_movimiento" ColumnName="tipo_movimiento" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="hora" ColumnName="hora" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="costo_total_con_iva" ColumnName="costo_total_con_iva" />
+          <ScalarProperty Name="costo_total_sin_iva" ColumnName="costo_total_sin_iva" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_producto">
+      <EntityTypeMapping TypeName="inventarioModel.vw_producto">
+        <MappingFragment StoreEntitySet="vw_producto">
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="dias" ColumnName="dias" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="hora_creacion" ColumnName="hora_creacion" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="proveedor" ColumnName="proveedor" />
+          <ScalarProperty Name="categoria" ColumnName="categoria" />
+          <ScalarProperty Name="subcategoia" ColumnName="subcategoia" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_proveedor">
+      <EntityTypeMapping TypeName="inventarioModel.vw_proveedor">
+        <MappingFragment StoreEntitySet="vw_proveedor">
+          <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="nit" ColumnName="nit" />
+          <ScalarProperty Name="nrc" ColumnName="nrc" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+          <ScalarProperty Name="tipo_proveedor" ColumnName="tipo_proveedor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_sucursal">
+      <EntityTypeMapping TypeName="inventarioModel.vw_sucursal">
+        <MappingFragment StoreEntitySet="vw_sucursal">
+          <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+          <ScalarProperty Name="sucursal" ColumnName="sucursal" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_tipo_movimiento">
+      <EntityTypeMapping TypeName="inventarioModel.vw_tipo_movimiento">
+        <MappingFragment StoreEntitySet="vw_tipo_movimiento">
+          <ScalarProperty Name="id_tipo_movimiento" ColumnName="id_tipo_movimiento" />
+          <ScalarProperty Name="tipo_movimiento" ColumnName="tipo_movimiento" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="inventarioModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_consulta_bodega_habilitada" FunctionName="inventarioModel.Store.sp_consulta_bodega_habilitada">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="inventarioModel.sp_consulta_bodega_habilitada_Result">
+          <ScalarProperty Name="id_bodega" ColumnName="id_bodega" />
+          <ScalarProperty Name="nombre_bodega" ColumnName="nombre_bodega" />
+          <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+          <ScalarProperty Name="id_tipo_bodega" ColumnName="id_tipo_bodega" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="id_sucursal1" ColumnName="id_sucursal1" />
+          <ScalarProperty Name="sucursal" ColumnName="sucursal" />
+          <ScalarProperty Name="estado1" ColumnName="estado1" />
+          <ScalarProperty Name="id_tipo_bodega1" ColumnName="id_tipo_bodega1" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="estado2" ColumnName="estado2" />
+          <ScalarProperty Name="id_tipo_bodega_bodegas" ColumnName="id_tipo_bodega_bodegas" />
+          <ScalarProperty Name="id_tipo_bodega2" ColumnName="id_tipo_bodega2" />
+          <ScalarProperty Name="id_bodega1" ColumnName="id_bodega1" />
+          <ScalarProperty Name="temperatura_promedio" ColumnName="temperatura_promedio" />
+          <ScalarProperty Name="capacidad_maxima" ColumnName="capacidad_maxima" />
+          <ScalarProperty Name="capacidad_actual" ColumnName="capacidad_actual" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_consulta_bodega_tipo" FunctionName="inventarioModel.Store.sp_consulta_bodega_tipo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="inventarioModel.sp_consulta_bodega_tipo_Result">
+          <ScalarProperty Name="id_bodega" ColumnName="id_bodega" />
+          <ScalarProperty Name="nombre_bodega" ColumnName="nombre_bodega" />
+          <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+          <ScalarProperty Name="id_tipo_bodega" ColumnName="id_tipo_bodega" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="id_sucursal1" ColumnName="id_sucursal1" />
+          <ScalarProperty Name="sucursal" ColumnName="sucursal" />
+          <ScalarProperty Name="estado1" ColumnName="estado1" />
+          <ScalarProperty Name="id_tipo_bodega1" ColumnName="id_tipo_bodega1" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="estado2" ColumnName="estado2" />
+          <ScalarProperty Name="id_tipo_bodega_bodegas" ColumnName="id_tipo_bodega_bodegas" />
+          <ScalarProperty Name="id_tipo_bodega2" ColumnName="id_tipo_bodega2" />
+          <ScalarProperty Name="id_bodega1" ColumnName="id_bodega1" />
+          <ScalarProperty Name="temperatura_promedio" ColumnName="temperatura_promedio" />
+          <ScalarProperty Name="capacidad_maxima" ColumnName="capacidad_maxima" />
+          <ScalarProperty Name="capacidad_actual" ColumnName="capacidad_actual" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_consulta_kardex_tipo_f" FunctionName="inventarioModel.Store.sp_consulta_kardex_tipo_f">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="inventarioModel.sp_consulta_kardex_tipo_f_Result">
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="hora" ColumnName="hora" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="costo_total_con_iva" ColumnName="costo_total_con_iva" />
+          <ScalarProperty Name="costo_total_sin_iva" ColumnName="costo_total_sin_iva" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="fecha_vencimiento" ColumnName="fecha_vencimiento" />
+          <ScalarProperty Name="lote" ColumnName="lote" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="costo_unitario" ColumnName="costo_unitario" />
+          <ScalarProperty Name="costo_unitario_promedio" ColumnName="costo_unitario_promedio" />
+          <ScalarProperty Name="existencia_anterior" ColumnName="existencia_anterior" />
+          <ScalarProperty Name="existencia_total" ColumnName="existencia_total" />
+          <ScalarProperty Name="estado1" ColumnName="estado1" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
+          <ScalarProperty Name="dui" ColumnName="dui" />
+          <ScalarProperty Name="estado2" ColumnName="estado2" />
+          <ScalarProperty Name="estado_sesion" ColumnName="estado_sesion" />
+          <ScalarProperty Name="fecha_ultimo_ingreso" ColumnName="fecha_ultimo_ingreso" />
+          <ScalarProperty Name="hora_ultimo_ingreso" ColumnName="hora_ultimo_ingreso" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="descripcion1" ColumnName="descripcion1" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="hora_creacion" ColumnName="hora_creacion" />
+          <ScalarProperty Name="estado3" ColumnName="estado3" />
+          <ScalarProperty Name="costo_unitario_con_iva" ColumnName="costo_unitario_con_iva" />
+          <ScalarProperty Name="dias" ColumnName="dias" />
+          <ScalarProperty Name="estado4" ColumnName="estado4" />
+          <ScalarProperty Name="nombre_clasificacion" ColumnName="nombre_clasificacion" />
+          <ScalarProperty Name="sub_clasificacion" ColumnName="sub_clasificacion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_consulta_kardex_tipo_m" FunctionName="inventarioModel.Store.sp_consulta_kardex_tipo_m">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="inventarioModel.sp_consulta_kardex_tipo_m_Result">
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="hora" ColumnName="hora" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="costo_total_con_iva" ColumnName="costo_total_con_iva" />
+          <ScalarProperty Name="costo_total_sin_iva" ColumnName="costo_total_sin_iva" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="fecha_vencimiento" ColumnName="fecha_vencimiento" />
+          <ScalarProperty Name="lote" ColumnName="lote" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="costo_unitario" ColumnName="costo_unitario" />
+          <ScalarProperty Name="costo_unitario_promedio" ColumnName="costo_unitario_promedio" />
+          <ScalarProperty Name="existencia_anterior" ColumnName="existencia_anterior" />
+          <ScalarProperty Name="existencia_total" ColumnName="existencia_total" />
+          <ScalarProperty Name="estado1" ColumnName="estado1" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
+          <ScalarProperty Name="dui" ColumnName="dui" />
+          <ScalarProperty Name="estado2" ColumnName="estado2" />
+          <ScalarProperty Name="estado_sesion" ColumnName="estado_sesion" />
+          <ScalarProperty Name="fecha_ultimo_ingreso" ColumnName="fecha_ultimo_ingreso" />
+          <ScalarProperty Name="hora_ultimo_ingreso" ColumnName="hora_ultimo_ingreso" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="descripcion1" ColumnName="descripcion1" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="hora_creacion" ColumnName="hora_creacion" />
+          <ScalarProperty Name="estado3" ColumnName="estado3" />
+          <ScalarProperty Name="costo_unitario_con_iva" ColumnName="costo_unitario_con_iva" />
+          <ScalarProperty Name="dias" ColumnName="dias" />
+          <ScalarProperty Name="estado4" ColumnName="estado4" />
+          <ScalarProperty Name="nombre_clasificacion" ColumnName="nombre_clasificacion" />
+          <ScalarProperty Name="sub_clasificacion" ColumnName="sub_clasificacion" />
+          <ScalarProperty Name="nombre1" ColumnName="nombre1" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="nit" ColumnName="nit" />
+          <ScalarProperty Name="nrc" ColumnName="nrc" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+          <ScalarProperty Name="estado5" ColumnName="estado5" />
+          <ScalarProperty Name="tipo_proveedor" ColumnName="tipo_proveedor" />
+          <ScalarProperty Name="estado6" ColumnName="estado6" />
+          <ScalarProperty Name="nombre_bodega" ColumnName="nombre_bodega" />
+          <ScalarProperty Name="estado7" ColumnName="estado7" />
+          <ScalarProperty Name="sucursal" ColumnName="sucursal" />
+          <ScalarProperty Name="estado8" ColumnName="estado8" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="estado9" ColumnName="estado9" />
+          <ScalarProperty Name="temperatura_promedio" ColumnName="temperatura_promedio" />
+          <ScalarProperty Name="capacidad_maxima" ColumnName="capacidad_maxima" />
+          <ScalarProperty Name="capacidad_actual" ColumnName="capacidad_actual" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_consulta_producto" FunctionName="inventarioModel.Store.sp_consulta_producto">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="inventarioModel.sp_consulta_producto_Result">
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id_vigencia_promedio" ColumnName="id_vigencia_promedio" />
+          <ScalarProperty Name="id_clasificacion" ColumnName="id_clasificacion" />
+          <ScalarProperty Name="id_sub_clasificacion" ColumnName="id_sub_clasificacion" />
+          <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="hora_creacion" ColumnName="hora_creacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="costo_unitario_con_iva" ColumnName="costo_unitario_con_iva" />
+          <ScalarProperty Name="id_vigencia_promedio1" ColumnName="id_vigencia_promedio1" />
+          <ScalarProperty Name="dias" ColumnName="dias" />
+          <ScalarProperty Name="estado1" ColumnName="estado1" />
+          <ScalarProperty Name="id_clasificacion1" ColumnName="id_clasificacion1" />
+          <ScalarProperty Name="nombre_clasificacion" ColumnName="nombre_clasificacion" />
+          <ScalarProperty Name="estado2" ColumnName="estado2" />
+          <ScalarProperty Name="id_sub_clasificacion1" ColumnName="id_sub_clasificacion1" />
+          <ScalarProperty Name="id_clasificacion2" ColumnName="id_clasificacion2" />
+          <ScalarProperty Name="sub_clasificacion" ColumnName="sub_clasificacion" />
+          <ScalarProperty Name="estado3" ColumnName="estado3" />
+          <ScalarProperty Name="id_proveedor1" ColumnName="id_proveedor1" />
+          <ScalarProperty Name="nombre1" ColumnName="nombre1" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="nit" ColumnName="nit" />
+          <ScalarProperty Name="nrc" ColumnName="nrc" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+          <ScalarProperty Name="id_tipo_proveedor" ColumnName="id_tipo_proveedor" />
+          <ScalarProperty Name="estado4" ColumnName="estado4" />
+          <ScalarProperty Name="id_tipo_proveedor1" ColumnName="id_tipo_proveedor1" />
+          <ScalarProperty Name="tipo_proveedor" ColumnName="tipo_proveedor" />
+          <ScalarProperty Name="estado5" ColumnName="estado5" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_consulta_producto_clas_fr" FunctionName="inventarioModel.Store.sp_consulta_producto_clas_fr">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="inventarioModel.sp_consulta_producto_clas_fr_Result">
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id_vigencia_promedio" ColumnName="id_vigencia_promedio" />
+          <ScalarProperty Name="id_clasificacion" ColumnName="id_clasificacion" />
+          <ScalarProperty Name="id_sub_clasificacion" ColumnName="id_sub_clasificacion" />
+          <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="hora_creacion" ColumnName="hora_creacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="costo_unitario_con_iva" ColumnName="costo_unitario_con_iva" />
+          <ScalarProperty Name="id_vigencia_promedio1" ColumnName="id_vigencia_promedio1" />
+          <ScalarProperty Name="dias" ColumnName="dias" />
+          <ScalarProperty Name="estado1" ColumnName="estado1" />
+          <ScalarProperty Name="id_clasificacion1" ColumnName="id_clasificacion1" />
+          <ScalarProperty Name="nombre_clasificacion" ColumnName="nombre_clasificacion" />
+          <ScalarProperty Name="estado2" ColumnName="estado2" />
+          <ScalarProperty Name="id_sub_clasificacion1" ColumnName="id_sub_clasificacion1" />
+          <ScalarProperty Name="id_clasificacion2" ColumnName="id_clasificacion2" />
+          <ScalarProperty Name="sub_clasificacion" ColumnName="sub_clasificacion" />
+          <ScalarProperty Name="estado3" ColumnName="estado3" />
+          <ScalarProperty Name="id_proveedor1" ColumnName="id_proveedor1" />
+          <ScalarProperty Name="nombre1" ColumnName="nombre1" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="nit" ColumnName="nit" />
+          <ScalarProperty Name="nrc" ColumnName="nrc" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+          <ScalarProperty Name="id_tipo_proveedor" ColumnName="id_tipo_proveedor" />
+          <ScalarProperty Name="estado4" ColumnName="estado4" />
+          <ScalarProperty Name="id_tipo_proveedor1" ColumnName="id_tipo_proveedor1" />
+          <ScalarProperty Name="tipo_proveedor" ColumnName="tipo_proveedor" />
+          <ScalarProperty Name="estado5" ColumnName="estado5" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_consulta_producto_clas_sub_fr" FunctionName="inventarioModel.Store.sp_consulta_producto_clas_sub_fr">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="inventarioModel.sp_consulta_producto_clas_sub_fr_Result">
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id_vigencia_promedio" ColumnName="id_vigencia_promedio" />
+          <ScalarProperty Name="id_clasificacion" ColumnName="id_clasificacion" />
+          <ScalarProperty Name="id_sub_clasificacion" ColumnName="id_sub_clasificacion" />
+          <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="hora_creacion" ColumnName="hora_creacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="costo_unitario_con_iva" ColumnName="costo_unitario_con_iva" />
+          <ScalarProperty Name="id_vigencia_promedio1" ColumnName="id_vigencia_promedio1" />
+          <ScalarProperty Name="dias" ColumnName="dias" />
+          <ScalarProperty Name="estado1" ColumnName="estado1" />
+          <ScalarProperty Name="id_clasificacion1" ColumnName="id_clasificacion1" />
+          <ScalarProperty Name="nombre_clasificacion" ColumnName="nombre_clasificacion" />
+          <ScalarProperty Name="estado2" ColumnName="estado2" />
+          <ScalarProperty Name="id_sub_clasificacion1" ColumnName="id_sub_clasificacion1" />
+          <ScalarProperty Name="id_clasificacion2" ColumnName="id_clasificacion2" />
+          <ScalarProperty Name="sub_clasificacion" ColumnName="sub_clasificacion" />
+          <ScalarProperty Name="estado3" ColumnName="estado3" />
+          <ScalarProperty Name="id_proveedor1" ColumnName="id_proveedor1" />
+          <ScalarProperty Name="nombre1" ColumnName="nombre1" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="nit" ColumnName="nit" />
+          <ScalarProperty Name="nrc" ColumnName="nrc" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+          <ScalarProperty Name="id_tipo_proveedor" ColumnName="id_tipo_proveedor" />
+          <ScalarProperty Name="estado4" ColumnName="estado4" />
+          <ScalarProperty Name="id_tipo_proveedor1" ColumnName="id_tipo_proveedor1" />
+          <ScalarProperty Name="tipo_proveedor" ColumnName="tipo_proveedor" />
+          <ScalarProperty Name="estado5" ColumnName="estado5" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_consulta_producto_fr" FunctionName="inventarioModel.Store.sp_consulta_producto_fr">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="inventarioModel.sp_consulta_producto_fr_Result">
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id_vigencia_promedio" ColumnName="id_vigencia_promedio" />
+          <ScalarProperty Name="id_clasificacion" ColumnName="id_clasificacion" />
+          <ScalarProperty Name="id_sub_clasificacion" ColumnName="id_sub_clasificacion" />
+          <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="hora_creacion" ColumnName="hora_creacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="costo_unitario_con_iva" ColumnName="costo_unitario_con_iva" />
+          <ScalarProperty Name="id_vigencia_promedio1" ColumnName="id_vigencia_promedio1" />
+          <ScalarProperty Name="dias" ColumnName="dias" />
+          <ScalarProperty Name="estado1" ColumnName="estado1" />
+          <ScalarProperty Name="id_clasificacion1" ColumnName="id_clasificacion1" />
+          <ScalarProperty Name="nombre_clasificacion" ColumnName="nombre_clasificacion" />
+          <ScalarProperty Name="estado2" ColumnName="estado2" />
+          <ScalarProperty Name="id_sub_clasificacion1" ColumnName="id_sub_clasificacion1" />
+          <ScalarProperty Name="id_clasificacion2" ColumnName="id_clasificacion2" />
+          <ScalarProperty Name="sub_clasificacion" ColumnName="sub_clasificacion" />
+          <ScalarProperty Name="estado3" ColumnName="estado3" />
+          <ScalarProperty Name="id_proveedor1" ColumnName="id_proveedor1" />
+          <ScalarProperty Name="nombre1" ColumnName="nombre1" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="nit" ColumnName="nit" />
+          <ScalarProperty Name="nrc" ColumnName="nrc" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+          <ScalarProperty Name="id_tipo_proveedor" ColumnName="id_tipo_proveedor" />
+          <ScalarProperty Name="estado4" ColumnName="estado4" />
+          <ScalarProperty Name="id_tipo_proveedor1" ColumnName="id_tipo_proveedor1" />
+          <ScalarProperty Name="tipo_proveedor" ColumnName="tipo_proveedor" />
+          <ScalarProperty Name="estado5" ColumnName="estado5" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_consulta_producto_nom" FunctionName="inventarioModel.Store.sp_consulta_producto_nom">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="inventarioModel.sp_consulta_producto_nom_Result">
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id_vigencia_promedio" ColumnName="id_vigencia_promedio" />
+          <ScalarProperty Name="id_clasificacion" ColumnName="id_clasificacion" />
+          <ScalarProperty Name="id_sub_clasificacion" ColumnName="id_sub_clasificacion" />
+          <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="hora_creacion" ColumnName="hora_creacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="costo_unitario_con_iva" ColumnName="costo_unitario_con_iva" />
+          <ScalarProperty Name="id_vigencia_promedio1" ColumnName="id_vigencia_promedio1" />
+          <ScalarProperty Name="dias" ColumnName="dias" />
+          <ScalarProperty Name="estado1" ColumnName="estado1" />
+          <ScalarProperty Name="id_clasificacion1" ColumnName="id_clasificacion1" />
+          <ScalarProperty Name="nombre_clasificacion" ColumnName="nombre_clasificacion" />
+          <ScalarProperty Name="estado2" ColumnName="estado2" />
+          <ScalarProperty Name="id_sub_clasificacion1" ColumnName="id_sub_clasificacion1" />
+          <ScalarProperty Name="id_clasificacion2" ColumnName="id_clasificacion2" />
+          <ScalarProperty Name="sub_clasificacion" ColumnName="sub_clasificacion" />
+          <ScalarProperty Name="estado3" ColumnName="estado3" />
+          <ScalarProperty Name="id_proveedor1" ColumnName="id_proveedor1" />
+          <ScalarProperty Name="nombre1" ColumnName="nombre1" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="nit" ColumnName="nit" />
+          <ScalarProperty Name="nrc" ColumnName="nrc" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+          <ScalarProperty Name="id_tipo_proveedor" ColumnName="id_tipo_proveedor" />
+          <ScalarProperty Name="estado4" ColumnName="estado4" />
+          <ScalarProperty Name="id_tipo_proveedor1" ColumnName="id_tipo_proveedor1" />
+          <ScalarProperty Name="tipo_proveedor" ColumnName="tipo_proveedor" />
+          <ScalarProperty Name="estado5" ColumnName="estado5" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_consulta_producto_subc_fr" FunctionName="inventarioModel.Store.sp_consulta_producto_subc_fr">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="inventarioModel.sp_consulta_producto_subc_fr_Result">
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id_vigencia_promedio" ColumnName="id_vigencia_promedio" />
+          <ScalarProperty Name="id_clasificacion" ColumnName="id_clasificacion" />
+          <ScalarProperty Name="id_sub_clasificacion" ColumnName="id_sub_clasificacion" />
+          <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="hora_creacion" ColumnName="hora_creacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="costo_unitario_con_iva" ColumnName="costo_unitario_con_iva" />
+          <ScalarProperty Name="id_vigencia_promedio1" ColumnName="id_vigencia_promedio1" />
+          <ScalarProperty Name="dias" ColumnName="dias" />
+          <ScalarProperty Name="estado1" ColumnName="estado1" />
+          <ScalarProperty Name="id_clasificacion1" ColumnName="id_clasificacion1" />
+          <ScalarProperty Name="nombre_clasificacion" ColumnName="nombre_clasificacion" />
+          <ScalarProperty Name="estado2" ColumnName="estado2" />
+          <ScalarProperty Name="id_sub_clasificacion1" ColumnName="id_sub_clasificacion1" />
+          <ScalarProperty Name="id_clasificacion2" ColumnName="id_clasificacion2" />
+          <ScalarProperty Name="sub_clasificacion" ColumnName="sub_clasificacion" />
+          <ScalarProperty Name="estado3" ColumnName="estado3" />
+          <ScalarProperty Name="id_proveedor1" ColumnName="id_proveedor1" />
+          <ScalarProperty Name="nombre1" ColumnName="nombre1" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="nit" ColumnName="nit" />
+          <ScalarProperty Name="nrc" ColumnName="nrc" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+          <ScalarProperty Name="id_tipo_proveedor" ColumnName="id_tipo_proveedor" />
+          <ScalarProperty Name="estado4" ColumnName="estado4" />
+          <ScalarProperty Name="id_tipo_proveedor1" ColumnName="id_tipo_proveedor1" />
+          <ScalarProperty Name="tipo_proveedor" ColumnName="tipo_proveedor" />
+          <ScalarProperty Name="estado5" ColumnName="estado5" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_consulta_productos_por_vencer" FunctionName="inventarioModel.Store.sp_consulta_productos_por_vencer">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="inventarioModel.sp_consulta_productos_por_vencer_Result">
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="hora" ColumnName="hora" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="costo_total_con_iva" ColumnName="costo_total_con_iva" />
+          <ScalarProperty Name="costo_total_sin_iva" ColumnName="costo_total_sin_iva" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="fecha_vencimiento" ColumnName="fecha_vencimiento" />
+          <ScalarProperty Name="lote" ColumnName="lote" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="costo_unitario" ColumnName="costo_unitario" />
+          <ScalarProperty Name="costo_unitario_promedio" ColumnName="costo_unitario_promedio" />
+          <ScalarProperty Name="existencia_anterior" ColumnName="existencia_anterior" />
+          <ScalarProperty Name="existencia_total" ColumnName="existencia_total" />
+          <ScalarProperty Name="estado1" ColumnName="estado1" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
+          <ScalarProperty Name="dui" ColumnName="dui" />
+          <ScalarProperty Name="estado2" ColumnName="estado2" />
+          <ScalarProperty Name="estado_sesion" ColumnName="estado_sesion" />
+          <ScalarProperty Name="fecha_ultimo_ingreso" ColumnName="fecha_ultimo_ingreso" />
+          <ScalarProperty Name="hora_ultimo_ingreso" ColumnName="hora_ultimo_ingreso" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="descripcion1" ColumnName="descripcion1" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="hora_creacion" ColumnName="hora_creacion" />
+          <ScalarProperty Name="estado3" ColumnName="estado3" />
+          <ScalarProperty Name="costo_unitario_con_iva" ColumnName="costo_unitario_con_iva" />
+          <ScalarProperty Name="dias" ColumnName="dias" />
+          <ScalarProperty Name="estado4" ColumnName="estado4" />
+          <ScalarProperty Name="nombre_clasificacion" ColumnName="nombre_clasificacion" />
+          <ScalarProperty Name="sub_clasificacion" ColumnName="sub_clasificacion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="inventarioModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="inventarioModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="inventarioModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="inventarioModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="inventarioModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="inventarioModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="inventarioModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="inventarioModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>
