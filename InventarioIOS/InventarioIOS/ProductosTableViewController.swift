@@ -20,13 +20,12 @@ class ProductosTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        let prod1 = Productos(producto: "mango", stock: 23)
-        let prod2 = Productos(producto: "Guisquil", stock: 31)
-        let prod3 = Productos(producto: "Pollo", stock: 84)
         
-        productos.append(prod1)
-        productos.append(prod2)
-        productos.append(prod3)
+        if Productos.community.isEmpty{
+            Productos.all()
+        }
+        
+        productos = Productos.community
     }
 
     override func didReceiveMemoryWarning() {

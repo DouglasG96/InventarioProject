@@ -10,14 +10,23 @@ import UIKit
 
 class BodegasTableViewController: UITableViewController {
 
+    var bodegas = [Bodegas]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+       // Bodegas.all()
+        
+        if Bodegas.arrayBodegas.isEmpty{
+            Bodegas.all()
+        }
+        bodegas = Bodegas.arrayBodegas
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,18 +43,20 @@ class BodegasTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return bodegas.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "bodegasCell", for: indexPath)
 
         // Configure the cell...
 
+        cell.textLabel?.text = bodegas[indexPath.row].nombre   
+        
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.

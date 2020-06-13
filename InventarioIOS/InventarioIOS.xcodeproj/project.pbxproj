@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A52EA720249577DB00712D68 /* loginFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52EA71F249577DB00712D68 /* loginFormViewController.swift */; };
 		A57DB77624948B7A005ADC26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57DB77524948B7A005ADC26 /* AppDelegate.swift */; };
 		A57DB77824948B7A005ADC26 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57DB77724948B7A005ADC26 /* ViewController.swift */; };
 		A57DB77B24948B7B005ADC26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57DB77924948B7B005ADC26 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A52EA71F249577DB00712D68 /* loginFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginFormViewController.swift; sourceTree = "<group>"; };
 		A57DB77224948B7A005ADC26 /* InventarioIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InventarioIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57DB77524948B7A005ADC26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A57DB77724948B7A005ADC26 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				A57DB79624949CF6005ADC26 /* Productos.swift */,
 				A57DB79824949D05005ADC26 /* Bodegas.swift */,
 				A57DB79A2494A68A005ADC26 /* WebService.swift */,
+				A52EA71F249577DB00712D68 /* loginFormViewController.swift */,
 			);
 			path = InventarioIOS;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 				A57DB77E24948B7B005ADC26 /* InventarioIOS.xcdatamodeld in Sources */,
 				A57DB79924949D05005ADC26 /* Bodegas.swift in Sources */,
 				A57DB79124949BD4005ADC26 /* ProductosTableViewController.swift in Sources */,
+				A52EA720249577DB00712D68 /* loginFormViewController.swift in Sources */,
 				A57DB77624948B7A005ADC26 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,6 +333,7 @@
 				A57DB78924948B7B005ADC26 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
