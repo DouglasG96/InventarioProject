@@ -1,0 +1,1260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="inventarioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="bitacora">
+          <Key>
+            <PropertyRef Name="id_bitacora" />
+          </Key>
+          <Property Name="id_bitacora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="date" />
+          <Property Name="hora" Type="time" Precision="7" />
+          <Property Name="accion" Type="text" />
+          <Property Name="id_movimiento" Type="int" />
+        </EntityType>
+        <EntityType Name="bodegas">
+          <Key>
+            <PropertyRef Name="id_bodega" />
+          </Key>
+          <Property Name="id_bodega" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_bodega" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="id_sucursal" Type="int" />
+          <Property Name="id_tipo_bodega" Type="int" />
+          <Property Name="estado" Type="int" />
+        </EntityType>
+        <EntityType Name="clasificacion">
+          <Key>
+            <PropertyRef Name="id_clasificacion" />
+          </Key>
+          <Property Name="id_clasificacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_clasificacion" Type="nvarchar" MaxLength="250" />
+          <Property Name="estado" Type="int" />
+        </EntityType>
+        <EntityType Name="detalles_movimientos">
+          <Key>
+            <PropertyRef Name="id_detalle_movimiento" />
+          </Key>
+          <Property Name="id_detalle_movimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha_vencimiento" Type="date" />
+          <Property Name="lote" Type="nvarchar" MaxLength="250" />
+          <Property Name="cantidad" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="costo_unitario" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="costo_unitario_promedio" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="existencia_anterior" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="existencia_total" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="estado" Type="int" />
+          <Property Name="id_producto" Type="int" />
+          <Property Name="id_movimiento" Type="int" />
+          <Property Name="id_bodega" Type="int" />
+          <Property Name="id_bodega_traslado" Type="int" />
+        </EntityType>
+        <EntityType Name="medidas_peso">
+          <Key>
+            <PropertyRef Name="id_medida_peso" />
+          </Key>
+          <Property Name="id_medida_peso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="250" />
+          <Property Name="abreviatura" Type="nvarchar" MaxLength="50" />
+          <Property Name="estado" Type="int" />
+        </EntityType>
+        <EntityType Name="movimientos">
+          <Key>
+            <PropertyRef Name="id_movimiento" />
+          </Key>
+          <Property Name="id_movimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_tipo_movimiento" Type="int" Nullable="false" />
+          <Property Name="fecha" Type="date" />
+          <Property Name="hora" Type="time" Precision="7" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="costo_total_con_iva" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="costo_total_sin_iva" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="id_usuario" Type="int" />
+          <Property Name="estado" Type="int" />
+          <Property Name="id_proveedor" Type="int" />
+          <Property Name="id_bodega_cargo" Type="int" />
+        </EntityType>
+        <EntityType Name="productos">
+          <Key>
+            <PropertyRef Name="id_producto" />
+          </Key>
+          <Property Name="id_producto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="codigo" Type="nvarchar" MaxLength="250" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="id_vigencia_promedio" Type="int" />
+          <Property Name="id_clasificacion" Type="int" />
+          <Property Name="id_sub_clasificacion" Type="int" />
+          <Property Name="id_proveedor" Type="int" />
+          <Property Name="fecha_creacion" Type="date" />
+          <Property Name="hora_creacion" Type="time" Precision="7" />
+          <Property Name="estado" Type="int" />
+          <Property Name="costo_unitario_con_iva" Type="decimal" Precision="18" Scale="4" />
+        </EntityType>
+        <EntityType Name="proveedor_producto">
+          <Key>
+            <PropertyRef Name="id_proveedor_producto" />
+          </Key>
+          <Property Name="id_proveedor_producto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_proveedor" Type="int" />
+          <Property Name="id_producto" Type="int" />
+          <Property Name="estado" Type="int" />
+        </EntityType>
+        <EntityType Name="proveedores">
+          <Key>
+            <PropertyRef Name="id_proveedor" />
+          </Key>
+          <Property Name="id_proveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="250" />
+          <Property Name="direccion" Type="nvarchar" MaxLength="250" />
+          <Property Name="nit" Type="nvarchar" MaxLength="250" />
+          <Property Name="nrc" Type="nvarchar" MaxLength="250" />
+          <Property Name="correo" Type="nvarchar" MaxLength="250" />
+          <Property Name="razon_social" Type="nvarchar" MaxLength="250" />
+          <Property Name="id_tipo_proveedor" Type="int" />
+          <Property Name="estado" Type="int" />
+        </EntityType>
+        <EntityType Name="roles">
+          <Key>
+            <PropertyRef Name="id_rol" />
+          </Key>
+          <Property Name="id_rol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rol" Type="nvarchar" MaxLength="250" />
+          <Property Name="estado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sub_clasificaciones">
+          <Key>
+            <PropertyRef Name="id_sub_clasificacion" />
+          </Key>
+          <Property Name="id_sub_clasificacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_clasificacion" Type="int" />
+          <Property Name="sub_clasificacion" Type="nvarchar" MaxLength="250" />
+          <Property Name="estado" Type="int" />
+        </EntityType>
+        <EntityType Name="sucursales">
+          <Key>
+            <PropertyRef Name="id_sucursal" />
+          </Key>
+          <Property Name="id_sucursal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sucursal" Type="nvarchar" MaxLength="100" />
+          <Property Name="estado" Type="int" />
+        </EntityType>
+        <EntityType Name="tipo_bodega">
+          <Key>
+            <PropertyRef Name="id_tipo_bodega" />
+          </Key>
+          <Property Name="id_tipo_bodega" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo" Type="nvarchar" MaxLength="250" />
+          <Property Name="estado" Type="int" />
+        </EntityType>
+        <EntityType Name="tipo_bodega_bodegas">
+          <Key>
+            <PropertyRef Name="id_tipo_bodega_bodegas" />
+          </Key>
+          <Property Name="id_tipo_bodega_bodegas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_tipo_bodega" Type="int" />
+          <Property Name="id_bodega" Type="int" />
+          <Property Name="temperatura_promedio" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="capacidad_maxima" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="capacidad_actual" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="tipo_movimiento">
+          <Key>
+            <PropertyRef Name="id_tipo_movimiento" />
+          </Key>
+          <Property Name="id_tipo_movimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo_movimiento" Type="nvarchar" MaxLength="250" />
+          <Property Name="estado" Type="int" />
+        </EntityType>
+        <EntityType Name="tipo_proveedor">
+          <Key>
+            <PropertyRef Name="id_tipo_proveedor" />
+          </Key>
+          <Property Name="id_tipo_proveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo_proveedor" Type="nvarchar" MaxLength="250" />
+          <Property Name="estado" Type="int" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usuario" Type="varchar" MaxLength="10" />
+          <Property Name="clave" Type="varchar" MaxLength="50" />
+          <Property Name="nombre_completo" Type="varchar" MaxLength="200" />
+          <Property Name="dui" Type="varchar" MaxLength="10" />
+          <Property Name="estado" Type="int" />
+          <Property Name="estado_sesion" Type="int" />
+          <Property Name="fecha_ultimo_ingreso" Type="date" />
+          <Property Name="hora_ultimo_ingreso" Type="time" Precision="7" />
+          <Property Name="id_rol" Type="int" />
+        </EntityType>
+        <EntityType Name="vigencia_promedio">
+          <Key>
+            <PropertyRef Name="id_vigencia_promedio" />
+          </Key>
+          <Property Name="id_vigencia_promedio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dias" Type="int" />
+          <Property Name="estado" Type="int" />
+        </EntityType>
+        <Association Name="FK_bitacora_movimientos">
+          <End Role="movimientos" Type="Self.movimientos" Multiplicity="0..1" />
+          <End Role="bitacora" Type="Self.bitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movimientos">
+              <PropertyRef Name="id_movimiento" />
+            </Principal>
+            <Dependent Role="bitacora">
+              <PropertyRef Name="id_movimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_bodegas_sucursales">
+          <End Role="sucursales" Type="Self.sucursales" Multiplicity="0..1" />
+          <End Role="bodegas" Type="Self.bodegas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sucursales">
+              <PropertyRef Name="id_sucursal" />
+            </Principal>
+            <Dependent Role="bodegas">
+              <PropertyRef Name="id_sucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_detalles_movimientos_bodegas">
+          <End Role="bodegas" Type="Self.bodegas" Multiplicity="0..1" />
+          <End Role="detalles_movimientos" Type="Self.detalles_movimientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bodegas">
+              <PropertyRef Name="id_bodega" />
+            </Principal>
+            <Dependent Role="detalles_movimientos">
+              <PropertyRef Name="id_bodega" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_detalles_movimientos_movimientos">
+          <End Role="movimientos" Type="Self.movimientos" Multiplicity="0..1" />
+          <End Role="detalles_movimientos" Type="Self.detalles_movimientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movimientos">
+              <PropertyRef Name="id_movimiento" />
+            </Principal>
+            <Dependent Role="detalles_movimientos">
+              <PropertyRef Name="id_movimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_detalles_movimientos_productos">
+          <End Role="productos" Type="Self.productos" Multiplicity="0..1" />
+          <End Role="detalles_movimientos" Type="Self.detalles_movimientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="productos">
+              <PropertyRef Name="id_producto" />
+            </Principal>
+            <Dependent Role="detalles_movimientos">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_movimientos_proveedores">
+          <End Role="proveedores" Type="Self.proveedores" Multiplicity="0..1" />
+          <End Role="movimientos" Type="Self.movimientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proveedores">
+              <PropertyRef Name="id_proveedor" />
+            </Principal>
+            <Dependent Role="movimientos">
+              <PropertyRef Name="id_proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_movimientos_tipo_movimiento">
+          <End Role="tipo_movimiento" Type="Self.tipo_movimiento" Multiplicity="1" />
+          <End Role="movimientos" Type="Self.movimientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_movimiento">
+              <PropertyRef Name="id_tipo_movimiento" />
+            </Principal>
+            <Dependent Role="movimientos">
+              <PropertyRef Name="id_tipo_movimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_movimientos_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="0..1" />
+          <End Role="movimientos" Type="Self.movimientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="movimientos">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_productos_sub_clasificaciones">
+          <End Role="sub_clasificaciones" Type="Self.sub_clasificaciones" Multiplicity="0..1" />
+          <End Role="productos" Type="Self.productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sub_clasificaciones">
+              <PropertyRef Name="id_sub_clasificacion" />
+            </Principal>
+            <Dependent Role="productos">
+              <PropertyRef Name="id_sub_clasificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_prouctos_viegncia_promedio">
+          <End Role="vigencia_promedio" Type="Self.vigencia_promedio" Multiplicity="0..1" />
+          <End Role="productos" Type="Self.productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vigencia_promedio">
+              <PropertyRef Name="id_vigencia_promedio" />
+            </Principal>
+            <Dependent Role="productos">
+              <PropertyRef Name="id_vigencia_promedio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_proveedor_producto_productos">
+          <End Role="productos" Type="Self.productos" Multiplicity="0..1" />
+          <End Role="proveedor_producto" Type="Self.proveedor_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="productos">
+              <PropertyRef Name="id_producto" />
+            </Principal>
+            <Dependent Role="proveedor_producto">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_proveedor_producto_proveedores">
+          <End Role="proveedores" Type="Self.proveedores" Multiplicity="0..1" />
+          <End Role="proveedor_producto" Type="Self.proveedor_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proveedores">
+              <PropertyRef Name="id_proveedor" />
+            </Principal>
+            <Dependent Role="proveedor_producto">
+              <PropertyRef Name="id_proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_proveedores">
+          <End Role="tipo_proveedor" Type="Self.tipo_proveedor" Multiplicity="0..1" />
+          <End Role="proveedores" Type="Self.proveedores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_proveedor">
+              <PropertyRef Name="id_tipo_proveedor" />
+            </Principal>
+            <Dependent Role="proveedores">
+              <PropertyRef Name="id_tipo_proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sub_clasificacion_clasificaciones">
+          <End Role="clasificacion" Type="Self.clasificacion" Multiplicity="0..1" />
+          <End Role="sub_clasificaciones" Type="Self.sub_clasificaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clasificacion">
+              <PropertyRef Name="id_clasificacion" />
+            </Principal>
+            <Dependent Role="sub_clasificaciones">
+              <PropertyRef Name="id_clasificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tipo_bodega_bodegas_bodegas">
+          <End Role="bodegas" Type="Self.bodegas" Multiplicity="0..1" />
+          <End Role="tipo_bodega_bodegas" Type="Self.tipo_bodega_bodegas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bodegas">
+              <PropertyRef Name="id_bodega" />
+            </Principal>
+            <Dependent Role="tipo_bodega_bodegas">
+              <PropertyRef Name="id_bodega" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tipo_bodega_bodegas_tipo_bodega">
+          <End Role="tipo_bodega" Type="Self.tipo_bodega" Multiplicity="0..1" />
+          <End Role="tipo_bodega_bodegas" Type="Self.tipo_bodega_bodegas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_bodega">
+              <PropertyRef Name="id_tipo_bodega" />
+            </Principal>
+            <Dependent Role="tipo_bodega_bodegas">
+              <PropertyRef Name="id_tipo_bodega" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuarios_roles">
+          <End Role="roles" Type="Self.roles" Multiplicity="0..1" />
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="id_rol" />
+            </Principal>
+            <Dependent Role="usuarios">
+              <PropertyRef Name="id_rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="inventarioModelStoreContainer">
+          <EntitySet Name="bitacora" EntityType="Self.bitacora" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bodegas" EntityType="Self.bodegas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="clasificacion" EntityType="Self.clasificacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="detalles_movimientos" EntityType="Self.detalles_movimientos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="medidas_peso" EntityType="Self.medidas_peso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="movimientos" EntityType="Self.movimientos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="productos" EntityType="Self.productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="proveedor_producto" EntityType="Self.proveedor_producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="proveedores" EntityType="Self.proveedores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sub_clasificaciones" EntityType="Self.sub_clasificaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sucursales" EntityType="Self.sucursales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipo_bodega" EntityType="Self.tipo_bodega" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipo_bodega_bodegas" EntityType="Self.tipo_bodega_bodegas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipo_movimiento" EntityType="Self.tipo_movimiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipo_proveedor" EntityType="Self.tipo_proveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vigencia_promedio" EntityType="Self.vigencia_promedio" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_bitacora_movimientos" Association="Self.FK_bitacora_movimientos">
+            <End Role="movimientos" EntitySet="movimientos" />
+            <End Role="bitacora" EntitySet="bitacora" />
+          </AssociationSet>
+          <AssociationSet Name="fk_bodegas_sucursales" Association="Self.fk_bodegas_sucursales">
+            <End Role="sucursales" EntitySet="sucursales" />
+            <End Role="bodegas" EntitySet="bodegas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_detalles_movimientos_bodegas" Association="Self.FK_detalles_movimientos_bodegas">
+            <End Role="bodegas" EntitySet="bodegas" />
+            <End Role="detalles_movimientos" EntitySet="detalles_movimientos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_detalles_movimientos_movimientos" Association="Self.FK_detalles_movimientos_movimientos">
+            <End Role="movimientos" EntitySet="movimientos" />
+            <End Role="detalles_movimientos" EntitySet="detalles_movimientos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_detalles_movimientos_productos" Association="Self.FK_detalles_movimientos_productos">
+            <End Role="productos" EntitySet="productos" />
+            <End Role="detalles_movimientos" EntitySet="detalles_movimientos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_movimientos_proveedores" Association="Self.FK_movimientos_proveedores">
+            <End Role="proveedores" EntitySet="proveedores" />
+            <End Role="movimientos" EntitySet="movimientos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_movimientos_tipo_movimiento" Association="Self.fk_movimientos_tipo_movimiento">
+            <End Role="tipo_movimiento" EntitySet="tipo_movimiento" />
+            <End Role="movimientos" EntitySet="movimientos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_movimientos_usuarios" Association="Self.FK_movimientos_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="movimientos" EntitySet="movimientos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_productos_sub_clasificaciones" Association="Self.FK_productos_sub_clasificaciones">
+            <End Role="sub_clasificaciones" EntitySet="sub_clasificaciones" />
+            <End Role="productos" EntitySet="productos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_prouctos_viegncia_promedio" Association="Self.fk_prouctos_viegncia_promedio">
+            <End Role="vigencia_promedio" EntitySet="vigencia_promedio" />
+            <End Role="productos" EntitySet="productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_proveedor_producto_productos" Association="Self.FK_proveedor_producto_productos">
+            <End Role="productos" EntitySet="productos" />
+            <End Role="proveedor_producto" EntitySet="proveedor_producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_proveedor_producto_proveedores" Association="Self.FK_proveedor_producto_proveedores">
+            <End Role="proveedores" EntitySet="proveedores" />
+            <End Role="proveedor_producto" EntitySet="proveedor_producto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_proveedores" Association="Self.fk_proveedores">
+            <End Role="tipo_proveedor" EntitySet="tipo_proveedor" />
+            <End Role="proveedores" EntitySet="proveedores" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sub_clasificacion_clasificaciones" Association="Self.fk_sub_clasificacion_clasificaciones">
+            <End Role="clasificacion" EntitySet="clasificacion" />
+            <End Role="sub_clasificaciones" EntitySet="sub_clasificaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tipo_bodega_bodegas_bodegas" Association="Self.FK_tipo_bodega_bodegas_bodegas">
+            <End Role="bodegas" EntitySet="bodegas" />
+            <End Role="tipo_bodega_bodegas" EntitySet="tipo_bodega_bodegas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tipo_bodega_bodegas_tipo_bodega" Association="Self.FK_tipo_bodega_bodegas_tipo_bodega">
+            <End Role="tipo_bodega" EntitySet="tipo_bodega" />
+            <End Role="tipo_bodega_bodegas" EntitySet="tipo_bodega_bodegas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuarios_roles" Association="Self.FK_usuarios_roles">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="usuarios" EntitySet="usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="inventarioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="bitacora">
+          <Key>
+            <PropertyRef Name="id_bitacora" />
+          </Key>
+          <Property Name="id_bitacora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Precision="0" />
+          <Property Name="hora" Type="Time" Precision="7" />
+          <Property Name="accion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="id_movimiento" Type="Int32" />
+          <NavigationProperty Name="movimientos" Relationship="Self.FK_bitacora_movimientos" FromRole="bitacora" ToRole="movimientos" />
+        </EntityType>
+        <EntityType Name="bodegas">
+          <Key>
+            <PropertyRef Name="id_bodega" />
+          </Key>
+          <Property Name="id_bodega" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_bodega" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_sucursal" Type="Int32" />
+          <Property Name="id_tipo_bodega" Type="Int32" />
+          <Property Name="estado" Type="Int32" />
+          <NavigationProperty Name="sucursales" Relationship="Self.fk_bodegas_sucursales" FromRole="bodegas" ToRole="sucursales" />
+          <NavigationProperty Name="detalles_movimientos" Relationship="Self.FK_detalles_movimientos_bodegas" FromRole="bodegas" ToRole="detalles_movimientos" />
+          <NavigationProperty Name="tipo_bodega_bodegas" Relationship="Self.FK_tipo_bodega_bodegas_bodegas" FromRole="bodegas" ToRole="tipo_bodega_bodegas" />
+        </EntityType>
+        <EntityType Name="clasificacion">
+          <Key>
+            <PropertyRef Name="id_clasificacion" />
+          </Key>
+          <Property Name="id_clasificacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_clasificacion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="estado" Type="Int32" />
+          <NavigationProperty Name="sub_clasificaciones" Relationship="Self.fk_sub_clasificacion_clasificaciones" FromRole="clasificacion" ToRole="sub_clasificaciones" />
+        </EntityType>
+        <EntityType Name="detalles_movimientos">
+          <Key>
+            <PropertyRef Name="id_detalle_movimiento" />
+          </Key>
+          <Property Name="id_detalle_movimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha_vencimiento" Type="DateTime" Precision="0" />
+          <Property Name="lote" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="cantidad" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="costo_unitario" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="costo_unitario_promedio" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="existencia_anterior" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="existencia_total" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="estado" Type="Int32" />
+          <Property Name="id_producto" Type="Int32" />
+          <Property Name="id_movimiento" Type="Int32" />
+          <Property Name="id_bodega" Type="Int32" />
+          <Property Name="id_bodega_traslado" Type="Int32" />
+          <NavigationProperty Name="bodegas" Relationship="Self.FK_detalles_movimientos_bodegas" FromRole="detalles_movimientos" ToRole="bodegas" />
+          <NavigationProperty Name="movimientos" Relationship="Self.FK_detalles_movimientos_movimientos" FromRole="detalles_movimientos" ToRole="movimientos" />
+          <NavigationProperty Name="productos" Relationship="Self.FK_detalles_movimientos_productos" FromRole="detalles_movimientos" ToRole="productos" />
+        </EntityType>
+        <EntityType Name="medidas_peso">
+          <Key>
+            <PropertyRef Name="id_medida_peso" />
+          </Key>
+          <Property Name="id_medida_peso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="abreviatura" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="estado" Type="Int32" />
+        </EntityType>
+        <EntityType Name="movimientos">
+          <Key>
+            <PropertyRef Name="id_movimiento" />
+          </Key>
+          <Property Name="id_movimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_tipo_movimiento" Type="Int32" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Precision="0" />
+          <Property Name="hora" Type="Time" Precision="7" />
+          <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="costo_total_con_iva" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="costo_total_sin_iva" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="id_usuario" Type="Int32" />
+          <Property Name="estado" Type="Int32" />
+          <Property Name="id_proveedor" Type="Int32" />
+          <Property Name="id_bodega_cargo" Type="Int32" />
+          <NavigationProperty Name="bitacora" Relationship="Self.FK_bitacora_movimientos" FromRole="movimientos" ToRole="bitacora" />
+          <NavigationProperty Name="detalles_movimientos" Relationship="Self.FK_detalles_movimientos_movimientos" FromRole="movimientos" ToRole="detalles_movimientos" />
+          <NavigationProperty Name="proveedores" Relationship="Self.FK_movimientos_proveedores" FromRole="movimientos" ToRole="proveedores" />
+          <NavigationProperty Name="tipo_movimiento" Relationship="Self.fk_movimientos_tipo_movimiento" FromRole="movimientos" ToRole="tipo_movimiento" />
+          <NavigationProperty Name="usuarios" Relationship="Self.FK_movimientos_usuarios" FromRole="movimientos" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="productos">
+          <Key>
+            <PropertyRef Name="id_producto" />
+          </Key>
+          <Property Name="id_producto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="codigo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="id_vigencia_promedio" Type="Int32" />
+          <Property Name="id_clasificacion" Type="Int32" />
+          <Property Name="id_sub_clasificacion" Type="Int32" />
+          <Property Name="id_proveedor" Type="Int32" />
+          <Property Name="fecha_creacion" Type="DateTime" Precision="0" />
+          <Property Name="hora_creacion" Type="Time" Precision="7" />
+          <Property Name="estado" Type="Int32" />
+          <Property Name="costo_unitario_con_iva" Type="Decimal" Precision="18" Scale="4" />
+          <NavigationProperty Name="detalles_movimientos" Relationship="Self.FK_detalles_movimientos_productos" FromRole="productos" ToRole="detalles_movimientos" />
+          <NavigationProperty Name="sub_clasificaciones" Relationship="Self.FK_productos_sub_clasificaciones" FromRole="productos" ToRole="sub_clasificaciones" />
+          <NavigationProperty Name="vigencia_promedio" Relationship="Self.fk_prouctos_viegncia_promedio" FromRole="productos" ToRole="vigencia_promedio" />
+          <NavigationProperty Name="proveedor_producto" Relationship="Self.FK_proveedor_producto_productos" FromRole="productos" ToRole="proveedor_producto" />
+        </EntityType>
+        <EntityType Name="proveedor_producto">
+          <Key>
+            <PropertyRef Name="id_proveedor_producto" />
+          </Key>
+          <Property Name="id_proveedor_producto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_proveedor" Type="Int32" />
+          <Property Name="id_producto" Type="Int32" />
+          <Property Name="estado" Type="Int32" />
+          <NavigationProperty Name="productos" Relationship="Self.FK_proveedor_producto_productos" FromRole="proveedor_producto" ToRole="productos" />
+          <NavigationProperty Name="proveedores" Relationship="Self.FK_proveedor_producto_proveedores" FromRole="proveedor_producto" ToRole="proveedores" />
+        </EntityType>
+        <EntityType Name="proveedores">
+          <Key>
+            <PropertyRef Name="id_proveedor" />
+          </Key>
+          <Property Name="id_proveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="nit" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="nrc" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="correo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="razon_social" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="id_tipo_proveedor" Type="Int32" />
+          <Property Name="estado" Type="Int32" />
+          <NavigationProperty Name="movimientos" Relationship="Self.FK_movimientos_proveedores" FromRole="proveedores" ToRole="movimientos" />
+          <NavigationProperty Name="proveedor_producto" Relationship="Self.FK_proveedor_producto_proveedores" FromRole="proveedores" ToRole="proveedor_producto" />
+          <NavigationProperty Name="tipo_proveedor" Relationship="Self.fk_proveedores" FromRole="proveedores" ToRole="tipo_proveedor" />
+        </EntityType>
+        <EntityType Name="roles">
+          <Key>
+            <PropertyRef Name="id_rol" />
+          </Key>
+          <Property Name="id_rol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rol" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="usuarios" Relationship="Self.FK_usuarios_roles" FromRole="roles" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="sub_clasificaciones">
+          <Key>
+            <PropertyRef Name="id_sub_clasificacion" />
+          </Key>
+          <Property Name="id_sub_clasificacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_clasificacion" Type="Int32" />
+          <Property Name="sub_clasificacion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="estado" Type="Int32" />
+          <NavigationProperty Name="clasificacion" Relationship="Self.fk_sub_clasificacion_clasificaciones" FromRole="sub_clasificaciones" ToRole="clasificacion" />
+          <NavigationProperty Name="productos" Relationship="Self.FK_productos_sub_clasificaciones" FromRole="sub_clasificaciones" ToRole="productos" />
+        </EntityType>
+        <EntityType Name="sucursales">
+          <Key>
+            <PropertyRef Name="id_sucursal" />
+          </Key>
+          <Property Name="id_sucursal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sucursal" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="estado" Type="Int32" />
+          <NavigationProperty Name="bodegas" Relationship="Self.fk_bodegas_sucursales" FromRole="sucursales" ToRole="bodegas" />
+        </EntityType>
+        <EntityType Name="tipo_bodega">
+          <Key>
+            <PropertyRef Name="id_tipo_bodega" />
+          </Key>
+          <Property Name="id_tipo_bodega" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="estado" Type="Int32" />
+          <NavigationProperty Name="tipo_bodega_bodegas" Relationship="Self.FK_tipo_bodega_bodegas_tipo_bodega" FromRole="tipo_bodega" ToRole="tipo_bodega_bodegas" />
+        </EntityType>
+        <EntityType Name="tipo_bodega_bodegas">
+          <Key>
+            <PropertyRef Name="id_tipo_bodega_bodegas" />
+          </Key>
+          <Property Name="id_tipo_bodega_bodegas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_tipo_bodega" Type="Int32" />
+          <Property Name="id_bodega" Type="Int32" />
+          <Property Name="temperatura_promedio" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="capacidad_maxima" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="capacidad_actual" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="bodegas" Relationship="Self.FK_tipo_bodega_bodegas_bodegas" FromRole="tipo_bodega_bodegas" ToRole="bodegas" />
+          <NavigationProperty Name="tipo_bodega" Relationship="Self.FK_tipo_bodega_bodegas_tipo_bodega" FromRole="tipo_bodega_bodegas" ToRole="tipo_bodega" />
+        </EntityType>
+        <EntityType Name="tipo_movimiento">
+          <Key>
+            <PropertyRef Name="id_tipo_movimiento" />
+          </Key>
+          <Property Name="id_tipo_movimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo_movimiento1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="estado" Type="Int32" />
+          <NavigationProperty Name="movimientos" Relationship="Self.fk_movimientos_tipo_movimiento" FromRole="tipo_movimiento" ToRole="movimientos" />
+        </EntityType>
+        <EntityType Name="tipo_proveedor">
+          <Key>
+            <PropertyRef Name="id_tipo_proveedor" />
+          </Key>
+          <Property Name="id_tipo_proveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo_proveedor1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="estado" Type="Int32" />
+          <NavigationProperty Name="proveedores" Relationship="Self.fk_proveedores" FromRole="tipo_proveedor" ToRole="proveedores" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="clave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nombre_completo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="dui" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="Int32" />
+          <Property Name="estado_sesion" Type="Int32" />
+          <Property Name="fecha_ultimo_ingreso" Type="DateTime" Precision="0" />
+          <Property Name="hora_ultimo_ingreso" Type="Time" Precision="7" />
+          <Property Name="id_rol" Type="Int32" />
+          <NavigationProperty Name="movimientos" Relationship="Self.FK_movimientos_usuarios" FromRole="usuarios" ToRole="movimientos" />
+          <NavigationProperty Name="roles" Relationship="Self.FK_usuarios_roles" FromRole="usuarios" ToRole="roles" />
+        </EntityType>
+        <EntityType Name="vigencia_promedio">
+          <Key>
+            <PropertyRef Name="id_vigencia_promedio" />
+          </Key>
+          <Property Name="id_vigencia_promedio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dias" Type="Int32" />
+          <Property Name="estado" Type="Int32" />
+          <NavigationProperty Name="productos" Relationship="Self.fk_prouctos_viegncia_promedio" FromRole="vigencia_promedio" ToRole="productos" />
+        </EntityType>
+        <Association Name="FK_bitacora_movimientos">
+          <End Role="movimientos" Type="Self.movimientos" Multiplicity="0..1" />
+          <End Role="bitacora" Type="Self.bitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movimientos">
+              <PropertyRef Name="id_movimiento" />
+            </Principal>
+            <Dependent Role="bitacora">
+              <PropertyRef Name="id_movimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_bodegas_sucursales">
+          <End Role="sucursales" Type="Self.sucursales" Multiplicity="0..1" />
+          <End Role="bodegas" Type="Self.bodegas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sucursales">
+              <PropertyRef Name="id_sucursal" />
+            </Principal>
+            <Dependent Role="bodegas">
+              <PropertyRef Name="id_sucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_detalles_movimientos_bodegas">
+          <End Role="bodegas" Type="Self.bodegas" Multiplicity="0..1" />
+          <End Role="detalles_movimientos" Type="Self.detalles_movimientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bodegas">
+              <PropertyRef Name="id_bodega" />
+            </Principal>
+            <Dependent Role="detalles_movimientos">
+              <PropertyRef Name="id_bodega" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tipo_bodega_bodegas_bodegas">
+          <End Role="bodegas" Type="Self.bodegas" Multiplicity="0..1" />
+          <End Role="tipo_bodega_bodegas" Type="Self.tipo_bodega_bodegas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bodegas">
+              <PropertyRef Name="id_bodega" />
+            </Principal>
+            <Dependent Role="tipo_bodega_bodegas">
+              <PropertyRef Name="id_bodega" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sub_clasificacion_clasificaciones">
+          <End Role="clasificacion" Type="Self.clasificacion" Multiplicity="0..1" />
+          <End Role="sub_clasificaciones" Type="Self.sub_clasificaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clasificacion">
+              <PropertyRef Name="id_clasificacion" />
+            </Principal>
+            <Dependent Role="sub_clasificaciones">
+              <PropertyRef Name="id_clasificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_detalles_movimientos_movimientos">
+          <End Role="movimientos" Type="Self.movimientos" Multiplicity="0..1" />
+          <End Role="detalles_movimientos" Type="Self.detalles_movimientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movimientos">
+              <PropertyRef Name="id_movimiento" />
+            </Principal>
+            <Dependent Role="detalles_movimientos">
+              <PropertyRef Name="id_movimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_detalles_movimientos_productos">
+          <End Role="productos" Type="Self.productos" Multiplicity="0..1" />
+          <End Role="detalles_movimientos" Type="Self.detalles_movimientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="productos">
+              <PropertyRef Name="id_producto" />
+            </Principal>
+            <Dependent Role="detalles_movimientos">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_movimientos_proveedores">
+          <End Role="proveedores" Type="Self.proveedores" Multiplicity="0..1" />
+          <End Role="movimientos" Type="Self.movimientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proveedores">
+              <PropertyRef Name="id_proveedor" />
+            </Principal>
+            <Dependent Role="movimientos">
+              <PropertyRef Name="id_proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_movimientos_tipo_movimiento">
+          <End Role="tipo_movimiento" Type="Self.tipo_movimiento" Multiplicity="1" />
+          <End Role="movimientos" Type="Self.movimientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_movimiento">
+              <PropertyRef Name="id_tipo_movimiento" />
+            </Principal>
+            <Dependent Role="movimientos">
+              <PropertyRef Name="id_tipo_movimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_movimientos_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="0..1" />
+          <End Role="movimientos" Type="Self.movimientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="movimientos">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_productos_sub_clasificaciones">
+          <End Role="sub_clasificaciones" Type="Self.sub_clasificaciones" Multiplicity="0..1" />
+          <End Role="productos" Type="Self.productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sub_clasificaciones">
+              <PropertyRef Name="id_sub_clasificacion" />
+            </Principal>
+            <Dependent Role="productos">
+              <PropertyRef Name="id_sub_clasificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_prouctos_viegncia_promedio">
+          <End Role="vigencia_promedio" Type="Self.vigencia_promedio" Multiplicity="0..1" />
+          <End Role="productos" Type="Self.productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vigencia_promedio">
+              <PropertyRef Name="id_vigencia_promedio" />
+            </Principal>
+            <Dependent Role="productos">
+              <PropertyRef Name="id_vigencia_promedio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_proveedor_producto_productos">
+          <End Role="productos" Type="Self.productos" Multiplicity="0..1" />
+          <End Role="proveedor_producto" Type="Self.proveedor_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="productos">
+              <PropertyRef Name="id_producto" />
+            </Principal>
+            <Dependent Role="proveedor_producto">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_proveedor_producto_proveedores">
+          <End Role="proveedores" Type="Self.proveedores" Multiplicity="0..1" />
+          <End Role="proveedor_producto" Type="Self.proveedor_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proveedores">
+              <PropertyRef Name="id_proveedor" />
+            </Principal>
+            <Dependent Role="proveedor_producto">
+              <PropertyRef Name="id_proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_proveedores">
+          <End Role="tipo_proveedor" Type="Self.tipo_proveedor" Multiplicity="0..1" />
+          <End Role="proveedores" Type="Self.proveedores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_proveedor">
+              <PropertyRef Name="id_tipo_proveedor" />
+            </Principal>
+            <Dependent Role="proveedores">
+              <PropertyRef Name="id_tipo_proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuarios_roles">
+          <End Role="roles" Type="Self.roles" Multiplicity="0..1" />
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="id_rol" />
+            </Principal>
+            <Dependent Role="usuarios">
+              <PropertyRef Name="id_rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tipo_bodega_bodegas_tipo_bodega">
+          <End Role="tipo_bodega" Type="Self.tipo_bodega" Multiplicity="0..1" />
+          <End Role="tipo_bodega_bodegas" Type="Self.tipo_bodega_bodegas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_bodega">
+              <PropertyRef Name="id_tipo_bodega" />
+            </Principal>
+            <Dependent Role="tipo_bodega_bodegas">
+              <PropertyRef Name="id_tipo_bodega" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="inventarioEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="bitacora" EntityType="Self.bitacora" />
+          <EntitySet Name="bodegas" EntityType="Self.bodegas" />
+          <EntitySet Name="clasificacion" EntityType="Self.clasificacion" />
+          <EntitySet Name="detalles_movimientos" EntityType="Self.detalles_movimientos" />
+          <EntitySet Name="medidas_peso" EntityType="Self.medidas_peso" />
+          <EntitySet Name="movimientos" EntityType="Self.movimientos" />
+          <EntitySet Name="productos" EntityType="Self.productos" />
+          <EntitySet Name="proveedor_producto" EntityType="Self.proveedor_producto" />
+          <EntitySet Name="proveedores" EntityType="Self.proveedores" />
+          <EntitySet Name="roles" EntityType="Self.roles" />
+          <EntitySet Name="sub_clasificaciones" EntityType="Self.sub_clasificaciones" />
+          <EntitySet Name="sucursales" EntityType="Self.sucursales" />
+          <EntitySet Name="tipo_bodega" EntityType="Self.tipo_bodega" />
+          <EntitySet Name="tipo_bodega_bodegas" EntityType="Self.tipo_bodega_bodegas" />
+          <EntitySet Name="tipo_movimiento" EntityType="Self.tipo_movimiento" />
+          <EntitySet Name="tipo_proveedor" EntityType="Self.tipo_proveedor" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" />
+          <EntitySet Name="vigencia_promedio" EntityType="Self.vigencia_promedio" />
+          <AssociationSet Name="FK_bitacora_movimientos" Association="Self.FK_bitacora_movimientos">
+            <End Role="movimientos" EntitySet="movimientos" />
+            <End Role="bitacora" EntitySet="bitacora" />
+          </AssociationSet>
+          <AssociationSet Name="fk_bodegas_sucursales" Association="Self.fk_bodegas_sucursales">
+            <End Role="sucursales" EntitySet="sucursales" />
+            <End Role="bodegas" EntitySet="bodegas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_detalles_movimientos_bodegas" Association="Self.FK_detalles_movimientos_bodegas">
+            <End Role="bodegas" EntitySet="bodegas" />
+            <End Role="detalles_movimientos" EntitySet="detalles_movimientos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tipo_bodega_bodegas_bodegas" Association="Self.FK_tipo_bodega_bodegas_bodegas">
+            <End Role="bodegas" EntitySet="bodegas" />
+            <End Role="tipo_bodega_bodegas" EntitySet="tipo_bodega_bodegas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sub_clasificacion_clasificaciones" Association="Self.fk_sub_clasificacion_clasificaciones">
+            <End Role="clasificacion" EntitySet="clasificacion" />
+            <End Role="sub_clasificaciones" EntitySet="sub_clasificaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_detalles_movimientos_movimientos" Association="Self.FK_detalles_movimientos_movimientos">
+            <End Role="movimientos" EntitySet="movimientos" />
+            <End Role="detalles_movimientos" EntitySet="detalles_movimientos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_detalles_movimientos_productos" Association="Self.FK_detalles_movimientos_productos">
+            <End Role="productos" EntitySet="productos" />
+            <End Role="detalles_movimientos" EntitySet="detalles_movimientos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_movimientos_proveedores" Association="Self.FK_movimientos_proveedores">
+            <End Role="proveedores" EntitySet="proveedores" />
+            <End Role="movimientos" EntitySet="movimientos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_movimientos_tipo_movimiento" Association="Self.fk_movimientos_tipo_movimiento">
+            <End Role="tipo_movimiento" EntitySet="tipo_movimiento" />
+            <End Role="movimientos" EntitySet="movimientos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_movimientos_usuarios" Association="Self.FK_movimientos_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="movimientos" EntitySet="movimientos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_productos_sub_clasificaciones" Association="Self.FK_productos_sub_clasificaciones">
+            <End Role="sub_clasificaciones" EntitySet="sub_clasificaciones" />
+            <End Role="productos" EntitySet="productos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_prouctos_viegncia_promedio" Association="Self.fk_prouctos_viegncia_promedio">
+            <End Role="vigencia_promedio" EntitySet="vigencia_promedio" />
+            <End Role="productos" EntitySet="productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_proveedor_producto_productos" Association="Self.FK_proveedor_producto_productos">
+            <End Role="productos" EntitySet="productos" />
+            <End Role="proveedor_producto" EntitySet="proveedor_producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_proveedor_producto_proveedores" Association="Self.FK_proveedor_producto_proveedores">
+            <End Role="proveedores" EntitySet="proveedores" />
+            <End Role="proveedor_producto" EntitySet="proveedor_producto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_proveedores" Association="Self.fk_proveedores">
+            <End Role="tipo_proveedor" EntitySet="tipo_proveedor" />
+            <End Role="proveedores" EntitySet="proveedores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuarios_roles" Association="Self.FK_usuarios_roles">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="usuarios" EntitySet="usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tipo_bodega_bodegas_tipo_bodega" Association="Self.FK_tipo_bodega_bodegas_tipo_bodega">
+            <End Role="tipo_bodega" EntitySet="tipo_bodega" />
+            <End Role="tipo_bodega_bodegas" EntitySet="tipo_bodega_bodegas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="inventarioModelStoreContainer" CdmEntityContainer="inventarioEntities">
+          <EntitySetMapping Name="bitacora">
+            <EntityTypeMapping TypeName="inventarioModel.bitacora">
+              <MappingFragment StoreEntitySet="bitacora">
+                <ScalarProperty Name="id_bitacora" ColumnName="id_bitacora" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="accion" ColumnName="accion" />
+                <ScalarProperty Name="id_movimiento" ColumnName="id_movimiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bodegas">
+            <EntityTypeMapping TypeName="inventarioModel.bodegas">
+              <MappingFragment StoreEntitySet="bodegas">
+                <ScalarProperty Name="id_bodega" ColumnName="id_bodega" />
+                <ScalarProperty Name="nombre_bodega" ColumnName="nombre_bodega" />
+                <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+                <ScalarProperty Name="id_tipo_bodega" ColumnName="id_tipo_bodega" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clasificacion">
+            <EntityTypeMapping TypeName="inventarioModel.clasificacion">
+              <MappingFragment StoreEntitySet="clasificacion">
+                <ScalarProperty Name="id_clasificacion" ColumnName="id_clasificacion" />
+                <ScalarProperty Name="nombre_clasificacion" ColumnName="nombre_clasificacion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="detalles_movimientos">
+            <EntityTypeMapping TypeName="inventarioModel.detalles_movimientos">
+              <MappingFragment StoreEntitySet="detalles_movimientos">
+                <ScalarProperty Name="id_detalle_movimiento" ColumnName="id_detalle_movimiento" />
+                <ScalarProperty Name="fecha_vencimiento" ColumnName="fecha_vencimiento" />
+                <ScalarProperty Name="lote" ColumnName="lote" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="costo_unitario" ColumnName="costo_unitario" />
+                <ScalarProperty Name="costo_unitario_promedio" ColumnName="costo_unitario_promedio" />
+                <ScalarProperty Name="existencia_anterior" ColumnName="existencia_anterior" />
+                <ScalarProperty Name="existencia_total" ColumnName="existencia_total" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="id_movimiento" ColumnName="id_movimiento" />
+                <ScalarProperty Name="id_bodega" ColumnName="id_bodega" />
+                <ScalarProperty Name="id_bodega_traslado" ColumnName="id_bodega_traslado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="medidas_peso">
+            <EntityTypeMapping TypeName="inventarioModel.medidas_peso">
+              <MappingFragment StoreEntitySet="medidas_peso">
+                <ScalarProperty Name="id_medida_peso" ColumnName="id_medida_peso" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="abreviatura" ColumnName="abreviatura" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="movimientos">
+            <EntityTypeMapping TypeName="inventarioModel.movimientos">
+              <MappingFragment StoreEntitySet="movimientos">
+                <ScalarProperty Name="id_movimiento" ColumnName="id_movimiento" />
+                <ScalarProperty Name="id_tipo_movimiento" ColumnName="id_tipo_movimiento" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="costo_total_con_iva" ColumnName="costo_total_con_iva" />
+                <ScalarProperty Name="costo_total_sin_iva" ColumnName="costo_total_sin_iva" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+                <ScalarProperty Name="id_bodega_cargo" ColumnName="id_bodega_cargo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="productos">
+            <EntityTypeMapping TypeName="inventarioModel.productos">
+              <MappingFragment StoreEntitySet="productos">
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id_vigencia_promedio" ColumnName="id_vigencia_promedio" />
+                <ScalarProperty Name="id_clasificacion" ColumnName="id_clasificacion" />
+                <ScalarProperty Name="id_sub_clasificacion" ColumnName="id_sub_clasificacion" />
+                <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="hora_creacion" ColumnName="hora_creacion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="costo_unitario_con_iva" ColumnName="costo_unitario_con_iva" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="proveedor_producto">
+            <EntityTypeMapping TypeName="inventarioModel.proveedor_producto">
+              <MappingFragment StoreEntitySet="proveedor_producto">
+                <ScalarProperty Name="id_proveedor_producto" ColumnName="id_proveedor_producto" />
+                <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="proveedores">
+            <EntityTypeMapping TypeName="inventarioModel.proveedores">
+              <MappingFragment StoreEntitySet="proveedores">
+                <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="nit" ColumnName="nit" />
+                <ScalarProperty Name="nrc" ColumnName="nrc" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+                <ScalarProperty Name="id_tipo_proveedor" ColumnName="id_tipo_proveedor" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roles">
+            <EntityTypeMapping TypeName="inventarioModel.roles">
+              <MappingFragment StoreEntitySet="roles">
+                <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+                <ScalarProperty Name="rol" ColumnName="rol" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sub_clasificaciones">
+            <EntityTypeMapping TypeName="inventarioModel.sub_clasificaciones">
+              <MappingFragment StoreEntitySet="sub_clasificaciones">
+                <ScalarProperty Name="id_sub_clasificacion" ColumnName="id_sub_clasificacion" />
+                <ScalarProperty Name="id_clasificacion" ColumnName="id_clasificacion" />
+                <ScalarProperty Name="sub_clasificacion" ColumnName="sub_clasificacion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sucursales">
+            <EntityTypeMapping TypeName="inventarioModel.sucursales">
+              <MappingFragment StoreEntitySet="sucursales">
+                <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+                <ScalarProperty Name="sucursal" ColumnName="sucursal" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_bodega">
+            <EntityTypeMapping TypeName="inventarioModel.tipo_bodega">
+              <MappingFragment StoreEntitySet="tipo_bodega">
+                <ScalarProperty Name="id_tipo_bodega" ColumnName="id_tipo_bodega" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_bodega_bodegas">
+            <EntityTypeMapping TypeName="inventarioModel.tipo_bodega_bodegas">
+              <MappingFragment StoreEntitySet="tipo_bodega_bodegas">
+                <ScalarProperty Name="id_tipo_bodega_bodegas" ColumnName="id_tipo_bodega_bodegas" />
+                <ScalarProperty Name="id_tipo_bodega" ColumnName="id_tipo_bodega" />
+                <ScalarProperty Name="id_bodega" ColumnName="id_bodega" />
+                <ScalarProperty Name="temperatura_promedio" ColumnName="temperatura_promedio" />
+                <ScalarProperty Name="capacidad_maxima" ColumnName="capacidad_maxima" />
+                <ScalarProperty Name="capacidad_actual" ColumnName="capacidad_actual" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_movimiento">
+            <EntityTypeMapping TypeName="inventarioModel.tipo_movimiento">
+              <MappingFragment StoreEntitySet="tipo_movimiento">
+                <ScalarProperty Name="id_tipo_movimiento" ColumnName="id_tipo_movimiento" />
+                <ScalarProperty Name="tipo_movimiento1" ColumnName="tipo_movimiento" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_proveedor">
+            <EntityTypeMapping TypeName="inventarioModel.tipo_proveedor">
+              <MappingFragment StoreEntitySet="tipo_proveedor">
+                <ScalarProperty Name="id_tipo_proveedor" ColumnName="id_tipo_proveedor" />
+                <ScalarProperty Name="tipo_proveedor1" ColumnName="tipo_proveedor" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuarios">
+            <EntityTypeMapping TypeName="inventarioModel.usuarios">
+              <MappingFragment StoreEntitySet="usuarios">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
+                <ScalarProperty Name="dui" ColumnName="dui" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="estado_sesion" ColumnName="estado_sesion" />
+                <ScalarProperty Name="fecha_ultimo_ingreso" ColumnName="fecha_ultimo_ingreso" />
+                <ScalarProperty Name="hora_ultimo_ingreso" ColumnName="hora_ultimo_ingreso" />
+                <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vigencia_promedio">
+            <EntityTypeMapping TypeName="inventarioModel.vigencia_promedio">
+              <MappingFragment StoreEntitySet="vigencia_promedio">
+                <ScalarProperty Name="id_vigencia_promedio" ColumnName="id_vigencia_promedio" />
+                <ScalarProperty Name="dias" ColumnName="dias" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
